@@ -1,0 +1,58 @@
+:root {
+  /* surfaces */
+  --bg-primary: #070A0F;
+  --bg-secondary: #0B1018;
+  --bg-card: #101722;
+  --bg-elevated: #141C28;
+  --border: #202B3A;
+  --border-hover: #2F3E54;
+
+  /* text */
+  --text-primary: #F4F7FB;
+  --text-secondary: #A7B0BF;
+  --text-muted: #6F7A8A;
+
+  /* accent */
+  --accent: #4D8DFF;
+  --accent-hover: #76A7FF;
+  --accent-deep: #2463D8;
+  --accent-ai: #39D6D0;
+  --accent-ai-glow: rgba(57, 214, 208, 0.15);
+
+  /* status */
+  --success: #35C98B;
+  --warning: #F3B84B;
+  --error: #FF6262;
+
+  /* radii */
+  --radius-sm: 8px;
+  --radius-btn: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* spacing: 4px base */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* layout */
+  --container: 1320px;
+  --pad-desktop: 56px;
+  --pad-tablet: 32px;
+  --pad-mobile: 20px;
+  --nav-h: 72px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --nav-h: 64px;
+  }
+}
