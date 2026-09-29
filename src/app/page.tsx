@@ -385,7 +385,7 @@ export default function Home() {
                   Verified Codebases
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-                  Featured Case Studies &amp; Prototypes
+                  Featured Prototypes &amp; Architectures
                 </h2>
               </div>
               <NextLink href="/work">

@@ -36,3 +36,12 @@ model AuditLog {
   event String
   meta  String?
 }
+
+model RateLimit {
+  key       String   @id
+  count     Int      @default(1)
+  resetAt   DateTime
+  createdAt DateTime @default(now())
+
+  @@index([resetAt])
+}

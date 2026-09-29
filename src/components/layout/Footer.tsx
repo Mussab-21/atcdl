@@ -111,7 +111,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <NextLink href="/work" className="hover:text-[var(--text-primary)] transition-colors">
-                  Engineering Case Studies
+                  Engineering Portfolio
                 </NextLink>
               </li>
               <li>

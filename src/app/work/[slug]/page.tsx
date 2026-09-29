@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props) {
   if (!project) return {};
 
   return {
-    title: `${project.title} | NIMBRIX Case Studies`,
+    title: `${project.title} | NIMBRIX Technical Architecture`,
     description: project.summary,
   };
 }

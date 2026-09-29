@@ -8,6 +8,7 @@ import { FormField, Input, Textarea, Select } from "@/components/ui/Form";
 import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/motion/Reveal";
 import { ArrowRight, ArrowLeft, CheckCircle2, ShieldAlert } from "lucide-react";
+import { Turnstile } from "@/components/forms/Turnstile";
 
 function ContactFormInner() {
   const router = useRouter();
@@ -44,6 +45,7 @@ function ContactFormInner() {
       | "3–6 months"
       | "6+ months",
     honeypot: "",
+    turnstileToken: "",
   });
 
   // Pre-select based on ?product= query param
@@ -380,6 +382,10 @@ function ContactFormInner() {
                 <div className="p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] text-[11px] text-[var(--text-muted)] leading-relaxed">
                   🔒 We sign NDAs prior to accessing any internal data or architecture. No spam, ever.
                 </div>
+
+                <Turnstile
+                  onSuccess={(token) => setFormData((prev) => ({ ...prev, turnstileToken: token }))}
+                />
 
                 <div className="flex justify-between pt-4">
                   <Button type="button" variant="ghost" onClick={prevStep}>

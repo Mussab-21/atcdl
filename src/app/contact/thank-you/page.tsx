@@ -66,7 +66,7 @@ function ThankYouInner() {
             </NextLink>
             <NextLink href="/work">
               <Button variant="primary" size="md">
-                <span>Explore Technical Case Studies</span>
+                <span>Explore Technical Implementations</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </NextLink>
