@@ -55,6 +55,7 @@ export const ProductSchema = z.object({
   pricingModel: z.string(),
   featured: z.boolean(),
   demoHighlight: z.string(),
+  icon: z.string().optional(),
 });
 
 export type Product = z.infer<typeof ProductSchema>;
@@ -128,6 +129,7 @@ export const PRODUCTS: Product[] = [
     name: "ATCDL Docs",
     tagline: "Document & Invoice Intelligence Engine",
     status: "Prototype",
+    icon: "ScanLine",
     offer: "AI Agents & Automation",
     problem:
       "Finance and operations teams waste dozens of hours every week manually re-keying invoices, bills of lading, customs declarations, and tax forms into accounting software and ERPs.",
@@ -157,6 +159,7 @@ export const PRODUCTS: Product[] = [
     name: "ATCDL Ask",
     tagline: "Private Enterprise Knowledge Copilot",
     status: "Prototype",
+    icon: "MessageSquareText",
     offer: "Custom AI / GenAI",
     problem:
       "Staff waste up to 20% of their working hours searching through scattered SharePoint folders, Google Drives, Confluence wikis, and SOP PDFs to find authoritative business answers.",
@@ -185,6 +188,7 @@ export const PRODUCTS: Product[] = [
     name: "ATCDL Agents",
     tagline: "Autonomous Sales & Support Agent Platform",
     status: "Prototype",
+    icon: "Bot",
     offer: "AI Agents & Automation",
     problem:
       "High-value leads go cold overnight and customer support queues back up because human teams cannot respond 24/7 across multiple web and messaging channels.",
@@ -213,6 +217,7 @@ export const PRODUCTS: Product[] = [
     name: "ATCDL Talent",
     tagline: "Recruitment & Talent Intelligence Platform",
     status: "Prototype",
+    icon: "UserSearch",
     offer: "Custom AI / GenAI",
     problem:
       "Hiring managers and HR teams drown in hundreds of resumes per job opening, leading to slow hiring cycles, candidate mismatches, and missed top performers.",
@@ -240,6 +245,7 @@ export const PRODUCTS: Product[] = [
     name: "ATCDL Flow",
     tagline: "Configurable Enterprise Approval & Workflow Engine",
     status: "Concept",
+    icon: "Workflow",
     offer: "Enterprise Software",
     problem:
       "Internal approvals for capital expenses, procurement, and onboarding stall in email threads with zero SLA enforcement and incomplete audit trails.",
@@ -265,6 +271,7 @@ export const PRODUCTS: Product[] = [
     name: "ATCDL Ops",
     tagline: "Unified Operations Control Tower",
     status: "Concept",
+    icon: "LayoutDashboard",
     offer: "Enterprise Software",
     problem:
       "Operations leaders lack a single operational pane of glass, forcing them to toggle across siloed telemetry, warehouse databases, and ticket management systems.",

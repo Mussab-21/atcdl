@@ -10,6 +10,7 @@ import { HeroSystemVisual } from "@/components/sections/HeroSystemVisual";
 import { RotatingHeadlineWord } from "@/components/motion/RotatingHeadlineWord";
 import { CapabilityStrip } from "@/components/sections/CapabilityStrip";
 import { OperationalBottleneckVisual } from "@/components/sections/OperationalBottleneckVisual";
+import { ProductsCarousel } from "@/components/sections/ProductsCarousel";
 import {
   ArrowRight,
   Sparkles,
@@ -179,11 +180,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. FLAGSHIP PRODUCTS SECTION (Ready to Demo Daily) */}
-      <section className="container-custom py-4">
-        <div className="p-8 sm:p-12 rounded-[var(--radius-lg)] bg-white border border-[var(--border)] shadow-sm flex flex-col gap-10">
+      {/* 5. FLAGSHIP PRODUCTS SECTION (Auto-Rotating Carousel — Peek Scroll Snap) */}
+      <section className="container-custom section-peek-snap py-4">
+        <div className="p-6 sm:p-8 lg:p-10 rounded-[var(--radius-lg)] bg-white border border-[var(--border)] shadow-xs flex flex-col gap-6 sm:gap-8">
           <Reveal>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-5">
               <div>
                 <div className="text-xs font-semibold text-[var(--accent-ai)] uppercase tracking-wider mb-1">
                   Proven Software Platforms
@@ -205,51 +206,8 @@ export default function Home() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featuredProducts.map((product) => (
-              <Reveal key={product.slug}>
-                <CursorGlow className="h-full">
-                  <Card variant="interactive" className="p-6 flex flex-col justify-between h-full gap-6 bg-white border-[var(--border)]">
-                    <div className="flex flex-col gap-3">
-                      <div className="flex items-center justify-between">
-                        <div className="p-2.5 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--accent-ai)]">
-                          <Sparkles className="w-5 h-5" />
-                        </div>
-                        <Badge status={product.status} size="sm" />
-                      </div>
-
-                      <div>
-                        <h3 className="text-xl font-bold text-[var(--text-primary)]">
-                          {product.name}
-                        </h3>
-                        <div className="text-xs font-semibold text-[var(--accent-ai)] mt-0.5">
-                          {product.tagline}
-                        </div>
-                        <p className="text-xs text-[var(--text-secondary)] mt-3 leading-relaxed">
-                          {product.problem}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between">
-                      <NextLink
-                        href={`/products/${product.slug}`}
-                        className="text-xs font-medium text-[var(--accent)] hover:underline"
-                      >
-                        Specs &amp; Architecture →
-                      </NextLink>
-
-                      <NextLink href={`/contact?product=${product.slug}`}>
-                        <Button size="sm" variant="outline" className="text-xs font-medium">
-                          Book Demo
-                        </Button>
-                      </NextLink>
-                    </div>
-                  </Card>
-                </CursorGlow>
-              </Reveal>
-            ))}
-          </div>
+          {/* Auto-Rotating 3-Card Carousel with Position Dots & Controls */}
+          <ProductsCarousel products={featuredProducts} />
         </div>
       </section>
 
