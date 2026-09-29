@@ -32,19 +32,19 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Solutions Column */}
-          <div className="flex flex-col gap-3">
-            <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)]">
+          <nav aria-labelledby="footer-solutions-heading" className="flex flex-col gap-3">
+            <h3 id="footer-solutions-heading" className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)]">
               Solutions
-            </div>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-[var(--text-muted)]">
               <li>
                 <NextLink href="/solutions/custom-ai" className="hover:text-[var(--text-primary)] transition-colors">
-                  Custom AI & GenAI
+                  Custom AI &amp; GenAI
                 </NextLink>
               </li>
               <li>
                 <NextLink href="/solutions/ai-agents" className="hover:text-[var(--text-primary)] transition-colors">
-                  AI Agents & Automation
+                  AI Agents &amp; Automation
                 </NextLink>
               </li>
               <li>
@@ -54,17 +54,17 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <NextLink href="/solutions/web-mobile-platforms" className="hover:text-[var(--text-primary)] transition-colors">
-                  Web & Mobile Platforms
+                  Web &amp; Mobile Platforms
                 </NextLink>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Products Column */}
-          <div className="flex flex-col gap-3">
-            <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)]">
+          <nav aria-labelledby="footer-products-heading" className="flex flex-col gap-3">
+            <h3 id="footer-products-heading" className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)]">
               Flagship Products
-            </div>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-[var(--text-muted)]">
               <li>
                 <NextLink href="/products/nimbrix-docs" className="hover:text-[var(--accent-ai)] transition-colors flex items-center gap-1">
@@ -96,13 +96,13 @@ export const Footer: React.FC = () => {
                 </NextLink>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Company & Legal Column */}
-          <div className="flex flex-col gap-3">
-            <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)]">
+          <nav aria-labelledby="footer-company-heading" className="flex flex-col gap-3">
+            <h3 id="footer-company-heading" className="text-xs font-mono uppercase tracking-wider text-[var(--text-primary)]">
               Company
-            </div>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-xs text-[var(--text-muted)]">
               <li>
                 <NextLink href="/about" className="hover:text-[var(--text-primary)] transition-colors">
@@ -116,7 +116,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <NextLink href="/trust" className="hover:text-[var(--text-primary)] transition-colors">
-                  Trust & Security
+                  Trust &amp; Security
                 </NextLink>
               </li>
               <li>
@@ -134,14 +134,15 @@ export const Footer: React.FC = () => {
                   href="https://github.com/Mussab-21"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="GitHub profile (opens in a new tab)"
                   className="hover:text-[var(--text-primary)] transition-colors flex items-center gap-1 text-[var(--text-secondary)]"
                 >
                   <span>GitHub</span>
-                  <ArrowUpRight className="w-3 h-3" />
+                  <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
 
         {/* Bottom Line */}

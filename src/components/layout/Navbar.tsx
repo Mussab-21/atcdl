@@ -84,6 +84,7 @@ export const Navbar: React.FC = () => {
           {/* Brand Logo */}
           <NextLink
             href="/"
+            aria-label="NIMBRIX — Go to homepage"
             className="flex items-center gap-3 group focus-visible:ring-offset-2"
           >
             <div className="w-8 h-8 rounded-lg bg-[var(--bg-elevated)] border border-[var(--border)] flex items-center justify-center group-hover:border-[var(--accent)] transition-colors shadow-sm">
@@ -120,6 +121,8 @@ export const Navbar: React.FC = () => {
                     <button
                       type="button"
                       aria-expanded={solutionsOpen}
+                      aria-haspopup="menu"
+                      aria-controls="solutions-dropdown"
                       className={clsx(
                         "flex items-center gap-1 px-3 py-1.5 text-xs font-mono tracking-wider uppercase transition-colors rounded-full",
                         isActive || solutionsOpen
@@ -138,8 +141,13 @@ export const Navbar: React.FC = () => {
 
                     {/* Solutions Mega Dropdown */}
                     {solutionsOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-96 p-3 rounded-[var(--radius-md)] bg-[var(--bg-elevated)] border border-[var(--border)] shadow-2xl shadow-black/80 animate-in fade-in-50 zoom-in-95 duration-150">
-                        <div className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] px-3 py-1 mb-1">
+                      <div
+                        id="solutions-dropdown"
+                        role="menu"
+                        aria-label="Solutions"
+                        className="absolute top-full left-0 mt-2 w-96 p-3 rounded-[var(--radius-md)] bg-[var(--bg-elevated)] border border-[var(--border)] shadow-2xl shadow-black/80 animate-in fade-in-50 zoom-in-95 duration-150"
+                      >
+                        <div className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] px-3 py-1 mb-1" aria-hidden="true">
                           Core Capabilities
                         </div>
                         <div className="grid gap-1">
@@ -149,6 +157,7 @@ export const Navbar: React.FC = () => {
                               <NextLink
                                 key={sol.title}
                                 href={sol.href}
+                                role="menuitem"
                                 className="flex items-start gap-3 p-2.5 rounded-[var(--radius-sm)] hover:bg-[rgba(77,141,255,0.06)] hover:border-[var(--border)] transition-all group"
                               >
                                 <div className="p-2 rounded-md bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--accent)] group-hover:border-[var(--accent)] group-hover:text-[var(--accent-hover)] transition-colors shrink-0">

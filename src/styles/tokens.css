@@ -10,7 +10,7 @@
   /* text */
   --text-primary: #F4F7FB;
   --text-secondary: #A7B0BF;
-  --text-muted: #6F7A8A;
+  --text-muted: #7E8EA0; /* WCAG AA pass: ~4.6:1 on --bg-secondary (#0B1018) */
 
   /* accent */
   --accent: #4D8DFF;
