@@ -19,7 +19,7 @@ export async function sendLeadNotifications(
   if (scoring.label === "HOT") {
     embedColor = 16729344; // Orange-Red (#FF4500)
   } else if (scoring.label === "QUALIFIED") {
-    embedColor = 1399787; // ATCDL Blue (#155EEF)
+    embedColor = 54391; // ATCDL Emerald Green (#00D477)
   } else if (scoring.label === "NURTURE") {
     embedColor = 15972427; // Amber (#F3B84B)
   }

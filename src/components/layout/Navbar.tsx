@@ -17,13 +17,14 @@ import {
   FlaskConical,
   Calculator,
 } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { gsap } from "@/lib/gsap";
 
 interface NavDropdownItem {
   title: string;
   desc: string;
   href: string;
-  icon: React.ComponentType<{ className?: string }>;
+  iconAsset: string;
+  fallbackIcon: React.ComponentType<{ className?: string }>;
 }
 
 const SOLUTIONS_DROPDOWN: NavDropdownItem[] = [
@@ -31,29 +32,40 @@ const SOLUTIONS_DROPDOWN: NavDropdownItem[] = [
     title: "Custom AI & GenAI",
     desc: "Turn enterprise knowledge into cited answers & operational AI pipelines.",
     href: "/solutions/custom-ai",
-    icon: Sparkles,
+    iconAsset: "/icons/solution_icon_1.svg",
+    fallbackIcon: Sparkles,
   },
   {
     title: "AI Agents & Automation",
     desc: "Automate complex multi-step workflows & document processing.",
     href: "/solutions/ai-agents",
-    icon: Cpu,
+    iconAsset: "/icons/solution_icon_2.svg",
+    fallbackIcon: Cpu,
   },
   {
     title: "Enterprise Software",
     desc: "Custom platforms, portals, and operational backbones built for your exact process.",
     href: "/solutions/enterprise-software",
-    icon: Database,
+    iconAsset: "/icons/solution_icon_3.svg",
+    fallbackIcon: Database,
   },
   {
     title: "Web & Mobile Platforms",
     desc: "Fast, resilient client-facing and operational apps engineered to scale.",
     href: "/solutions/web-mobile-platforms",
-    icon: Layers,
+    iconAsset: "/icons/solution_icon_4.svg",
+    fallbackIcon: Layers,
   },
 ];
 
-const RESOURCES_DROPDOWN: NavDropdownItem[] = [
+interface ResourceDropdownItem {
+  title: string;
+  desc: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+const RESOURCES_DROPDOWN: ResourceDropdownItem[] = [
   {
     title: "Ideas & R&D",
     desc: "Pre-engineered industry concepts & operational architectures ready for pilot.",
@@ -101,6 +113,32 @@ export const Navbar: React.FC = () => {
     setMobileMenuOpen(false);
     setActiveDropdown(null);
   }, [pathname]);
+
+  // GSAP Interaction-triggered Staggered Pop-in for Solutions Dropdown
+  useEffect(() => {
+    if (activeDropdown === "solutions" && solutionsMenuRef.current) {
+      if (typeof window !== "undefined") {
+        const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (isReducedMotion) return;
+
+        const items = solutionsMenuRef.current.querySelectorAll(".solution-pop-item");
+        if (items.length > 0) {
+          gsap.fromTo(
+            items,
+            { scale: 0.7, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 0.32,
+              ease: "back.out(1.7)",
+              stagger: 0.06,
+              clearProps: "transform,opacity",
+            }
+          );
+        }
+      }
+    }
+  }, [activeDropdown]);
 
   // Handle keyboard events for dropdown triggers
   const handleTriggerKeyDown = (
@@ -151,28 +189,28 @@ export const Navbar: React.FC = () => {
     <>
       <header
         className={clsx(
-          "fixed top-0 left-0 right-0 z-40 transition-all duration-300 h-[var(--nav-h)] flex items-center bg-[var(--header-bg)] border-b border-black/10 shadow-sm",
-          isScrolled ? "shadow-md shadow-blue-950/20 backdrop-blur-md" : ""
+          "fixed top-0 left-0 right-0 z-40 transition-all duration-300 h-[var(--nav-h)] flex items-center bg-[var(--header-bg)] border-b border-white/10 shadow-sm",
+          isScrolled ? "shadow-md shadow-black/30 backdrop-blur-md" : ""
         )}
       >
         <div className="container-custom w-full flex items-center justify-between">
           {/* Brand Wordmark: Two-line stacked typography (ATC / Digital Labs) */}
           <NextLink
             href="/"
-            className="flex flex-col text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--header-bg)] rounded-sm"
+            className="flex flex-col text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-green)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--header-bg)] rounded-sm transition-transform duration-200 ease-out hover:scale-105 active:scale-95 origin-left"
           >
-            <span className="font-extrabold text-xl sm:text-2xl tracking-wider text-white leading-tight group-hover:opacity-90 transition-opacity">
+            <span className="font-extrabold text-xl sm:text-2xl tracking-wider text-white leading-tight group-hover:text-[var(--accent-green)] transition-colors">
               ATC
             </span>
-            <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.18em] uppercase text-white/90 leading-tight">
+            <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.18em] uppercase text-white/80 leading-tight">
               Digital Labs
             </span>
           </NextLink>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links: Sitting directly on the bar with generous spacing, no enclosing pills */}
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-0.5 bg-[var(--header-pill-bg)] border border-[var(--header-pill-border)] px-2.5 py-1.5 rounded-full backdrop-blur-sm shadow-xs"
+            className="hidden md:flex items-center gap-6 lg:gap-8"
           >
             {/* Solutions Dropdown */}
             <div
@@ -188,17 +226,17 @@ export const Navbar: React.FC = () => {
                 aria-controls="solutions-dropdown"
                 onKeyDown={(e) => handleTriggerKeyDown(e, "solutions")}
                 className={clsx(
-                  "flex items-center gap-1 px-3 py-1.5 text-xs font-semibold tracking-wide uppercase transition-colors rounded-full cursor-pointer",
+                  "inline-flex items-center gap-1.5 text-xs lg:text-sm font-semibold tracking-wider uppercase cursor-pointer select-none transition-transform duration-200 ease-out hover:scale-108 active:scale-95 origin-center",
                   pathname.startsWith("/solutions") || activeDropdown === "solutions"
-                    ? "text-white bg-white/25 shadow-xs"
-                    : "text-[var(--header-text-secondary)] hover:text-white hover:bg-white/15"
+                    ? "text-[var(--accent-green)]"
+                    : "text-white/90 hover:text-[var(--accent-green)]"
                 )}
               >
                 <span>Solutions</span>
                 <ChevronDown
                   className={clsx(
-                    "w-3.5 h-3.5 transition-transform duration-200",
-                    activeDropdown === "solutions" && "rotate-180 text-white"
+                    "w-3.5 h-3.5 transition-transform duration-200 ease-out",
+                    activeDropdown === "solutions" && "rotate-180 text-[var(--accent-green)]"
                   )}
                 />
               </button>
@@ -213,7 +251,7 @@ export const Navbar: React.FC = () => {
                   onKeyDown={(e) => handleMenuKeyDown(e, "solutions")}
                   className="absolute top-full left-0 pt-2.5 w-[620px] z-50 animate-in fade-in-50 zoom-in-95 duration-150"
                 >
-                  <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(0,110,220,0.18),0_10px_30px_-10px_rgba(0,0,0,0.08)] text-[var(--text-primary)]">
+                  <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(21,42,50,0.22),0_10px_30px_-10px_rgba(0,0,0,0.1)] text-[var(--text-primary)]">
                     <div className="flex items-center justify-between px-2 pb-3 mb-2 border-b border-slate-100">
                       <span
                         className="text-[11px] font-semibold uppercase tracking-wider text-slate-500"
@@ -224,38 +262,41 @@ export const Navbar: React.FC = () => {
                       <NextLink
                         href="/solutions"
                         role="menuitem"
-                        className="text-xs font-semibold text-[var(--accent)] hover:underline inline-flex items-center gap-1"
+                        className="text-xs font-semibold text-[var(--accent-ai)] hover:underline inline-flex items-center gap-1"
                       >
                         <span>All Solutions</span>
                         <ArrowRight className="w-3 h-3" />
                       </NextLink>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2.5">
-                      {SOLUTIONS_DROPDOWN.map((sol) => {
-                        const Icon = sol.icon;
-                        return (
-                          <NextLink
-                            key={sol.title}
-                            href={sol.href}
-                            role="menuitem"
-                            className="flex items-start gap-3 p-3 rounded-xl bg-slate-50/70 hover:bg-blue-50/80 border border-slate-200/60 hover:border-blue-200 transition-all duration-200 group focus:bg-blue-50/80 focus:border-blue-300 focus:outline-none"
-                          >
-                            <div className="p-2.5 rounded-lg bg-white border border-slate-200/80 text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-white group-hover:border-[var(--accent)] transition-all shadow-xs shrink-0 mt-0.5">
-                              <Icon className="w-4 h-4 transition-transform group-hover:scale-110" />
+                    <div className="grid grid-cols-2 gap-3">
+                      {SOLUTIONS_DROPDOWN.map((sol) => (
+                        <NextLink
+                          key={sol.title}
+                          href={sol.href}
+                          role="menuitem"
+                          className="solution-pop-item flex items-start gap-3.5 p-3 rounded-xl bg-slate-50/70 hover:bg-emerald-50/70 border border-slate-200/60 hover:border-[var(--accent-green)]/40 transition-all duration-200 group focus:bg-emerald-50/70 focus:border-[var(--accent-green)] focus:outline-none"
+                        >
+                          <div className="w-10 h-10 rounded-xl bg-white border border-slate-200/80 p-1.5 flex items-center justify-center shrink-0 shadow-xs group-hover:border-[var(--accent-green)] transition-all mt-0.5">
+                            <img
+                              src={sol.iconAsset}
+                              alt=""
+                              width={36}
+                              height={36}
+                              className="w-7 h-7 object-contain transition-transform duration-200 group-hover:scale-110"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-xs font-bold text-slate-900 group-hover:text-[var(--accent-ai)] transition-colors flex items-center justify-between">
+                              <span>{sol.title}</span>
+                              <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--accent-green)]" />
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="text-xs font-bold text-slate-900 group-hover:text-[var(--accent)] transition-colors flex items-center justify-between">
-                                <span>{sol.title}</span>
-                                <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[var(--accent)]" />
-                              </div>
-                              <p className="text-[11px] text-slate-600 leading-snug line-clamp-2 mt-1 font-normal">
-                                {sol.desc}
-                              </p>
-                            </div>
-                          </NextLink>
-                        );
-                      })}
+                            <p className="text-[11px] text-slate-600 leading-snug line-clamp-2 mt-1 font-normal">
+                              {sol.desc}
+                            </p>
+                          </div>
+                        </NextLink>
+                      ))}
                     </div>
 
                     {/* Outcome footer line */}
@@ -266,10 +307,10 @@ export const Navbar: React.FC = () => {
                       <NextLink
                         href="/contact"
                         role="menuitem"
-                        className="text-[var(--accent)] font-semibold hover:underline inline-flex items-center gap-1.5"
+                        className="text-[var(--accent-ai)] font-semibold hover:underline inline-flex items-center gap-1.5"
                       >
                         <span>Start a Project</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
+                        <ArrowRight className="w-3.5 h-3.5 text-[var(--accent-green)]" />
                       </NextLink>
                     </div>
                   </div>
@@ -277,14 +318,14 @@ export const Navbar: React.FC = () => {
               )}
             </div>
 
-            {/* Direct Links */}
+            {/* Direct Links with Pop Hover Effect */}
             <NextLink
               href="/products"
               className={clsx(
-                "px-3 py-1.5 text-xs font-semibold tracking-wide uppercase transition-colors rounded-full",
+                "text-xs lg:text-sm font-semibold tracking-wider uppercase select-none transition-transform duration-200 ease-out hover:scale-108 active:scale-95 origin-center",
                 pathname.startsWith("/products")
-                  ? "text-white bg-white/25 shadow-xs"
-                  : "text-[var(--header-text-secondary)] hover:text-white hover:bg-white/15"
+                  ? "text-[var(--accent-green)]"
+                  : "text-white/90 hover:text-[var(--accent-green)]"
               )}
             >
               Products
@@ -293,10 +334,10 @@ export const Navbar: React.FC = () => {
             <NextLink
               href="/work"
               className={clsx(
-                "px-3 py-1.5 text-xs font-semibold tracking-wide uppercase transition-colors rounded-full",
+                "text-xs lg:text-sm font-semibold tracking-wider uppercase select-none transition-transform duration-200 ease-out hover:scale-108 active:scale-95 origin-center",
                 pathname.startsWith("/work")
-                  ? "text-white bg-white/25 shadow-xs"
-                  : "text-[var(--header-text-secondary)] hover:text-white hover:bg-white/15"
+                  ? "text-[var(--accent-green)]"
+                  : "text-white/90 hover:text-[var(--accent-green)]"
               )}
             >
               Work
@@ -305,10 +346,10 @@ export const Navbar: React.FC = () => {
             <NextLink
               href="/industries"
               className={clsx(
-                "px-3 py-1.5 text-xs font-semibold tracking-wide uppercase transition-colors rounded-full",
+                "text-xs lg:text-sm font-semibold tracking-wider uppercase select-none transition-transform duration-200 ease-out hover:scale-108 active:scale-95 origin-center",
                 pathname.startsWith("/industries")
-                  ? "text-white bg-white/25 shadow-xs"
-                  : "text-[var(--header-text-secondary)] hover:text-white hover:bg-white/15"
+                  ? "text-[var(--accent-green)]"
+                  : "text-white/90 hover:text-[var(--accent-green)]"
               )}
             >
               Industries
@@ -317,10 +358,10 @@ export const Navbar: React.FC = () => {
             <NextLink
               href="/process"
               className={clsx(
-                "px-3 py-1.5 text-xs font-semibold tracking-wide uppercase transition-colors rounded-full",
+                "text-xs lg:text-sm font-semibold tracking-wider uppercase select-none transition-transform duration-200 ease-out hover:scale-108 active:scale-95 origin-center",
                 pathname.startsWith("/process")
-                  ? "text-white bg-white/25 shadow-xs"
-                  : "text-[var(--header-text-secondary)] hover:text-white hover:bg-white/15"
+                  ? "text-[var(--accent-green)]"
+                  : "text-white/90 hover:text-[var(--accent-green)]"
               )}
             >
               Process
@@ -340,20 +381,20 @@ export const Navbar: React.FC = () => {
                 aria-controls="resources-dropdown"
                 onKeyDown={(e) => handleTriggerKeyDown(e, "resources")}
                 className={clsx(
-                  "flex items-center gap-1 px-3 py-1.5 text-xs font-semibold tracking-wide uppercase transition-colors rounded-full cursor-pointer",
+                  "inline-flex items-center gap-1.5 text-xs lg:text-sm font-semibold tracking-wider uppercase cursor-pointer select-none transition-transform duration-200 ease-out hover:scale-108 active:scale-95 origin-center",
                   pathname.startsWith("/ideas") ||
                     pathname.startsWith("/labs") ||
                     pathname.startsWith("/estimate") ||
                     activeDropdown === "resources"
-                    ? "text-white bg-white/25 shadow-xs"
-                    : "text-[var(--header-text-secondary)] hover:text-white hover:bg-white/15"
+                    ? "text-[var(--accent-green)]"
+                    : "text-white/90 hover:text-[var(--accent-green)]"
                 )}
               >
                 <span>Resources</span>
                 <ChevronDown
                   className={clsx(
-                    "w-3.5 h-3.5 transition-transform duration-200",
-                    activeDropdown === "resources" && "rotate-180 text-white"
+                    "w-3.5 h-3.5 transition-transform duration-200 ease-out",
+                    activeDropdown === "resources" && "rotate-180 text-[var(--accent-green)]"
                   )}
                 />
               </button>
@@ -368,7 +409,7 @@ export const Navbar: React.FC = () => {
                   onKeyDown={(e) => handleMenuKeyDown(e, "resources")}
                   className="absolute top-full left-0 pt-2.5 w-[380px] z-50 animate-in fade-in-50 zoom-in-95 duration-150"
                 >
-                  <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(0,110,220,0.18),0_10px_30px_-10px_rgba(0,0,0,0.08)] text-[var(--text-primary)]">
+                  <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(21,42,50,0.22),0_10px_30px_-10px_rgba(0,0,0,0.1)] text-[var(--text-primary)]">
                     <div
                       className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 px-2 pb-2 mb-1 border-b border-slate-100"
                       aria-hidden="true"
@@ -383,13 +424,13 @@ export const Navbar: React.FC = () => {
                             key={res.title}
                             href={res.href}
                             role="menuitem"
-                            className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/70 border border-transparent hover:border-blue-200/60 transition-all group focus:bg-blue-50/70 focus:outline-none"
+                            className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all group focus:bg-slate-50 focus:outline-none"
                           >
-                            <div className="p-2 rounded-lg bg-slate-100/80 border border-slate-200/80 text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-white transition-colors shrink-0 mt-0.5">
+                            <div className="p-2 rounded-lg bg-slate-100/80 border border-slate-200/80 text-[var(--accent-ai)] group-hover:bg-[var(--accent-green)] group-hover:text-[#152A32] group-hover:border-[var(--accent-green)] transition-colors shrink-0 mt-0.5">
                               <Icon className="w-4 h-4" />
                             </div>
                             <div>
-                              <div className="text-xs font-semibold text-slate-900 group-hover:text-[var(--accent)] transition-colors">
+                              <div className="text-xs font-semibold text-slate-900 group-hover:text-[var(--accent-ai)] transition-colors">
                                 {res.title}
                               </div>
                               <div className="text-[11px] text-slate-600 line-clamp-1 mt-0.5 font-normal">
@@ -409,36 +450,34 @@ export const Navbar: React.FC = () => {
             <NextLink
               href="/contact"
               className={clsx(
-                "px-3 py-1.5 text-xs font-semibold tracking-wide uppercase transition-colors rounded-full",
+                "text-xs lg:text-sm font-semibold tracking-wider uppercase select-none transition-transform duration-200 ease-out hover:scale-108 active:scale-95 origin-center",
                 pathname === "/contact"
-                  ? "text-white bg-white/25 shadow-xs"
-                  : "text-[var(--header-text-secondary)] hover:text-white hover:bg-white/15"
+                  ? "text-[var(--accent-green)]"
+                  : "text-white/90 hover:text-[var(--accent-green)]"
               )}
             >
               Contact
             </NextLink>
           </nav>
 
-          {/* Desktop CTA Action */}
-          <div className="hidden md:flex items-center gap-2.5">
+          {/* Desktop CTA Action with Pop Hover Effect */}
+          <div className="hidden md:flex items-center gap-3">
             <NextLink href="/estimate">
-              <Button
-                size="sm"
-                variant="secondary"
-                className="text-xs hidden lg:inline-flex bg-white/15 text-white border-white/30 hover:bg-white/25 shadow-xs font-medium"
+              <button
+                type="button"
+                className="text-xs font-semibold px-3.5 py-1.5 rounded-[var(--radius-btn)] bg-white/10 text-white border border-white/20 hover:bg-white/15 hover:border-white/30 transition-transform duration-200 ease-out hover:scale-108 active:scale-95 cursor-pointer shadow-xs"
               >
-                <span>Estimator</span>
-              </Button>
+                Estimator
+              </button>
             </NextLink>
             <NextLink href="/contact">
-              <Button
-                size="sm"
-                variant="secondary"
-                className="text-xs font-bold !bg-white !text-[#0055B3] hover:!bg-blue-50 shadow-sm !border-transparent hover:shadow transition-all"
+              <button
+                type="button"
+                className="text-xs font-bold px-4 py-2 rounded-[var(--radius-btn)] bg-[var(--accent-green)] text-[#152A32] shadow-sm hover:bg-[#00ea83] transition-transform duration-200 ease-out hover:scale-108 active:scale-95 cursor-pointer inline-flex items-center gap-1.5"
               >
-                <span className="text-[#0055B3]">Start a Project</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-1 text-[#0055B3]" />
-              </Button>
+                <span>Start a Project</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#152A32]" />
+              </button>
             </NextLink>
           </div>
 
@@ -447,7 +486,7 @@ export const Navbar: React.FC = () => {
             type="button"
             aria-label="Toggle navigation menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-white hover:text-white rounded-lg border border-white/30 bg-white/15 hover:bg-white/25 cursor-pointer transition-colors"
+            className="md:hidden p-2 text-white hover:text-white rounded-lg border border-white/20 bg-white/10 hover:bg-white/20 cursor-pointer transition-colors"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -467,31 +506,37 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
-                className="w-full text-base font-semibold text-slate-900 hover:text-[var(--accent)] py-3 flex items-center justify-between cursor-pointer"
+                className="w-full text-base font-semibold text-slate-900 hover:text-[var(--accent-ai)] py-3 flex items-center justify-between cursor-pointer"
               >
                 <span>Solutions</span>
                 <ChevronDown
                   className={clsx(
                     "w-4 h-4 text-slate-500 transition-transform duration-200",
-                    mobileSolutionsOpen && "rotate-180 text-[var(--accent)]"
+                    mobileSolutionsOpen && "rotate-180 text-[var(--accent-green)]"
                   )}
                 />
               </button>
               {mobileSolutionsOpen && (
-                <div className="pb-3 pl-3 flex flex-col gap-2">
+                <div className="pb-3 pl-2 flex flex-col gap-2.5">
                   {SOLUTIONS_DROPDOWN.map((sol) => (
                     <NextLink
                       key={sol.title}
                       href={sol.href}
-                      className="py-1.5 text-sm text-slate-600 hover:text-[var(--accent)] flex items-center gap-2"
+                      className="py-1.5 px-2 rounded-lg text-sm text-slate-700 hover:text-[var(--accent-ai)] hover:bg-slate-50 flex items-center gap-3"
                     >
-                      <ArrowRight className="w-3 h-3 text-[var(--accent)]" />
-                      <span>{sol.title}</span>
+                      <img
+                        src={sol.iconAsset}
+                        alt=""
+                        width={24}
+                        height={24}
+                        className="w-6 h-6 object-contain shrink-0"
+                      />
+                      <span className="font-medium">{sol.title}</span>
                     </NextLink>
                   ))}
                   <NextLink
                     href="/solutions"
-                    className="py-1 text-xs text-[var(--accent)] font-semibold flex items-center gap-1 mt-1"
+                    className="py-1 text-xs text-[var(--accent-ai)] font-semibold flex items-center gap-1 mt-1 pl-2"
                   >
                     <span>View All Solutions →</span>
                   </NextLink>
@@ -502,7 +547,7 @@ export const Navbar: React.FC = () => {
             {/* Direct Links */}
             <NextLink
               href="/products"
-              className="text-base font-semibold text-slate-900 hover:text-[var(--accent)] py-3 border-b border-slate-200/80 flex items-center justify-between"
+              className="text-base font-semibold text-slate-900 hover:text-[var(--accent-ai)] py-3 border-b border-slate-200/80 flex items-center justify-between"
             >
               <span>Products</span>
               <ArrowRight className="w-4 h-4 text-slate-400" />
@@ -510,7 +555,7 @@ export const Navbar: React.FC = () => {
 
             <NextLink
               href="/work"
-              className="text-base font-semibold text-slate-900 hover:text-[var(--accent)] py-3 border-b border-slate-200/80 flex items-center justify-between"
+              className="text-base font-semibold text-slate-900 hover:text-[var(--accent-ai)] py-3 border-b border-slate-200/80 flex items-center justify-between"
             >
               <span>Work</span>
               <ArrowRight className="w-4 h-4 text-slate-400" />
@@ -518,7 +563,7 @@ export const Navbar: React.FC = () => {
 
             <NextLink
               href="/industries"
-              className="text-base font-semibold text-slate-900 hover:text-[var(--accent)] py-3 border-b border-slate-200/80 flex items-center justify-between"
+              className="text-base font-semibold text-slate-900 hover:text-[var(--accent-ai)] py-3 border-b border-slate-200/80 flex items-center justify-between"
             >
               <span>Industries</span>
               <ArrowRight className="w-4 h-4 text-slate-400" />
@@ -526,7 +571,7 @@ export const Navbar: React.FC = () => {
 
             <NextLink
               href="/process"
-              className="text-base font-semibold text-slate-900 hover:text-[var(--accent)] py-3 border-b border-slate-200/80 flex items-center justify-between"
+              className="text-base font-semibold text-slate-900 hover:text-[var(--accent-ai)] py-3 border-b border-slate-200/80 flex items-center justify-between"
             >
               <span>Process</span>
               <ArrowRight className="w-4 h-4 text-slate-400" />
@@ -537,13 +582,13 @@ export const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
-                className="w-full text-base font-semibold text-slate-900 hover:text-[var(--accent)] py-3 flex items-center justify-between cursor-pointer"
+                className="w-full text-base font-semibold text-slate-900 hover:text-[var(--accent-ai)] py-3 flex items-center justify-between cursor-pointer"
               >
                 <span>Resources</span>
                 <ChevronDown
                   className={clsx(
                     "w-4 h-4 text-slate-500 transition-transform duration-200",
-                    mobileResourcesOpen && "rotate-180 text-[var(--accent)]"
+                    mobileResourcesOpen && "rotate-180 text-[var(--accent-green)]"
                   )}
                 />
               </button>
@@ -553,9 +598,9 @@ export const Navbar: React.FC = () => {
                     <NextLink
                       key={res.title}
                       href={res.href}
-                      className="py-1.5 text-sm text-slate-600 hover:text-[var(--accent)] flex items-center gap-2"
+                      className="py-1.5 text-sm text-slate-600 hover:text-[var(--accent-ai)] flex items-center gap-2"
                     >
-                      <ArrowRight className="w-3 h-3 text-[var(--accent)]" />
+                      <ArrowRight className="w-3 h-3 text-[var(--accent-green)]" />
                       <span>{res.title}</span>
                     </NextLink>
                   ))}
@@ -566,7 +611,7 @@ export const Navbar: React.FC = () => {
             {/* Mobile Contact Link */}
             <NextLink
               href="/contact"
-              className="text-base font-semibold text-slate-900 hover:text-[var(--accent)] py-3 border-b border-slate-200/80 flex items-center justify-between"
+              className="text-base font-semibold text-slate-900 hover:text-[var(--accent-ai)] py-3 border-b border-slate-200/80 flex items-center justify-between"
             >
               <span>Contact</span>
               <ArrowRight className="w-4 h-4 text-slate-400" />
@@ -575,15 +620,21 @@ export const Navbar: React.FC = () => {
 
           <div className="pt-6 border-t border-slate-200 flex flex-col gap-3">
             <NextLink href="/estimate" className="w-full">
-              <Button size="lg" variant="secondary" className="w-full text-sm font-semibold">
-                <span>Calculate Estimate</span>
-              </Button>
+              <button
+                type="button"
+                className="w-full py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-800 text-sm font-semibold hover:bg-slate-100 transition-all cursor-pointer"
+              >
+                Calculate Estimate
+              </button>
             </NextLink>
             <NextLink href="/contact" className="w-full">
-              <Button size="lg" variant="primary" className="w-full text-sm font-semibold">
+              <button
+                type="button"
+                className="w-full py-3 rounded-xl bg-[var(--accent-green)] text-[#152A32] text-sm font-bold shadow-sm hover:bg-[#00ea83] transition-all cursor-pointer inline-flex items-center justify-center gap-1.5"
+              >
                 <span>Start a Project</span>
-                <ArrowRight className="w-4 h-4 ml-1" />
-              </Button>
+                <ArrowRight className="w-4 h-4 ml-1 text-[#152A32]" />
+              </button>
             </NextLink>
           </div>
         </div>

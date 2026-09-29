@@ -4,7 +4,8 @@
   /* surfaces */
   --bg-primary: #FFFFFF;
   --bg-secondary: #F6F8FC;
-  --bg-soft-blue: #EEF4FF;
+  --bg-manela: #FFFCEE; /* warm off-white, alternate section background */
+  --bg-soft-blue: #F0FDF8;
   --bg-card: #FFFFFF;
   --bg-elevated: #FFFFFF;
   --border: #E2E8F0;
@@ -15,26 +16,29 @@
   --text-secondary: #475569;
   --text-muted: #596A82; /* 5.2:1 contrast on #F6F8FC, 5.5:1 on #FFFFFF - WCAG AA pass */
 
-  /* accent */
-  --accent: #155EEF;
-  --accent-hover: #0B4FC4;
-  --accent-deep: #071B3A;
-  --accent-ai: #00706B; /* 5.5:1 on #FFFFFF, 5.2:1 on #F6F8FC - WCAG AA pass */
-  --accent-ai-glow: rgba(0, 112, 107, 0.12);
+  /* brand accents (new palette) */
+  --accent-purple: #C9B5FF;
+  --accent-cream: #FFF0B5;
+  --accent-green: #00D477; /* primary accent — links, icons, active states */
+  --accent-lime: #91FF00;  /* sparing use — small highlights only */
+
+  /* core action accents */
+  --accent: #00D477;
+  --accent-hover: #00B565;
+  --accent-deep: #152A32;
+  --accent-ai: #00706B;
+  --accent-ai-glow: rgba(0, 212, 119, 0.15);
 
   /* status */
   --success: #0B7A49; /* 5.1:1 on #FFFFFF, 4.8:1 on #F6F8FC - WCAG AA pass */
   --warning: #B54708; /* Contrast optimized: 4.8:1 on #FFFFFF */
   --error: #D92D20;
 
-  /* header (electric brand blue token) */
-  --header-bg: #0096FF;
+  /* header (dark navy-teal top bar) */
+  --header-bg: #152A32;
   --header-text: #FFFFFF;
-  --header-text-secondary: rgba(255, 255, 255, 0.88);
-  --header-accent: #FFFFFF;
-  --header-pill-bg: rgba(0, 40, 90, 0.22);
-  --header-pill-border: rgba(255, 255, 255, 0.25);
-  --header-pill-hover: rgba(255, 255, 255, 0.2);
+  --header-text-secondary: rgba(255, 255, 255, 0.85);
+  --header-accent: #00D477;
 
   /* radii */
   --radius-sm: 8px;
