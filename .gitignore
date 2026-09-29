@@ -43,4 +43,6 @@ next-env.d.ts
 # local sqlite
 *.db
 *.db-journal
+# test outputs
+scripts/*.png
 
