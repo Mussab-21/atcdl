@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { SOLUTIONS, PRODUCTS, PROJECTS, IDEAS, INDUSTRIES } from "@/content/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nimbrix.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://atcdl.com";
   const now = new Date();
 
   const staticRoutes = [

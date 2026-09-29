@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props) {
   if (!product) return {};
 
   return {
-    title: `${product.name} — ${product.tagline} | NIMBRIX`,
+    title: `${product.name} — ${product.tagline} | ATCDL`,
     description: product.problem,
   };
 }

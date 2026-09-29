@@ -34,6 +34,10 @@ export interface EstimateResult {
   minBudget: number;
   maxBudget: number;
   budgetFormatted: string;
+  usdFormatted: string;
+  pkrFormatted: string;
+  usdContext: string;
+  pkrContext: string;
   budgetBracket: "$5K–$10K" | "$10K–$25K" | "$25K–$50K" | "$50K–$100K" | "$100K+";
   minWeeks: number;
   maxWeeks: number;
@@ -154,10 +158,19 @@ export function calculateProjectEstimate(input: EstimatorInput): EstimateResult 
     timelineBracket = "6+ months";
   }
 
+  const pkrMinM = (calculatedMin * 0.1).toFixed(1);
+  const pkrMaxM = (calculatedMax * 0.1).toFixed(1);
+  const usdFormatted = `$${(calculatedMin / 1000).toFixed(0)}K – $${(calculatedMax / 1000).toFixed(0)}K USD`;
+  const pkrFormatted = `PKR ${pkrMinM}M – ${pkrMaxM}M`;
+
   return {
     minBudget: calculatedMin,
     maxBudget: calculatedMax,
-    budgetFormatted: `$${(calculatedMin / 1000).toFixed(0)}K – $${(calculatedMax / 1000).toFixed(0)}K`,
+    budgetFormatted: usdFormatted,
+    usdFormatted,
+    pkrFormatted,
+    usdContext: "International enterprise pricing with dedicated cross-border SLAs, VPC hosting, and 24/7 coverage ($15K–$150K+ USD).",
+    pkrContext: "Pakistan domestic / SME rate: targeted local builds typically start from PKR 1.5M – 4.5M based on integration depth.",
     budgetBracket,
     minWeeks: totalWeeksMin,
     maxWeeks: totalWeeksMax,

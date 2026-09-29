@@ -1,6 +1,6 @@
 import React from "react";
 import NextLink from "next/link";
-import { SOLUTIONS, PRODUCTS, PROJECTS, IDEAS } from "@/content/data";
+import { SOLUTIONS, PRODUCTS, PROJECTS, IDEAS, INDUSTRIES } from "@/content/data";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/Card";
@@ -28,9 +28,9 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "NIMBRIX — Technology Engineering | AI Systems, Enterprise Software & Autonomous Agents",
+  title: "ATCDL — Digital Engineering & AI Solutions",
   description:
-    "We engineer production-grade AI pipelines, document intelligence, private knowledge copilots, and enterprise software for complex businesses.",
+    "We build software that makes complex businesses simpler. AI systems, business software, automation platforms, and digital products.",
 };
 
 export default function Home() {
@@ -46,53 +46,51 @@ export default function Home() {
           {/* Left Text Column (7 cols) */}
           <div className="lg:col-span-7 flex flex-col gap-6 text-left">
             <Reveal>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] text-xs font-mono text-[var(--accent-ai)]">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] text-xs font-semibold text-[var(--accent-ai)]">
                 <span className="w-2 h-2 rounded-full bg-[var(--accent-ai)] animate-pulse" />
-                <span>NIMBRIX // TECHNOLOGY ENGINEERING</span>
+                <span>ATCDL // DIGITAL ENGINEERING &amp; AI SOLUTIONS</span>
               </div>
             </Reveal>
 
             <Reveal>
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.04]">
-                Build what your business{" "}
-                <span className="bg-gradient-to-r from-[var(--accent)] via-[#64A2FF] to-[var(--accent-ai)] bg-clip-text text-transparent">
-                  actually needs.
+                We build software that makes complex businesses{" "}
+                <span className="bg-gradient-to-r from-[var(--accent)] via-[#4D8DFF] to-[var(--accent-ai)] bg-clip-text text-transparent">
+                  simpler.
                 </span>
               </h1>
             </Reveal>
 
             <Reveal>
               <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl">
-                We engineer production AI pipelines, document extraction engines, and
-                enterprise workflow software for organizations with high technical and
-                operational complexity.
+                ATCDL engineers custom AI systems, autonomous workflow platforms, and enterprise software for organizations with high operational complexity.
               </p>
             </Reveal>
 
             <Reveal>
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <NextLink href="/contact">
-                  <Button size="lg" variant="primary" className="font-mono text-sm">
+                  <Button size="lg" variant="primary" className="text-sm font-medium">
                     <span>Start a Project</span>
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
                 </NextLink>
 
-                <NextLink href="/work">
-                  <Button size="lg" variant="outline" className="font-mono text-sm">
-                    <span>Explore Our Work</span>
+                <NextLink href="/solutions">
+                  <Button size="lg" variant="outline" className="text-sm font-medium">
+                    <span>Explore Solutions</span>
                   </Button>
                 </NextLink>
               </div>
             </Reveal>
 
             <Reveal>
-              <div className="flex items-center gap-6 pt-2 text-xs font-mono text-[var(--text-muted)]">
-                <span className="flex items-center gap-1.5">
+              <div className="flex items-center gap-6 pt-2 text-xs text-[var(--text-secondary)]">
+                <span className="flex items-center gap-1.5 font-medium">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[var(--success)]" />
-                  Zero Toy Demos
+                  Production-Grade AI &amp; Software
                 </span>
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5 font-medium">
                   <ShieldCheck className="w-3.5 h-3.5 text-[var(--accent)]" />
                   Air-Gapped &amp; VPC Ready
                 </span>
@@ -127,18 +125,18 @@ export default function Home() {
       </section>
 
       {/* 3. PROBLEM SECTION (The Friction Chain) */}
-      <section className="container-custom">
+      <section className="container-custom py-4">
         <div className="flex flex-col gap-12">
           <Reveal>
             <div className="max-w-3xl">
-              <div className="text-xs font-mono uppercase tracking-wider text-[var(--error)] mb-2">
-                The Core Bottleneck
+              <div className="text-xs font-semibold uppercase tracking-wider text-[var(--error)] mb-2">
+                The Operational Bottleneck
               </div>
               <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
-                Your business doesn&apos;t need more software. It needs the right system.
+                Your business doesn&apos;t need more disconnected software. It needs the right system.
               </h2>
               <p className="text-base text-[var(--text-secondary)] mt-4 leading-relaxed">
-                Most organizations operate a patchwork of disconnected SaaS tools. Data is trapped in PDFs, spreadsheets, and legacy databases. Knowledge workers waste hours copying information between windows instead of driving decisions.
+                Most organizations operate a patchwork of disconnected SaaS tools. Data is trapped in PDFs, spreadsheets, and legacy databases. Knowledge workers waste hours copying information between windows instead of driving strategic decisions.
               </p>
             </div>
           </Reveal>
@@ -146,9 +144,9 @@ export default function Home() {
           {/* Friction Chain Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Reveal>
-              <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] flex flex-col gap-3">
-                <div className="text-xs font-mono text-[var(--error)]">FRICTION 01 // SILOES</div>
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">Unstructured Data Trapped in Files</h3>
+              <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] shadow-sm flex flex-col gap-3">
+                <div className="text-xs font-mono font-semibold text-[var(--error)]">FRICTION 01 // SILOES</div>
+                <h3 className="text-lg font-bold text-[var(--text-primary)]">Unstructured Data Trapped in Files</h3>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   Policies, invoices, contracts, and customer logs exist as unstructured PDFs and docs that no system can query reliably.
                 </p>
@@ -156,9 +154,9 @@ export default function Home() {
             </Reveal>
 
             <Reveal>
-              <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] flex flex-col gap-3">
-                <div className="text-xs font-mono text-[var(--error)]">FRICTION 02 // LABOUR</div>
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">Manual Re-Keying &amp; Hand-offs</h3>
+              <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] shadow-sm flex flex-col gap-3">
+                <div className="text-xs font-mono font-semibold text-[var(--error)]">FRICTION 02 // LABOUR</div>
+                <h3 className="text-lg font-bold text-[var(--text-primary)]">Manual Re-Keying &amp; Hand-offs</h3>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   Employees spend 30%+ of their working hours manually transcribing data between forms, ERPs, and customer channels.
                 </p>
@@ -166,9 +164,9 @@ export default function Home() {
             </Reveal>
 
             <Reveal>
-              <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] flex flex-col gap-3">
-                <div className="text-xs font-mono text-[var(--accent-ai)]">RESOLUTION // NIMBRIX</div>
-                <h3 className="text-lg font-semibold text-[var(--text-primary)]">Engineered Systems &amp; Agents</h3>
+              <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] shadow-sm flex flex-col gap-3">
+                <div className="text-xs font-mono font-semibold text-[var(--accent-ai)]">RESOLUTION // ATCDL</div>
+                <h3 className="text-lg font-bold text-[var(--text-primary)]">Engineered Systems &amp; Agents</h3>
                 <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
                   We build custom ingestion pipelines, autonomous agents, and unified APIs that turn chaotic friction into automated throughput.
                 </p>
@@ -178,13 +176,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. SOLUTIONS SECTION (The 4 Offers) */}
-      <section className="container-custom">
-        <div className="flex flex-col gap-12">
+      {/* 4. SOLUTIONS SECTION (The 4 Offers) — Section background rhythm: --bg-secondary */}
+      <section className="w-full bg-[var(--bg-secondary)] border-y border-[var(--border)] py-16 sm:py-24">
+        <div className="container-custom flex flex-col gap-12">
           <Reveal>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
               <div>
-                <div className="text-xs font-mono uppercase tracking-wider text-[var(--accent-ai)] mb-1">
+                <div className="text-xs font-semibold uppercase tracking-wider text-[var(--accent-ai)] mb-1">
                   Core Solutions
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
@@ -192,7 +190,7 @@ export default function Home() {
                 </h2>
               </div>
               <NextLink href="/solutions">
-                <Button variant="ghost" size="sm" className="font-mono text-xs">
+                <Button variant="ghost" size="sm" className="text-xs font-medium">
                   <span>View all solutions</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Button>
@@ -204,10 +202,10 @@ export default function Home() {
             {SOLUTIONS.map((sol) => (
               <Reveal key={sol.slug}>
                 <CursorGlow className="h-full">
-                  <Card variant="interactive" className="p-8 flex flex-col justify-between h-full gap-6">
+                  <Card variant="interactive" className="p-8 flex flex-col justify-between h-full gap-6 bg-white border-[var(--border)]">
                     <div className="flex flex-col gap-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-mono text-[var(--accent-ai)] uppercase">
+                        <span className="text-[11px] font-mono text-[var(--accent-ai)] uppercase font-semibold">
                           {sol.eyebrow}
                         </span>
                         <span className="text-xs font-mono text-[var(--text-muted)]">
@@ -229,7 +227,7 @@ export default function Home() {
                         Scope: <strong className="text-[var(--text-primary)]">{sol.typicalScope}</strong>
                       </span>
                       <NextLink href={`/solutions/${sol.slug}`}>
-                        <Button size="sm" variant="outline" className="font-mono text-xs">
+                        <Button size="sm" variant="outline" className="text-xs font-medium">
                           <span>Explore Solution</span>
                           <ArrowRight className="w-3 h-3 ml-1" />
                         </Button>
@@ -244,25 +242,25 @@ export default function Home() {
       </section>
 
       {/* 5. FLAGSHIP PRODUCTS SECTION (Ready to Demo Daily) */}
-      <section className="container-custom">
-        <div className="p-8 sm:p-12 rounded-[var(--radius-lg)] bg-[var(--bg-elevated)] border border-[var(--border)] flex flex-col gap-10">
+      <section className="container-custom py-4">
+        <div className="p-8 sm:p-12 rounded-[var(--radius-lg)] bg-white border border-[var(--border)] shadow-sm flex flex-col gap-10">
           <Reveal>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
               <div>
-                <div className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-wider mb-1">
-                  Ready-to-Deploy Software
+                <div className="text-xs font-semibold text-[var(--accent-ai)] uppercase tracking-wider mb-1">
+                  Proven Software Platforms
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
                   Flagship Products Ready to Demo
                 </h2>
                 <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1 max-w-xl">
-                  Test-drive working product engines live in a 60-second screen-share. Available for immediate pilot deployment or bespoke customization.
+                  Pre-built, modular software engines ready for private cloud or on-premise deployment. Test-drive working systems live in a 60-second screen-share.
                 </p>
               </div>
 
               <NextLink href="/products">
-                <Button size="sm" variant="primary" className="font-mono text-xs whitespace-nowrap">
-                  <span>View All 6 Products</span>
+                <Button size="sm" variant="primary" className="text-xs font-medium whitespace-nowrap">
+                  <span>View All Products</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Button>
               </NextLink>
@@ -273,7 +271,7 @@ export default function Home() {
             {featuredProducts.map((product) => (
               <Reveal key={product.slug}>
                 <CursorGlow className="h-full">
-                  <Card variant="interactive" className="p-6 flex flex-col justify-between h-full gap-6">
+                  <Card variant="interactive" className="p-6 flex flex-col justify-between h-full gap-6 bg-white border-[var(--border)]">
                     <div className="flex flex-col gap-3">
                       <div className="flex items-center justify-between">
                         <div className="p-2.5 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--accent-ai)]">
@@ -286,7 +284,7 @@ export default function Home() {
                         <h3 className="text-xl font-bold text-[var(--text-primary)]">
                           {product.name}
                         </h3>
-                        <div className="text-xs font-mono text-[var(--accent-ai)] mt-0.5">
+                        <div className="text-xs font-semibold text-[var(--accent-ai)] mt-0.5">
                           {product.tagline}
                         </div>
                         <p className="text-xs text-[var(--text-secondary)] mt-3 leading-relaxed">
@@ -298,13 +296,13 @@ export default function Home() {
                     <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between">
                       <NextLink
                         href={`/products/${product.slug}`}
-                        className="text-xs font-mono text-[var(--accent)] hover:underline"
+                        className="text-xs font-medium text-[var(--accent)] hover:underline"
                       >
-                        Specs &amp; Pipeline →
+                        Specs &amp; Architecture →
                       </NextLink>
 
                       <NextLink href={`/contact?product=${product.slug}`}>
-                        <Button size="sm" variant="outline" className="font-mono text-xs">
+                        <Button size="sm" variant="outline" className="text-xs font-medium">
                           Book Demo
                         </Button>
                       </NextLink>
@@ -317,12 +315,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. HOW WE BUILD (Process Section A7) */}
-      <section className="container-custom">
-        <div className="flex flex-col gap-12">
+      {/* 6. HOW WE BUILD (Process Section A7) — Section background rhythm: #F8FAFC */}
+      <section className="w-full bg-[#F8FAFC] border-y border-[var(--border)] py-16 sm:py-24">
+        <div className="container-custom flex flex-col gap-12">
           <Reveal>
             <div className="max-w-2xl">
-              <div className="text-xs font-mono uppercase tracking-wider text-[var(--accent)] mb-2">
+              <div className="text-xs font-semibold uppercase tracking-wider text-[var(--accent)] mb-2">
                 Execution Methodology
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
@@ -360,12 +358,12 @@ export default function Home() {
                 duration: "Ongoing",
                 desc: "Deployment to VPC/on-prem, Prometheus telemetry, model latency monitoring, and guaranteed maintenance SLAs.",
               },
-            ].map((phase, i) => (
+            ].map((phase) => (
               <Reveal key={phase.step}>
-                <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] flex flex-col gap-3 h-full">
+                <div className="p-6 rounded-[var(--radius-md)] bg-white border border-[var(--border)] shadow-sm flex flex-col gap-3 h-full">
                   <div className="flex items-center justify-between font-mono">
                     <span className="text-lg font-bold text-[var(--accent)]">{phase.step}</span>
-                    <span className="text-[11px] text-[var(--accent-ai)]">{phase.duration}</span>
+                    <span className="text-[11px] font-semibold text-[var(--accent-ai)]">{phase.duration}</span>
                   </div>
                   <h3 className="text-lg font-bold text-[var(--text-primary)]">{phase.name}</h3>
                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed mt-1">
@@ -378,21 +376,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. FEATURED TECHNICAL WORK */}
-      <section className="container-custom">
+      {/* 7. FEATURED TECHNICAL WORK — Framed as Evidence & Proof */}
+      <section className="container-custom py-4">
         <div className="flex flex-col gap-10">
           <Reveal>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
               <div>
-                <div className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-wider mb-1">
-                  Verified Codebases
+                <div className="text-xs font-semibold text-[var(--accent-ai)] uppercase tracking-wider mb-1">
+                  Engineering Proof &amp; Evidence
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-                  Featured Prototypes &amp; Architectures
+                  Verified Projects &amp; Architectures
                 </h2>
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
+                  Production software, client delivery implementations, and auditable open-source prototypes.
+                </p>
               </div>
               <NextLink href="/work">
-                <Button variant="ghost" size="sm" className="font-mono text-xs">
+                <Button variant="ghost" size="sm" className="text-xs font-medium">
                   <span>View all engineering work</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Button>
@@ -403,7 +404,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredWork.map((project) => (
               <Reveal key={project.slug}>
-                <Card variant="interactive" className="p-6 flex flex-col justify-between h-full gap-5">
+                <Card variant="interactive" className="p-6 flex flex-col justify-between h-full gap-5 bg-white border-[var(--border)] shadow-sm">
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center justify-between">
                       <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase">
@@ -424,7 +425,7 @@ export default function Home() {
                   </div>
 
                   <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between text-xs">
-                    <NextLink href={`/work/${project.slug}`} className="text-[var(--accent)] font-mono hover:underline">
+                    <NextLink href={`/work/${project.slug}`} className="text-[var(--accent)] font-medium hover:underline">
                       Inspect Build →
                     </NextLink>
                     {project.githubUrl && (
@@ -438,25 +439,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. FEATURED MODULAR PRODUCTS */}
-      <section className="container-custom">
-        <div className="flex flex-col gap-10">
+      {/* 8. INDUSTRIES SECTION — Section background rhythm: --bg-secondary */}
+      <section className="w-full bg-[var(--bg-secondary)] border-y border-[var(--border)] py-16 sm:py-24">
+        <div className="container-custom flex flex-col gap-10">
           <Reveal>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
               <div>
-                <div className="text-xs font-mono text-[var(--accent)] uppercase tracking-wider mb-1">
-                  Modular Product Suite
+                <div className="text-xs font-semibold text-[var(--accent)] uppercase tracking-wider mb-1">
+                  Complex Domain Expertise
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-                  Enterprise Software &amp; AI Products
+                  Built for Complex Businesses
                 </h2>
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
-                  Pre-engineered platforms designed for private cloud or on-premise deployment with zero vendor lock-in.
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1 max-w-xl">
+                  We engineer systems for organizations where data concurrency, regulatory compliance, legacy ERP anchors, and security isolation dictate viability.
                 </p>
               </div>
-              <NextLink href="/products">
-                <Button variant="ghost" size="sm" className="font-mono text-xs">
-                  <span>Explore product catalog</span>
+              <NextLink href="/industries">
+                <Button variant="ghost" size="sm" className="text-xs font-medium">
+                  <span>View all 4 sectors</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Button>
               </NextLink>
@@ -464,39 +465,35 @@ export default function Home() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {featuredProducts.map((product) => (
-              <Reveal key={product.slug}>
-                <Card variant="interactive" className="p-6 sm:p-8 flex flex-col justify-between h-full gap-6">
-                  <div className="flex flex-col gap-4">
+            {INDUSTRIES.slice(0, 4).map((ind) => (
+              <Reveal key={ind.slug}>
+                <Card variant="interactive" className="p-6 sm:p-8 flex flex-col justify-between h-full gap-6 bg-white border-[var(--border)] shadow-sm">
+                  <div className="flex flex-col gap-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono text-[var(--accent-ai)] uppercase">
-                        {product.offer}
+                      <span className="text-[11px] font-mono text-[var(--accent)] uppercase font-semibold">
+                        {ind.eyebrow}
                       </span>
-                      <Badge status={product.status} size="sm" />
+                      <Badge status="Client Project" size="sm" />
                     </div>
 
                     <div>
                       <h3 className="text-xl font-bold text-[var(--text-primary)] mb-1">
-                        <NextLink href={`/products/${product.slug}`} className="hover:text-[var(--accent)] transition-colors">
-                          {product.name}
+                        <NextLink href={`/industries/${ind.slug}`} className="hover:text-[var(--accent)] transition-colors">
+                          {ind.name}
                         </NextLink>
                       </h3>
-                      <p className="text-xs font-mono text-[var(--text-muted)]">
-                        {product.tagline}
+                      <p className="text-xs text-[var(--text-secondary)] leading-relaxed mt-2">
+                        {ind.summary}
                       </p>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                      {product.problem}
-                    </p>
-
                     <div className="flex flex-wrap gap-1.5 pt-2">
-                      {product.modules.slice(0, 3).map((mod, i) => (
+                      {ind.challenges.slice(0, 2).map((ch, i) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 rounded text-[11px] font-mono bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-secondary)]"
+                          className="px-2.5 py-1 rounded text-[11px] bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-secondary)] font-medium"
                         >
-                          {mod}
+                          {ch}
                         </span>
                       ))}
                     </div>
@@ -504,17 +501,11 @@ export default function Home() {
 
                   <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between">
                     <NextLink
-                      href={`/products/${product.slug}`}
-                      className="text-xs font-mono text-[var(--accent)] hover:underline flex items-center gap-1"
+                      href={`/industries/${ind.slug}`}
+                      className="text-xs font-medium text-[var(--accent)] hover:underline flex items-center gap-1"
                     >
-                      <span>Inspect Architecture</span>
+                      <span>Explore Sector Architecture</span>
                       <ArrowRight className="w-3 h-3" />
-                    </NextLink>
-
-                    <NextLink href={`/contact?product=${product.slug}`}>
-                      <Button variant="secondary" size="sm" className="font-mono text-xs">
-                        Book Demo
-                      </Button>
                     </NextLink>
                   </div>
                 </Card>
@@ -531,7 +522,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
               <div>
                 <div className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-wider mb-1">
-                  NIMBRIX Pitch Lab
+                  ATCDL Ideas &amp; Blueprints
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
                   Pre-Engineered Architecture Blueprints
@@ -541,7 +532,7 @@ export default function Home() {
                 </p>
               </div>
               <NextLink href="/ideas">
-                <Button variant="ghost" size="sm" className="font-mono text-xs">
+                <Button variant="ghost" size="sm" className="text-xs font-medium">
                   <span>Browse all concepts</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Button>
@@ -552,7 +543,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredIdeas.map((idea) => (
               <Reveal key={idea.slug}>
-                <Card variant="interactive" className="p-5 flex flex-col justify-between h-full gap-4">
+                <Card variant="interactive" className="p-5 flex flex-col justify-between h-full gap-4 bg-white border-[var(--border)] shadow-sm">
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center justify-between">
                       <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase">
@@ -572,12 +563,12 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs font-mono">
-                    <NextLink href={`/ideas/${idea.slug}`} className="text-[var(--accent)] hover:underline flex items-center gap-1">
+                  <div className="pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs">
+                    <NextLink href={`/ideas/${idea.slug}`} className="text-[var(--accent)] font-medium hover:underline flex items-center gap-1">
                       <span>View Blueprint</span>
                       <ArrowRight className="w-3 h-3" />
                     </NextLink>
-                    <span className="text-[10px] text-[var(--accent-ai)]">Blueprint Ready</span>
+                    <span className="text-[10px] font-semibold text-[var(--accent-ai)]">Blueprint Ready</span>
                   </div>
                 </Card>
               </Reveal>
@@ -589,11 +580,11 @@ export default function Home() {
       {/* 10. INTERACTIVE ESTIMATOR CALLOUT BANNER */}
       <section className="container-custom">
         <Reveal>
-          <div className="p-8 sm:p-12 rounded-[var(--radius-lg)] bg-gradient-to-r from-[var(--bg-card)] via-[var(--bg-elevated)] to-[var(--bg-card)] border border-[var(--accent)]/30 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_30px_rgba(77,141,255,0.06)]">
+          <div className="p-8 sm:p-12 rounded-[var(--radius-lg)] bg-[var(--bg-secondary)] border border-[var(--accent)]/30 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
             <div className="max-w-xl flex flex-col gap-2">
               <div className="flex items-center gap-2">
                 <Calculator className="w-4 h-4 text-[var(--accent)]" />
-                <span className="text-xs font-mono uppercase tracking-wider text-[var(--accent)] font-semibold">
+                <span className="text-xs uppercase tracking-wider text-[var(--accent)] font-semibold">
                   Transparent Estimation Engine
                 </span>
               </div>
@@ -607,13 +598,13 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
               <NextLink href="/estimate" className="w-full sm:w-auto">
-                <Button variant="primary" size="md" className="w-full sm:w-auto font-mono text-xs">
+                <Button variant="primary" size="md" className="w-full sm:w-auto text-xs font-medium">
                   <span>Launch Estimator</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Button>
               </NextLink>
               <NextLink href="/process" className="w-full sm:w-auto">
-                <Button variant="secondary" size="md" className="w-full sm:w-auto font-mono text-xs">
+                <Button variant="secondary" size="md" className="w-full sm:w-auto text-xs font-medium">
                   How We Build
                 </Button>
               </NextLink>
@@ -681,15 +672,15 @@ export default function Home() {
       {/* 9. FINAL CALL TO ACTION (3 Entry Points) */}
       <section className="container-custom">
         <Reveal>
-          <div className="p-8 sm:p-14 rounded-[var(--radius-lg)] bg-[var(--bg-elevated)] border border-[var(--border)] flex flex-col items-center text-center gap-8">
+          <div className="p-8 sm:p-14 rounded-[var(--radius-lg)] bg-[var(--accent-deep)] text-white border border-[#162D50] shadow-2xl flex flex-col items-center text-center gap-8">
             <div className="max-w-2xl flex flex-col items-center gap-3">
-              <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-ai)]">
+              <span className="text-xs uppercase tracking-widest text-[var(--header-accent)] font-semibold">
                 Start Discovery
               </span>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
                 Have a project or product in mind?
               </h2>
-              <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
+              <p className="text-sm sm:text-base text-[#B9C7DC] leading-relaxed">
                 Connect with our senior engineering leads to audit your technical requirements,
                 explore live product demos, or receive an architectural estimate.
               </p>
@@ -698,39 +689,39 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl text-left">
               <NextLink
                 href="/contact?type=Custom AI / GenAI"
-                className="p-5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] hover:border-[var(--accent)] transition-all flex flex-col gap-2 group"
+                className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--header-accent)] transition-all flex flex-col gap-2 group"
               >
-                <div className="text-xs font-mono text-[var(--accent)] uppercase font-semibold flex items-center justify-between">
+                <div className="text-xs text-[var(--header-accent)] uppercase font-semibold flex items-center justify-between">
                   <span>01. Custom AI</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
-                <div className="text-xs text-[var(--text-secondary)]">
+                <div className="text-xs text-[#B9C7DC]">
                   Deploy a private knowledge copilot or fine-tuned model for internal ops.
                 </div>
               </NextLink>
 
               <NextLink
                 href="/contact?type=AI Agents & Automation"
-                className="p-5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] hover:border-[var(--accent-ai)] transition-all flex flex-col gap-2 group"
+                className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--header-accent)] transition-all flex flex-col gap-2 group"
               >
-                <div className="text-xs font-mono text-[var(--accent-ai)] uppercase font-semibold flex items-center justify-between">
+                <div className="text-xs text-[var(--header-accent)] uppercase font-semibold flex items-center justify-between">
                   <span>02. Agent Automation</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
-                <div className="text-xs text-[var(--text-secondary)]">
+                <div className="text-xs text-[#B9C7DC]">
                   Automate invoice extraction, document processing, and CRM sync.
                 </div>
               </NextLink>
 
               <NextLink
                 href="/contact?type=Enterprise Software"
-                className="p-5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] hover:border-[var(--success)] transition-all flex flex-col gap-2 group"
+                className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--header-accent)] transition-all flex flex-col gap-2 group"
               >
-                <div className="text-xs font-mono text-[var(--success)] uppercase font-semibold flex items-center justify-between">
+                <div className="text-xs text-[var(--header-accent)] uppercase font-semibold flex items-center justify-between">
                   <span>03. Enterprise Core</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
-                <div className="text-xs text-[var(--text-secondary)]">
+                <div className="text-xs text-[#B9C7DC]">
                   Modernize legacy ERP software, build approval engines, and scale portals.
                 </div>
               </NextLink>
@@ -738,7 +729,7 @@ export default function Home() {
 
             <div className="pt-2">
               <NextLink href="/contact">
-                <Button size="lg" variant="primary" className="font-mono text-sm px-8">
+                <Button size="lg" variant="primary" className="text-sm px-8">
                   <span>Open Full Project Brief Form</span>
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>

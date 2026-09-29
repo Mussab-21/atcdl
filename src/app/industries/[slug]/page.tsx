@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!industry) return {};
 
   return {
-    title: `${industry.name} — Industry Engineering | NIMBRIX`,
+    title: `${industry.name} — Industry Engineering | ATCDL`,
     description: industry.summary,
   };
 }
@@ -121,7 +121,7 @@ export default async function IndustryDetailPage({ params }: Props) {
             <div>
               <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--accent)] mb-3">
                 <ShieldCheck className="w-4 h-4" />
-                <span>NIMBRIX Systems Strategy</span>
+                <span>ATCDL Systems Strategy</span>
               </div>
               <ul className="space-y-3">
                 {industry.solutions.map((sol, idx) => (

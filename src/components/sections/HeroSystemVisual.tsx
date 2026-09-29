@@ -27,8 +27,8 @@ export function HeroSystemVisual() {
         // 2. Node 1 activation
         tl.fromTo(
           ".node-ingest",
-          { borderColor: "rgba(32,43,58,0.8)" },
-          { borderColor: "rgba(77,141,255,0.8)", duration: 0.4 },
+          { borderColor: "rgba(226,232,240,0.8)" },
+          { borderColor: "rgba(21,94,239,0.8)", duration: 0.4 },
           "+=0.2"
         );
 
@@ -47,8 +47,8 @@ export function HeroSystemVisual() {
         // 5. Node 2 (Extraction) activation
         tl.fromTo(
           ".node-extract",
-          { borderColor: "rgba(32,43,58,0.8)", scale: 0.98 },
-          { borderColor: "rgba(57,214,208,0.9)", scale: 1, duration: 0.5 }
+          { borderColor: "rgba(226,232,240,0.8)", scale: 0.98 },
+          { borderColor: "rgba(0,143,138,0.9)", scale: 1, duration: 0.5 }
         );
 
         // 6. Extraction progress meter fill
@@ -68,8 +68,8 @@ export function HeroSystemVisual() {
         // 8. Node 3 (ERP Sync) activation
         tl.fromTo(
           ".node-erp",
-          { borderColor: "rgba(32,43,58,0.8)" },
-          { borderColor: "rgba(53,201,139,0.8)", duration: 0.5 }
+          { borderColor: "rgba(226,232,240,0.8)" },
+          { borderColor: "rgba(22,163,106,0.8)", duration: 0.5 }
         );
 
         // 9. Output ledger receipt fade in & status flips to COMPLETED
@@ -103,10 +103,10 @@ export function HeroSystemVisual() {
       className="relative w-full max-w-xl mx-auto lg:max-w-none text-left select-none"
     >
       {/* Background ambient glow */}
-      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[rgba(77,141,255,0.15)] to-[rgba(57,214,208,0.12)] blur-xl opacity-60 pointer-events-none" />
+      <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[rgba(21,94,239,0.08)] to-[rgba(0,143,138,0.08)] blur-xl opacity-60 pointer-events-none" />
 
       {/* Main Window */}
-      <div className="hero-sys-window relative rounded-2xl bg-[var(--bg-elevated)] border border-[var(--border)] shadow-2xl shadow-black/80 overflow-hidden">
+      <div className="hero-sys-window relative rounded-2xl bg-[var(--bg-card)] border border-[var(--border)] shadow-[0_12px_40px_rgba(0,0,0,0.08)] overflow-hidden">
         {/* Terminal Header */}
         <div className="flex items-center justify-between px-4 py-3 bg-[var(--bg-secondary)] border-b border-[var(--border)]">
           <div className="flex items-center gap-2">
@@ -114,7 +114,7 @@ export function HeroSystemVisual() {
             <div className="w-2.5 h-2.5 rounded-full bg-[var(--warning)] opacity-80" />
             <div className="w-2.5 h-2.5 rounded-full bg-[var(--success)] opacity-80" />
             <span className="font-mono text-[11px] text-[var(--text-muted)] ml-2">
-              NIMBRIX_SYSTEM // INGESTION_PIPELINE.EXE
+              ATCDL_SYSTEM // INGESTION_PIPELINE.EXE
             </span>
           </div>
 
@@ -122,10 +122,10 @@ export function HeroSystemVisual() {
             <span
               className={`font-mono text-[10px] px-2 py-0.5 rounded uppercase tracking-wider font-semibold transition-colors ${
                 statusChip === "COMPLETED"
-                  ? "bg-[rgba(53,201,139,0.15)] text-[var(--success)] border border-[rgba(53,201,139,0.3)]"
+                  ? "bg-[#EAF8F1] text-[#065F38] border border-[#A8E5C8]"
                   : statusChip === "PROCESSING"
-                  ? "bg-[rgba(57,214,208,0.15)] text-[var(--accent-ai)] border border-[rgba(57,214,208,0.3)] animate-pulse"
-                  : "bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border)]"
+                  ? "bg-[#E6F7F6] text-[#004F4D] border border-[#99DEDC] animate-pulse"
+                  : "bg-[var(--bg-card)] text-[var(--text-secondary)] border border-[var(--border)]"
               }`}
             >
               {statusChip}
@@ -222,24 +222,24 @@ export function HeroSystemVisual() {
 
           {/* Output Ledger Payload Box */}
           <div className="output-receipt p-3.5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] flex flex-col gap-2 font-mono text-[11px]">
-            <div className="flex items-center justify-between text-[10px] text-[var(--text-muted)] pb-1 border-b border-[var(--border)]/50">
-              <span>STRUCTURED JSON OUTPUT</span>
-              <span className="text-[var(--success)] flex items-center gap-1">
+            <div className="flex items-center justify-between text-[11px] text-[var(--text-secondary)] pb-1 border-b border-[var(--border)]/50">
+              <span className="font-semibold">STRUCTURED JSON OUTPUT</span>
+              <span className="text-[var(--success)] font-semibold flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)]" />
                 Reconciled in 1.2s
               </span>
             </div>
-            <div className="text-[var(--text-secondary)] space-y-0.5">
-              <div><span className="text-[var(--accent)]">&quot;vendor&quot;</span>: <span className="text-[var(--text-primary)]">&quot;Apex Industrial Supplies&quot;</span>,</div>
-              <div><span className="text-[var(--accent)]">&quot;subtotal&quot;</span>: <span className="text-[var(--success)]">14820.00</span>, <span className="text-[var(--accent)]">&quot;tax&quot;</span>: <span className="text-[var(--success)]">1185.60</span>,</div>
-              <div><span className="text-[var(--accent)]">&quot;status&quot;</span>: <span className="text-[var(--accent-ai)]">&quot;APPROVED_FOR_DISBURSEMENT&quot;</span></div>
+            <div className="text-[var(--text-primary)] space-y-0.5">
+              <div><span className="text-[var(--accent)] font-medium">&quot;vendor&quot;</span>: <span className="text-[var(--text-primary)]">&quot;Apex Industrial Supplies&quot;</span>,</div>
+              <div><span className="text-[var(--accent)] font-medium">&quot;subtotal&quot;</span>: <span className="text-[var(--success)] font-medium">14820.00</span>, <span className="text-[var(--accent)] font-medium">&quot;tax&quot;</span>: <span className="text-[var(--success)] font-medium">1185.60</span>,</div>
+              <div><span className="text-[var(--accent)] font-medium">&quot;status&quot;</span>: <span className="text-[var(--accent-ai)] font-medium">&quot;APPROVED_FOR_DISBURSEMENT&quot;</span></div>
             </div>
           </div>
         </div>
 
         {/* Footer info bar */}
         <div className="px-5 py-2.5 bg-[var(--bg-secondary)]/80 border-t border-[var(--border)] flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-          <span>Engine: NimbrixDocs Core</span>
+          <span>Engine: ATCDL Docs Core</span>
           <span className="text-[var(--accent)] flex items-center gap-1 hover:underline cursor-pointer">
             View Live API Documentation <ArrowRight className="w-3 h-3" />
           </span>

@@ -9,7 +9,7 @@ import { INDUSTRIES } from "@/content/data";
 import { Building2, ArrowRight, ShieldCheck, Cpu, Layers } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Industries — High-Complexity Vertical Engineering | NIMBRIX",
+  title: "Industries — High-Complexity Vertical Engineering | ATCDL",
   description:
     "Production AI systems and enterprise software engineered for Telecom, Banking, Manufacturing, and Logistics operations.",
 };
@@ -77,7 +77,7 @@ export default function IndustriesIndexPage() {
                 {/* Solutions Delivered */}
                 <div className="p-4 rounded-xl bg-[var(--bg-secondary)] border border-[var(--accent)]/20 mb-6">
                   <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--accent)] mb-2.5">
-                    NIMBRIX Solutions
+                    ATCDL Solutions
                   </div>
                   <ul className="space-y-1.5 text-xs text-[var(--text-primary)]">
                     {ind.solutions.slice(0, 3).map((sol, idx) => (

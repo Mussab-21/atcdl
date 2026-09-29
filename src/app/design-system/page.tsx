@@ -39,7 +39,7 @@ export default function DesignSystemPage() {
             <Badge status="Lab" size="sm" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-            NIMBRIX Component & Motion Primitives
+            ATCDL Component &amp; Motion Primitives
           </h1>
           <p className="text-sm text-[var(--text-secondary)] max-w-2xl">
             Living verification page for Milestone 0. Tests token rendering, accessible
@@ -197,7 +197,7 @@ export default function DesignSystemPage() {
                     <Badge status="Product" size="sm" />
                   </div>
                   <h3 className="text-lg font-semibold text-[var(--text-primary)]">
-                    NimbrixDocs Intelligence
+                    ATCDL Docs Intelligence
                   </h3>
                 </CardHeader>
                 <CardContent>
@@ -206,7 +206,7 @@ export default function DesignSystemPage() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Link href="/products/nimbrix-docs">Explore Demo</Link>
+                  <Link href="/products/atcdl-docs">Explore Demo</Link>
                 </CardFooter>
               </Card>
             </CursorGlow>
@@ -316,7 +316,7 @@ export default function DesignSystemPage() {
                 tabs={[
                   {
                     id: "tab-copilot",
-                    label: "NimbrixAsk",
+                    label: "ATCDL Ask",
                     badge: "RAG",
                     content: (
                       <div className="flex flex-col gap-2 p-4 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]">
@@ -331,7 +331,7 @@ export default function DesignSystemPage() {
                   },
                   {
                     id: "tab-docs",
-                    label: "NimbrixDocs",
+                    label: "ATCDL Docs",
                     badge: "OCR",
                     content: (
                       <div className="flex flex-col gap-2 p-4 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]">
@@ -412,7 +412,7 @@ export default function DesignSystemPage() {
       >
         <div className="flex flex-col gap-4">
           <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-            This modal conforms to the high-trust engineering aesthetic of NIMBRIX: no ungrounded styling, dark surface contrast, and crisp typography.
+            This modal conforms to the high-trust engineering aesthetic of ATCDL: verified WCAG contrast, refined light surfaces, and crisp typography.
           </p>
           <div className="flex justify-end gap-3 mt-4">
             <Button variant="ghost" onClick={() => setModalOpen(false)}>

@@ -9,9 +9,9 @@ import { LAB_EXPERIMENTS } from "@/content/data";
 import { FlaskConical, ExternalLink, ArrowRight, Activity, Terminal, Code2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Engineering Labs & Open Source R&D | NIMBRIX",
+  title: "Engineering Labs & Open Source R&D | ATCDL",
   description:
-    "Internal research benchmarks, vision experiments, and event-driven automation tools engineered by the NIMBRIX team.",
+    "Internal research benchmarks, vision experiments, and event-driven automation tools engineered by the ATCDL team.",
 };
 
 export default function LabsPage() {

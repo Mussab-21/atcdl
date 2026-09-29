@@ -31,14 +31,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary:
-        "bg-[var(--accent)] text-white hover:bg-[var(--accent-hover)] shadow-sm hover:shadow-[0_0_20px_rgba(77,141,255,0.35)] border border-transparent",
+        "bg-[var(--accent)] text-white hover:bg-[var(--accent-hover)] shadow-sm hover:shadow-md hover:shadow-[rgba(21,94,239,0.2)] border border-transparent",
       secondary:
-        "bg-[var(--bg-elevated)] text-[var(--text-primary)] hover:bg-[var(--border)] border border-[var(--border)]",
+        "bg-[var(--bg-card)] text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] border border-[var(--border)]",
       outline:
-        "bg-transparent text-[var(--text-primary)] border border-[var(--border)] hover:border-[var(--accent)] hover:text-white hover:bg-[rgba(77,141,255,0.05)]",
+        "bg-transparent text-[var(--text-primary)] border border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--bg-soft-blue)]",
       ghost:
-        "bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[rgba(255,255,255,0.04)]",
-      ai: "bg-[var(--bg-elevated)] text-[var(--accent-ai)] border border-[rgba(57,214,208,0.3)] hover:border-[var(--accent-ai)] hover:shadow-[0_0_20px_rgba(57,214,208,0.25)]",
+        "bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]",
+      ai: "bg-[var(--bg-card)] text-[#006663] border border-[#99DEDC] hover:bg-[#E6F7F6]",
     };
 
     return (

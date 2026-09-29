@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props) {
   if (!project) return {};
 
   return {
-    title: `${project.title} | NIMBRIX Technical Architecture`,
+    title: `${project.title} | ATCDL Technical Architecture`,
     description: project.summary,
   };
 }
@@ -100,7 +100,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             beforePoints={[
               project.problem,
             ]}
-            afterHeadline="The NIMBRIX Engineering Solution"
+            afterHeadline="The ATCDL Engineering Solution"
             afterPoints={[
               project.solution,
             ]}

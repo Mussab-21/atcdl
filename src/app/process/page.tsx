@@ -7,9 +7,9 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Terminal, Cpu, Clock, Layers, Sp
 import { ProcessTimeline } from "./ProcessTimeline";
 
 export const metadata: Metadata = {
-  title: "Delivery Process & Methodology | NIMBRIX Engineering",
+  title: "Delivery Process & Methodology | ATCDL Engineering",
   description:
-    "Explore NIMBRIX's 4-phase delivery framework: Discover, Design, Build, and Operate. Mathematical precision, weekly working builds, and zero black-box handoffs.",
+    "Explore ATCDL's 4-phase delivery framework: Discover, Design, Build, and Operate. Mathematical precision, weekly working builds, and zero black-box handoffs.",
 };
 
 export default function ProcessPage() {
@@ -141,7 +141,7 @@ export default function ProcessPage() {
         </div>
       </section>
 
-      {/* Comparison: NIMBRIX vs Traditional Dev Agencies */}
+      {/* Comparison: ATCDL vs Traditional Dev Agencies */}
       <section className="container-custom">
         <div className="flex flex-col gap-8">
           <div>
@@ -149,7 +149,7 @@ export default function ProcessPage() {
               Transparency Audit
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
-              NIMBRIX vs. Traditional Software Agencies
+              ATCDL vs. Traditional Software Agencies
             </h2>
           </div>
 
@@ -158,7 +158,7 @@ export default function ProcessPage() {
               <thead>
                 <tr className="border-b border-[var(--border)] text-[var(--text-muted)] font-mono text-[11px] uppercase bg-[var(--bg-secondary)]">
                   <th className="py-3 px-5">Dimension</th>
-                  <th className="py-3 px-5 text-[var(--accent)] font-bold">NIMBRIX Engineering</th>
+                  <th className="py-3 px-5 text-[var(--accent)] font-bold">ATCDL Engineering</th>
                   <th className="py-3 px-5 text-[var(--text-muted)]">Typical Agency / Outsource Shop</th>
                 </tr>
               </thead>

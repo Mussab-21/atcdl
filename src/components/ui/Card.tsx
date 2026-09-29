@@ -23,9 +23,9 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     const variantStyles = {
       default: "bg-[var(--bg-card)] border-[var(--border)] text-[var(--text-primary)]",
       elevated:
-        "bg-[var(--bg-elevated)] border-[var(--border)] shadow-xl shadow-black/40 text-[var(--text-primary)]",
+        "bg-[var(--bg-elevated)] border-[var(--border)] shadow-[0_4px_20px_rgba(0,0,0,0.05)] text-[var(--text-primary)]",
       interactive:
-        "bg-[var(--bg-card)] border-[var(--border)] hover:border-[var(--accent)] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(77,141,255,0.08)] cursor-pointer text-[var(--text-primary)]",
+        "bg-[var(--bg-card)] border-[var(--border)] hover:border-[var(--accent)] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(21,94,239,0.08)] cursor-pointer text-[var(--text-primary)]",
     };
 
     const hoverStyles =

@@ -9,9 +9,9 @@ import { IDEAS } from "@/content/data";
 import { Sparkles, ArrowRight, Lightbulb, Compass } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Pitch Lab — Pre-Engineered Enterprise Concepts | NIMBRIX",
+  title: "Ideas & Blueprints — Pre-Engineered Enterprise Concepts | ATCDL",
   description:
-    "Explore architectural blueprints, operational workflow designs, and technology proposals engineered by NIMBRIX for enterprise sectors.",
+    "Explore architectural blueprints, operational workflow designs, and technology proposals engineered by ATCDL for enterprise sectors.",
 };
 
 export default function PitchLabPage() {
@@ -22,7 +22,7 @@ export default function PitchLabPage() {
         <div className="max-w-3xl mb-12">
           <Badge variant="ai" className="mb-4">
             <Sparkles className="w-3.5 h-3.5 mr-1" />
-            <span>NIMBRIX PITCH LAB</span>
+            <span>ATCDL IDEAS &amp; BLUEPRINTS</span>
           </Badge>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
             Pre-Engineered Enterprise Concepts

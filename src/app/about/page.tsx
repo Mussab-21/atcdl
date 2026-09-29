@@ -6,9 +6,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { ArrowRight, Code, Shield, Terminal, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: "About NIMBRIX | Technology Engineering",
+  title: "About ATCDL | Digital Engineering & AI Solutions",
   description:
-    "We are a technology engineering practice focused on custom AI, autonomous agents, and enterprise workflow software.",
+    "ATCDL (Azaan Trading Contracting Digital Lab) builds AI systems, business software, automation platforms, and digital products for organizations with complex operational needs.",
 };
 
 export default function AboutPage() {
@@ -17,13 +17,18 @@ export default function AboutPage() {
       <Reveal>
         <div className="flex flex-col gap-4 border-b border-[var(--border)] pb-8">
           <div className="text-xs font-mono uppercase tracking-widest text-[var(--accent-ai)]">
-            Our Purpose
+            Our Identity &amp; Purpose
           </div>
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
-            Engineering for Complex Businesses
+            ATCDL — Digital Engineering &amp; AI Solutions
           </h1>
           <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-3xl">
-            Most businesses don’t need more bloated software subscriptions. They need
+            ATCDL (Azaan Trading Contracting Digital Lab) is a digital engineering company
+            that builds AI systems, business software, automation platforms, and digital products
+            for organizations with complex operational needs.
+          </p>
+          <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-3xl">
+            Most businesses don&apos;t need more fragmented software subscriptions. They need
             resilient, bespoke systems that fit their exact operational friction, connect
             their isolated data silos, and automate high-cost workflows.
           </p>

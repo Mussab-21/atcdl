@@ -15,7 +15,7 @@ const icons = {
 };
 
 export const metadata = {
-  title: "Solutions & Engineering Capabilities | NIMBRIX",
+  title: "Solutions & Engineering Capabilities | ATCDL",
   description:
     "Explore our four primary engineering capabilities: Custom AI & GenAI, AI Agents & Automation, Enterprise Software, and Web & Mobile Platforms.",
 };

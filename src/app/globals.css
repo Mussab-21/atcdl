@@ -4,6 +4,7 @@
 @theme {
   --color-bg-primary: var(--bg-primary);
   --color-bg-secondary: var(--bg-secondary);
+  --color-bg-soft-blue: var(--bg-soft-blue);
   --color-bg-card: var(--bg-card);
   --color-bg-elevated: var(--bg-elevated);
   --color-border: var(--border);
@@ -17,6 +18,11 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-deep: var(--accent-deep);
   --color-accent-ai: var(--accent-ai);
+
+  --color-header-bg: var(--header-bg);
+  --color-header-text: var(--header-text);
+  --color-header-text-secondary: var(--header-text-secondary);
+  --color-header-accent: var(--header-accent);
 
   --color-success: var(--success);
   --color-warning: var(--warning);
@@ -33,7 +39,7 @@
 
 /* Base Body Styles */
 html {
-  color-scheme: dark;
+  color-scheme: light;
   scroll-behavior: smooth;
 }
 

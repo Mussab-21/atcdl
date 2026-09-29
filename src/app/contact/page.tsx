@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Reveal } from "@/components/motion/Reveal";
 import { ArrowRight, ArrowLeft, CheckCircle2, ShieldAlert } from "lucide-react";
 import { Turnstile } from "@/components/forms/Turnstile";
+import { track } from "@/lib/analytics";
 
 function ContactFormInner() {
   const router = useRouter();
@@ -103,7 +104,7 @@ function ContactFormInner() {
           updated.problem = `Interested in evaluating ${productParam.toUpperCase()} for operational control and multi-tier systems integration.`;
         }
       } else if (ideaParam) {
-        updated.problem = `Interested in piloting the ${ideaParam.replace(/-/g, " ").toUpperCase()} concept from the NIMBRIX Pitch Lab.`;
+        updated.problem = `Interested in piloting the ${ideaParam.replace(/-/g, " ").toUpperCase()} blueprint from ATCDL.`;
       } else if (industryParam) {
         updated.problem = `Interested in exploring technology engineering solutions tailored for the ${industryParam.toUpperCase()} sector.`;
       }
@@ -178,6 +179,17 @@ function ContactFormInner() {
 
       if (!res.ok || !data.ok) {
         throw new Error(data.error || "Submission failed. Please check your inputs.");
+      }
+
+      // Track lead submission analytics
+      track("contact_submitted", {
+        projectType: formData.projectType,
+        budget: formData.budget,
+        source: productParam ? `product_${productParam}` : "direct_brief",
+      });
+
+      if (productParam) {
+        track("product_demo_requested", { product: productParam });
       }
 
       // Route to thank you page with reference

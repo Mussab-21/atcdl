@@ -19,7 +19,7 @@ export async function sendLeadNotifications(
   if (scoring.label === "HOT") {
     embedColor = 16729344; // Orange-Red (#FF4500)
   } else if (scoring.label === "QUALIFIED") {
-    embedColor = 5082623; // NIMBRIX Blue (#4D8DFF)
+    embedColor = 1399787; // ATCDL Blue (#155EEF)
   } else if (scoring.label === "NURTURE") {
     embedColor = 15972427; // Amber (#F3B84B)
   }
@@ -36,7 +36,7 @@ export async function sendLeadNotifications(
           {
             title,
             color: embedColor,
-            description: `A new client project brief was submitted and scored by the NIMBRIX pipeline.`,
+            description: `A new client project brief was submitted and scored by the ATCDL pipeline.`,
             fields: [
               { name: "Prospect Name", value: lead.name, inline: true },
               { name: "Work Email", value: lead.email, inline: true },
@@ -68,7 +68,7 @@ export async function sendLeadNotifications(
               },
             ],
             footer: {
-              text: "NIMBRIX Inbound Intelligence Pipeline • v1.0",
+              text: "ATCDL Inbound Intelligence Pipeline • v1.0",
             },
             timestamp: new Date().toISOString(),
           },
@@ -100,7 +100,7 @@ export async function sendLeadNotifications(
   const resendApiKey = process.env.RESEND_API_KEY;
   if (resendApiKey) {
     try {
-      const toEmail = process.env.LEADS_TO_EMAIL || "leads@nimbrix.com";
+      const toEmail = process.env.LEADS_TO_EMAIL || "leads@atcdl.com";
       const emailText = `
 ${title}
 ------------------------------------
@@ -127,7 +127,7 @@ ${lead.existingSystems || "None specified"}
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "NIMBRIX Inbound <leads@nimbrix.com>",
+          from: "ATCDL Inbound <leads@atcdl.com>",
           to: [toEmail],
           subject: `${title}: ${lead.name} (${lead.company || "Direct"})`,
           text: emailText,

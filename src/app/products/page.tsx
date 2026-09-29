@@ -9,9 +9,9 @@ import { CursorGlow } from "@/components/motion/CursorGlow";
 import { ArrowRight, Sparkles, Cpu, Database, Server, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: "Flagship AI & Enterprise Products | NIMBRIX",
+  title: "Flagship AI & Enterprise Products | ATCDL",
   description:
-    "Explore NIMBRIX's production-ready AI products: NimbrixDocs (Document AI), NimbrixAsk (Knowledge Copilot), and NimbrixAgents (Workflow Automation).",
+    "Explore ATCDL's production-ready AI products: ATCDL Docs (Document AI), ATCDL Ask (Knowledge Copilot), and ATCDL Agents (Workflow Automation).",
 };
 
 export default function ProductsPage() {

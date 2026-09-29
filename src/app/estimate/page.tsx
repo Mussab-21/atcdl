@@ -20,6 +20,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { calculateProjectEstimate, EstimatorInput } from "@/lib/estimator/calculate";
+import { track } from "@/lib/analytics";
 
 export default function EstimatorPage() {
   const router = useRouter();
@@ -35,6 +36,7 @@ export default function EstimatorPage() {
   });
 
   const [activeStep, setActiveStep] = useState(1);
+  const [currency, setCurrency] = useState<"USD" | "PKR">("USD");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Live recalculate
@@ -44,6 +46,12 @@ export default function EstimatorPage() {
 
   const handleFinishAndHandoff = async () => {
     setIsSubmitting(true);
+    track("project_estimator_completed", {
+      offering: form.offering,
+      budget: estimate.budgetBracket,
+      timeline: estimate.timelineBracket,
+      currency,
+    });
     try {
       const res = await fetch("/api/estimator", {
         method: "POST",
@@ -419,14 +427,42 @@ export default function EstimatorPage() {
               </Badge>
             </div>
 
-            {/* Estimated Budget Range */}
+            {/* Estimated Budget Range with Segmented Currency Toggle */}
             <div className="mb-6">
-              <div className="text-xs text-[var(--text-secondary)] mb-1">Estimated Capital Range</div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight text-gradient">
-                {estimate.budgetFormatted}
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs text-[var(--text-secondary)] font-medium">Estimated Capital Range</span>
+                <div className="inline-flex rounded-lg border border-[var(--border)] p-0.5 bg-[var(--bg-secondary)]">
+                  <button
+                    type="button"
+                    onClick={() => setCurrency("USD")}
+                    className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
+                      currency === "USD"
+                        ? "bg-white text-[var(--accent)] shadow-sm"
+                        : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                    }`}
+                  >
+                    USD ($)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCurrency("PKR")}
+                    className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
+                      currency === "PKR"
+                        ? "bg-white text-[var(--accent)] shadow-sm"
+                        : "text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+                    }`}
+                  >
+                    PKR (Rs)
+                  </button>
+                </div>
               </div>
-              <div className="text-[11px] font-mono text-[var(--accent)] mt-1">
-                Mapped Brief Tier: {estimate.budgetBracket}
+
+              <div className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight">
+                {currency === "USD" ? estimate.usdFormatted : estimate.pkrFormatted}
+              </div>
+
+              <div className="text-[11px] text-[var(--text-secondary)] mt-2 leading-relaxed bg-[var(--bg-secondary)] p-2.5 rounded-lg border border-[var(--border)]">
+                {currency === "USD" ? estimate.usdContext : estimate.pkrContext}
               </div>
             </div>
 

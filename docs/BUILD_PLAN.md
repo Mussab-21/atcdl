@@ -1,12 +1,12 @@
-# NIMBRIX Website — Agent Build Plan (v1)
+# ATCDL Website — Agent Build Plan (v1)
 
-> **For the coding agent.** This file is the executable build spec. The strategy, copy, and rationale live in `docs/Nimbrix_Website_Master_Implementation_Plan.md` (the "Master Plan"). Read both before writing code. Where they conflict, **this file wins** (see §1 for deliberate overrides).
+> **For the coding agent.** This file is the executable build spec. The strategy, copy, and rationale live in `ATCDL_Master_Plan.md`. Where they conflict, **ATCDL_Master_Plan.md wins**.
 
 ---
 
 ## 0. Operating Rules (read first)
 
-1. **Greenfield.** Create a new repo `nimbrix-web`. Do not copy code from the old `nimbrux_ai_web` repo (default Next.js scaffold, nothing reusable).
+1. **Greenfield.** Repo `atcdl-web`. Do not copy code from obsolete scaffold repos.
 2. **Work in milestones (§14).** Finish one milestone, run its acceptance checks, commit, then continue. Never start polish work before the structure it depends on exists.
 3. **Never invent content.** No fake clients, logos, testimonials, metrics, team members, or case-study numbers. Where real content is missing, render a clearly marked placeholder and add an entry to `docs/CONTENT_TODO.md`. Placeholder copy must never look like real claims.
 4. **Every project/idea/product carries a status badge** (`Client | Product | Prototype | Lab | Concept | Open Source`). Only `Client` may be called a "case study".
@@ -65,9 +65,9 @@ pnpm add -D prisma vitest @playwright/test @types/node
 ## 3. Repository Structure
 
 ```text
-nimbrix-web/
+atcdl-web/
 ├─ docs/
-│  ├─ Nimbrix_Website_Master_Implementation_Plan.md
+│  ├─ ATCDL_Master_Plan.md
 │  ├─ BUILD_PLAN.md                 (this file)
 │  └─ CONTENT_TODO.md               (agent maintains)
 ├─ content/
@@ -252,7 +252,7 @@ Add `<script>document.documentElement.classList.add('js')</script>` early in `<h
 | `/contact/thank-you` | "We've got the brief." | M1 |
 | `/trust`, `/privacy`, `/terms` | Trust & legal | M1 |
 | `/about`, `/process` | About + process | M2 |
-| `/products`, `/products/[slug]` | Nimbrix products | M2 |
+| `/products`, `/products/[slug]` | ATCDL products | M2 |
 | `/ideas`, `/ideas/[slug]` | Pitch Lab | M2 |
 | `/industries`, `/industries/[slug]` | 4 industry pages first | M2 |
 | `/labs` | Experiments & open source | M2 |
@@ -270,18 +270,18 @@ Navbar: transparent at top; after ~60px scroll → `rgba(7,10,15,.85)` + `backdr
 Copy source: Master Plan §12–§34, §61, §75. Implement in this order:
 
 1. **Navbar** (Solutions mega-menu with "Have a specific problem?" panel)
-2. **Hero** — eyebrow `NIMBRIX / TECHNOLOGY ENGINEERING`; H1 "Build what your business **actually needs.**" (gradient on highlighted words); CTAs `Start a Project →` / `Explore Our Work →`; right side = System Interface visual (A3)
+2. **Hero** — eyebrow `ATCDL / TECHNOLOGY ENGINEERING`; H1 "Build what your business **actually needs.**" (gradient on highlighted words); CTAs `Start a Project →` / `Explore Our Work →`; right side = System Interface visual (A3)
 3. **Capability strip** — text categories only (AI/ML, Automation, Cloud, Data, Web, Mobile, Enterprise Systems). No logos.
 4. **Problem** — "Your business doesn't need more software. It needs the right system." + friction chain
 5. **Solutions** — "Four ways we build business value." 4 cards with hover workflow (A5, A6)
 6. **How we build** — Discover → Design → Build → Operate (A7)
 7. **Featured work** — 3 items from content, with status badges
-8. **Products** (M2) — 3 flagship products, see `docs/NIMBRIX_Product_Strategy.md`
+8. **Products** (M2) — 3 flagship products, see `docs/PRODUCT_STRATEGY.md`
 9. **Pitch Lab / Ideas** — 3 featured ideas
 10. **Industries** — "Built for complex businesses." (4 initial)
 11. **Engineering** — architecture diagram + categorized stack (only real tech)
 12. **Commercial scope** — typical ranges table, footnote "Final scope is determined after discovery."
-13. **Why Nimbrix**
+13. **Why ATCDL**
 14. **Final CTA** — 3 entry points: business problem / product idea / automate a workflow
 15. **Footer**
 
@@ -315,7 +315,7 @@ Industry, Service, TeamMember, Testimonial (testimonial requires signed-off flag
 Seed content (mark every seed with `status` honestly):
 - **Projects (from GitHub inventory, rewritten per Master Plan §21–26):** AI Talent Intelligence (Resume Matcher, `Prototype`), AI Workforce Assistant (`Prototype`), NEIKI Digital Operations Platform (`Client` only if it was real client work; otherwise `Prototype`), Fashion-MNIST (`Lab`), Discord/Figma integrations (`Lab` / `Open Source`).
 - **Ideas:** Telecom AI Operations Assistant, Banking AI Customer Operations, Manufacturing Intelligent Operations, Logistics Control Tower (Master Plan §64–67), all `Concept`.
-- **Products:** from `NIMBRIX_Product_Strategy.md`, all `Concept` or `Prototype` until they are really running.
+- **Products:** from `docs/PRODUCT_STRATEGY.md`, all `Concept` or `Prototype` until they are really running.
 
 ---
 
@@ -433,7 +433,7 @@ Commit a `.env.example`. Validate env with Zod at boot; missing optional integra
 
 ## 13. Products Section
 
-Full product recommendations are in `NIMBRIX_Product_Strategy.md`. Website requirements:
+Full product recommendations are in `docs/PRODUCT_STRATEGY.md`. Website requirements:
 
 - `/products` grid + `/products/[slug]` detail using the `Product` model (§8)
 - Detail page order: Problem → How it works (diagram, AI flow animation A8) → Modules → Integrations → Deployment options (cloud / private / on-prem) → Status → Pricing model (if set) → CTA `Book a Demo →` (routes to `/contact?product=<slug>`)
@@ -492,4 +492,4 @@ Full product recommendations are in `NIMBRIX_Product_Strategy.md`. Website requi
 
 ## 16. Kickoff Prompt (paste into the agent)
 
-> Read `docs/BUILD_PLAN.md` and `docs/Nimbrix_Website_Master_Implementation_Plan.md` fully. Create a new Next.js (App Router, TypeScript, Tailwind) project named `nimbrix-web`. Implement **M0**, then stop and report. Use GSAP (not Framer Motion) exactly as specified in §5. Do not invent any content, clients, metrics, or testimonials; use marked placeholders and log them in `docs/CONTENT_TODO.md`. After I approve M0, continue to M1, then M2, then M3, stopping for review after each milestone.
+> Read `docs/BUILD_PLAN.md` and `ATCDL_Master_Plan.md` fully. Implement milestones according to `ATCDL_Master_Plan.md`.

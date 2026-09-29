@@ -1,4 +1,4 @@
-# NIMBRIX — Product Strategy for the Website
+# ATCDL — Product Strategy for the Website
 
 Which products to build and showcase, chosen from your four P1 offers and your existing GitHub work (AI Resume Matcher, AI Internship Assistant, NEIKI, Discord/Figma automations).
 
@@ -18,7 +18,7 @@ The build order also considers what you already have. Products 2 and 5 below sta
 
 ## Tier 1 — Build first (flagships, feature on homepage)
 
-### 1. NimbrixAsk — Private Knowledge Copilot
+### 1. ATCDL Ask — Private Knowledge Copilot
 **Offer:** Custom AI / GenAI
 
 **Problem:** Employees waste hours searching policies, SOPs, contracts, and past tickets across scattered systems.
@@ -35,7 +35,7 @@ The build order also considers what you already have. Products 2 and 5 below sta
 
 ---
 
-### 2. NimbrixDocs — Document & Invoice Intelligence
+### 2. ATCDL Docs — Document & Invoice Intelligence
 **Offer:** AI Agents & Automation
 
 **Problem:** Finance and operations teams re-key invoices, forms, contracts, and IDs by hand.
@@ -50,7 +50,7 @@ The build order also considers what you already have. Products 2 and 5 below sta
 
 ---
 
-### 3. NimbrixAgents — Sales & Support Agent Platform
+### 3. ATCDL Agents — Sales & Support Agent Platform
 **Offer:** AI Agents & Automation
 
 **Problem:** Leads go cold and support queues overflow because replies are slow and inconsistent.
@@ -65,17 +65,17 @@ The build order also considers what you already have. Products 2 and 5 below sta
 
 ## Tier 2 — Build next (feature on /products, not homepage)
 
-### 4. NimbrixTalent — Recruitment Intelligence
+### 4. ATCDL Talent — Recruitment Intelligence
 **Offer:** Custom AI
 
 Evolves your AI Resume Matcher into a sellable product: resume-to-JD matching, skill-gap analysis, candidate ranking, ATS integration, and interview prep. It fits HR teams and staffing agencies, and a prototype already exists. It's a low-effort win, but it targets a narrower buyer than Tier 1.
 
-### 5. NimbrixFlow — Workflow & Approval Engine
+### 5. ATCDL Flow — Workflow & Approval Engine
 **Offer:** Enterprise Software / Automation
 
 A lightweight configurable engine for approvals, forms, SLAs, and audit logs (leave, procurement, expense, onboarding). It becomes the backbone for custom enterprise builds and reduces delivery time on every ERP-style project. It's less flashy to demo, but a strong long-term asset.
 
-### 6. NimbrixOps — Operations Control Tower (dashboard framework)
+### 6. ATCDL Ops — Operations Control Tower (dashboard framework)
 **Offer:** Enterprise Software
 
 A reusable dashboard/data-integration framework that unifies orders, tickets, assets, or vehicles into one live view with alerts and AI recommendations. It's the base for your logistics, telecom, and manufacturing pitches (Master Plan §64–67), which makes it a natural companion to the Pitch Lab.
@@ -94,9 +94,9 @@ A reusable dashboard/data-integration framework that unifies orders, tickets, as
 
 | Phase | Weeks | Ship | Website status |
 |---|---|---|---|
-| A | 1–6 | NimbrixDocs MVP (reuses hero demo) | `Prototype` |
-| B | 4–10 | NimbrixAsk MVP | `Prototype` |
-| C | 8–14 | NimbrixAgents (web chat first, then WhatsApp) | `Prototype` |
+| A | 1–6 | ATCDL Docs MVP (reuses hero demo) | `Prototype` |
+| B | 4–10 | ATCDL Ask MVP | `Prototype` |
+| C | 8–14 | ATCDL Agents (web chat first, then WhatsApp) | `Prototype` |
 | D | 12+ | Talent → Flow → Ops | `Concept`/`Prototype` |
 
 Adjust for team capacity. The point is to have **three demoable products** before a big outbound push, rather than seven half-finished ones.
@@ -109,7 +109,7 @@ Adjust for team capacity. The point is to have **three demoable products** befor
 2. **No invented metrics or customers.** Show what the product *does*, not made-up results. Add real numbers only after a pilot.
 3. **Each product page needs:** problem, how it works (diagram), modules, integrations, deployment options, and a `Book a Demo →` CTA.
 4. **Every product has a live or recorded demo** before it moves above `Concept`. A 60–90 second screen recording is enough.
-5. **Naming:** the `Nimbrix*` names above are working titles. Confirm trademark availability and pick final names before launch.
+5. **Naming:** the `ATCDL*` names above are working titles. Confirm trademark availability and pick final names before launch.
 
 ## Pricing guidance
 

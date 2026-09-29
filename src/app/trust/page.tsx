@@ -6,9 +6,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Shield, Lock, Server, CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Trust, Security & Data Sovereignty | NIMBRIX",
+  title: "Trust, Security & Data Sovereignty | ATCDL",
   description:
-    "How NIMBRIX protects enterprise data: private VPC deployments, air-gapped models, zero data retention, and strict NDA commitments.",
+    "How ATCDL protects enterprise data: private VPC deployments, air-gapped models, zero data retention, and strict NDA commitments.",
 };
 
 export default function TrustPage() {
@@ -69,7 +69,7 @@ export default function TrustPage() {
               Permission-Aware RBAC Filters
             </h2>
             <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-              NimbrixAsk and our AI agent pipelines mirror your existing Active Directory / LDAP access privileges. A junior clerk querying the system will never receive retrieved answers or citations from executive-only payroll or M&amp;A files.
+              ATCDL Ask and our AI agent pipelines mirror your existing Active Directory / LDAP access privileges. A junior clerk querying the system will never receive retrieved answers or citations from executive-only payroll or M&amp;A files.
             </p>
           </Card>
         </Reveal>

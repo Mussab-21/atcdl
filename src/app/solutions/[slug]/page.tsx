@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props) {
   if (!solution) return {};
 
   return {
-    title: `${solution.title} | NIMBRIX Engineering`,
+    title: `${solution.title} | ATCDL Engineering`,
     description: solution.tagline,
   };
 }
@@ -70,6 +70,9 @@ export default async function SolutionDetailPage({ params }: Props) {
             <div className="flex items-center gap-1.5">
               <DollarSign className="w-4 h-4 text-[var(--success)]" />
               <span>Investment: <strong className="text-[var(--text-primary)]">{solution.typicalScope}</strong></span>
+            </div>
+            <div className="text-[11px] text-[var(--text-secondary)] font-sans">
+              (Pakistan Domestic / SME engagements: typically PKR 1.5M – 4.5M)
             </div>
           </div>
         </div>
@@ -131,7 +134,7 @@ export default async function SolutionDetailPage({ params }: Props) {
       {/* Deliverables */}
       <Reveal>
         <section className="p-6 sm:p-8 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] flex flex-col gap-4">
-          <h3 className="text-base font-semibold text-[var(--text-primary)] font-mono uppercase tracking-wider">
+          <h3 className="text-base font-semibold text-[var(--text-primary)] uppercase tracking-wider">
             Standard Engagement Deliverables
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -159,12 +162,12 @@ export default async function SolutionDetailPage({ params }: Props) {
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <NextLink href="/estimate">
-              <Button size="lg" variant="secondary" className="font-mono text-xs whitespace-nowrap">
+              <Button size="lg" variant="secondary" className="text-xs font-medium whitespace-nowrap">
                 <span>Run Estimator</span>
               </Button>
             </NextLink>
             <NextLink href={`/contact?type=${solution.slug}`}>
-              <Button size="lg" variant="primary" className="whitespace-nowrap font-mono text-xs">
+              <Button size="lg" variant="primary" className="whitespace-nowrap text-xs font-medium">
                 <span>Start Project Brief</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>

@@ -1,12 +1,19 @@
 import { z } from "zod";
 
 export const StatusSchema = z.enum([
+  "Ready for Demo",
+  "Pilot Ready",
+  "Beta",
+  "Prototype",
+  "Concept",
+  "Client Project",
+  "Internal Project",
+  "Open Source",
+  "R&D",
+  // Legacy
   "Client",
   "Product",
-  "Prototype",
   "Lab",
-  "Concept",
-  "Open Source",
 ]);
 
 export type Status = z.infer<typeof StatusSchema>;
@@ -117,8 +124,8 @@ export type LabExperiment = z.infer<typeof LabExperimentSchema>;
 // SEED DATA: PRODUCTS
 export const PRODUCTS: Product[] = [
   {
-    slug: "nimbrix-docs",
-    name: "NimbrixDocs",
+    slug: "atcdl-docs",
+    name: "ATCDL Docs",
     tagline: "Document & Invoice Intelligence Engine",
     status: "Prototype",
     offer: "AI Agents & Automation",
@@ -146,8 +153,8 @@ export const PRODUCTS: Product[] = [
     demoHighlight: "60-second invoice extraction with live SAP reconciliation payload",
   },
   {
-    slug: "nimbrix-ask",
-    name: "NimbrixAsk",
+    slug: "atcdl-ask",
+    name: "ATCDL Ask",
     tagline: "Private Enterprise Knowledge Copilot",
     status: "Prototype",
     offer: "Custom AI / GenAI",
@@ -174,8 +181,8 @@ export const PRODUCTS: Product[] = [
     demoHighlight: "Upload a 50-page policy manual and get grounded answers with source citations in seconds",
   },
   {
-    slug: "nimbrix-agents",
-    name: "NimbrixAgents",
+    slug: "atcdl-agents",
+    name: "ATCDL Agents",
     tagline: "Autonomous Sales & Support Agent Platform",
     status: "Prototype",
     offer: "AI Agents & Automation",
@@ -202,8 +209,8 @@ export const PRODUCTS: Product[] = [
     demoHighlight: "Simulated lead qualification and automated CRM opportunity creation in 45 seconds",
   },
   {
-    slug: "nimbrix-talent",
-    name: "NimbrixTalent",
+    slug: "atcdl-talent",
+    name: "ATCDL Talent",
     tagline: "Recruitment & Talent Intelligence Platform",
     status: "Prototype",
     offer: "Custom AI / GenAI",
@@ -229,8 +236,8 @@ export const PRODUCTS: Product[] = [
     demoHighlight: "Resume-to-JD match score with instant skill gap analysis",
   },
   {
-    slug: "nimbrix-flow",
-    name: "NimbrixFlow",
+    slug: "atcdl-flow",
+    name: "ATCDL Flow",
     tagline: "Configurable Enterprise Approval & Workflow Engine",
     status: "Concept",
     offer: "Enterprise Software",
@@ -254,8 +261,8 @@ export const PRODUCTS: Product[] = [
     demoHighlight: "Procurement sign-off flow routed through tiered SLAs",
   },
   {
-    slug: "nimbrix-ops",
-    name: "NimbrixOps",
+    slug: "atcdl-ops",
+    name: "ATCDL Ops",
     tagline: "Unified Operations Control Tower",
     status: "Concept",
     offer: "Enterprise Software",
@@ -304,7 +311,7 @@ export const PROJECTS: Project[] = [
     slug: "ai-workforce-assistant",
     title: "AI Workforce Knowledge Assistant",
     category: "AI",
-    status: "Prototype",
+    status: "Internal Project",
     industry: "Corporate Operations",
     summary:
       "Retrieval-augmented assistant enabling team members to query internal onboarding docs, engineering policies, and technical guidelines.",
@@ -322,7 +329,7 @@ export const PROJECTS: Project[] = [
     slug: "neiki-operations-platform",
     title: "NEIKI Digital Operations Platform",
     category: "Software",
-    status: "Prototype",
+    status: "Client Project",
     industry: "Nonprofit & Social Impact",
     summary:
       "Full-stack portal coordinating volunteer distribution, campaign tracking, and donor analytics with role-based access control.",
@@ -340,7 +347,7 @@ export const PROJECTS: Project[] = [
     slug: "fashion-mnist-classifier",
     title: "Fashion-MNIST Deep Vision Benchmark",
     category: "AI",
-    status: "Lab",
+    status: "R&D",
     industry: "Computer Vision & ML",
     summary:
       "Deep convolutional neural network trained for multi-class image classification with confusion matrix telemetry.",
@@ -516,7 +523,7 @@ export const IDEAS: Idea[] = [
       "Projected 65% reduction in Tier-1 support call volume and 40% faster mean-time-to-resolution (MTTR) on network outages.",
     status: "Concept",
     roadmap: ["Architecture Blueprint", "Kafka Telemetry Adapter", "Subscriber WhatsApp Agent", "Field Dispatch API"],
-    relevantProduct: "nimbrix-agents",
+    relevantProduct: "atcdl-agents",
     relevantSolution: "ai-agents",
   },
   {
@@ -539,7 +546,7 @@ export const IDEAS: Idea[] = [
       "Cuts regulatory review cycle times from 48 hours to under 15 minutes while ensuring zero customer PII leaves bank VPC boundaries.",
     status: "Concept",
     roadmap: ["Security & RBAC Audit", "Local LLM Benchmark (vLLM)", "Document Parser Pipeline", "Audit Dashboard"],
-    relevantProduct: "nimbrix-ask",
+    relevantProduct: "atcdl-ask",
     relevantSolution: "custom-ai",
   },
   {
@@ -562,7 +569,7 @@ export const IDEAS: Idea[] = [
       "Anticipated 28% reduction in unplanned line halts and automated spare-part replenishment cycles.",
     status: "Concept",
     roadmap: ["PLC / MQTT Ingestion Engine", "Anomaly Scoring Model", "SAP PM Integration", "Technician Mobile View"],
-    relevantProduct: "nimbrix-ops",
+    relevantProduct: "atcdl-ops",
     relevantSolution: "enterprise-software",
   },
   {
@@ -585,7 +592,7 @@ export const IDEAS: Idea[] = [
       "Eliminates 90% of manual data entry in freight clearance and prevents container demurrage charges.",
     status: "Concept",
     roadmap: ["Document OCR Pipeline", "HS Code Validation Model", "Port Telemetry Tracker", "ERP Connector"],
-    relevantProduct: "nimbrix-docs",
+    relevantProduct: "atcdl-docs",
     relevantSolution: "ai-agents",
   },
 ];
@@ -617,7 +624,7 @@ export const INDUSTRIES: Industry[] = [
       "Stateless session brokers with Redis cluster caching and Postgres audit persistence",
     ],
     relevantProjects: ["workflow-automation-bots", "ai-workforce-assistant"],
-    relevantProducts: ["nimbrix-agents", "nimbrix-ask"],
+    relevantProducts: ["atcdl-agents", "atcdl-ask"],
     relevantIdeas: ["telecom-ai-ops"],
   },
   {
@@ -645,7 +652,7 @@ export const INDUSTRIES: Industry[] = [
       "Strict zero-data-retention SLAs with enterprise endpoint models",
     ],
     relevantProjects: ["ai-workforce-assistant"],
-    relevantProducts: ["nimbrix-docs", "nimbrix-ask"],
+    relevantProducts: ["atcdl-docs", "atcdl-ask"],
     relevantIdeas: ["banking-customer-ops"],
   },
   {
@@ -673,7 +680,7 @@ export const INDUSTRIES: Industry[] = [
       "Direct integration with SAP Plant Maintenance (PM) and Materials Management (MM)",
     ],
     relevantProjects: ["fashion-mnist-classifier"],
-    relevantProducts: ["nimbrix-ops", "nimbrix-flow"],
+    relevantProducts: ["atcdl-ops", "atcdl-flow"],
     relevantIdeas: ["manufacturing-intelligent-ops"],
   },
   {
@@ -701,7 +708,7 @@ export const INDUSTRIES: Industry[] = [
       "Encrypted cloud storage with automatic document deduplication and archival",
     ],
     relevantProjects: ["neiki-operations-platform"],
-    relevantProducts: ["nimbrix-docs", "nimbrix-ops"],
+    relevantProducts: ["atcdl-docs", "atcdl-ops"],
     relevantIdeas: ["logistics-control-tower"],
   },
 ];

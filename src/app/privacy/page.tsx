@@ -2,8 +2,8 @@ import React from "react";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata = {
-  title: "Privacy Policy | NIMBRIX",
-  description: "NIMBRIX Privacy Policy regarding client data, site analytics, and information security.",
+  title: "Privacy Policy | ATCDL",
+  description: "ATCDL (Azaan Trading Contracting Digital Lab) Privacy Policy regarding client data, site analytics, and information security.",
 };
 
 export default function PrivacyPage() {
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">2. How We Use Information</h2>
         <p>
-          Information submitted to NIMBRIX is utilized solely to evaluate engineering feasibility,
+          Information submitted to ATCDL (Azaan Trading Contracting Digital Lab) is utilized solely to evaluate engineering feasibility,
           provide technical scopes, execute agreed-upon development contracts, and communicate regarding
           our services. We do not sell, rent, or trade your personal or corporate information to third
           parties.
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">3. AI &amp; Client Data Isolation</h2>
         <p>
-          Client documents, training data, embeddings, and API prompts processed by NIMBRIX custom
+          Client documents, training data, embeddings, and API prompts processed by ATCDL custom
           solutions or product deployments remain the strict, unalienable property of the client. Under no
           circumstances are client datasets used to train public machine learning foundation models.
         </p>
@@ -64,7 +64,7 @@ export default function PrivacyPage() {
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">5. Inquiries &amp; Data Subject Rights</h2>
         <p>
           To request deletion, review, or modification of any submitted information, contact our privacy
-          team at <code className="text-[var(--accent)]">privacy@nimbrix.com</code>.
+          team at <code className="text-[var(--accent)]">privacy@atcdl.com</code>.
         </p>
       </section>
     </div>

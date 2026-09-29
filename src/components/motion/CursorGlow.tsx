@@ -12,7 +12,7 @@ interface CursorGlowProps {
 export function CursorGlow({
   children,
   className = "",
-  glowColor = "rgba(77, 141, 255, 0.12)",
+  glowColor = "rgba(21, 94, 239, 0.08)",
 }: CursorGlowProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 

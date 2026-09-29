@@ -20,7 +20,7 @@ if (
       redis,
       limiter: Ratelimit.slidingWindow(5, "1 h"),
       analytics: true,
-      prefix: "nimbrix:ratelimit:leads",
+      prefix: "atcdl:ratelimit:leads",
     });
   } catch (err) {
     console.warn("[RateLimit] Failed to initialize Upstash Redis, falling back to database limiter", err);

@@ -10,9 +10,9 @@ import { ArrowRight, ExternalLink, Terminal } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
 
 export const metadata = {
-  title: "Engineering Portfolio & Technical Prototypes | NIMBRIX",
+  title: "Engineering Portfolio & Technical Prototypes | ATCDL",
   description:
-    "Review technical implementations, AI prototypes, enterprise software, and open-source integrations engineered by NIMBRIX.",
+    "Review technical implementations, AI prototypes, enterprise software, and open-source integrations engineered by ATCDL.",
 };
 
 export default function WorkPage() {

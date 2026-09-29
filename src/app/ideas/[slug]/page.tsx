@@ -35,7 +35,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (!idea) return {};
 
   return {
-    title: `${idea.title} — Pitch Lab Concept | NIMBRIX`,
+    title: `${idea.title} — Architecture Blueprint | ATCDL`,
     description: idea.concept,
     // Per-prospect noindex: share /ideas/slug?noindex=1 for private prospect links
     robots: sp?.noindex === "1" ? { index: false, follow: false } : undefined,
@@ -132,7 +132,7 @@ export default async function IdeaDetailPage({ params, searchParams }: Props) {
                 The Engineered System
               </div>
               <h2 className="text-lg font-bold text-[var(--text-primary)] mb-3">
-                NIMBRIX Architecture Blueprint
+                ATCDL Architecture Blueprint
               </h2>
               <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
                 {idea.solution}

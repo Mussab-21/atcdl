@@ -2,8 +2,8 @@ import React from "react";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata = {
-  title: "Terms of Service | NIMBRIX",
-  description: "Terms and conditions governing the use of NIMBRIX website and engineering services.",
+  title: "Terms of Service | ATCDL",
+  description: "Terms and conditions governing the use of ATCDL (Azaan Trading Contracting Digital Lab) website and engineering services.",
 };
 
 export default function TermsPage() {
@@ -26,7 +26,7 @@ export default function TermsPage() {
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">1. Scope of Engagement</h2>
         <p>
-          NIMBRIX provides technology engineering, custom AI development, autonomous workflow automation,
+          ATCDL (Azaan Trading Contracting Digital Lab) provides technology engineering, custom AI development, autonomous workflow automation,
           and software implementation services. Specific deliverables, delivery milestones, SLAs, and
           financial terms are governed by mutually executed Statements of Work (SOW) and Master Services
           Agreements (MSA).
@@ -40,7 +40,7 @@ export default function TermsPage() {
         </p>
         <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm">
           <li>Clients retain sole ownership of all pre-existing data, proprietary workflows, and bespoke application code built specifically for their engagement upon full payment.</li>
-          <li>NIMBRIX retains ownership of pre-existing core components, open-source libraries, and reusable architecture frameworks (including NimbrixDocs, NimbrixAsk, and NimbrixAgents base engines), granting the client a perpetual, non-exclusive license to operate the deployed solution.</li>
+          <li>ATCDL retains ownership of pre-existing core components, open-source libraries, and reusable architecture frameworks (including ATCDL Docs, ATCDL Ask, and ATCDL Agents base engines), granting the client a perpetual, non-exclusive license to operate the deployed solution.</li>
         </ul>
       </section>
 
@@ -56,7 +56,7 @@ export default function TermsPage() {
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">4. Warranty &amp; Liability</h2>
         <p>
           Custom software and AI systems are provided with warranty periods as specified in active
-          client contracts. NIMBRIX implements rigorous unit, integration, and security testing prior to
+          client contracts. ATCDL implements rigorous unit, integration, and security testing prior to
           deployment sign-off.
         </p>
       </section>

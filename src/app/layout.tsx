@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NIMBRIX — Technology Engineering | AI Systems, Enterprise Software & Autonomous Agents",
+  title: "ATCDL — Digital Engineering & AI Solutions",
   description:
-    "We build production-grade AI pipelines, document intelligence, knowledge copilots, and enterprise workflow software for complex businesses.",
+    "ATCDL (Azaan Trading Contracting Digital Lab) builds AI systems, business software, automation platforms, and digital products for organizations with complex operational needs.",
 };
 
 export default function RootLayout({
