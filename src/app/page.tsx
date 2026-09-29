@@ -7,6 +7,7 @@ import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/Card"
 import { Reveal } from "@/components/motion/Reveal";
 import { CursorGlow } from "@/components/motion/CursorGlow";
 import { HeroSystemVisual } from "@/components/sections/HeroSystemVisual";
+import { RotatingHeadlineWord } from "@/components/motion/RotatingHeadlineWord";
 import {
   ArrowRight,
   Sparkles,
@@ -41,13 +42,13 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-24 sm:gap-32 py-12 sm:py-20">
       {/* 1. HERO SECTION */}
-      <section className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <section className="container-custom pt-6 pb-16 sm:pt-14 sm:pb-24 lg:pt-16 lg:pb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
           {/* Left Text Column (7 cols) */}
           <div className="lg:col-span-7 flex flex-col gap-6 text-left">
             <Reveal>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] text-xs font-semibold text-[var(--accent-ai)]">
-                <span className="w-2 h-2 rounded-full bg-[var(--accent-ai)] animate-pulse" />
+              <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider uppercase text-[var(--accent-ai)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)] animate-pulse" />
                 <span>ATCDL // DIGITAL ENGINEERING &amp; AI SOLUTIONS</span>
               </div>
             </Reveal>
@@ -55,9 +56,7 @@ export default function Home() {
             <Reveal>
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.04]">
                 We build software that makes complex businesses{" "}
-                <span className="bg-gradient-to-r from-[var(--accent)] via-[#4D8DFF] to-[var(--accent-ai)] bg-clip-text text-transparent">
-                  simpler.
-                </span>
+                <RotatingHeadlineWord words={["simpler.", "faster.", "smarter.", "scalable."]} />
               </h1>
             </Reveal>
 
@@ -70,14 +69,14 @@ export default function Home() {
             <Reveal>
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <NextLink href="/contact">
-                  <Button size="lg" variant="primary" className="text-sm font-medium">
+                  <Button size="lg" variant="primary" className="text-sm font-semibold">
                     <span>Start a Project</span>
                     <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
                 </NextLink>
 
                 <NextLink href="/solutions">
-                  <Button size="lg" variant="outline" className="text-sm font-medium">
+                  <Button size="lg" variant="outline" className="text-sm font-semibold">
                     <span>Explore Solutions</span>
                   </Button>
                 </NextLink>
@@ -98,8 +97,8 @@ export default function Home() {
             </Reveal>
           </div>
 
-          {/* Right Visual Column (5 cols) -> Hero System Interface (A3) */}
-          <div className="lg:col-span-5">
+          {/* Right Visual Column (5 cols) -> Living System Visual aligned with headline */}
+          <div className="lg:col-span-5 lg:pt-1">
             <HeroSystemVisual />
           </div>
         </div>
