@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 export default function ProcessPage() {
   return (
     <div className="flex flex-col gap-20 py-12 md:py-20">
-      {/* Header */}
-      <section className="container-custom">
+      {/* Header (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="container-custom section-peek-snap peek-contained py-8 sm:py-12">
         <div className="max-w-3xl flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <span className="text-xs font-mono text-[var(--accent)] uppercase tracking-wider">
@@ -214,8 +214,8 @@ export default function ProcessPage() {
         </div>
       </section>
 
-      {/* Conversion Banner */}
-      <section className="container-custom">
+      {/* Conversion Banner (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="container-custom section-peek-snap peek-contained py-8 sm:py-12">
         <div className="p-8 sm:p-12 rounded-[var(--radius-lg)] bg-[var(--bg-elevated)] border border-[var(--border)] flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl flex flex-col gap-2">
             <span className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-wider">

@@ -8,6 +8,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CursorGlow } from "@/components/motion/CursorGlow";
 import { HeroSystemVisual } from "@/components/sections/HeroSystemVisual";
 import { RotatingHeadlineWord } from "@/components/motion/RotatingHeadlineWord";
+import { CapabilityStrip } from "@/components/sections/CapabilityStrip";
 import {
   ArrowRight,
   Sparkles,
@@ -40,9 +41,9 @@ export default function Home() {
   const featuredWork = PROJECTS.filter((p) => p.featured).slice(0, 3);
 
   return (
-    <div className="flex flex-col gap-24 sm:gap-32 py-12 sm:py-20">
-      {/* 1. HERO SECTION */}
-      <section className="container-custom pt-6 pb-16 sm:pt-14 sm:pb-24 lg:pt-16 lg:pb-28">
+    <div className="flex flex-col gap-16 sm:gap-24 py-8 sm:py-14">
+      {/* 1. HERO SECTION (Peek Scroll: ~80% Viewport at Rest) */}
+      <section className="container-custom section-peek-snap peek-contained pt-4 pb-8 sm:pt-6 sm:pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
           {/* Left Text Column (7 cols) */}
           <div className="lg:col-span-7 flex flex-col gap-6 text-left">
@@ -104,27 +105,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. CAPABILITY STRIP */}
-      <section className="border-y border-[var(--border)] bg-[var(--bg-secondary)]/50 py-5">
-        <div className="container-custom">
-          <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-mono uppercase tracking-widest text-[var(--text-muted)]">
-            <span className="hover:text-[var(--text-primary)] transition-colors">AI &amp; GenAI</span>
-            <span className="text-[var(--border)]">•</span>
-            <span className="hover:text-[var(--text-primary)] transition-colors">Autonomous Agents</span>
-            <span className="text-[var(--border)]">•</span>
-            <span className="hover:text-[var(--text-primary)] transition-colors">Document Intelligence</span>
-            <span className="text-[var(--border)]">•</span>
-            <span className="hover:text-[var(--text-primary)] transition-colors">Enterprise Software</span>
-            <span className="text-[var(--border)]">•</span>
-            <span className="hover:text-[var(--text-primary)] transition-colors">Cloud &amp; On-Prem</span>
-            <span className="text-[var(--border)]">•</span>
-            <span className="hover:text-[var(--text-primary)] transition-colors">Web &amp; Mobile</span>
-          </div>
-        </div>
-      </section>
+      {/* 2. DYNAMIC AUTO-ADVANCING CAPABILITY STRIP */}
+      <CapabilityStrip />
 
-      {/* 3. PROBLEM SECTION (The Friction Chain) */}
-      <section className="container-custom py-4">
+      {/* 3. PROBLEM SECTION (The Friction Chain - Peek Scroll Snap: ~80% Viewport) */}
+      <section className="container-custom section-peek-snap peek-contained py-8 sm:py-12">
         <div className="flex flex-col gap-12">
           <Reveal>
             <div className="max-w-3xl">
@@ -576,8 +561,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. INTERACTIVE ESTIMATOR CALLOUT BANNER */}
-      <section className="container-custom">
+      {/* 10. INTERACTIVE ESTIMATOR CALLOUT BANNER (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="container-custom section-peek-snap peek-contained py-8 sm:py-12">
         <Reveal>
           <div className="p-8 sm:p-12 rounded-[var(--radius-lg)] bg-[var(--bg-secondary)] border border-[var(--accent)]/30 flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
             <div className="max-w-xl flex flex-col gap-2">
@@ -668,8 +653,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. FINAL CALL TO ACTION (3 Entry Points) */}
-      <section className="container-custom">
+      {/* 9. FINAL CALL TO ACTION (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="container-custom section-peek-snap peek-contained py-8 sm:py-12">
         <Reveal>
           <div className="p-8 sm:p-14 rounded-[var(--radius-lg)] bg-[var(--accent-deep)] text-white border border-[#162D50] shadow-2xl flex flex-col items-center text-center gap-8">
             <div className="max-w-2xl flex flex-col items-center gap-3">

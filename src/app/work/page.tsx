@@ -18,22 +18,24 @@ export const metadata = {
 export default function WorkPage() {
   return (
     <div className="container-custom py-16 flex flex-col gap-16">
-      {/* Header */}
-      <Reveal>
-        <div className="text-center max-w-3xl mx-auto flex flex-col items-center gap-4">
-          <div className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-widest px-3 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)]">
-            Technical Evidence
+      {/* Header (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="section-peek-snap peek-contained py-6 sm:py-10">
+        <Reveal>
+          <div className="text-center max-w-3xl mx-auto flex flex-col items-center gap-4">
+            <div className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-widest px-3 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)]">
+              Technical Evidence
+            </div>
+            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-[var(--text-primary)]">
+              Systems We&apos;ve Engineered.
+            </h1>
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+              Every build carries an honest status badge. We showcase verified code,
+              working prototypes, and real architectures — never invented metrics or
+              unverifiable claims.
+            </p>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-[var(--text-primary)]">
-            Systems We&apos;ve Engineered.
-          </h1>
-          <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Every build carries an honest status badge. We showcase verified code,
-            working prototypes, and real architectures — never invented metrics or
-            unverifiable claims.
-          </p>
-        </div>
-      </Reveal>
+        </Reveal>
+      </section>
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -100,36 +102,38 @@ export default function WorkPage() {
         ))}
       </div>
 
-      {/* GitHub Proof Banner */}
-      <Reveal>
-        <div className="p-8 rounded-[var(--radius-lg)] bg-[var(--bg-card)] border border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)]">
-              <Terminal className="w-6 h-6" />
-            </div>
-            <div>
-              <div className="text-sm font-semibold text-[var(--text-primary)]">
-                Looking for open codebases?
+      {/* GitHub Proof Banner (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="section-peek-snap peek-contained py-6 sm:py-10">
+        <Reveal>
+          <div className="p-8 rounded-[var(--radius-lg)] bg-[var(--bg-card)] border border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)]">
+                <Terminal className="w-6 h-6" />
               </div>
-              <div className="text-xs text-[var(--text-secondary)] mt-0.5">
-                Inspect public prototypes, models, and community automations on GitHub.
+              <div>
+                <div className="text-sm font-semibold text-[var(--text-primary)]">
+                  Looking for open codebases?
+                </div>
+                <div className="text-xs text-[var(--text-secondary)] mt-0.5">
+                  Inspect public prototypes, models, and community automations on GitHub.
+                </div>
               </div>
             </div>
-          </div>
 
-          <a
-            href="https://github.com/Mussab-21"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="secondary" size="md">
-              <GithubIcon className="w-4 h-4 mr-2" />
-              <span>Visit GitHub Profile</span>
-              <ExternalLink className="w-3.5 h-3.5 ml-2 opacity-60" />
-            </Button>
-          </a>
-        </div>
-      </Reveal>
+            <a
+              href="https://github.com/Mussab-21"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="secondary" size="md">
+                <GithubIcon className="w-4 h-4 mr-2" />
+                <span>Visit GitHub Profile</span>
+                <ExternalLink className="w-3.5 h-3.5 ml-2 opacity-60" />
+              </Button>
+            </a>
+          </div>
+        </Reveal>
+      </section>
     </div>
   );
 }

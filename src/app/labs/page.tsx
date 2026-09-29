@@ -17,21 +17,23 @@ export const metadata: Metadata = {
 export default function LabsPage() {
   return (
     <div className="container-custom py-16 sm:py-24">
-      {/* Header */}
-      <Reveal>
-        <div className="max-w-3xl mb-12">
-          <Badge variant="ai" className="mb-4">
-            <FlaskConical className="w-3.5 h-3.5 mr-1" />
-            <span>R&amp;D &amp; BENCHMARKS</span>
-          </Badge>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
-            Engineering Labs &amp; Open Source
-          </h1>
-          <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Before we deploy architecture into production enterprise workflows, we stress-test models, evaluate RAG retrieval algorithms, and benchmark failover resilience in internal labs.
-          </p>
-        </div>
-      </Reveal>
+      {/* Header (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="section-peek-snap peek-contained py-6 sm:py-10">
+        <Reveal>
+          <div className="max-w-3xl mb-8">
+            <Badge variant="ai" className="mb-4">
+              <FlaskConical className="w-3.5 h-3.5 mr-1" />
+              <span>R&amp;D &amp; BENCHMARKS</span>
+            </Badge>
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+              Engineering Labs &amp; Open Source
+            </h1>
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+              Before we deploy architecture into production enterprise workflows, we stress-test models, evaluate RAG retrieval algorithms, and benchmark failover resilience in internal labs.
+            </p>
+          </div>
+        </Reveal>
+      </section>
 
       {/* Honesty Standard Banner */}
       <Reveal>
@@ -151,23 +153,25 @@ export default function LabsPage() {
         ))}
       </div>
 
-      {/* Research Partnership CTA */}
-      <Reveal>
-        <div className="mt-16 p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-[var(--bg-secondary)] to-[var(--bg-elevated)] border border-[var(--border)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="max-w-xl">
-            <h3 className="text-xl sm:text-2xl font-bold mb-2">Want to benchmark a custom dataset?</h3>
-            <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
-              We conduct private empirical evaluations for model latency, RAG hallucination rates, and edge inference viability.
-            </p>
+      {/* Research Partnership CTA (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="section-peek-snap peek-contained py-6 sm:py-10">
+        <Reveal>
+          <div className="p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-[var(--bg-secondary)] to-[var(--bg-elevated)] border border-[var(--border)] flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="max-w-xl">
+              <h3 className="text-xl sm:text-2xl font-bold mb-2">Want to benchmark a custom dataset?</h3>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
+                We conduct private empirical evaluations for model latency, RAG hallucination rates, and edge inference viability.
+              </p>
+            </div>
+            <Link href="/contact">
+              <Button variant="primary" size="md">
+                <span>Contact Lab Leads</span>
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
           </div>
-          <Link href="/contact">
-            <Button variant="primary" size="md">
-              <span>Contact Lab Leads</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          </Link>
-        </div>
-      </Reveal>
+        </Reveal>
+      </section>
     </div>
   );
 }

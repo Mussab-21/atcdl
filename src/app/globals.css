@@ -37,10 +37,12 @@
   --font-mono: var(--font-geist-mono), monospace;
 }
 
-/* Base Body Styles */
+/* Base Body Styles with Peek Scroll Rhythm */
 html {
   color-scheme: light;
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: calc(var(--nav-h, 72px) + 12px);
 }
 
 body {
@@ -52,11 +54,57 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Peek Scroll Section Classes (80/10/10 Rhythm for self-contained sections) */
+.section-peek-snap {
+  scroll-snap-align: center;
+  scroll-margin-top: calc(var(--nav-h, 72px) + 16px);
+  scroll-margin-bottom: 24px;
+}
+
+/* Sizing for short, visually self-contained sections to occupy ~80% viewport at rest */
+.peek-contained {
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-height: 720px) {
+  .peek-contained {
+    min-height: 78vh;
+  }
+}
+
+@media (min-height: 900px) {
+  .peek-contained {
+    min-height: 80vh;
+  }
+}
+
+/* Seamless Continuous Marquee Animation */
+@keyframes marquee-slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* Reduced motion and GSAP reveal guard */
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] {
     opacity: 0;
     transform: translateY(20px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none !important;
+  }
+  .section-peek-snap {
+    scroll-snap-align: none !important;
   }
 }
 

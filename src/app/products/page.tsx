@@ -20,22 +20,24 @@ export default function ProductsPage() {
 
   return (
     <div className="container-custom py-16 flex flex-col gap-20">
-      {/* Header */}
-      <Reveal>
-        <div className="text-center max-w-3xl mx-auto flex flex-col items-center gap-4">
-          <div className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-widest px-3 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)]">
-            Ready-to-Deploy Assets
+      {/* Header (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="section-peek-snap peek-contained py-6 sm:py-10">
+        <Reveal>
+          <div className="text-center max-w-3xl mx-auto flex flex-col items-center gap-4">
+            <div className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-widest px-3 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)]">
+              Ready-to-Deploy Assets
+            </div>
+            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-[var(--text-primary)]">
+              Engineered Products for Daily Operations
+            </h1>
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
+              Need faster time-to-value? Deploy our pre-built product engines as-is,
+              or contract our engineering team to deeply customize and integrate them into
+              your proprietary enterprise systems.
+            </p>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-[var(--text-primary)]">
-            Engineered Products for Daily Operations
-          </h1>
-          <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
-            Need faster time-to-value? Deploy our pre-built product engines as-is,
-            or contract our engineering team to deeply customize and integrate them into
-            your proprietary enterprise systems.
-          </p>
-        </div>
-      </Reveal>
+        </Reveal>
+      </section>
 
       {/* Flagship Tier 1 Products */}
       <section className="flex flex-col gap-8">
@@ -169,46 +171,48 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Deployment & Security Guarantee */}
-      <Reveal>
-        <div className="p-8 sm:p-10 rounded-[var(--radius-lg)] bg-[var(--bg-elevated)] border border-[var(--border)] grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="flex items-start gap-4">
-            <div className="p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--accent-ai)]">
-              <Server className="w-5 h-5" />
+      {/* Deployment & Security Guarantee (Peek Scroll Snap: ~80% Viewport) */}
+      <section className="section-peek-snap peek-contained py-6 sm:py-10">
+        <Reveal>
+          <div className="p-8 sm:p-10 rounded-[var(--radius-lg)] bg-[var(--bg-elevated)] border border-[var(--border)] grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--accent-ai)]">
+                <Server className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-[var(--text-primary)]">On-Prem &amp; Air-Gapped</div>
+                <p className="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">
+                  Deployable in your own VPC, private cloud, or physical server room for regulated banking and healthcare clients.
+                </p>
+              </div>
             </div>
-            <div>
-              <div className="text-sm font-semibold text-[var(--text-primary)]">On-Prem &amp; Air-Gapped</div>
-              <p className="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">
-                Deployable in your own VPC, private cloud, or physical server room for regulated banking and healthcare clients.
-              </p>
-            </div>
-          </div>
 
-          <div className="flex items-start gap-4">
-            <div className="p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--accent)]">
-              <ShieldCheck className="w-5 h-5" />
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--accent)]">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-[var(--text-primary)]">Zero Data Leakage</div>
+                <p className="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">
+                  Your documents and prompts are never used to train public foundation models. Complete data sovereignty.
+                </p>
+              </div>
             </div>
-            <div>
-              <div className="text-sm font-semibold text-[var(--text-primary)]">Zero Data Leakage</div>
-              <p className="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">
-                Your documents and prompts are never used to train public foundation models. Complete data sovereignty.
-              </p>
-            </div>
-          </div>
 
-          <div className="flex items-start gap-4">
-            <div className="p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--success)]">
-              <CheckCircle2 className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-sm font-semibold text-[var(--text-primary)]">Custom ERP Connectors</div>
-              <p className="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">
-                Seamless bi-directional integration with SAP, Oracle, Salesforce, QuickBooks, and proprietary internal databases.
-              </p>
+            <div className="flex items-start gap-4">
+              <div className="p-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--success)]">
+                <CheckCircle2 className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-[var(--text-primary)]">Custom ERP Connectors</div>
+                <p className="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">
+                  Seamless bi-directional integration with SAP, Oracle, Salesforce, QuickBooks, and proprietary internal databases.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </section>
     </div>
   );
 }
