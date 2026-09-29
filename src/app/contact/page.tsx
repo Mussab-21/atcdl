@@ -14,6 +14,12 @@ function ContactFormInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const productParam = searchParams.get("product");
+  const ideaParam = searchParams.get("idea");
+  const industryParam = searchParams.get("industry");
+  const projectTypeParam = searchParams.get("projectType");
+  const budgetParam = searchParams.get("budget");
+  const timelineParam = searchParams.get("timeline");
+  const summaryParam = searchParams.get("summary");
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,30 +54,63 @@ function ContactFormInner() {
     turnstileToken: "",
   });
 
-  // Pre-select based on ?product= query param
+  // Pre-fill based on query params (Estimator, Product, Pitch Lab Idea, Industry)
   useEffect(() => {
-    if (productParam) {
-      if (productParam.includes("ask") || productParam.includes("talent")) {
-        setFormData((prev) => ({
-          ...prev,
-          projectType: "Custom AI / GenAI",
-          problem: `Interested in evaluating ${productParam.toUpperCase()} for our internal operations.`,
-        }));
-      } else if (productParam.includes("docs") || productParam.includes("agents")) {
-        setFormData((prev) => ({
-          ...prev,
-          projectType: "AI Agents & Automation",
-          problem: `Interested in deploying ${productParam.toUpperCase()} workflow automation.`,
-        }));
-      } else if (productParam.includes("flow") || productParam.includes("ops")) {
-        setFormData((prev) => ({
-          ...prev,
-          projectType: "Enterprise Software",
-          problem: `Interested in evaluating ${productParam.toUpperCase()} for operations & systems integration.`,
-        }));
+    setFormData((prev) => {
+      const updated = { ...prev };
+
+      if (projectTypeParam && [
+        "Custom AI / GenAI",
+        "AI Agents & Automation",
+        "Enterprise Software",
+        "Web & Mobile Platforms",
+        "Not Sure / Needs Advisory",
+      ].includes(projectTypeParam)) {
+        updated.projectType = projectTypeParam as typeof prev.projectType;
       }
-    }
-  }, [productParam]);
+
+      if (budgetParam && [
+        "$100K+",
+        "$50K–$100K",
+        "$25K–$50K",
+        "$10K–$25K",
+        "$5K–$10K",
+        "Not sure yet",
+      ].includes(budgetParam)) {
+        updated.budget = budgetParam as typeof prev.budget;
+      }
+
+      if (timelineParam && [
+        "< 1 month",
+        "1–3 months",
+        "3–6 months",
+        "6+ months",
+      ].includes(timelineParam)) {
+        updated.timeline = timelineParam as typeof prev.timeline;
+      }
+
+      if (summaryParam) {
+        updated.problem = summaryParam;
+      } else if (productParam) {
+        if (productParam.includes("ask") || productParam.includes("talent")) {
+          updated.projectType = "Custom AI / GenAI";
+          updated.problem = `Interested in evaluating the ${productParam.toUpperCase()} private copilot / RAG architecture for our enterprise operations.`;
+        } else if (productParam.includes("docs") || productParam.includes("agents")) {
+          updated.projectType = "AI Agents & Automation";
+          updated.problem = `Interested in deploying ${productParam.toUpperCase()} autonomous workflow and document extraction intelligence.`;
+        } else if (productParam.includes("flow") || productParam.includes("ops")) {
+          updated.projectType = "Enterprise Software";
+          updated.problem = `Interested in evaluating ${productParam.toUpperCase()} for operational control and multi-tier systems integration.`;
+        }
+      } else if (ideaParam) {
+        updated.problem = `Interested in piloting the ${ideaParam.replace(/-/g, " ").toUpperCase()} concept from the NIMBRIX Pitch Lab.`;
+      } else if (industryParam) {
+        updated.problem = `Interested in exploring technology engineering solutions tailored for the ${industryParam.toUpperCase()} sector.`;
+      }
+
+      return updated;
+    });
+  }, [productParam, ideaParam, industryParam, projectTypeParam, budgetParam, timelineParam, summaryParam]);
 
   const validateStep1 = () => {
     if (formData.problem.trim().length < 20) {

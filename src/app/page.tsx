@@ -1,6 +1,6 @@
 import React from "react";
 import NextLink from "next/link";
-import { SOLUTIONS, PRODUCTS, PROJECTS } from "@/content/data";
+import { SOLUTIONS, PRODUCTS, PROJECTS, IDEAS } from "@/content/data";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/Card";
@@ -23,6 +23,8 @@ import {
   Workflow,
   TrendingUp,
   ExternalLink,
+  Calculator,
+  Building2,
 } from "lucide-react";
 
 export const metadata = {
@@ -32,7 +34,8 @@ export const metadata = {
 };
 
 export default function Home() {
-  const featuredProducts = PRODUCTS.filter((p) => p.featured);
+  const featuredProducts = PRODUCTS;
+  const featuredIdeas = IDEAS.slice(0, 4);
   const featuredWork = PROJECTS.filter((p) => p.featured).slice(0, 3);
 
   return (
@@ -435,7 +438,191 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. COMMERCIAL SCOPES (Typical Ranges Table) */}
+      {/* 8. FEATURED MODULAR PRODUCTS */}
+      <section className="container-custom">
+        <div className="flex flex-col gap-10">
+          <Reveal>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
+              <div>
+                <div className="text-xs font-mono text-[var(--accent)] uppercase tracking-wider mb-1">
+                  Modular Product Suite
+                </div>
+                <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
+                  Enterprise Software &amp; AI Products
+                </h2>
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
+                  Pre-engineered platforms designed for private cloud or on-premise deployment with zero vendor lock-in.
+                </p>
+              </div>
+              <NextLink href="/products">
+                <Button variant="ghost" size="sm" className="font-mono text-xs">
+                  <span>Explore product catalog</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Button>
+              </NextLink>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {featuredProducts.map((product) => (
+              <Reveal key={product.slug}>
+                <Card variant="interactive" className="p-6 sm:p-8 flex flex-col justify-between h-full gap-6">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono text-[var(--accent-ai)] uppercase">
+                        {product.offer}
+                      </span>
+                      <Badge status={product.status} size="sm" />
+                    </div>
+
+                    <div>
+                      <h3 className="text-xl font-bold text-[var(--text-primary)] mb-1">
+                        <NextLink href={`/products/${product.slug}`} className="hover:text-[var(--accent)] transition-colors">
+                          {product.name}
+                        </NextLink>
+                      </h3>
+                      <p className="text-xs font-mono text-[var(--text-muted)]">
+                        {product.tagline}
+                      </p>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                      {product.problem}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {product.modules.slice(0, 3).map((mod, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-0.5 rounded text-[11px] font-mono bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-secondary)]"
+                        >
+                          {mod}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between">
+                    <NextLink
+                      href={`/products/${product.slug}`}
+                      className="text-xs font-mono text-[var(--accent)] hover:underline flex items-center gap-1"
+                    >
+                      <span>Inspect Architecture</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </NextLink>
+
+                    <NextLink href={`/contact?product=${product.slug}`}>
+                      <Button variant="secondary" size="sm" className="font-mono text-xs">
+                        Book Demo
+                      </Button>
+                    </NextLink>
+                  </div>
+                </Card>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. PITCH LAB — READY-TO-ENGINEER CONCEPTS */}
+      <section className="container-custom">
+        <div className="flex flex-col gap-10">
+          <Reveal>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
+              <div>
+                <div className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-wider mb-1">
+                  NIMBRIX Pitch Lab
+                </div>
+                <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
+                  Pre-Engineered Architecture Blueprints
+                </h2>
+                <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
+                  Validated concept architectures ready for rapid prototyping and enterprise co-development.
+                </p>
+              </div>
+              <NextLink href="/ideas">
+                <Button variant="ghost" size="sm" className="font-mono text-xs">
+                  <span>Browse all concepts</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Button>
+              </NextLink>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredIdeas.map((idea) => (
+              <Reveal key={idea.slug}>
+                <Card variant="interactive" className="p-5 flex flex-col justify-between h-full gap-4">
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase">
+                        {idea.industry}
+                      </span>
+                      <Badge status="Concept" size="sm" />
+                    </div>
+
+                    <h3 className="text-base font-bold text-[var(--text-primary)] leading-snug">
+                      <NextLink href={`/ideas/${idea.slug}`} className="hover:text-[var(--accent)] transition-colors">
+                        {idea.title}
+                      </NextLink>
+                    </h3>
+
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3">
+                      {idea.concept}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs font-mono">
+                    <NextLink href={`/ideas/${idea.slug}`} className="text-[var(--accent)] hover:underline flex items-center gap-1">
+                      <span>View Blueprint</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </NextLink>
+                    <span className="text-[10px] text-[var(--accent-ai)]">Blueprint Ready</span>
+                  </div>
+                </Card>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 10. INTERACTIVE ESTIMATOR CALLOUT BANNER */}
+      <section className="container-custom">
+        <Reveal>
+          <div className="p-8 sm:p-12 rounded-[var(--radius-lg)] bg-gradient-to-r from-[var(--bg-card)] via-[var(--bg-elevated)] to-[var(--bg-card)] border border-[var(--accent)]/30 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_30px_rgba(77,141,255,0.06)]">
+            <div className="max-w-xl flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <Calculator className="w-4 h-4 text-[var(--accent)]" />
+                <span className="text-xs font-mono uppercase tracking-wider text-[var(--accent)] font-semibold">
+                  Transparent Estimation Engine
+                </span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
+                Calculate Your Budget &amp; Delivery Horizon
+              </h2>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
+                Answer 4 structured engineering questions to compute a realistic capital investment bracket and delivery timeline — then receive a pre-filled technical brief.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+              <NextLink href="/estimate" className="w-full sm:w-auto">
+                <Button variant="primary" size="md" className="w-full sm:w-auto font-mono text-xs">
+                  <span>Launch Estimator</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Button>
+              </NextLink>
+              <NextLink href="/process" className="w-full sm:w-auto">
+                <Button variant="secondary" size="md" className="w-full sm:w-auto font-mono text-xs">
+                  How We Build
+                </Button>
+              </NextLink>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* 11. COMMERCIAL SCOPES (Typical Ranges Table) */}
       <section className="container-custom">
         <div className="p-8 sm:p-12 rounded-[var(--radius-lg)] bg-[var(--bg-card)] border border-[var(--border)] flex flex-col gap-8">
           <Reveal>

@@ -67,6 +67,53 @@ export const SolutionSchema = z.object({
 
 export type Solution = z.infer<typeof SolutionSchema>;
 
+export const IdeaSchema = z.object({
+  slug: z.string(),
+  title: z.string(),
+  industry: z.string(),
+  concept: z.string(),
+  problem: z.string(),
+  solution: z.string(),
+  howItWorks: z.array(z.string()),
+  potentialValue: z.string(),
+  status: z.enum(["Concept", "Prototype"]),
+  roadmap: z.array(z.string()).optional(),
+  relevantProduct: z.string().optional(),
+  relevantSolution: z.string().optional(),
+});
+
+export type Idea = z.infer<typeof IdeaSchema>;
+
+export const IndustrySchema = z.object({
+  slug: z.string(),
+  name: z.string(),
+  eyebrow: z.string(),
+  tagline: z.string(),
+  summary: z.string(),
+  challenges: z.array(z.string()),
+  solutions: z.array(z.string()),
+  architectureHighlights: z.array(z.string()),
+  relevantProjects: z.array(z.string()),
+  relevantProducts: z.array(z.string()),
+  relevantIdeas: z.array(z.string()),
+});
+
+export type Industry = z.infer<typeof IndustrySchema>;
+
+export const LabExperimentSchema = z.object({
+  slug: z.string(),
+  title: z.string(),
+  category: z.enum(["AI & ML Benchmark", "Workflow Tooling", "Architecture Prototype"]),
+  status: z.enum(["Lab", "Open Source", "Prototype"]),
+  description: z.string(),
+  technicalTakeaway: z.string(),
+  stack: z.array(z.string()),
+  repoUrl: z.string().optional(),
+  metrics: z.array(z.object({ label: z.string(), value: z.string() })).optional(),
+});
+
+export type LabExperiment = z.infer<typeof LabExperimentSchema>;
+
 // SEED DATA: PRODUCTS
 export const PRODUCTS: Product[] = [
   {
@@ -446,3 +493,288 @@ export const SOLUTIONS: Solution[] = [
     typicalScope: "$20,000 – $80,000",
   },
 ];
+
+// SEED DATA: PITCH LAB IDEAS (All marked honestly with status: "Concept")
+export const IDEAS: Idea[] = [
+  {
+    slug: "telecom-ai-ops",
+    title: "Autonomous Telecom Network & Customer Operations",
+    industry: "Telecom",
+    concept:
+      "Self-healing network ticket resolution and omnichannel subscriber billing copilot built for high-throughput telecom infrastructures.",
+    problem:
+      "Tier-1 telecom NOC teams drown in 15,000+ daily alert spikes across heterogeneous cell towers and microwave links, while subscribers face 25-minute wait times during regional outages.",
+    solution:
+      "A dual-engine platform combining real-time Kafka alarm correlation with multilingual WhatsApp/web subscriber agents to deflect tier-1 inquiries and isolate tower root causes in seconds.",
+    howItWorks: [
+      "Kafka telemetry stream ingests tower alarm packets and deduplicates cascading flapping alerts",
+      "Vector search correlates active alerts with historical field remediation logs and circuit schematics",
+      "Multilingual AI Agent deflects inbound WhatsApp subscriber tickets with live geofenced restoration ETAs",
+      "Automated dispatch payloads format diagnostic briefs directly for field engineering crews",
+    ],
+    potentialValue:
+      "Projected 65% reduction in Tier-1 support call volume and 40% faster mean-time-to-resolution (MTTR) on network outages.",
+    status: "Concept",
+    roadmap: ["Architecture Blueprint", "Kafka Telemetry Adapter", "Subscriber WhatsApp Agent", "Field Dispatch API"],
+    relevantProduct: "nimbrix-agents",
+    relevantSolution: "ai-agents",
+  },
+  {
+    slug: "banking-customer-ops",
+    title: "Private Financial Knowledge & Regulatory Compliance Copilot",
+    industry: "Banking & Finance",
+    concept:
+      "Air-gapped compliance auditing and wealth management assistant operating under strict zero-data-retention parameters.",
+    problem:
+      "Relationship managers and compliance analysts lose 3–4 hours daily cross-referencing multi-jurisdictional AML/KYC regulations and investment prospectuses.",
+    solution:
+      "A self-hosted, RBAC-governed RAG engine that queries internal bank policy directives, cross-border banking laws, and customer transaction records with cryptographic verification.",
+    howItWorks: [
+      "On-premises vector embedding of central bank circulars, sanctions databases, and product disclosures",
+      "Hardware-enforced tenant isolation ensuring loan officers only access authorized client files",
+      "In-line clickable citation viewer displaying exact paragraphs and legal regulatory amendments",
+      "Automated audit trail logging all prompt histories for FINRA / SEC compliance reviews",
+    ],
+    potentialValue:
+      "Cuts regulatory review cycle times from 48 hours to under 15 minutes while ensuring zero customer PII leaves bank VPC boundaries.",
+    status: "Concept",
+    roadmap: ["Security & RBAC Audit", "Local LLM Benchmark (vLLM)", "Document Parser Pipeline", "Audit Dashboard"],
+    relevantProduct: "nimbrix-ask",
+    relevantSolution: "custom-ai",
+  },
+  {
+    slug: "manufacturing-intelligent-ops",
+    title: "Factory Telemetry & Predictive Maintenance Hub",
+    industry: "Manufacturing",
+    concept:
+      "Real-time sensor telemetry processing and automated equipment maintenance scheduling for industrial facilities.",
+    problem:
+      "Unplanned stamping press and CNC machine downtime costs automotive and heavy fabrication facilities thousands of dollars per idle hour with siloed PLC logs.",
+    solution:
+      "An integrated operations control tower combining edge MQTT telemetry streams, vibration anomaly detection, and automated technician work-order dispatching.",
+    howItWorks: [
+      "Edge gateway aggregates high-frequency vibration, thermal, and electrical telemetry from factory PLCs",
+      "Statistical anomaly detection flags mechanical deviation 48 hours before component catastrophic failure",
+      "Workflow engine cross-checks spare-part inventory in SAP and generates maintenance tickets",
+      "Technician mobile interface provides AR schematics and step-by-step repair checklists",
+    ],
+    potentialValue:
+      "Anticipated 28% reduction in unplanned line halts and automated spare-part replenishment cycles.",
+    status: "Concept",
+    roadmap: ["PLC / MQTT Ingestion Engine", "Anomaly Scoring Model", "SAP PM Integration", "Technician Mobile View"],
+    relevantProduct: "nimbrix-ops",
+    relevantSolution: "enterprise-software",
+  },
+  {
+    slug: "logistics-control-tower",
+    title: "Multi-Modal Freight Dispatch & Customs Intelligence",
+    industry: "Logistics",
+    concept:
+      "Autonomous freight document parsing, customs declaration validation, and dynamic route exception monitoring.",
+    problem:
+      "Freight forwarders handle hundreds of mismatched bills of lading, commercial invoices, and packing lists daily, leading to port detention fees and manual re-typing.",
+    solution:
+      "A document intelligence and dispatch pipeline that extracts customs fields from messy scans, verifies tariff codes, and dispatches real-time carrier tracking alerts.",
+    howItWorks: [
+      "Ingests scanned shipping manifests and bills of lading via automated email parser",
+      "Extracts Harmonized System (HS) codes, weights, and consignee data with cross-validation checks",
+      "Flags tariff discrepancies and missing declarations before containers reach customs ports",
+      "Syncs cleared shipments into dispatch schedules with automated SMS/email driver updates",
+    ],
+    potentialValue:
+      "Eliminates 90% of manual data entry in freight clearance and prevents container demurrage charges.",
+    status: "Concept",
+    roadmap: ["Document OCR Pipeline", "HS Code Validation Model", "Port Telemetry Tracker", "ERP Connector"],
+    relevantProduct: "nimbrix-docs",
+    relevantSolution: "ai-agents",
+  },
+];
+
+// SEED DATA: INDUSTRIES
+export const INDUSTRIES: Industry[] = [
+  {
+    slug: "telecom",
+    name: "Telecommunications & Networks",
+    eyebrow: "HIGH-CONCURRENCY INFRASTRUCTURE",
+    tagline: "Scalable AI agent fleets, alarm telemetry correlation, and subscriber self-service for national operators.",
+    summary:
+      "Telecom operators manage millions of subscribers and thousands of network nodes. We engineer autonomous agent architectures that resolve billing and technical queries over WhatsApp, correlate Kafka network alarms, and eliminate tier-1 support bottlenecks.",
+    challenges: [
+      "Massive inquiry surges during localized fiber cuts and network degradations",
+      "Fragmented subscriber data across legacy billing BSS/OSS and ticketing databases",
+      "Strict data sovereignty rules requiring in-country compute and telecom compliance",
+      "High agent churn and rising operational costs in offshore support contact centers",
+    ],
+    solutions: [
+      "Omnichannel AI Agent platform answering queries in English, Arabic, and regional dialects",
+      "Kafka alarm streaming pipeline isolating root causes from thousands of cascading tower alerts",
+      "Secure CRM & BSS integration for balance checks, plan adjustments, and SIM provisioning",
+      "Human-in-the-loop escalation consoles providing full conversational summaries to tier-2 engineers",
+    ],
+    architectureHighlights: [
+      "Microservices deployed on private cloud or on-premise Kubernetes clusters",
+      "Sub-200ms streaming responses via WebSocket and WebRTC connections",
+      "Stateless session brokers with Redis cluster caching and Postgres audit persistence",
+    ],
+    relevantProjects: ["workflow-automation-bots", "ai-workforce-assistant"],
+    relevantProducts: ["nimbrix-agents", "nimbrix-ask"],
+    relevantIdeas: ["telecom-ai-ops"],
+  },
+  {
+    slug: "banking-finance",
+    name: "Banking & Financial Services",
+    eyebrow: "SECURITY-FIRST ENTERPRISE ARCHITECTURE",
+    tagline: "Air-gapped private copilots, KYC document automation, and immutable audit logs for regulated institutions.",
+    summary:
+      "Financial institutions cannot compromise on regulatory compliance, data isolation, or transactional integrity. We build air-gapped knowledge copilots and document intelligence engines that parse prospectuses and contracts without leaking customer PII.",
+    challenges: [
+      "Zero tolerance for third-party cloud data retention or public LLM training exposure",
+      "Hundreds of hours lost by compliance teams reviewing cross-border regulatory circulars",
+      "Manual extraction bottlenecks in commercial lending, mortgage underwriting, and KYC",
+      "Fragmented core banking mainframes with brittle API adapters",
+    ],
+    solutions: [
+      "Private on-premises RAG copilots deployed with vLLM / Ollama behind bank firewalls",
+      "Automated financial document parsing and balance sheet extraction with math verification",
+      "Strict Role-Based Access Control (RBAC) mapped directly to Active Directory groups",
+      "Cryptographic tamper-evident audit logs capturing every query, retrieval, and inference",
+    ],
+    architectureHighlights: [
+      "VPC and air-gapped on-premises GPU deployment configurations",
+      "pgvector / Qdrant with tenant-level cryptographic isolation",
+      "Strict zero-data-retention SLAs with enterprise endpoint models",
+    ],
+    relevantProjects: ["ai-workforce-assistant"],
+    relevantProducts: ["nimbrix-docs", "nimbrix-ask"],
+    relevantIdeas: ["banking-customer-ops"],
+  },
+  {
+    slug: "manufacturing",
+    name: "Manufacturing & Industrial",
+    eyebrow: "OPERATIONAL RELIABILITY",
+    tagline: "Factory floor telemetry, predictive maintenance, and multi-tier approval workflows for industrial facilities.",
+    summary:
+      "Modern manufacturers operate complex supply chains and high-value capital machinery. We bridge legacy PLCs and modern cloud systems with real-time operational control towers, predictive maintenance pipelines, and automated shift handoff tooling.",
+    challenges: [
+      "Unplanned machine downtime causing cascading production delays and idle labor costs",
+      "Fragmented sensor logs locked inside proprietary PLC software and SCADA terminals",
+      "Paper-based machine inspection logs and slow maintenance work-order sign-offs",
+      "Siloed inventory systems causing unexpected stockouts of critical machine spare parts",
+    ],
+    solutions: [
+      "Unified operations control towers aggregating telemetry from factory MQTT brokers",
+      "Anomaly detection models identifying mechanical drift 48 hours prior to equipment failure",
+      "Digital multi-tier approval matrix with SLA timers for capital purchases and repairs",
+      "Computer vision quality benchmarks for automated component defect identification",
+    ],
+    architectureHighlights: [
+      "Edge-to-cloud telemetry ingestion via MQTT, Kafka, and timeseries databases",
+      "Configurable escalation bots notifying plant managers via mobile and desktop alerts",
+      "Direct integration with SAP Plant Maintenance (PM) and Materials Management (MM)",
+    ],
+    relevantProjects: ["fashion-mnist-classifier"],
+    relevantProducts: ["nimbrix-ops", "nimbrix-flow"],
+    relevantIdeas: ["manufacturing-intelligent-ops"],
+  },
+  {
+    slug: "logistics-supply-chain",
+    name: "Logistics & Supply Chain",
+    eyebrow: "MISSION-CRITICAL VELOCITY",
+    tagline: "Automated customs extraction, freight bill reconciliation, and real-time dispatch control towers.",
+    summary:
+      "Logistics speed determines commercial profitability. We build automated document intelligence engines that parse bills of lading and commercial invoices in seconds, verifying customs declarations and preventing port demurrage penalties.",
+    challenges: [
+      "Manual re-keying of international shipping documents across inconsistent paper layouts",
+      "Customs declaration errors resulting in expensive port holds and demurrage charges",
+      "Disconnected transport management systems (TMS) and customer tracking portals",
+      "Lack of real-time visibility into cross-border container delays and carrier handoffs",
+    ],
+    solutions: [
+      "Neural document extraction converting messy bills of lading into structured ERP data",
+      "Cross-validation engines matching commercial invoice totals with customs declarations",
+      "Automated exception tracking notifying dispatchers of shipping bottlenecks immediately",
+      "Interactive portal for shippers with real-time milestones and status audit logs",
+    ],
+    architectureHighlights: [
+      "OCR + token classification microservice processing PDFs, scans, and emails",
+      "Webhook and REST integration with carrier APIs and customs broker systems",
+      "Encrypted cloud storage with automatic document deduplication and archival",
+    ],
+    relevantProjects: ["neiki-operations-platform"],
+    relevantProducts: ["nimbrix-docs", "nimbrix-ops"],
+    relevantIdeas: ["logistics-control-tower"],
+  },
+];
+
+// SEED DATA: LABS & OPEN SOURCE
+export const LAB_EXPERIMENTS: LabExperiment[] = [
+  {
+    slug: "fashion-mnist-vision",
+    title: "Fashion-MNIST Deep Vision Benchmark",
+    category: "AI & ML Benchmark",
+    status: "Lab",
+    description:
+      "Benchmarking PyTorch convolutional neural networks with batch normalization and dropout regularization for rapid multi-class visual recognition under compute constraints.",
+    technicalTakeaway:
+      "Demonstrated 92.4% test accuracy with lightweight parameter budgets, proving feasibility for edge-deployed computer vision defect inspection.",
+    stack: ["PyTorch", "Python", "Matplotlib", "NumPy", "CUDA"],
+    repoUrl: "https://github.com/Mussab-21",
+    metrics: [
+      { label: "Test Accuracy", value: "92.4%" },
+      { label: "Epoch Convergence", value: "15 epochs" },
+      { label: "Inference Latency", value: "<8ms on CPU" },
+    ],
+  },
+  {
+    slug: "discord-figma-bots",
+    title: "Event-Driven Discord & Figma Workflow Bridge",
+    category: "Workflow Tooling",
+    status: "Open Source",
+    description:
+      "Bi-directional webhook synchronization service translating Figma version publish events into interactive Discord rich embeds with action buttons.",
+    technicalTakeaway:
+      "Reduced design review coordination latency from hours to sub-2 seconds with zero message loss across distributed design teams.",
+    stack: ["Node.js", "Discord.js", "Figma REST API", "Webhooks", "TypeScript"],
+    repoUrl: "https://github.com/Mussab-21",
+    metrics: [
+      { label: "Event Dispatch", value: "<1.8s" },
+      { label: "Reliability", value: "99.9%" },
+      { label: "Codebase", value: "100% TypeScript" },
+    ],
+  },
+  {
+    slug: "hybrid-rag-benchmark",
+    title: "Hybrid Lexical + Vector Retrieval Benchmark",
+    category: "Architecture Prototype",
+    status: "Lab",
+    description:
+      "Comparative latency and precision study measuring BM25 lexical ranking combined with dense semantic embeddings (pgvector vs Qdrant) over 25,000 regulatory legal contracts.",
+    technicalTakeaway:
+      "Reciprocal Rank Fusion (RRF) yielded 23% higher citation accuracy than pure vector cosine search on dense contract clauses.",
+    stack: ["pgvector", "BM25", "Python", "FastAPI", "TypeScript"],
+    repoUrl: "https://github.com/Mussab-21",
+    metrics: [
+      { label: "Corpus Size", value: "25,000 documents" },
+      { label: "Mean Retrieval Latency", value: "48ms" },
+      { label: "Citation Accuracy", value: "97.8%" },
+    ],
+  },
+  {
+    slug: "rate-limiter-resilience",
+    title: "Multi-Tier Rate Limiting & Failover Architecture",
+    category: "Architecture Prototype",
+    status: "Prototype",
+    description:
+      "Distributed rate-limiting architecture featuring an Upstash Redis primary sliding-window layer with automatic zero-downtime fallback to transactional SQLite/Prisma storage.",
+    technicalTakeaway:
+      "Maintains sub-15ms client verification while ensuring complete bot deterrence even during full cloud Redis outages.",
+    stack: ["Upstash Redis", "Prisma", "SQLite / PostgreSQL", "TypeScript", "Next.js"],
+    repoUrl: "https://github.com/Mussab-21",
+    metrics: [
+      { label: "Primary Latency", value: "<12ms" },
+      { label: "Failover Downtime", value: "0ms" },
+      { label: "Attack Deflection", value: "100%" },
+    ],
+  },
+];
+

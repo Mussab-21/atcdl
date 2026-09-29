@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { SOLUTIONS, PRODUCTS, PROJECTS } from "@/content/data";
+import { SOLUTIONS, PRODUCTS, PROJECTS, IDEAS, INDUSTRIES } from "@/content/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://nimbrix.com";
@@ -10,6 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/solutions",
     "/products",
     "/work",
+    "/industries",
+    "/ideas",
+    "/estimate",
+    "/process",
+    "/labs",
     "/contact",
     "/about",
     "/trust",
@@ -19,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteUrl}${route}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
-    priority: route === "" ? 1.0 : 0.8,
+    priority: route === "" ? 1.0 : route === "/estimate" || route === "/contact" ? 0.9 : 0.8,
   }));
 
   const solutionRoutes = SOLUTIONS.map((s) => ({
@@ -43,5 +48,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...solutionRoutes, ...productRoutes, ...projectRoutes];
+  const ideaRoutes = IDEAS.map((idea) => ({
+    url: `${siteUrl}/ideas/${idea.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  const industryRoutes = INDUSTRIES.map((ind) => ({
+    url: `${siteUrl}/industries/${ind.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...solutionRoutes,
+    ...productRoutes,
+    ...projectRoutes,
+    ...ideaRoutes,
+    ...industryRoutes,
+  ];
 }

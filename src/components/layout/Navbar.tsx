@@ -18,6 +18,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Products", href: "/products" },
   { label: "Work", href: "/work" },
   { label: "Industries", href: "/industries" },
+  { label: "Pitch Lab", href: "/ideas" },
   { label: "Process", href: "/process" },
 ];
 
@@ -190,6 +191,11 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop CTA Action */}
           <div className="hidden md:flex items-center gap-3">
+            <NextLink href="/estimate">
+              <Button size="sm" variant="secondary" className="font-mono text-xs hidden lg:inline-flex">
+                <span>Estimator</span>
+              </Button>
+            </NextLink>
             <NextLink href="/contact">
               <Button size="sm" variant="primary" className="font-mono text-xs">
                 <span>Start a Project</span>
@@ -212,8 +218,8 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[var(--nav-h)] z-30 bg-[var(--bg-primary)]/95 backdrop-blur-xl border-t border-[var(--border)] p-6 flex flex-col justify-between md:hidden animate-in fade-in-50 duration-200">
-          <div className="flex flex-col gap-4">
+        <div className="fixed inset-0 top-[var(--nav-h)] z-30 bg-[var(--bg-primary)]/95 backdrop-blur-xl border-t border-[var(--border)] p-6 flex flex-col justify-between md:hidden animate-in fade-in-50 duration-200 overflow-y-auto">
+          <div className="flex flex-col gap-3">
             <div className="text-[10px] font-mono uppercase tracking-widest text-[var(--text-muted)] mb-1">
               Navigation
             </div>
@@ -221,12 +227,26 @@ export const Navbar: React.FC = () => {
               <NextLink
                 key={item.label}
                 href={item.href}
-                className="text-lg font-medium text-[var(--text-primary)] hover:text-[var(--accent)] py-2 border-b border-[var(--border)]/50 flex items-center justify-between"
+                className="text-base font-medium text-[var(--text-primary)] hover:text-[var(--accent)] py-2 border-b border-[var(--border)]/50 flex items-center justify-between"
               >
                 <span>{item.label}</span>
                 <ArrowRight className="w-4 h-4 text-[var(--text-muted)]" />
               </NextLink>
             ))}
+            <NextLink
+              href="/estimate"
+              className="text-base font-medium text-[var(--accent-ai)] hover:text-[var(--accent)] py-2 border-b border-[var(--border)]/50 flex items-center justify-between"
+            >
+              <span>Project Estimator</span>
+              <ArrowRight className="w-4 h-4 text-[var(--text-muted)]" />
+            </NextLink>
+            <NextLink
+              href="/labs"
+              className="text-base font-medium text-[var(--text-secondary)] hover:text-[var(--accent)] py-2 border-b border-[var(--border)]/50 flex items-center justify-between"
+            >
+              <span>R&amp;D Labs &amp; Open Source</span>
+              <ArrowRight className="w-4 h-4 text-[var(--text-muted)]" />
+            </NextLink>
           </div>
 
           <div className="pt-6 border-t border-[var(--border)]">

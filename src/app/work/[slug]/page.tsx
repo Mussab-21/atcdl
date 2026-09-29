@@ -156,14 +156,33 @@ export default async function ProjectDetailPage({ params }: Props) {
             </p>
           </div>
 
-          <NextLink href={`/contact?ref=${project.slug}`}>
-            <Button size="lg" variant="primary">
-              <span>Start Project Brief</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          </NextLink>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <NextLink href="/estimate">
+              <Button size="lg" variant="secondary" className="font-mono text-xs whitespace-nowrap">
+                <span>Run Estimator</span>
+              </Button>
+            </NextLink>
+            <NextLink href={`/contact?ref=${project.slug}`}>
+              <Button size="lg" variant="primary" className="font-mono text-xs whitespace-nowrap">
+                <span>Start Project Brief</span>
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </NextLink>
+          </div>
         </div>
       </Reveal>
+
+      {/* Cross Navigation Strip */}
+      <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[var(--border)] text-xs font-mono">
+        <NextLink href="/industries" className="text-[var(--text-secondary)] hover:text-[var(--accent)] flex items-center gap-1">
+          <span>Explore Industry Deployments</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </NextLink>
+        <NextLink href="/ideas" className="text-[var(--accent-ai)] hover:underline flex items-center gap-1">
+          <span>Inspect Pitch Lab Architecture Concepts</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </NextLink>
+      </div>
     </div>
   );
 }

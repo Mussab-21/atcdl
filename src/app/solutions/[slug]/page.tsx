@@ -157,14 +157,33 @@ export default async function SolutionDetailPage({ params }: Props) {
             </p>
           </div>
 
-          <NextLink href={`/contact?type=${solution.slug}`}>
-            <Button size="lg" variant="primary" className="whitespace-nowrap">
-              <span>Start Project Brief</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          </NextLink>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <NextLink href="/estimate">
+              <Button size="lg" variant="secondary" className="font-mono text-xs whitespace-nowrap">
+                <span>Run Estimator</span>
+              </Button>
+            </NextLink>
+            <NextLink href={`/contact?type=${solution.slug}`}>
+              <Button size="lg" variant="primary" className="whitespace-nowrap font-mono text-xs">
+                <span>Start Project Brief</span>
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </NextLink>
+          </div>
         </div>
       </Reveal>
+
+      {/* Cross Navigation Strip */}
+      <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[var(--border)] text-xs font-mono">
+        <NextLink href="/work" className="text-[var(--text-secondary)] hover:text-[var(--accent)] flex items-center gap-1">
+          <span>View Related Verified Codebases</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </NextLink>
+        <NextLink href="/industries" className="text-[var(--accent-ai)] hover:underline flex items-center gap-1">
+          <span>Explore Target Industry Applications</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </NextLink>
+      </div>
     </div>
   );
 }
