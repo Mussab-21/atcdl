@@ -60,15 +60,66 @@ export const ProductSchema = z.object({
 
 export type Product = z.infer<typeof ProductSchema>;
 
+export const SolutionPackageSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  tagline: z.string(),
+  scopeConcept: z.string(),
+  designedFor: z.string(),
+  deliverableConcept: z.string(),
+  pricingPkr: z.string(),
+  pricingUsd: z.string(),
+  timeline: z.string(),
+  features: z.array(z.string()),
+  visualType: z.string(),
+  isPopular: z.boolean().optional(),
+});
+
+export type SolutionPackage = z.infer<typeof SolutionPackageSchema>;
+
+export const DeliverableItemSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  metricOrDetail: z.string(),
+});
+
+export type DeliverableItem = z.infer<typeof DeliverableItemSchema>;
+
+export const HowItWorksStepSchema = z.object({
+  step: z.string(),
+  title: z.string(),
+  description: z.string(),
+});
+
+export type HowItWorksStep = z.infer<typeof HowItWorksStepSchema>;
+
+export const ComparisonFeatureSchema = z.object({
+  name: z.string(),
+  starter: z.boolean(),
+  growth: z.boolean(),
+  scale: z.boolean(),
+});
+
+export type ComparisonFeature = z.infer<typeof ComparisonFeatureSchema>;
+
 export const SolutionSchema = z.object({
   slug: z.string(),
   title: z.string(),
   eyebrow: z.string(),
+  tabTitle: z.string().optional(),
   tagline: z.string(),
   description: z.string(),
+  businessHeadline: z.string().optional(),
+  businessExplanation: z.string().optional(),
   capabilities: z.array(z.string()),
   architecturePoints: z.array(z.string()),
   deliverables: z.array(z.string()),
+  deliverableItems: z.array(DeliverableItemSchema).optional(),
+  packages: z.array(SolutionPackageSchema).optional(),
+  howItWorksSteps: z.array(HowItWorksStepSchema).optional(),
+  idealFor: z.array(z.string()).optional(),
+  whatWeDontDo: z.string().optional(),
+  comparisonFeatures: z.array(ComparisonFeatureSchema).optional(),
   typicalTimeline: z.string(),
   typicalScope: z.string(),
 });
@@ -388,15 +439,144 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-// SEED DATA: SOLUTIONS
+// SEED DATA: SOLUTIONS (Outcome-first engineering architectures & transparent scopes)
 export const SOLUTIONS: Solution[] = [
   {
     slug: "custom-ai",
     title: "Custom AI & GenAI Systems",
-    eyebrow: "PRODUCTION INTELLIGENCE",
-    tagline: "Private copilots, RAG architectures, and custom LLM inference pipelines built for enterprise data security.",
+    eyebrow: "CUSTOM AI SYSTEMS",
+    tabTitle: "01 AI & GenAI",
+    businessHeadline: "Give your team an AI that understands your business.",
+    businessExplanation:
+      "Turn your company's information into a private AI assistant that can answer questions, find information, and help your team work faster without searching through dozens of files.",
+    tagline:
+      "Private copilots, RAG architectures, and custom LLM inference pipelines built for enterprise data security.",
     description:
-      "We design and deploy domain-specific AI systems that connect directly to your proprietary enterprise databases, documents, and workflows. Built with strict role-based access control, cryptographic isolation, and zero third-party training data leakage.",
+      "ATCDL builds private AI systems that can understand your documents, knowledge, and business data — so your team can find answers and get work done without searching through dozens of files. Built with strict role-based access control, cryptographic isolation, and zero third-party training data leakage.",
+    deliverableItems: [
+      {
+        title: "Your Private AI Assistant",
+        description: "An intuitive web interface your employees use daily to query documents, draft summaries, and complete complex workflows.",
+        metricOrDetail: "Sub-second answers from verified data",
+      },
+      {
+        title: "Your Structured Knowledge Base",
+        description: "Your internal PDFs, SOP manuals, contracts, and spreadsheets organized into an encrypted, continuously synchronized vector store.",
+        metricOrDetail: "Zero public training leakage",
+      },
+      {
+        title: "Your Enterprise Control Layer",
+        description: "Role-based permissions, monitoring consoles, and exact source citations so sensitive business information stays protected.",
+        metricOrDetail: "Page & paragraph attribution",
+      },
+      {
+        title: "Your Business Integrations",
+        description: "Direct connectors linking your AI assistant into Slack, Microsoft Teams, SharePoint, or your internal operational portals.",
+        metricOrDetail: "Secure OAuth2 / API hooks",
+      },
+    ],
+    packages: [
+      {
+        id: "ai-starter",
+        name: "AI Starter",
+        tagline: "Your first private AI assistant.",
+        scopeConcept: "1 core document repository, up to 3 active users.",
+        designedFor: "Teams taking their first step with internal AI who need quick, verifiable productivity gains.",
+        deliverableConcept: "A dedicated private chat assistant grounded in one key repository (e.g. HR policies, technical manuals, or SOPs).",
+        pricingPkr: "PKR 150,000 – 400,000",
+        pricingUsd: "$8,000 – $20,000",
+        timeline: "2–4 weeks",
+        features: [
+          "Single document repository ingestion",
+          "Private web chat assistant interface",
+          "Exact page-level source citations",
+          "Basic role-based access controls",
+          "Standard email deployment support",
+        ],
+        visualType: "starter",
+      },
+      {
+        id: "ai-workspace",
+        name: "AI Workspace",
+        tagline: "An AI workspace built around your business knowledge.",
+        scopeConcept: "Multi-repository knowledge base, team collaboration, integrations, up to 25 users.",
+        designedFor: "Organizations ready to integrate AI deeply into daily cross-departmental operations.",
+        deliverableConcept: "Full organizational knowledge engine indexing SharePoint, Google Drive, PDFs, and databases with role-based access.",
+        pricingPkr: "PKR 400,000 – 1,200,000",
+        pricingUsd: "$25,000 – $75,000",
+        timeline: "6–10 weeks",
+        features: [
+          "Multi-source knowledge connectors (SharePoint, Drive, SQL)",
+          "Departmental permission boundaries",
+          "Slack & Microsoft Teams bot integration",
+          "Admin telemetry & query analytics console",
+          "Hallucination guardrails & evaluation harness",
+        ],
+        visualType: "workspace",
+        isPopular: true,
+      },
+      {
+        id: "ai-command-center",
+        name: "AI Command Center",
+        tagline: "A private AI platform designed around your operations.",
+        scopeConcept: "Full custom enterprise platform, private VPC/air-gapped deployment, multi-agent reasoning.",
+        designedFor: "Enterprises requiring strict data sovereignty, air-gapped deployments, and automated operational reasoning.",
+        deliverableConcept: "We are onboarding a selective cohort of founding enterprise partners for full-scale custom AI architectures.",
+        pricingPkr: "Custom quote only",
+        pricingUsd: "$75,000 – $150,000+",
+        timeline: "10–16 weeks",
+        features: [
+          "Air-gapped private LLM execution (vLLM / Ollama)",
+          "Domain-specific model fine-tuning & quantization",
+          "Multi-agent autonomous decision workflows",
+          "Enterprise SSO (SAML / Okta) & audit logging",
+          "Dedicated architectural lead & 24/7 SLA",
+        ],
+        visualType: "command",
+      },
+    ],
+    comparisonFeatures: [
+      { name: "Private AI Assistant Web UI", starter: true, growth: true, scale: true },
+      { name: "Document & PDF Extraction Pipeline", starter: true, growth: true, scale: true },
+      { name: "Exact Page Citations & Footnotes", starter: true, growth: true, scale: true },
+      { name: "Multi-Repository Connectors (Drive, SharePoint)", starter: false, growth: true, scale: true },
+      { name: "Departmental Role-Based Access (RBAC)", starter: false, growth: true, scale: true },
+      { name: "Slack / Teams Bot Integrations", starter: false, growth: true, scale: true },
+      { name: "Air-Gapped / Private Cloud Self-Hosting", starter: false, growth: false, scale: true },
+      { name: "Multi-Agent Autonomous Orchestration", starter: false, growth: false, scale: true },
+      { name: "Dedicated SLA & Founding Partner Support", starter: false, growth: false, scale: true },
+    ],
+    howItWorksSteps: [
+      {
+        step: "01",
+        title: "Understand Your Business",
+        description: "We audit your company's data sources, documents, and recurring team inquiries to map high-value knowledge bottlenecks.",
+      },
+      {
+        step: "02",
+        title: "Connect Your Knowledge",
+        description: "We ingest and structure your documentation into a private, encrypted vector store with zero third-party training rights.",
+      },
+      {
+        step: "03",
+        title: "Build Your AI System",
+        description: "We configure domain-specific prompt engineering, hallucination guardrails, and role-based access permissions.",
+      },
+      {
+        step: "04",
+        title: "Deploy & Improve",
+        description: "We roll out the assistant to your team with live telemetry tracking accuracy, latency, and frequent query topics.",
+      },
+    ],
+    idealFor: [
+      "Your employees waste up to 20% of their day hunting through scattered SharePoint folders, Google Drives, and PDF manuals.",
+      "New hires require weeks of senior team member time just to learn standard operating guidelines.",
+      "Customer support or account reps struggle to locate up-to-date pricing rules and contract terms during live conversations.",
+      "You want powerful AI capabilities but your legal or security team forbids sending internal data to public consumer models.",
+      "You require verifiable answers backed by exact page snippets rather than guessing or hallucinations.",
+    ],
+    whatWeDontDo:
+      "We don't build generic chatbot toys or send your proprietary company data to public training models. We engineer private, production-grade AI architectures designed specifically around your data governance.",
     capabilities: [
       "Retrieval-Augmented Generation (RAG) with hybrid lexical and semantic search",
       "Permission-aware vector databases respecting Active Directory / LDAP groups",
@@ -422,10 +602,139 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "ai-agents",
     title: "AI Agents & Autonomous Automation",
-    eyebrow: "WORKFLOW AUTOMATION",
-    tagline: "Autonomous multi-step agents that execute operational tasks, process documents, and sync systems with human oversight.",
+    eyebrow: "AI AGENTS & AUTOMATION",
+    tabTitle: "02 AI Agents",
+    businessHeadline: "Give repetitive business tasks to AI workers.",
+    businessExplanation:
+      "Give repetitive business tasks to AI agents that can perform the work, connect systems, and escalate important decisions to people when human judgment is needed.",
+    tagline:
+      "Autonomous multi-step agents that execute operational tasks, process documents, and sync systems with human oversight.",
     description:
-      "Replace brittle RPA and manual re-keying with intelligent agents capable of understanding unstructured documents, reasoning across APIs, qualifying leads, and reconciling discrepancies between disconnected ERP and CRM platforms.",
+      "Instead of your employees spending hours copying information between disconnected tools, ATCDL builds AI workers that monitor incoming requests, extract structured records, make verified decisions, and update your software systems 24/7.",
+    deliverableItems: [
+      {
+        title: "Autonomous Worker Fleet",
+        description: "Background worker agents that monitor incoming emails, webhooks, and folders 24/7 to process requests instantly.",
+        metricOrDetail: "24/7 operational throughput",
+      },
+      {
+        title: "Intelligent Decision Engine",
+        description: "Reasoning models trained to parse unstructured documents, check business rules, and validate transaction math.",
+        metricOrDetail: "Deterministic validation schemas",
+      },
+      {
+        title: "Human Review Dashboard",
+        description: "A clean interface where exceptions and high-value approvals are routed to human managers before final execution.",
+        metricOrDetail: "Configurable escalation thresholds",
+      },
+      {
+        title: "System Integration Adapters",
+        description: "Reliable connectors that sync decisions directly into your CRM, ERP, accounting software, or internal databases.",
+        metricOrDetail: "Automated retry & dead-letter queues",
+      },
+    ],
+    packages: [
+      {
+        id: "task-agent",
+        name: "Task Agent",
+        tagline: "One repetitive operational task automated end-to-end.",
+        scopeConcept: "1 specific workflow (e.g. email lead qualification or invoice ingestion into accounting software).",
+        designedFor: "Businesses with an acute operational bottleneck in a single department.",
+        deliverableConcept: "An intelligent agent handling one high-volume queue (e.g. Email -> AI extraction -> CRM update).",
+        pricingPkr: "PKR 150,000 – 400,000",
+        pricingUsd: "$8,000 – $20,000",
+        timeline: "2–4 weeks",
+        features: [
+          "1 automated high-volume workflow",
+          "Email & Webhook ingestion listener",
+          "Structured JSON data extraction",
+          "Direct destination system sync",
+          "Exception alert notifications via email/Slack",
+        ],
+        visualType: "starter",
+      },
+      {
+        id: "workflow-agent",
+        name: "Workflow Agent",
+        tagline: "Multi-step business processes automated with human oversight.",
+        scopeConcept: "Multi-step workflow spanning 2–3 systems with validation rules and approval gates.",
+        designedFor: "Growing operations needing coordinated handoffs between sales, finance, and logistics.",
+        deliverableConcept: "End-to-end process automation bridging multiple software tools with built-in audit trails.",
+        pricingPkr: "PKR 400,000 – 1,200,000",
+        pricingUsd: "$25,000 – $75,000",
+        timeline: "5–8 weeks",
+        features: [
+          "Multi-step operational orchestration",
+          "Cross-system synchronization (ERP + CRM + Billing)",
+          "Human-in-the-loop review dashboard",
+          "SLA tracking & automatic escalation",
+          "Self-healing error recovery & dead-letter queues",
+        ],
+        visualType: "workspace",
+        isPopular: true,
+      },
+      {
+        id: "autonomous-operations",
+        name: "Autonomous Operations",
+        tagline: "An AI workforce for complex operational processes.",
+        scopeConcept: "Fleet of specialized agents collaborating across department boundaries with comprehensive governance.",
+        designedFor: "Large organizations seeking enterprise-wide autonomous throughput across operations.",
+        deliverableConcept: "We are accepting a small number of founding enterprise partners for full-scale multi-agent deployments.",
+        pricingPkr: "Custom quote only",
+        pricingUsd: "$75,000 – $150,000+",
+        timeline: "8–14 weeks",
+        features: [
+          "Multi-agent swarm coordination mesh",
+          "Live telemetry & reasoning trace observability",
+          "Cryptographic audit logs for every decision",
+          "Enterprise secret vault & OAuth2 governance",
+          "24/7 proactive monitoring & dedicated SLA",
+        ],
+        visualType: "command",
+      },
+    ],
+    comparisonFeatures: [
+      { name: "24/7 Ingestion & Event Monitoring", starter: true, growth: true, scale: true },
+      { name: "Document & Invoice Intelligence (OCR)", starter: true, growth: true, scale: true },
+      { name: "Single Target System Sync", starter: true, growth: true, scale: true },
+      { name: "Multi-System Data Reconciliation", starter: false, growth: true, scale: true },
+      { name: "Human-in-the-Loop Review Dashboard", starter: false, growth: true, scale: true },
+      { name: "Automated Retry & Error Queues", starter: false, growth: true, scale: true },
+      { name: "Multi-Agent Swarm Orchestration", starter: false, growth: false, scale: true },
+      { name: "Historical Event Replay & Rollbacks", starter: false, growth: false, scale: true },
+      { name: "Founding Partner Architectural SLA", starter: false, growth: false, scale: true },
+    ],
+    howItWorksSteps: [
+      {
+        step: "01",
+        title: "Find Repetitive Work",
+        description: "We identify operational choke points where employees repeatedly copy data or follow repetitive manual checklists.",
+      },
+      {
+        step: "02",
+        title: "Design the Workflow",
+        description: "We map exact decision trees, edge-case protocols, and human escalation thresholds to ensure deterministic reliability.",
+      },
+      {
+        step: "03",
+        title: "Build the Agent",
+        description: "We train and configure reasoning models to parse unstructured inputs, execute tool calls, and format clean records.",
+      },
+      {
+        step: "04",
+        title: "Connect & Monitor",
+        description: "We connect the agent directly to your business software and provide real-time dashboards to audit every action.",
+      },
+    ],
+    idealFor: [
+      "Your employees spend hours every day re-typing invoice data, customs forms, or order emails into your ERP.",
+      "High-value sales leads go cold overnight because human staff cannot answer 24/7 across web and messaging channels.",
+      "Customer requests take days to resolve because of repetitive internal handoffs between departments.",
+      "You have brittle robotic process automation (RPA) scripts that break every time an internal website changes layout.",
+      "You want to expand operational transaction volume without linearly increasing back-office administrative headcount.",
+    ],
+    whatWeDontDo:
+      "We don't build brittle scrapers or unsupervised black-box scripts that break without warning. Every agent system includes strict data boundaries, schema validation, and supervisory review gates.",
     capabilities: [
       "Document & invoice intelligence: OCR + token classification + math validation",
       "Multi-channel customer and lead agents (Web, WhatsApp Business, Slack, Discord)",
@@ -451,10 +760,139 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "enterprise-software",
     title: "Enterprise Software & Systems Modernization",
-    eyebrow: "CORE SYSTEMS ENGINEERING",
-    tagline: "Resilient internal systems, approval engines, and data pipelines built for mission-critical operations.",
+    eyebrow: "ENTERPRISE SYSTEMS",
+    tabTitle: "03 Systems",
+    businessHeadline: "Replace slow, disconnected software with one unified system.",
+    businessExplanation:
+      "Replace slow, disconnected internal software and messy spreadsheets with modern systems designed around how your business actually works.",
+    tagline:
+      "Resilient internal systems, approval engines, and data pipelines built for mission-critical operations.",
     description:
-      "We build the software your business actually runs on: custom ERP backbones, multi-tier approval engines, warehouse management dashboards, and integration bridges that liberate data from legacy databases without disrupting active operations.",
+      "We take outdated, fragmented internal tools — spreadsheets, email approval chains, and legacy desktop software — and turn them into a clean, modern software system. Built with bulletproof relational data models, role-based security, and live management dashboards.",
+    deliverableItems: [
+      {
+        title: "Your Modern Operations Platform",
+        description: "A fast, responsive web portal built around your real internal processes, accessible securely on desktop and mobile.",
+        metricOrDetail: "Sub-second interface performance",
+      },
+      {
+        title: "Configurable Approval Engine",
+        description: "Multi-tier approval workflows with automated reminders, SLA escalation timers, and complete audit histories.",
+        metricOrDetail: "Zero stalled email approval chains",
+      },
+      {
+        title: "Role-Based Access & Security",
+        description: "Granular permissions (Admin, Department Head, Field Operator, Auditor) with corporate Single Sign-On (SSO).",
+        metricOrDetail: "SAML, OAuth2, and RBAC",
+      },
+      {
+        title: "Clean Consolidated Database",
+        description: "A high-performance relational database consolidating disparate spreadsheets into an audit-ready single source of truth.",
+        metricOrDetail: "PostgreSQL with automated backups",
+      },
+    ],
+    packages: [
+      {
+        id: "system-refresh",
+        name: "System Refresh",
+        tagline: "Turn an error-prone spreadsheet into a secure web application.",
+        scopeConcept: "1 core departmental module (e.g. inventory log, employee records, or procurement approvals).",
+        designedFor: "Companies needing to replace a brittle spreadsheet with their first professional internal web database.",
+        deliverableConcept: "A custom web application with role-based logins, relational data validation, and clean CSV exports.",
+        pricingPkr: "PKR 150,000 – 400,000",
+        pricingUsd: "$8,000 – $20,000",
+        timeline: "3–6 weeks",
+        features: [
+          "1 dedicated departmental module",
+          "Modern relational database (PostgreSQL)",
+          "Role-based authentication & permissions",
+          "Audit log tracking every edit & deletion",
+          "Responsive desktop & mobile UI",
+        ],
+        visualType: "starter",
+      },
+      {
+        id: "operations-platform",
+        name: "Operations Platform",
+        tagline: "Multi-department operational system with approvals and live dashboards.",
+        scopeConcept: "Comprehensive core platform spanning inventory, order tracking, and multi-tier approval chains.",
+        designedFor: "Growing enterprises that need a single operational pane of glass across warehouse and office teams.",
+        deliverableConcept: "Custom operations management platform replacing multiple disjointed tools and spreadsheets.",
+        pricingPkr: "PKR 400,000 – 1,200,000",
+        pricingUsd: "$25,000 – $75,000",
+        timeline: "6–12 weeks",
+        features: [
+          "Multi-module platform (3–5 operational areas)",
+          "Configurable multi-tier approval workflows",
+          "Live executive reporting dashboard",
+          "Third-party ERP / accounting software sync",
+          "Automated PDF export & report generation",
+        ],
+        visualType: "workspace",
+        isPopular: true,
+      },
+      {
+        id: "digital-core",
+        name: "Digital Core",
+        tagline: "Enterprise digital backbone connecting your entire business ecosystem.",
+        scopeConcept: "Full custom enterprise architecture connecting sales, finance, operations, and legacy systems with zero downtime.",
+        designedFor: "Established enterprises undergoing complete digital modernization without operational disruption.",
+        deliverableConcept: "We are partnering with a select group of founding enterprise clients for comprehensive core transformations.",
+        pricingPkr: "Custom quote only",
+        pricingUsd: "$75,000 – $150,000+",
+        timeline: "12–20 weeks",
+        features: [
+          "Comprehensive enterprise architecture",
+          "Zero-downtime legacy database migration",
+          "Event-driven messaging (Kafka / RabbitMQ)",
+          "Enterprise SSO (Okta, Azure AD, SAML)",
+          "Disaster recovery runbooks & 99.9% uptime SLA",
+        ],
+        visualType: "command",
+      },
+    ],
+    comparisonFeatures: [
+      { name: "Custom Relational Data Model (PostgreSQL)", starter: true, growth: true, scale: true },
+      { name: "Role-Based Access Control (RBAC)", starter: true, growth: true, scale: true },
+      { name: "Responsive Web Management UI", starter: true, growth: true, scale: true },
+      { name: "Multi-Tier Approval Chains & SLAs", starter: false, growth: true, scale: true },
+      { name: "Real-Time Executive Dashboards", starter: false, growth: true, scale: true },
+      { name: "Legacy Database Connectors", starter: false, growth: true, scale: true },
+      { name: "Zero-Downtime Data Migration", starter: false, growth: false, scale: true },
+      { name: "Distributed Event Streaming (Kafka)", starter: false, growth: false, scale: true },
+      { name: "Enterprise SSO & Disaster Recovery", starter: false, growth: false, scale: true },
+    ],
+    howItWorksSteps: [
+      {
+        step: "01",
+        title: "Map Your Existing System",
+        description: "We audit your active spreadsheets, paper forms, and legacy software to document how work actually flows through your teams.",
+      },
+      {
+        step: "02",
+        title: "Identify Bottlenecks",
+        description: "We isolate approval delays, redundant manual data entry, and reporting blind spots that hold back operational velocity.",
+      },
+      {
+        step: "03",
+        title: "Build the Modern Platform",
+        description: "We engineer a clean, high-performance web platform with strict schema contracts, intuitive UX, and robust security.",
+      },
+      {
+        step: "04",
+        title: "Migrate & Improve",
+        description: "We migrate legacy records without interrupting daily business, train your personnel, and provide continuous updates.",
+      },
+    ],
+    idealFor: [
+      "Your company relies on version-conflicted spreadsheets where one accidental formula edit can corrupt inventory or finances.",
+      "Internal approvals for capital expenses or procurement get buried in unsearchable email threads.",
+      "Managers cannot get a real-time count of active jobs, stock levels, or operational expenses without calling multiple people.",
+      "You are frustrated by off-the-shelf software that charges high per-user monthly fees while failing to fit your exact workflow.",
+      "Your existing legacy software runs on an old office PC that field staff and remote executives cannot access securely.",
+    ],
+    whatWeDontDo:
+      "We don't impose bloated, rigid templates or abandon you with unmaintainable legacy code. We engineer clean, modular systems built on industry-standard open technologies with complete documentation and client code ownership.",
     capabilities: [
       "Complex workflow and approval engines with configurable SLAs and escalation chains",
       "Legacy system modernization (decoupling monolithic databases without downtime)",
@@ -480,10 +918,139 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: "web-mobile-platforms",
     title: "Web & Mobile Platforms",
-    eyebrow: "HIGH-SCALE DIGITAL PRODUCTS",
-    tagline: "High-performance digital products engineered for enterprise scale, responsive velocity, and seamless UX.",
+    eyebrow: "DIGITAL PRODUCTS",
+    tabTitle: "04 Web & Mobile",
+    businessHeadline: "Turn your business idea into a fast, reliable digital product.",
+    businessExplanation:
+      "Turn your idea or existing business process into a fast, professional digital product your customers and teams can actually use on web and mobile devices.",
+    tagline:
+      "High-performance digital products engineered for enterprise scale, responsive velocity, and seamless UX.",
     description:
-      "Whether you are launching a client-facing SaaS platform, a mobile field-operations app, or an enterprise portal, we engineer frontends and APIs that load in milliseconds, maintain pristine accessibility, and scale effortlessly under heavy load.",
+      "Whether you are launching a client-facing SaaS platform, a mobile field-operations app, or a customer portal, ATCDL engineers frontends and APIs that load in milliseconds, maintain pristine accessibility, and scale effortlessly under heavy load.",
+    deliverableItems: [
+      {
+        title: "Production Web Platform",
+        description: "A lightning-fast Next.js web application built with responsive layouts, accessible typography, and SEO optimization.",
+        metricOrDetail: "Sub-second page loads (Lighthouse 90+)",
+      },
+      {
+        title: "Cross-Platform Mobile Apps",
+        description: "Native iOS and Android mobile applications sharing a unified codebase with push alerts and offline sync capabilities.",
+        metricOrDetail: "App Store & Play Store ready",
+      },
+      {
+        title: "Scalable Backend & APIs",
+        description: "Type-safe REST and GraphQL APIs with robust authentication, database caching, and transactional payment integration.",
+        metricOrDetail: "Stripe, local payment gateways & OAuth2",
+      },
+      {
+        title: "Analytics & Telemetry Suite",
+        description: "Full observability instrumentation tracking user conversion funnels, error rates, and Core Web Vitals in real time.",
+        metricOrDetail: "Privacy-compliant telemetry",
+      },
+    ],
+    packages: [
+      {
+        id: "digital-launch",
+        name: "Digital Launch",
+        tagline: "Launch a fast, responsive web application or customer portal.",
+        scopeConcept: "1 core web application or client portal with user authentication and core workflow.",
+        designedFor: "Businesses launching their first digital customer experience or MVP product.",
+        deliverableConcept: "A production-ready web platform with user onboarding, core service dashboard, and transactional notifications.",
+        pricingPkr: "PKR 150,000 – 400,000",
+        pricingUsd: "$8,000 – $20,000",
+        timeline: "3–5 weeks",
+        features: [
+          "Responsive Next.js web application",
+          "Secure user authentication (Email / Google)",
+          "1 core customer workflow / portal dashboard",
+          "Transactional email notifications",
+          "Sub-second page loads & SEO foundation",
+        ],
+        visualType: "starter",
+      },
+      {
+        id: "product-platform",
+        name: "Product Platform",
+        tagline: "Web + mobile product ecosystem with real-time sync and payment billing.",
+        scopeConcept: "Full web application, mobile app (iOS/Android), administrative dashboard, and payment gateway.",
+        designedFor: "Companies scaling a digital product business requiring omni-channel customer access.",
+        deliverableConcept: "Complete multi-platform digital product with mobile app store deployment, billing, and admin telemetry.",
+        pricingPkr: "PKR 400,000 – 1,200,000",
+        pricingUsd: "$25,000 – $75,000",
+        timeline: "6–10 weeks",
+        features: [
+          "Next.js web portal + iOS & Android mobile apps",
+          "Payment gateway integration (Stripe / Local)",
+          "Admin management & customer support portal",
+          "Real-time WebSocket notifications & live chat",
+          "Interactive onboarding flows & telemetry",
+        ],
+        visualType: "workspace",
+        isPopular: true,
+      },
+      {
+        id: "digital-ecosystem",
+        name: "Digital Ecosystem",
+        tagline: "High-scale multi-tier platform engineered for millions of requests.",
+        scopeConcept: "Enterprise-grade platform ecosystem with microservices, global edge caching, and real-time collaboration.",
+        designedFor: "Enterprises and founding partners building mission-critical platforms handling high concurrency and data volume.",
+        deliverableConcept: "We are partnering with founding enterprise leaders to architect flagship consumer and enterprise platforms.",
+        pricingPkr: "Custom quote only",
+        pricingUsd: "$75,000 – $150,000+",
+        timeline: "10–16 weeks",
+        features: [
+          "Multi-tenant microservice architecture",
+          "Edge-distributed CDN caching & global replication",
+          "High-concurrency database clustering",
+          "Advanced conversion funnel analytics & A/B testing",
+          "Dedicated 99.9% uptime SLA & infrastructure scaling",
+        ],
+        visualType: "command",
+      },
+    ],
+    comparisonFeatures: [
+      { name: "Sub-Second Next.js Frontend", starter: true, growth: true, scale: true },
+      { name: "Secure User Authentication", starter: true, growth: true, scale: true },
+      { name: "Core Customer Portal", starter: true, growth: true, scale: true },
+      { name: "Native iOS & Android Mobile Apps", starter: false, growth: true, scale: true },
+      { name: "Payment Gateway Billing Integration", starter: false, growth: true, scale: true },
+      { name: "Admin Operations & Telemetry Dashboard", starter: false, growth: true, scale: true },
+      { name: "Multi-Tenant SaaS Architecture", starter: false, growth: false, scale: true },
+      { name: "Global Edge-Distributed Caching", starter: false, growth: false, scale: true },
+      { name: "24/7 Production SLA & Load Balancing", starter: false, growth: false, scale: true },
+    ],
+    howItWorksSteps: [
+      {
+        step: "01",
+        title: "Define the Product",
+        description: "We map your user journeys, core conversion funnels, and technical constraints into a focused prototype specification.",
+      },
+      {
+        step: "02",
+        title: "Design the Experience",
+        description: "We produce clickable, high-fidelity UI blueprints and design tokens ensuring seamless usability across all screen sizes.",
+      },
+      {
+        step: "03",
+        title: "Build the Platform",
+        description: "We engineer frontends and APIs with automated test suites, sub-second response times, and bulletproof security.",
+      },
+      {
+        step: "04",
+        title: "Launch & Scale",
+        description: "We orchestrate zero-downtime deployment, app store submissions, analytics instrumentation, and continuous scaling.",
+      },
+    ],
+    idealFor: [
+      "You have a business model or customer service workflow that urgently needs a modern digital frontend.",
+      "Your customers demand mobile access to place orders, track shipments, or review account data on iOS and Android.",
+      "Your current website or portal is sluggish, buggy on mobile devices, or difficult for clients to navigate.",
+      "You are launching a SaaS startup or marketplace and need an engineering partner to build production-grade software.",
+      "You need an application that scales seamlessly from 100 to 100,000 users without crashing.",
+    ],
+    whatWeDontDo:
+      "We don't build disposable low-code toys or bloated WordPress sites that choke under real traffic. We write production-grade TypeScript codebases with clean architecture, complete test coverage, and full IP ownership.",
     capabilities: [
       "Next.js App Router applications with static pre-rendering and sub-second navigation",
       "Cross-platform mobile applications (React Native / Flutter) with offline sync support",

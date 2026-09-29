@@ -11,6 +11,7 @@ import { RotatingHeadlineWord } from "@/components/motion/RotatingHeadlineWord";
 import { CapabilityStrip } from "@/components/sections/CapabilityStrip";
 import { OperationalBottleneckVisual } from "@/components/sections/OperationalBottleneckVisual";
 import { ProductsCarousel } from "@/components/sections/ProductsCarousel";
+import { SolutionsHorizontalSelector } from "@/components/sections/SolutionsHorizontalSelector";
 import {
   ArrowRight,
   Sparkles,
@@ -115,69 +116,9 @@ export default function Home() {
         <OperationalBottleneckVisual />
       </section>
 
-      {/* 4. SOLUTIONS SECTION (The 4 Offers) — Section background rhythm: --bg-secondary */}
-      <section className="w-full bg-[var(--bg-secondary)] border-y border-[var(--border)] py-16 sm:py-24">
-        <div className="container-custom flex flex-col gap-12">
-          <Reveal>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
-              <div>
-                <div className="text-xs font-semibold uppercase tracking-wider text-[var(--accent-ai)] mb-1">
-                  Core Solutions
-                </div>
-                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-                  Four ways we build business value.
-                </h2>
-              </div>
-              <NextLink href="/solutions">
-                <Button variant="ghost" size="sm" className="text-xs font-medium">
-                  <span>View all solutions</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                </Button>
-              </NextLink>
-            </div>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {SOLUTIONS.map((sol) => (
-              <Reveal key={sol.slug}>
-                <CursorGlow className="h-full">
-                  <Card variant="interactive" className="p-8 flex flex-col justify-between h-full gap-6 bg-white border-[var(--border)]">
-                    <div className="flex flex-col gap-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-mono text-[var(--accent-ai)] uppercase font-semibold">
-                          {sol.eyebrow}
-                        </span>
-                        <span className="text-xs font-mono text-[var(--text-muted)]">
-                          {sol.typicalTimeline}
-                        </span>
-                      </div>
-
-                      <h3 className="text-2xl font-bold text-[var(--text-primary)]">
-                        {sol.title}
-                      </h3>
-
-                      <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">
-                        {sol.tagline}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between">
-                      <span className="text-xs font-mono text-[var(--text-muted)]">
-                        Scope: <strong className="text-[var(--text-primary)]">{sol.typicalScope}</strong>
-                      </span>
-                      <NextLink href={`/solutions/${sol.slug}`}>
-                        <Button size="sm" variant="outline" className="text-xs font-medium">
-                          <span>Explore Solution</span>
-                          <ArrowRight className="w-3 h-3 ml-1" />
-                        </Button>
-                      </NextLink>
-                    </div>
-                  </Card>
-                </CursorGlow>
-              </Reveal>
-            ))}
-          </div>
-        </div>
+      {/* 4. SOLUTIONS SECTION (Horizontal Solution Switcher — Peek Scroll Snap) */}
+      <section className="container-custom section-peek-snap py-4">
+        <SolutionsHorizontalSelector solutions={SOLUTIONS} />
       </section>
 
       {/* 5. FLAGSHIP PRODUCTS SECTION (Auto-Rotating Carousel — Peek Scroll Snap) */}
