@@ -27,11 +27,14 @@
   --warning: #B54708; /* Contrast optimized: 4.8:1 on #FFFFFF */
   --error: #D92D20;
 
-  /* header (stays dark — intentional contrast against light body) */
-  --header-bg: #071B3A;
+  /* header (electric brand blue token) */
+  --header-bg: #0096FF;
   --header-text: #FFFFFF;
-  --header-text-secondary: #B9C7DC;
-  --header-accent: #69A1FF;
+  --header-text-secondary: rgba(255, 255, 255, 0.88);
+  --header-accent: #FFFFFF;
+  --header-pill-bg: rgba(0, 40, 90, 0.22);
+  --header-pill-border: rgba(255, 255, 255, 0.25);
+  --header-pill-hover: rgba(255, 255, 255, 0.2);
 
   /* radii */
   --radius-sm: 8px;
