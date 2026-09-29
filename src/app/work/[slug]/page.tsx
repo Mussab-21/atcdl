@@ -1,0 +1,169 @@
+import React from "react";
+import { notFound } from "next/navigation";
+import NextLink from "next/link";
+import { PROJECTS, Project } from "@/content/data";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Reveal } from "@/components/motion/Reveal";
+import { ArrowRight, ExternalLink, ShieldCheck, CheckCircle2, Terminal } from "lucide-react";
+import { GithubIcon } from "@/components/ui/Icons";
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  return PROJECTS.map((p) => ({
+    slug: p.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const project = PROJECTS.find((p) => p.slug === slug);
+  if (!project) return {};
+
+  return {
+    title: `${project.title} | NIMBRIX Case Studies`,
+    description: project.summary,
+  };
+}
+
+export default async function ProjectDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const project = PROJECTS.find((p) => p.slug === slug);
+
+  if (!project) {
+    notFound();
+  }
+
+  return (
+    <div className="container-custom py-16 flex flex-col gap-16 max-w-4xl">
+      {/* Navigation & Header */}
+      <Reveal>
+        <div className="flex flex-col gap-4 border-b border-[var(--border)] pb-10">
+          <div className="flex items-center gap-2">
+            <NextLink
+              href="/work"
+              className="text-xs font-mono text-[var(--accent)] hover:underline uppercase"
+            >
+              ← All Engineering Work
+            </NextLink>
+            <span className="text-[var(--text-muted)] text-xs">/</span>
+            <span className="text-xs font-mono text-[var(--text-muted)] uppercase">
+              {project.category}
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-4 mt-2">
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+              {project.title}
+            </h1>
+            <Badge status={project.status} size="md" />
+          </div>
+
+          <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-3xl">
+            {project.summary}
+          </p>
+
+          {/* Metadata bar */}
+          <div className="flex flex-wrap items-center gap-6 pt-4 text-xs font-mono text-[var(--text-muted)]">
+            <div>
+              Industry: <strong className="text-[var(--text-primary)]">{project.industry || "General Enterprise"}</strong>
+            </div>
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--accent)] hover:underline flex items-center gap-1.5"
+              >
+                <GithubIcon className="w-3.5 h-3.5" />
+                <span>Source Repository</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            )}
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Problem & Solution Breakdown */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Reveal>
+          <Card variant="default" className="p-6 sm:p-8 h-full flex flex-col gap-4">
+            <div className="text-xs font-mono uppercase tracking-wider text-[var(--error)]">
+              The Operational Problem
+            </div>
+            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+              {project.problem}
+            </p>
+          </Card>
+        </Reveal>
+
+        <Reveal>
+          <Card variant="default" className="p-6 sm:p-8 h-full flex flex-col gap-4">
+            <div className="text-xs font-mono uppercase tracking-wider text-[var(--accent-ai)]">
+              The Engineering Solution
+            </div>
+            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+              {project.solution}
+            </p>
+          </Card>
+        </Reveal>
+      </div>
+
+      {/* Business Impact & Technology Stack */}
+      <Reveal>
+        <section className="p-6 sm:p-8 rounded-[var(--radius-md)] bg-[var(--bg-elevated)] border border-[var(--border)] flex flex-col gap-6">
+          <div>
+            <h2 className="text-sm font-mono uppercase tracking-wider text-[var(--success)] mb-2 flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4" />
+              <span>Verified Outcome &amp; Impact</span>
+            </h2>
+            <p className="text-base text-[var(--text-primary)] font-medium leading-relaxed">
+              {project.businessValue}
+            </p>
+          </div>
+
+          <div className="border-t border-[var(--border)] pt-4">
+            <div className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)] mb-3">
+              Technologies &amp; Protocols
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.technology.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 rounded-md bg-[var(--bg-secondary)] border border-[var(--border)] font-mono text-xs text-[var(--text-secondary)]"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      </Reveal>
+
+      {/* Similar Build CTA */}
+      <Reveal>
+        <div className="p-8 sm:p-10 rounded-[var(--radius-lg)] bg-[var(--bg-card)] border border-[var(--border)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="flex flex-col gap-1.5">
+            <h3 className="text-xl font-bold text-[var(--text-primary)]">
+              Need a similar architecture deployed?
+            </h3>
+            <p className="text-xs text-[var(--text-secondary)] max-w-md">
+              We customize and harden this pipeline for your proprietary enterprise environment and compliance policies.
+            </p>
+          </div>
+
+          <NextLink href={`/contact?ref=${project.slug}`}>
+            <Button size="lg" variant="primary">
+              <span>Start Project Brief</span>
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </Button>
+          </NextLink>
+        </div>
+      </Reveal>
+    </div>
+  );
+}

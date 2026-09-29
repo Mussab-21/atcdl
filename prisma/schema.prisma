@@ -1,0 +1,38 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Lead {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  name            String
+  email           String
+  company         String?
+  projectType     String
+  problem         String
+  existingSystems String?
+  budget          String
+  timeline        String
+  source          String?
+  score           Int
+  label           String   // HOT | QUALIFIED | NURTURE | LOW
+  ipHash          String?
+  userAgent       String?
+  crmStatus       String   @default("pending")
+  notifyStatus    String   @default("pending")
+
+  @@index([createdAt])
+  @@index([email])
+}
+
+model AuditLog {
+  id    String   @id @default(cuid())
+  at    DateTime @default(now())
+  event String
+  meta  String?
+}
