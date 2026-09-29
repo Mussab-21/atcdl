@@ -9,6 +9,7 @@ import { CursorGlow } from "@/components/motion/CursorGlow";
 import { HeroSystemVisual } from "@/components/sections/HeroSystemVisual";
 import { RotatingHeadlineWord } from "@/components/motion/RotatingHeadlineWord";
 import { CapabilityStrip } from "@/components/sections/CapabilityStrip";
+import { OperationalBottleneckVisual } from "@/components/sections/OperationalBottleneckVisual";
 import {
   ArrowRight,
   Sparkles,
@@ -108,56 +109,9 @@ export default function Home() {
       {/* 2. DYNAMIC AUTO-ADVANCING CAPABILITY STRIP */}
       <CapabilityStrip />
 
-      {/* 3. PROBLEM SECTION (The Friction Chain - Peek Scroll Snap: ~80% Viewport) */}
-      <section className="container-custom section-peek-snap peek-contained py-8 sm:py-12">
-        <div className="flex flex-col gap-12">
-          <Reveal>
-            <div className="max-w-3xl">
-              <div className="text-xs font-semibold uppercase tracking-wider text-[var(--error)] mb-2">
-                The Operational Bottleneck
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
-                Your business doesn&apos;t need more disconnected software. It needs the right system.
-              </h2>
-              <p className="text-base text-[var(--text-secondary)] mt-4 leading-relaxed">
-                Most organizations operate a patchwork of disconnected SaaS tools. Data is trapped in PDFs, spreadsheets, and legacy databases. Knowledge workers waste hours copying information between windows instead of driving strategic decisions.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Friction Chain Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Reveal>
-              <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] shadow-sm flex flex-col gap-3">
-                <div className="text-xs font-mono font-semibold text-[var(--error)]">FRICTION 01 // SILOES</div>
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">Unstructured Data Trapped in Files</h3>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  Policies, invoices, contracts, and customer logs exist as unstructured PDFs and docs that no system can query reliably.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal>
-              <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] shadow-sm flex flex-col gap-3">
-                <div className="text-xs font-mono font-semibold text-[var(--error)]">FRICTION 02 // LABOUR</div>
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">Manual Re-Keying &amp; Hand-offs</h3>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  Employees spend 30%+ of their working hours manually transcribing data between forms, ERPs, and customer channels.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal>
-              <div className="p-6 rounded-[var(--radius-md)] bg-[var(--bg-card)] border border-[var(--border)] shadow-sm flex flex-col gap-3">
-                <div className="text-xs font-mono font-semibold text-[var(--accent-ai)]">RESOLUTION // ATCDL</div>
-                <h3 className="text-lg font-bold text-[var(--text-primary)]">Engineered Systems &amp; Agents</h3>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  We build custom ingestion pipelines, autonomous agents, and unified APIs that turn chaotic friction into automated throughput.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
+      {/* 3. OPERATIONAL BOTTLENECK SECTION (Interactive System Transformation Diagram) */}
+      <section className="container-custom py-6 sm:py-10">
+        <OperationalBottleneckVisual />
       </section>
 
       {/* 4. SOLUTIONS SECTION (The 4 Offers) — Section background rhythm: --bg-secondary */}
