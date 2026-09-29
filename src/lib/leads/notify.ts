@@ -5,15 +5,104 @@ export async function sendLeadNotifications(
   lead: LeadInput,
   scoring: LeadScoreResult,
   leadId: string
-): Promise<{ slack: boolean; email: boolean }> {
-  let slackSuccess = false;
+): Promise<{ discord: boolean; email: boolean }> {
+  let discordSuccess = false;
   let emailSuccess = false;
 
   const isHot = scoring.label === "HOT";
-  const prefix = isHot ? "🔥 [HOT LEAD]" : `[${scoring.label} LEAD]`;
+  const title = isHot
+    ? "🔥 [HOT LEAD] New Project Brief Received"
+    : `[${scoring.label} LEAD] New Project Brief Received`;
 
-  const payloadText = `
-${prefix} New Project Brief Received
+  // Color mapping for Discord embed
+  let embedColor = 7305866; // Grey (NURTURE / LOW)
+  if (scoring.label === "HOT") {
+    embedColor = 16729344; // Orange-Red (#FF4500)
+  } else if (scoring.label === "QUALIFIED") {
+    embedColor = 5082623; // NIMBRIX Blue (#4D8DFF)
+  } else if (scoring.label === "NURTURE") {
+    embedColor = 15972427; // Amber (#F3B84B)
+  }
+
+  // 1. Discord Webhook Notification
+  const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL;
+  if (discordWebhookUrl && discordWebhookUrl.startsWith("https://discord.com/api/webhooks")) {
+    try {
+      const discordPayload = {
+        content: isHot
+          ? `🔥 **HOT LEAD ALERT** — ${lead.name} (${lead.company || "Direct"}) submitted an enterprise brief!`
+          : `📬 **New Lead Received** — ${lead.name} (${lead.projectType})`,
+        embeds: [
+          {
+            title,
+            color: embedColor,
+            description: `A new client project brief was submitted and scored by the NIMBRIX pipeline.`,
+            fields: [
+              { name: "Prospect Name", value: lead.name, inline: true },
+              { name: "Work Email", value: lead.email, inline: true },
+              { name: "Company", value: lead.company || "Not provided", inline: true },
+              { name: "Project Type", value: lead.projectType, inline: true },
+              { name: "Budget", value: lead.budget, inline: true },
+              { name: "Timeline", value: lead.timeline, inline: true },
+              {
+                name: "Score & Label",
+                value: `**${scoring.score}/100** — \`${scoring.label}\``,
+                inline: true,
+              },
+              { name: "Lead ID", value: `\`${leadId}\``, inline: true },
+              { name: "Source", value: lead.source || "website_brief", inline: true },
+              {
+                name: "Existing Systems",
+                value: lead.existingSystems && lead.existingSystems.trim().length > 0
+                  ? lead.existingSystems
+                  : "None specified",
+                inline: false,
+              },
+              {
+                name: "Operational Problem Statement",
+                value:
+                  lead.problem.length > 1024
+                    ? lead.problem.slice(0, 1020) + "..."
+                    : lead.problem,
+                inline: false,
+              },
+            ],
+            footer: {
+              text: "NIMBRIX Inbound Intelligence Pipeline • v1.0",
+            },
+            timestamp: new Date().toISOString(),
+          },
+        ],
+      };
+
+      const res = await fetch(discordWebhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(discordPayload),
+      });
+
+      discordSuccess = res.ok;
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error(`[Discord Webhook Error: ${res.status}]`, errorText);
+      } else {
+        console.log(`[Discord Webhook Delivered] Lead ID: ${leadId} (${scoring.label})`);
+      }
+    } catch (err) {
+      console.error("[Discord Webhook Exception]", err);
+    }
+  } else {
+    console.log(`[DISCORD NOTIFICATION MOCK]\nLead ${leadId} - ${scoring.label} (${scoring.score}/100)`);
+    discordSuccess = true;
+  }
+
+  // 2. Email Notification (Resend)
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (resendApiKey) {
+    try {
+      const toEmail = process.env.LEADS_TO_EMAIL || "leads@nimbrix.com";
+      const emailText = `
+${title}
 ------------------------------------
 • Name: ${lead.name}
 • Email: ${lead.email}
@@ -24,68 +113,13 @@ ${prefix} New Project Brief Received
 • Score: ${scoring.score}/100 (${scoring.label})
 • Lead ID: ${leadId}
 
-Problem Description:
+Problem Statement:
 ${lead.problem}
 
 Existing Systems:
 ${lead.existingSystems || "None specified"}
 `.trim();
 
-  // 1. Slack Webhook Notification
-  const slackUrl = process.env.SLACK_WEBHOOK_URL;
-  if (slackUrl && slackUrl.startsWith("https://hooks.slack.com")) {
-    try {
-      const res = await fetch(slackUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          text: `${prefix} ${lead.name} (${lead.company || "Direct"}) - ${lead.budget}`,
-          blocks: [
-            {
-              type: "header",
-              text: {
-                type: "plain_text",
-                text: `${prefix} New Project Brief`,
-                emoji: true,
-              },
-            },
-            {
-              type: "section",
-              fields: [
-                { type: "mrkdwn", text: `*Prospect:*\n${lead.name}` },
-                { type: "mrkdwn", text: `*Email:*\n${lead.email}` },
-                { type: "mrkdwn", text: `*Company:*\n${lead.company || "N/A"}` },
-                { type: "mrkdwn", text: `*Budget:*\n${lead.budget}` },
-                { type: "mrkdwn", text: `*Score:*\n*${scoring.score}/100* (${scoring.label})` },
-                { type: "mrkdwn", text: `*Timeline:*\n${lead.timeline}` },
-              ],
-            },
-            {
-              type: "section",
-              text: {
-                type: "mrkdwn",
-                text: `*Problem Statement:*\n>${lead.problem.replace(/\n/g, "\n>")}`,
-              },
-            },
-          ],
-        }),
-      });
-      slackSuccess = res.ok;
-    } catch (err) {
-      console.error("[Slack Notification Error]", err);
-    }
-  } else {
-    // In dev / unconfigured state, log clearly to server console
-    console.log(`[LEAD NOTIFICATION MOCK - SLACK]\n${payloadText}`);
-    slackSuccess = true;
-  }
-
-  // 2. Email Notification
-  const resendApiKey = process.env.RESEND_API_KEY;
-  if (resendApiKey) {
-    try {
-      // In production, invoke Resend API
-      const toEmail = process.env.LEADS_TO_EMAIL || "leads@nimbrix.com";
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -95,8 +129,8 @@ ${lead.existingSystems || "None specified"}
         body: JSON.stringify({
           from: "NIMBRIX Inbound <leads@nimbrix.com>",
           to: [toEmail],
-          subject: `${prefix} ${lead.name} (${lead.company || "Direct"}) - ${lead.projectType}`,
-          text: payloadText,
+          subject: `${title}: ${lead.name} (${lead.company || "Direct"})`,
+          text: emailText,
         }),
       });
       emailSuccess = res.ok;
@@ -104,9 +138,8 @@ ${lead.existingSystems || "None specified"}
       console.error("[Email Notification Error]", err);
     }
   } else {
-    console.log(`[LEAD NOTIFICATION MOCK - EMAIL]\nTo: ${process.env.LEADS_TO_EMAIL || "leads@nimbrix.com"}\n${payloadText}`);
     emailSuccess = true;
   }
 
-  return { slack: slackSuccess, email: emailSuccess };
+  return { discord: discordSuccess, email: emailSuccess };
 }

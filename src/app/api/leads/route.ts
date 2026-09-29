@@ -121,14 +121,14 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // 10. Notifications (Slack + Email)
+    // 10. Notifications (Discord + Email)
     const notifyRes = await sendLeadNotifications(leadData, scoring, newLead.id);
 
     // Update notification status in database
     await prisma.lead.update({
       where: { id: newLead.id },
       data: {
-        notifyStatus: notifyRes.slack && notifyRes.email ? "delivered" : "partial",
+        notifyStatus: notifyRes.discord && notifyRes.email ? "delivered" : "partial",
       },
     });
 

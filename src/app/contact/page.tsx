@@ -118,12 +118,19 @@ function ContactFormInner() {
     setIsSubmitting(true);
     setSubmitError(null);
 
+    // Extract Turnstile token from state or direct input
+    const cfInput = typeof document !== "undefined"
+      ? (document.querySelector('input[name="cf-turnstile-response"]') as HTMLInputElement | null)
+      : null;
+    const effectiveToken = formData.turnstileToken || (cfInput ? cfInput.value : "");
+
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
+          turnstileToken: effectiveToken,
           source: productParam ? `product_${productParam}` : "direct_brief",
         }),
       });
