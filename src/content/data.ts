@@ -714,15 +714,15 @@ export const LAB_EXPERIMENTS: LabExperiment[] = [
     category: "AI & ML Benchmark",
     status: "Lab",
     description:
-      "Benchmarking PyTorch convolutional neural networks with batch normalization and dropout regularization for rapid multi-class visual recognition under compute constraints.",
+      "Benchmarking PyTorch convolutional neural networks with batch normalization and dropout regularization for multi-class visual recognition under compute-constrained environments.",
     technicalTakeaway:
-      "Demonstrated 92.4% test accuracy with lightweight parameter budgets, proving feasibility for edge-deployed computer vision defect inspection.",
+      "Evaluated CNN depth and regularization tradeoffs on standard visual benchmarks to assess lightweight model deployment feasibility on CPU-only edge devices.",
     stack: ["PyTorch", "Python", "Matplotlib", "NumPy", "CUDA"],
     repoUrl: "https://github.com/Mussab-21",
     metrics: [
-      { label: "Test Accuracy", value: "92.4%" },
-      { label: "Epoch Convergence", value: "15 epochs" },
-      { label: "Inference Latency", value: "<8ms on CPU" },
+      { label: "Dataset", value: "Fashion-MNIST" },
+      { label: "Topology", value: "CNN + Dropout" },
+      { label: "Target", value: "Edge CPU / GPU" },
     ],
   },
   {
@@ -733,12 +733,12 @@ export const LAB_EXPERIMENTS: LabExperiment[] = [
     description:
       "Bi-directional webhook synchronization service translating Figma version publish events into interactive Discord rich embeds with action buttons.",
     technicalTakeaway:
-      "Reduced design review coordination latency from hours to sub-2 seconds with zero message loss across distributed design teams.",
+      "Implemented idempotent webhook consumers to bridge design file changes directly into engineering chat channels with zero message drops.",
     stack: ["Node.js", "Discord.js", "Figma REST API", "Webhooks", "TypeScript"],
     repoUrl: "https://github.com/Mussab-21",
     metrics: [
-      { label: "Event Dispatch", value: "<1.8s" },
-      { label: "Reliability", value: "99.9%" },
+      { label: "Architecture", value: "Webhook Event Bus" },
+      { label: "Payload", value: "Discord Rich Embeds" },
       { label: "Codebase", value: "100% TypeScript" },
     ],
   },
@@ -748,15 +748,15 @@ export const LAB_EXPERIMENTS: LabExperiment[] = [
     category: "Architecture Prototype",
     status: "Lab",
     description:
-      "Comparative latency and precision study measuring BM25 lexical ranking combined with dense semantic embeddings (pgvector vs Qdrant) over 25,000 regulatory legal contracts.",
+      "Comparative architectural study measuring BM25 lexical ranking combined with dense semantic embeddings over domain-specific structured documents.",
     technicalTakeaway:
-      "Reciprocal Rank Fusion (RRF) yielded 23% higher citation accuracy than pure vector cosine search on dense contract clauses.",
+      "Demonstrated that combining sparse lexical signals with dense vector embeddings via Reciprocal Rank Fusion (RRF) prevents retrieval misses on domain-specific acronyms and part numbers.",
     stack: ["pgvector", "BM25", "Python", "FastAPI", "TypeScript"],
     repoUrl: "https://github.com/Mussab-21",
     metrics: [
-      { label: "Corpus Size", value: "25,000 documents" },
-      { label: "Mean Retrieval Latency", value: "48ms" },
-      { label: "Citation Accuracy", value: "97.8%" },
+      { label: "Search Mode", value: "Hybrid Lexical + Vector" },
+      { label: "Ranking Logic", value: "Reciprocal Rank Fusion" },
+      { label: "Storage", value: "pgvector / PostgreSQL" },
     ],
   },
   {
@@ -767,13 +767,13 @@ export const LAB_EXPERIMENTS: LabExperiment[] = [
     description:
       "Distributed rate-limiting architecture featuring an Upstash Redis primary sliding-window layer with automatic zero-downtime fallback to transactional SQLite/Prisma storage.",
     technicalTakeaway:
-      "Maintains sub-15ms client verification while ensuring complete bot deterrence even during full cloud Redis outages.",
+      "Eliminates single points of failure in API rate-limiting by automatically failing over to transactional database leases if cloud Redis latency spikes or degrades.",
     stack: ["Upstash Redis", "Prisma", "SQLite / PostgreSQL", "TypeScript", "Next.js"],
     repoUrl: "https://github.com/Mussab-21",
     metrics: [
-      { label: "Primary Latency", value: "<12ms" },
-      { label: "Failover Downtime", value: "0ms" },
-      { label: "Attack Deflection", value: "100%" },
+      { label: "Primary Tier", value: "Redis Sliding Window" },
+      { label: "Fallback Tier", value: "Transactional DB Lease" },
+      { label: "Resilience", value: "Zero-Downtime Failover" },
     ],
   },
 ];
