@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { IDEAS } from "@/content/data";
-import { Sparkles, ArrowRight, Lightbulb, Compass, ShieldCheck } from "lucide-react";
+import { Sparkles, ArrowRight, Lightbulb, Compass } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Pitch Lab — Pre-Engineered Enterprise Concepts | NIMBRIX",
@@ -86,10 +86,13 @@ export default function PitchLabPage() {
                   </div>
                 </div>
 
-                {/* Projected Value */}
-                <div className="text-xs text-[var(--success)] font-mono mb-6 flex items-start gap-1.5">
-                  <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5" />
-                  <span>{idea.potentialValue}</span>
+                {/* Projected Value — labelled explicitly as illustrative */}
+                <div className="text-xs font-mono mb-6 flex items-start gap-1.5 p-2.5 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]">
+                  <Lightbulb className="w-4 h-4 shrink-0 mt-0.5 text-[var(--warning)]" />
+                  <div>
+                    <span className="text-[var(--warning)] uppercase tracking-widest text-[10px]">Illustrative Projection · Concept Stage</span>
+                    <p className="text-[var(--text-secondary)] mt-0.5 leading-relaxed">{idea.potentialValue}</p>
+                  </div>
                 </div>
               </div>
 

@@ -11,7 +11,7 @@ import {
   Sparkles,
   ArrowRight,
   ArrowLeft,
-  ShieldCheck,
+  Lightbulb,
   CheckCircle2,
   Workflow,
   Cpu,
@@ -21,25 +21,30 @@ import {
 
 interface Props {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ noindex?: string }>;
 }
 
 export async function generateStaticParams() {
   return IDEAS.map((idea) => ({ slug: idea.slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
   const { slug } = await params;
+  const sp = searchParams ? await searchParams : {};
   const idea = IDEAS.find((i) => i.slug === slug);
   if (!idea) return {};
 
   return {
     title: `${idea.title} — Pitch Lab Concept | NIMBRIX`,
     description: idea.concept,
+    // Per-prospect noindex: share /ideas/slug?noindex=1 for private prospect links
+    robots: sp?.noindex === "1" ? { index: false, follow: false } : undefined,
   };
 }
 
-export default async function IdeaDetailPage({ params }: Props) {
+export default async function IdeaDetailPage({ params, searchParams }: Props) {
   const { slug } = await params;
+  const sp = searchParams ? await searchParams : {};
   const idea = IDEAS.find((i) => i.slug === slug);
 
   if (!idea) {
@@ -89,12 +94,15 @@ export default async function IdeaDetailPage({ params }: Props) {
         </div>
       </Reveal>
 
-      {/* Projected Value Banner */}
+      {/* Projected Value — clearly labelled as illustrative */}
       <Reveal>
-        <div className="p-4 sm:p-5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--success)]/30 text-xs sm:text-sm text-[var(--success)] font-mono flex items-center gap-3 mb-12">
-          <ShieldCheck className="w-5 h-5 shrink-0" />
+        <div className="p-4 sm:p-5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] flex items-start gap-3 mb-12">
+          <Lightbulb className="w-5 h-5 shrink-0 text-[var(--warning)] mt-0.5" />
           <div>
-            <strong>Target Business ROI:</strong> {idea.potentialValue}
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[var(--warning)] mb-1">
+              Illustrative Projection · Concept Stage{sp?.noindex === "1" ? " · Private Prospect View" : ""}
+            </div>
+            <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed">{idea.potentialValue}</p>
           </div>
         </div>
       </Reveal>

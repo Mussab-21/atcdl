@@ -6,8 +6,9 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Reveal } from "@/components/motion/Reveal";
-import { ArrowRight, ExternalLink, ShieldCheck, CheckCircle2, Terminal } from "lucide-react";
+import { ArrowRight, ExternalLink, CheckCircle2, Terminal } from "lucide-react";
 import { GithubIcon } from "@/components/ui/Icons";
+import { CaseStudyBeforeAfter } from "@/components/sections/CaseStudyBeforeAfter";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -88,30 +89,32 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       </Reveal>
 
-      {/* Problem & Solution Breakdown */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Reveal>
-          <Card variant="default" className="p-6 sm:p-8 h-full flex flex-col gap-4">
-            <div className="text-xs font-mono uppercase tracking-wider text-[var(--error)]">
-              The Operational Problem
-            </div>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              {project.problem}
-            </p>
-          </Card>
-        </Reveal>
-
-        <Reveal>
-          <Card variant="default" className="p-6 sm:p-8 h-full flex flex-col gap-4">
-            <div className="text-xs font-mono uppercase tracking-wider text-[var(--accent-ai)]">
-              The Engineering Solution
-            </div>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              {project.solution}
-            </p>
-          </Card>
-        </Reveal>
-      </div>
+      {/* Before / After Visual — M3 Case Study Template */}
+      <Reveal>
+        <section className="flex flex-col gap-4">
+          <div className="flex items-center gap-2 pb-2">
+            <h2 className="text-lg font-bold text-[var(--text-primary)]">Before &amp; After Engineering</h2>
+          </div>
+          <CaseStudyBeforeAfter
+            beforeHeadline="The Legacy Bottleneck"
+            beforePoints={[
+              project.problem,
+            ]}
+            afterHeadline="The NIMBRIX Engineering Solution"
+            afterPoints={[
+              project.solution,
+            ]}
+            metrics={[
+              // Real measured outcomes from the project.
+              // Add rows here when verified data is available.
+              // Example: { label: "Screening time per CV", before: "15 min", after: "< 30 sec" }
+              ...(project.businessValue
+                ? [{ label: "Verified Business Impact", before: "Legacy process", after: project.businessValue }]
+                : []),
+            ]}
+          />
+        </section>
+      </Reveal>
 
       {/* Business Impact & Technology Stack */}
       <Reveal>
