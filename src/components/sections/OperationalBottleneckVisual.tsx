@@ -16,7 +16,6 @@ import {
   ShieldCheck,
   Zap,
 } from "lucide-react";
-import { Reveal } from "@/components/motion/Reveal";
 
 type ActiveMode = "connect" | "automate" | "visible" | null;
 
@@ -24,38 +23,35 @@ export function OperationalBottleneckVisual() {
   const [activeMode, setActiveMode] = useState<ActiveMode>(null);
 
   return (
-    <div className="flex flex-col gap-10 sm:gap-12 w-full">
+    <div className="flex flex-col gap-8 sm:gap-10 w-full">
       {/* 1. Header Copy */}
-      <Reveal>
-        <div className="max-w-3xl flex flex-col gap-3">
-          <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[var(--error)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--error)]" />
-            <span>THE OPERATIONAL BOTTLENECK</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--header-bg)] leading-[1.1]">
-            Your business doesn&apos;t need more tools. It needs{" "}
-            <span className="text-[var(--accent-green)] relative inline-block">
-              one connected system.
-            </span>
-          </h2>
-
-          <p className="text-base sm:text-lg text-[var(--text-secondary)] mt-1 leading-relaxed max-w-2xl">
-            Most businesses operate across disconnected software, scattered data, and repetitive
-            manual workflows. ATCDL connects those pieces into intelligent systems that move work
-            forward automatically.
-          </p>
+      <div className="max-w-3xl flex flex-col gap-3">
+        <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[var(--error)]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--error)]" />
+          <span>THE OPERATIONAL BOTTLENECK</span>
         </div>
-      </Reveal>
+
+        <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--header-bg)] leading-[1.1]">
+          Your business doesn&apos;t need more tools. It needs{" "}
+          <span className="text-[var(--accent-green)] relative inline-block">
+            one connected system.
+          </span>
+        </h2>
+
+        <p className="text-base sm:text-lg text-[var(--text-secondary)] mt-1 leading-relaxed max-w-2xl">
+          Most businesses operate across disconnected software, scattered data, and repetitive
+          manual workflows. ATCDL connects those pieces into intelligent systems that move work
+          forward automatically.
+        </p>
+      </div>
 
       {/* 2. Three-Panel Mini Visual Story / System Diagram */}
-      <Reveal>
-        <div className="relative rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border)] p-5 sm:p-8 overflow-hidden shadow-xs">
-          {/* Subtle Ambient Background Accent */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[var(--accent-green)]/5 rounded-full blur-3xl"
-          />
+      <div className="relative rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border)] p-5 sm:p-8 overflow-hidden shadow-xs">
+        {/* Subtle Ambient Background Accent */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[var(--accent-green)]/5 rounded-full blur-3xl"
+        />
 
           <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-stretch">
             {/* PANEL 1: LEFT — BUSINESS CHAOS (Without a System) */}
@@ -293,11 +289,9 @@ export function OperationalBottleneckVisual() {
             </div>
           </div>
         </div>
-      </Reveal>
 
       {/* 3. Bottom Benefits Row (Interactive Cards) */}
-      <Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {/* Card 1: Connect the Pieces */}
           <button
             type="button"
@@ -388,7 +382,6 @@ export function OperationalBottleneckVisual() {
             </p>
           </button>
         </div>
-      </Reveal>
     </div>
   );
 }
