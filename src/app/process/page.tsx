@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import NextLink from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { ArrowRight, CheckCircle2, ShieldCheck, Terminal, Cpu, Clock, Layers, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ProcessTimeline } from "./ProcessTimeline";
 
 export const metadata: Metadata = {
@@ -142,69 +141,73 @@ export default function ProcessPage() {
       </section>
 
       {/* Comparison: ATCDL vs Traditional Dev Agencies */}
+      {/* A8 Comparative Audit (Green Accent Treatment Data Display) */}
       <section className="container-custom">
-        <div className="flex flex-col gap-8">
-          <div>
-            <span className="text-xs font-mono text-[var(--accent-ai)] uppercase tracking-wider">
-              Transparency Audit
+        <div className="p-6 sm:p-10 rounded-2xl bg-[#00D477] text-[#152A32] border border-[#00B968] shadow-lg flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#152A32] bg-[#152A32]/10 px-2.5 py-0.5 rounded-full w-fit border border-[#152A32]/20">
+              Comparative Engineering Audit
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#152A32] tracking-tight">
               ATCDL vs. Traditional Software Agencies
             </h2>
+            <p className="text-xs sm:text-sm text-[#152A32]/85 max-w-2xl leading-relaxed">
+              Transparent side-by-side architecture standards, code governance, and milestone delivery models.
+            </p>
           </div>
 
-          <div className="overflow-x-auto rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg-card)]">
+          <div className="overflow-x-auto rounded-xl border border-[#152A32]/20 bg-[#152A32]/5 shadow-inner">
             <table className="w-full text-left text-xs sm:text-sm border-collapse">
               <thead>
-                <tr className="border-b border-[var(--border)] text-[var(--text-muted)] font-mono text-[11px] uppercase bg-[var(--bg-secondary)]">
-                  <th className="py-3 px-5">Dimension</th>
-                  <th className="py-3 px-5 text-[var(--accent)] font-bold">ATCDL Engineering</th>
-                  <th className="py-3 px-5 text-[var(--text-muted)]">Typical Agency / Outsource Shop</th>
+                <tr className="border-b border-[#152A32]/20 text-[#152A32] font-mono text-[11px] uppercase bg-[#152A32]/10 font-bold">
+                  <th className="py-3.5 px-5">Dimension</th>
+                  <th className="py-3.5 px-5 bg-[#152A32]/15 text-[#152A32]">ATCDL Engineering</th>
+                  <th className="py-3.5 px-5 text-[#152A32]/80">Typical Agency / Outsource Shop</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[var(--border)]">
-                <tr>
-                  <td className="py-4 px-5 font-semibold text-[var(--text-primary)]">Commercial Model</td>
-                  <td className="py-4 px-5 text-[var(--text-primary)] font-medium">
+              <tbody className="divide-y divide-[#152A32]/15">
+                <tr className="hover:bg-[#152A32]/5 transition-colors">
+                  <td className="py-4 px-5 font-bold text-[#152A32]">Commercial Model</td>
+                  <td className="py-4 px-5 text-[#152A32] font-semibold bg-[#152A32]/10">
                     Strict milestone-based deliverables with defined technical success criteria.
                   </td>
-                  <td className="py-4 px-5 text-[var(--text-secondary)]">
+                  <td className="py-4 px-5 text-[#152A32]/85">
                     Vague Time &amp; Materials billing with unpredictable overruns.
                   </td>
                 </tr>
-                <tr>
-                  <td className="py-4 px-5 font-semibold text-[var(--text-primary)]">Demonstration Cadence</td>
-                  <td className="py-4 px-5 text-[var(--text-primary)] font-medium">
+                <tr className="hover:bg-[#152A32]/5 transition-colors">
+                  <td className="py-4 px-5 font-bold text-[#152A32]">Demonstration Cadence</td>
+                  <td className="py-4 px-5 text-[#152A32] font-semibold bg-[#152A32]/10">
                     Live staging build updated and demonstrated weekly with working code.
                   </td>
-                  <td className="py-4 px-5 text-[var(--text-secondary)]">
+                  <td className="py-4 px-5 text-[#152A32]/85">
                     Monthly slide decks and wireframes with delayed code deployment.
                   </td>
                 </tr>
-                <tr>
-                  <td className="py-4 px-5 font-semibold text-[var(--text-primary)]">IP &amp; Code Ownership</td>
-                  <td className="py-4 px-5 text-[var(--text-primary)] font-medium">
+                <tr className="hover:bg-[#152A32]/5 transition-colors">
+                  <td className="py-4 px-5 font-bold text-[#152A32]">IP &amp; Code Ownership</td>
+                  <td className="py-4 px-5 text-[#152A32] font-semibold bg-[#152A32]/10">
                     100% client code ownership in your private GitHub/GitLab from day one.
                   </td>
-                  <td className="py-4 px-5 text-[var(--text-secondary)]">
+                  <td className="py-4 px-5 text-[#152A32]/85">
                     Vendor lock-in, proprietary platforms, or delayed IP transfer upon final payment.
                   </td>
                 </tr>
-                <tr>
-                  <td className="py-4 px-5 font-semibold text-[var(--text-primary)]">AI Systems Architecture</td>
-                  <td className="py-4 px-5 text-[var(--text-primary)] font-medium">
+                <tr className="hover:bg-[#152A32]/5 transition-colors">
+                  <td className="py-4 px-5 font-bold text-[#152A32]">AI Systems Architecture</td>
+                  <td className="py-4 px-5 text-[#152A32] font-semibold bg-[#152A32]/10">
                     Custom pipelines (pgvector, hybrid rerankers, deterministic guardrails, local model fallbacks).
                   </td>
-                  <td className="py-4 px-5 text-[var(--text-secondary)]">
+                  <td className="py-4 px-5 text-[#152A32]/85">
                     Shallow OpenAI wrapper API calls without latency optimization or auditability.
                   </td>
                 </tr>
-                <tr>
-                  <td className="py-4 px-5 font-semibold text-[var(--text-primary)]">Deployment Flexibility</td>
-                  <td className="py-4 px-5 text-[var(--text-primary)] font-medium">
+                <tr className="hover:bg-[#152A32]/5 transition-colors">
+                  <td className="py-4 px-5 font-bold text-[#152A32]">Deployment Flexibility</td>
+                  <td className="py-4 px-5 text-[#152A32] font-semibold bg-[#152A32]/10">
                     Cloud agnostic (AWS, GCP, Azure, bare-metal on-prem, or hybrid VPC).
                   </td>
-                  <td className="py-4 px-5 text-[var(--text-secondary)]">
+                  <td className="py-4 px-5 text-[#152A32]/85">
                     Locked to their preferred hosting vendor with high ongoing markups.
                   </td>
                 </tr>

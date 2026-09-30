@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import {
   Sparkles,
   Cpu,
@@ -73,23 +73,30 @@ const CAPABILITIES: CapabilityItem[] = [
   },
 ];
 
+function subscribeReducedMotion(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  media.addEventListener("change", callback);
+  return () => media.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
 export function CapabilityStrip() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-      setIsReducedMotion(media.matches);
-
-      const listener = (e: MediaQueryListEvent) => {
-        setIsReducedMotion(e.matches);
-      };
-      media.addEventListener("change", listener);
-      return () => media.removeEventListener("change", listener);
-    }
-  }, []);
+  const isReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  );
 
   const shouldAnimate = isPlaying && !isHovered && !isReducedMotion;
 
@@ -110,24 +117,18 @@ export function CapabilityStrip() {
           </span>
         </div>
 
-        {/* Accessible Play/Pause Toggle (WCAG 2.2.2 Compliant) */}
+        {/* Accessible Play/Pause Toggle (WCAG 2.2.2 Compliant) - Subtle corner icon */}
         {!isReducedMotion && (
           <button
             type="button"
             onClick={() => setIsPlaying((prev) => !prev)}
             aria-label={isPlaying ? "Pause capability ticker" : "Play capability ticker"}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold bg-white border border-slate-200 text-slate-700 hover:text-[#152A32] hover:border-slate-300 transition-colors cursor-pointer shadow-xs"
+            className="w-6 h-6 rounded-md flex items-center justify-center bg-white/70 hover:bg-white text-[#152A32] border border-slate-200/80 transition-all cursor-pointer shadow-2xs opacity-35 hover:opacity-100 focus:opacity-100"
           >
             {isPlaying ? (
-              <>
-                <Pause className="w-3 h-3 text-[#152A32]" />
-                <span className="hidden sm:inline">Pause</span>
-              </>
+              <Pause className="w-3 h-3 text-[#152A32]" />
             ) : (
-              <>
-                <Play className="w-3 h-3 text-[var(--accent-green)] fill-[var(--accent-green)]" />
-                <span className="hidden sm:inline">Play</span>
-              </>
+              <Play className="w-3 h-3 fill-[#152A32] text-[#152A32]" />
             )}
           </button>
         )}

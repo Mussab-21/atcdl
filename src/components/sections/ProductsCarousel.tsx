@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useSyncExternalStore } from "react";
 import NextLink from "next/link";
 import { Product } from "@/content/data";
 import { Badge } from "@/components/ui/Badge";
@@ -60,13 +60,33 @@ interface ProductsCarouselProps {
   products: Product[];
 }
 
+function subscribeReducedMotion(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  media.addEventListener("change", callback);
+  return () => media.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
 export function ProductsCarousel({ products }: ProductsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isInView, setIsInView] = useState(true);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const isReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  );
   const [slideWidth, setSlideWidth] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
 
@@ -109,23 +129,6 @@ export function ProductsCarousel({ products }: ProductsCarouselProps) {
       window.removeEventListener("resize", updateSlideWidth);
     };
   }, [updateSlideWidth]);
-
-  // Check prefers-reduced-motion
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-      setIsReducedMotion(media.matches);
-      if (media.matches) {
-        setIsPlaying(false);
-      }
-      const listener = (e: MediaQueryListEvent) => {
-        setIsReducedMotion(e.matches);
-        if (e.matches) setIsPlaying(false);
-      };
-      media.addEventListener("change", listener);
-      return () => media.removeEventListener("change", listener);
-    }
-  }, []);
 
   // Pause when scrolled out of view
   useEffect(() => {
@@ -237,38 +240,29 @@ export function ProductsCarousel({ products }: ProductsCarouselProps) {
       onTouchEnd={handleTouchEnd}
       className="relative flex flex-col gap-6 outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded-xl w-full min-w-0"
     >
-      {/* Top Carousel Navigation Bar: Arrows + Play/Pause Control */}
+      {/* Top Carousel Navigation Bar: Position & Controls */}
       <div className="flex items-center justify-between">
+        <span className="text-xs font-mono text-[var(--text-muted)]">
+          Showing {activeDotIndex + 1} of {totalProducts}
+        </span>
+
+        {/* Carousel Controls: Subtle Icon-Only Play/Pause + Left/Right Arrows */}
         <div className="flex items-center gap-2">
-          {/* Pause / Play Accessible Toggle (WCAG 2.2.2) */}
           {!isReducedMotion && (
             <button
               type="button"
               onClick={() => setIsPlaying((prev) => !prev)}
               aria-label={isPlaying ? "Pause auto-advancing products" : "Play auto-advancing products"}
-              className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-white border border-[var(--border)] text-slate-700 hover:text-[var(--header-bg)] hover:border-slate-300 transition-colors cursor-pointer shadow-2xs"
+              className="w-7 h-7 rounded-md flex items-center justify-center bg-white/70 hover:bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 transition-all cursor-pointer shadow-2xs opacity-40 hover:opacity-100 focus:opacity-100"
             >
               {isPlaying ? (
-                <>
-                  <Pause className="w-3 h-3 text-[var(--header-bg)]" />
-                  <span className="hidden sm:inline">Pause</span>
-                </>
+                <Pause className="w-3.5 h-3.5 text-[#152A32]" />
               ) : (
-                <>
-                  <Play className="w-3 h-3 text-[var(--accent-green)] fill-[var(--accent-green)]" />
-                  <span className="hidden sm:inline">Play</span>
-                </>
+                <Play className="w-3.5 h-3.5 fill-[#152A32] text-[#152A32]" />
               )}
             </button>
           )}
 
-          <span className="text-xs font-mono text-[var(--text-muted)]">
-            Showing {activeDotIndex + 1} of {totalProducts}
-          </span>
-        </div>
-
-        {/* Left & Right Arrow Controls */}
-        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={handlePrev}

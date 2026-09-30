@@ -11,11 +11,7 @@ import {
   Clock,
   Coins,
   Shield,
-  Layers,
-  Sparkles,
-  HelpCircle,
   Check,
-  ChevronRight,
 } from "lucide-react";
 import { CustomAIVisual } from "@/components/solutions/visuals/CustomAIVisual";
 import { AIAgentsVisual } from "@/components/solutions/visuals/AIAgentsVisual";
@@ -323,64 +319,67 @@ export default async function SolutionDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* 4. COMPACT PACKAGE COMPARISON TABLE */}
+      {/* 4. COMPACT PACKAGE COMPARISON TABLE (Green Accent Treatment Data Display) */}
       {comparisonFeatures.length > 0 && (
         <section className="flex flex-col gap-6">
           <Reveal>
-            <div className="max-w-xl">
-              <h3 className="text-xl font-bold text-[var(--text-primary)]">
-                Compare Package Capabilities
-              </h3>
-              <p className="text-xs text-[var(--text-secondary)] mt-1">
-                A visual summary of how capabilities progress across the three tiers.
-              </p>
-            </div>
-          </Reveal>
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#00D477] text-[#152A32] border border-[#00B968] shadow-lg flex flex-col gap-6">
+              <div className="max-w-xl flex flex-col gap-1">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#152A32] bg-[#152A32]/10 px-2 py-0.5 rounded-full w-fit border border-[#152A32]/20">
+                  Feature Matrix
+                </span>
+                <h3 className="text-xl font-bold text-[#152A32] tracking-tight">
+                  Compare Package Capabilities
+                </h3>
+                <p className="text-xs text-[#152A32]/85">
+                  A visual summary of how capabilities progress across the three tiers.
+                </p>
+              </div>
 
-          <Reveal>
-            <div className="overflow-x-auto rounded-xl border border-[var(--border)] bg-white">
-              <table className="w-full text-left text-xs">
-                <thead className="bg-slate-50 border-b border-[var(--border)] text-slate-700 font-mono text-[11px] uppercase">
-                  <tr>
-                    <th className="p-3.5 font-bold">Capability / Feature</th>
-                    <th className="p-3.5 text-center font-bold">{packages[0]?.name || "Starter"}</th>
-                    <th className="p-3.5 text-center font-bold text-emerald-700 bg-emerald-50/50">
-                      {packages[1]?.name || "Workspace"}
-                    </th>
-                    <th className="p-3.5 text-center font-bold">{packages[2]?.name || "Command"}</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[var(--border)]">
-                  {comparisonFeatures.map((row, rIdx) => (
-                    <tr key={rIdx} className="hover:bg-slate-50/50 transition-colors">
-                      <td className="p-3.5 font-medium text-[var(--text-primary)]">
-                        {row.name}
-                      </td>
-                      <td className="p-3.5 text-center">
-                        {row.starter ? (
-                          <Check className="w-4 h-4 text-[var(--accent-green)] mx-auto" />
-                        ) : (
-                          <span className="text-slate-300 font-mono">—</span>
-                        )}
-                      </td>
-                      <td className="p-3.5 text-center bg-emerald-50/30">
-                        {row.growth ? (
-                          <Check className="w-4 h-4 text-[var(--accent-green)] mx-auto" />
-                        ) : (
-                          <span className="text-slate-300 font-mono">—</span>
-                        )}
-                      </td>
-                      <td className="p-3.5 text-center">
-                        {row.scale ? (
-                          <Check className="w-4 h-4 text-[var(--accent-green)] mx-auto" />
-                        ) : (
-                          <span className="text-slate-300 font-mono">—</span>
-                        )}
-                      </td>
+              <div className="overflow-x-auto rounded-xl border border-[#152A32]/20 bg-[#152A32]/5 shadow-inner">
+                <table className="w-full text-left text-xs">
+                  <thead className="bg-[#152A32]/10 border-b border-[#152A32]/20 text-[#152A32] font-mono text-[11px] uppercase font-bold">
+                    <tr>
+                      <th className="p-3.5 font-bold">Capability / Feature</th>
+                      <th className="p-3.5 text-center font-bold">{packages[0]?.name || "Starter"}</th>
+                      <th className="p-3.5 text-center font-bold bg-[#152A32]/15 text-[#152A32]">
+                        {packages[1]?.name || "Workspace"}
+                      </th>
+                      <th className="p-3.5 text-center font-bold">{packages[2]?.name || "Command"}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-[#152A32]/15">
+                    {comparisonFeatures.map((row, rIdx) => (
+                      <tr key={rIdx} className="hover:bg-[#152A32]/5 transition-colors">
+                        <td className="p-3.5 font-bold text-[#152A32]">
+                          {row.name}
+                        </td>
+                        <td className="p-3.5 text-center">
+                          {row.starter ? (
+                            <Check className="w-4 h-4 text-[#152A32] stroke-[2.5] mx-auto" />
+                          ) : (
+                            <span className="text-[#152A32]/35 font-mono">—</span>
+                          )}
+                        </td>
+                        <td className="p-3.5 text-center bg-[#152A32]/10">
+                          {row.growth ? (
+                            <Check className="w-4 h-4 text-[#152A32] stroke-[2.5] mx-auto" />
+                          ) : (
+                            <span className="text-[#152A32]/35 font-mono">—</span>
+                          )}
+                        </td>
+                        <td className="p-3.5 text-center">
+                          {row.scale ? (
+                            <Check className="w-4 h-4 text-[#152A32] stroke-[2.5] mx-auto" />
+                          ) : (
+                            <span className="text-[#152A32]/35 font-mono">—</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </Reveal>
         </section>
