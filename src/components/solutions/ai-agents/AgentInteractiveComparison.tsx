@@ -1,11 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AI_AGENTS_DATA } from "@/content/ai-agents-data";
 import { Check, ArrowRight } from "lucide-react";
 
 export function AgentInteractiveComparison() {
   const [activeTab, setActiveTab] = useState<"task" | "workflow" | "auto">("workflow");
+
+  // Synchronize with package selector above
+  useEffect(() => {
+    const handlePackageSelect = (e: Event) => {
+      const pkgId = (e as CustomEvent<string>).detail;
+      if (pkgId === "task-agent") setActiveTab("task");
+      else if (pkgId === "workflow-agent") setActiveTab("workflow");
+      else if (pkgId === "autonomous-operations") setActiveTab("auto");
+    };
+
+    window.addEventListener("atcdl-ai-agent-package", handlePackageSelect);
+    return () => window.removeEventListener("atcdl-ai-agent-package", handlePackageSelect);
+  }, []);
 
   return (
     <section className="flex flex-col gap-8 w-full">

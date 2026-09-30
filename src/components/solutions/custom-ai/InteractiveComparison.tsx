@@ -1,11 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CUSTOM_AI_DATA } from "@/content/custom-ai-data";
 import { Check, ArrowRight } from "lucide-react";
 
 export function InteractiveComparison() {
   const [activeTab, setActiveTab] = useState<"starter" | "workspace" | "command">("workspace");
+
+  // Synchronize with package selector above
+  useEffect(() => {
+    const handlePackageSelect = (e: Event) => {
+      const pkgId = (e as CustomEvent<string>).detail;
+      if (pkgId === "starter") setActiveTab("starter");
+      else if (pkgId === "workspace") setActiveTab("workspace");
+      else if (pkgId === "command-center") setActiveTab("command");
+    };
+
+    window.addEventListener("atcdl-custom-ai-package", handlePackageSelect);
+    return () => window.removeEventListener("atcdl-custom-ai-package", handlePackageSelect);
+  }, []);
 
   return (
     <section className="flex flex-col gap-8 w-full">

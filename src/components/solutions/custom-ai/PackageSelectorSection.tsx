@@ -11,11 +11,8 @@ import {
   CurrencyCode,
 } from "@/lib/currency";
 import { Button } from "@/components/ui/Button";
-import {
-  ArrowRight,
-  Clock,
-  Zap,
-} from "lucide-react";
+import { PackageCard } from "@/components/solutions/PackageCard";
+import { ArrowRight, Zap, CheckCircle2, ShieldCheck } from "lucide-react";
 
 export function PackageSelectorSection() {
   const [selectedId, setSelectedId] = useState<"starter" | "workspace" | "command-center">("workspace");
@@ -29,7 +26,17 @@ export function PackageSelectorSection() {
     setCurrency(newCurr);
   };
 
-  const selectedPkg = CUSTOM_AI_DATA.packages.find((p) => p.id === selectedId) || CUSTOM_AI_DATA.packages[1];
+  const handleSelectPackage = (id: "starter" | "workspace" | "command-center") => {
+    setSelectedId(id);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("atcdl-custom-ai-package", { detail: id }));
+    }
+  };
+
+  const selectedPkg =
+    CUSTOM_AI_DATA.packages.find((p) => p.id === selectedId) || CUSTOM_AI_DATA.packages[1];
+
+  const packageIndex = CUSTOM_AI_DATA.packages.findIndex((p) => p.id === selectedId);
 
   return (
     <section id="packages" className="flex flex-col gap-10 w-full scroll-mt-24">
@@ -75,165 +82,198 @@ export function PackageSelectorSection() {
         </div>
       </div>
 
-      {/* 3 Horizontal Package Cards (Desktop) / Swipeable Grid (Mobile) */}
+      {/* 3 Package Cards (Desktop Grid / Mobile Swipeable Carousel with equal heights) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
         {CUSTOM_AI_DATA.packages.map((pkg) => {
           const isSelected = selectedId === pkg.id;
-          const priceData = currency === "PKR" ? pkg.pricing.PKR : pkg.pricing.USD;
+
+          const visual = (
+            <div className="w-full">
+              {pkg.id === "starter" && (
+                <div className="flex flex-col gap-2 font-mono text-[10px]">
+                  <div
+                    className={`flex items-center justify-between transition-colors ${
+                      isSelected ? "text-slate-300" : "text-slate-600"
+                    }`}
+                  >
+                    <span>DOCUMENTS (PDF, SOP)</span>
+                    <ArrowRight
+                      className={`w-3.5 h-3.5 transition-colors ${
+                        isSelected ? "text-[#60A5FA]" : "text-[#2563EB]"
+                      }`}
+                    />
+                    <span
+                      className={`font-bold transition-colors ${
+                        isSelected ? "text-[#93C5FD]" : "text-[#2563EB]"
+                      }`}
+                    >
+                      AI CORE
+                    </span>
+                  </div>
+                  <div
+                    className={`p-2 rounded border text-center font-sans text-[11px] font-medium transition-all ${
+                      isSelected
+                        ? "bg-[#091C36] border-[#203D66] text-slate-200"
+                        : "bg-white border-slate-200 text-slate-700"
+                    }`}
+                  >
+                    <div className="flex items-center justify-center gap-1.5">
+                      {isSelected && (
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#00D084]" />
+                      )}
+                      <span>&quot;Ask question → Verified citation&quot;</span>
+                      {isSelected && (
+                        <span className="text-[9px] font-mono px-1 py-0.5 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-800">
+                          p.14
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {pkg.id === "workspace" && (
+                <div className="flex flex-col gap-2 font-mono text-[10px]">
+                  <div
+                    className={`flex items-center justify-between transition-colors ${
+                      isSelected ? "text-slate-300" : "text-slate-600"
+                    }`}
+                  >
+                    <span>SHAREPOINT / DRIVE / SQL</span>
+                    <ArrowRight
+                      className={`w-3.5 h-3.5 transition-colors ${
+                        isSelected ? "text-[#00D084]" : "text-[#00D477]"
+                      }`}
+                    />
+                    <span
+                      className={`font-bold transition-colors ${
+                        isSelected ? "text-[#00D084]" : "text-[#071B3B]"
+                      }`}
+                    >
+                      AI WORKSPACE
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-1.5 text-center font-sans text-[10px]">
+                    {["Finance", "Ops / HR", "Engineering"].map((dept) => (
+                      <span
+                        key={dept}
+                        className={`p-1.5 rounded border transition-all ${
+                          isSelected
+                            ? "bg-[#091C36] border-[#203D66] text-slate-200 font-semibold"
+                            : "bg-white border-slate-200 text-slate-700"
+                        }`}
+                      >
+                        {isSelected ? `● ${dept}` : dept}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {pkg.id === "command-center" && (
+                <div className="flex flex-col gap-2 font-mono text-[10px]">
+                  <div
+                    className={`flex items-center justify-between transition-colors ${
+                      isSelected ? "text-slate-300" : "text-slate-600"
+                    }`}
+                  >
+                    <span>ERP / CRM / APIS / DATA</span>
+                    <ArrowRight
+                      className={`w-3.5 h-3.5 transition-colors ${
+                        isSelected ? "text-purple-400" : "text-purple-600"
+                      }`}
+                    />
+                    <span
+                      className={`font-bold transition-colors ${
+                        isSelected ? "text-purple-300" : "text-purple-700"
+                      }`}
+                    >
+                      AUTONOMOUS AGENTS
+                    </span>
+                  </div>
+                  <div
+                    className={`p-2 rounded border text-center text-[10px] font-sans font-bold flex items-center justify-center gap-1.5 transition-all ${
+                      isSelected
+                        ? "bg-[#091C36] border-emerald-500/40 text-white"
+                        : "bg-[#071B3B] border-slate-700 text-white"
+                    }`}
+                  >
+                    <Zap className="w-3.5 h-3.5 text-[#00D084] animate-pulse" />
+                    <span>Air-Gapped VPC + Multi-Agent Execution</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
 
           return (
-            <div
+            <PackageCard
               key={pkg.id}
-              onClick={() => setSelectedId(pkg.id)}
-              className={`p-6 sm:p-7 rounded-2xl border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between gap-6 relative ${
-                isSelected
-                  ? "bg-white border-[#2563EB] shadow-xl ring-2 ring-[#2563EB]/40 scale-[1.02] z-10"
-                  : "bg-white/80 border-[#DCE5EF] shadow-xs hover:border-slate-300 hover:shadow-md"
-              }`}
-            >
-              {/* Badge for Popular or Level Indicator */}
-              <div className="flex items-center justify-between">
-                <span
-                  className={`text-xs font-mono font-bold uppercase tracking-wider ${
-                    isSelected ? "text-[#2563EB]" : "text-slate-400"
-                  }`}
-                >
-                  PACKAGE {pkg.level}
-                </span>
-
-                {pkg.isPopular && (
-                  <span className="text-[10px] font-mono uppercase font-bold px-2.5 py-0.5 rounded-full bg-[#00D477] text-[#071B3B] shadow-2xs">
-                    Recommended Tier
-                  </span>
-                )}
-              </div>
-
-              {/* Title & Business Purpose */}
-              <div className="flex flex-col gap-1.5">
-                <h3 className="text-xl sm:text-2xl font-bold text-[#091326]">
-                  {pkg.name}
-                </h3>
-                <p className="text-xs text-slate-500 font-medium">
-                  {pkg.tagline}
-                </p>
-              </div>
-
-              {/* Visual System Micro-Simulation for this specific tier */}
-              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 flex flex-col gap-2 min-h-[110px] justify-center">
-                {pkg.id === "starter" && (
-                  <div className="flex flex-col gap-1.5 font-mono text-[10px]">
-                    <div className="flex items-center justify-between text-slate-600">
-                      <span>DOCUMENTS (PDF, SOP)</span>
-                      <ArrowRight className="w-3 h-3 text-[#2563EB]" />
-                      <span className="text-[#2563EB] font-bold">AI CORE</span>
-                    </div>
-                    <div className="p-1.5 rounded bg-white border border-slate-200 text-center text-slate-700 font-sans text-[11px] font-medium">
-                      &quot;Ask question → Verified citation&quot;
-                    </div>
-                  </div>
-                )}
-
-                {pkg.id === "workspace" && (
-                  <div className="flex flex-col gap-1.5 font-mono text-[10px]">
-                    <div className="flex items-center justify-between text-slate-600">
-                      <span>SHAREPOINT / DRIVE / SQL</span>
-                      <ArrowRight className="w-3 h-3 text-[#00D477]" />
-                      <span className="text-[#071B3B] font-bold">AI WORKSPACE</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-1 text-center font-sans text-[10px] text-slate-700">
-                      <span className="bg-white p-1 rounded border border-slate-200">Finance</span>
-                      <span className="bg-white p-1 rounded border border-slate-200">Ops / HR</span>
-                      <span className="bg-white p-1 rounded border border-slate-200">Engineering</span>
-                    </div>
-                  </div>
-                )}
-
-                {pkg.id === "command-center" && (
-                  <div className="flex flex-col gap-1.5 font-mono text-[10px]">
-                    <div className="flex items-center justify-between text-slate-600">
-                      <span>ERP / CRM / APIS / DATA</span>
-                      <ArrowRight className="w-3 h-3 text-purple-600" />
-                      <span className="text-purple-700 font-bold">AUTONOMOUS AGENTS</span>
-                    </div>
-                    <div className="p-1.5 rounded bg-[#071B3B] text-white text-center text-[10px] font-sans font-bold flex items-center justify-center gap-1.5">
-                      <Zap className="w-3 h-3 text-[#00D477]" />
-                      <span>Air-Gapped VPC + Multi-Agent Execution</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Price & Delivery Timeline */}
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col gap-1">
-                <span className="text-[10px] font-mono text-slate-400 uppercase font-semibold">
-                  Investment Scope:
-                </span>
-                <div className="text-lg sm:text-xl font-bold font-mono text-[#091326]">
-                  {priceData.range}
-                </div>
-                <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-1 border-t border-slate-200/80">
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-[#2563EB]" />
-                    <span>{pkg.timeline}</span>
-                  </div>
-                  <span className="text-[10px] text-slate-400">{priceData.context}</span>
-                </div>
-              </div>
-
-              {/* Capability Badges (Compact, visual, not long lists) */}
-              <div className="flex flex-col gap-2">
-                <span className="text-[10px] font-mono uppercase text-slate-400 font-bold">
-                  Included Architecture:
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  {pkg.capabilities.map((cap, i) => (
-                    <span
-                      key={i}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-medium border border-slate-200"
-                    >
-                      {cap.title}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Selection Button */}
-              <div className="pt-2 border-t border-slate-100">
-                <Button
-                  size="md"
-                  variant={isSelected ? "primary" : "outline"}
-                  className="w-full text-xs font-semibold justify-center cursor-pointer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedId(pkg.id);
-                  }}
-                >
-                  <span>{isSelected ? "Selected Option" : `Select ${pkg.name}`}</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-                </Button>
-              </div>
-            </div>
+              pkg={pkg}
+              isSelected={isSelected}
+              onSelect={() =>
+                handleSelectPackage(pkg.id as "starter" | "workspace" | "command-center")
+              }
+              currency={currency}
+              visual={visual}
+              isRecommended={pkg.isPopular}
+              selectedCtaLabel="Selected Package"
+              unselectedCtaLabel={`Choose ${pkg.name}`}
+            />
           );
         })}
       </div>
 
+      {/* Mobile Subtle Position Indicator (01 / 03, 02 / 03, 03 / 03) */}
+      <div className="flex md:hidden items-center justify-center gap-2 pt-1">
+        {CUSTOM_AI_DATA.packages.map((pkg, idx) => (
+          <button
+            key={pkg.id}
+            type="button"
+            onClick={() =>
+              handleSelectPackage(pkg.id as "starter" | "workspace" | "command-center")
+            }
+            className={`w-2 h-2 rounded-full transition-all ${
+              selectedId === pkg.id ? "bg-[#3B82F6] w-6" : "bg-slate-300"
+            }`}
+            aria-label={`Select package ${idx + 1}`}
+          />
+        ))}
+        <span className="text-[11px] font-mono text-slate-500 ml-2">
+          0{packageIndex + 1} / 03
+        </span>
+      </div>
+
       {/* Selected Package Expansion Tray */}
-      <div className="p-6 sm:p-8 rounded-2xl bg-[#071B3B] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-lg border border-slate-800">
-        <div className="flex flex-col gap-1.5 max-w-xl">
+      <div className="p-6 sm:p-8 rounded-2xl bg-[#071B3B] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl border border-slate-700">
+        <div className="flex flex-col gap-1.5 max-w-xl text-left">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold uppercase text-[#00D477]">
+            <span className="text-xs font-mono font-bold uppercase text-[#00D084]">
               Current Selection // {selectedPkg.name}
             </span>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white border border-white/15">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-slate-200 border border-white/15">
               {selectedPkg.timeline}
             </span>
+            {selectedPkg.isPopular && (
+              <span className="text-[10px] font-mono uppercase font-bold px-2 py-0.5 rounded-full bg-[#00D084] text-[#071B3B]">
+                Recommended
+              </span>
+            )}
           </div>
-          <h4 className="text-xl sm:text-2xl font-bold text-white">
+          <h4 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
             {selectedPkg.description}
           </h4>
-          <p className="text-xs text-slate-300">
+          <p className="text-xs sm:text-sm text-[#D5DFEC] leading-relaxed">
             {selectedPkg.deliverableSummary}
           </p>
+          <div className="flex items-center gap-3 pt-1 text-[11px] font-mono text-[#8FA6C0]">
+            <span className="flex items-center gap-1">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#00D084]" />
+              Enterprise Data Isolation
+            </span>
+            <span>•</span>
+            <span>Dedicated Production Deployment</span>
+          </div>
         </div>
 
         <NextLink
@@ -243,9 +283,9 @@ export function PackageSelectorSection() {
           <Button
             size="lg"
             variant="primary"
-            className="w-full sm:w-auto text-xs font-bold whitespace-nowrap bg-[#00D477] text-[#071B3B] hover:bg-[#00B968]"
+            className="w-full sm:w-auto text-xs sm:text-sm font-bold whitespace-nowrap bg-[#00D084] hover:bg-[#00BF77] text-[#071B3B] shadow-sm transition-all"
           >
-            <span>{selectedPkg.ctaText} →</span>
+            <span>Proceed with {selectedPkg.name} →</span>
           </Button>
         </NextLink>
       </div>
