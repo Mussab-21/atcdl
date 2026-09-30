@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useSyncExternalStore } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import {
   Cpu,
@@ -10,55 +10,135 @@ import {
   Mail,
   AlertTriangle,
   Zap,
+  Pause,
+  Play,
 } from "lucide-react";
+
+function subscribeReducedMotion(callback: () => void) {
+  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
 
 export function HeroSystemVisual() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const masterTlRef = useRef<gsap.core.Timeline | null>(null);
+  const idleTweensRef = useRef<gsap.core.Tween[]>([]);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [act, setAct] = useState<1 | 2 | 3>(3); // Default to 3 for SSR/initial, animated on mount
+
+  const isReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  );
+
+  const togglePlayPause = () => {
+    setIsPlaying((prev) => {
+      const next = !prev;
+      if (masterTlRef.current) {
+        if (next) {
+          masterTlRef.current.play();
+          idleTweensRef.current.forEach((t) => t.play());
+        } else {
+          masterTlRef.current.pause();
+          idleTweensRef.current.forEach((t) => t.pause());
+        }
+      }
+      return next;
+    });
+  };
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // --- NARRATIVE THREE-ACT TIMELINE ---
+        // Continuous Narrative Three-Act Timeline
         const masterTl = gsap.timeline({
+          repeat: -1,
           defaults: { ease: "power2.out" },
         });
+        masterTlRef.current = masterTl;
 
-        // Set initial Act 1 state
-        gsap.set(".hero-act1-elements", { opacity: 1, scale: 1 });
-        gsap.set(".hero-act3-elements", { opacity: 0, scale: 0.95 });
-        gsap.set(".core-engine-node", { scale: 0, opacity: 0 });
-        gsap.set(".signal-beam", { strokeDashoffset: 180 });
-        gsap.set(".act3-footer-health", { opacity: 0, y: 8 });
+        // Register persistent idle breathing and signal pulses once
+        idleTweensRef.current = [
+          gsap.to(".core-glow-ring", {
+            scale: 1.15,
+            opacity: 0.35,
+            duration: 2.4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          }),
+          gsap.to(".node-input", {
+            y: -3,
+            duration: 2.8,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          }),
+          gsap.to(".node-intel", {
+            y: 3,
+            duration: 3.2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          }),
+          gsap.to(".node-auto", {
+            y: 3,
+            duration: 3.4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          }),
+          gsap.to(".node-ctrl", {
+            y: -3,
+            duration: 3.0,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          }),
+          gsap.to(
+            ".signal-particle-1, .signal-particle-2, .signal-particle-3, .signal-particle-4",
+            {
+              strokeDashoffset: -180,
+              duration: 2.4,
+              repeat: -1,
+              ease: "none",
+              stagger: 0.35,
+            }
+          ),
+        ];
 
-        // --- ACT 1: The Problem (0.0s - 1.8s) ---
-        // Subtle alert jitter / friction on problem nodes
-        masterTl.to(".act1-badge", {
-          opacity: 1,
-          duration: 0.4,
-        });
+        // --- STEP 1: Act 1 - The Problem (Friction & Chaos) ---
+        masterTl.add(() => setAct(1));
+        masterTl.set(".hero-act1-elements", { opacity: 1, scale: 1 });
+        masterTl.set(".act1-badge", { opacity: 1 });
+        masterTl.set(".hero-act3-elements", { opacity: 0, scale: 0.95 });
+        masterTl.set(".core-engine-node", { scale: 0, opacity: 0 });
+        masterTl.set(".signal-beam", { strokeDashoffset: 180 });
+        masterTl.set(".act3-footer-health", { opacity: 0, y: 8 });
 
-        masterTl.to(
+        masterTl.fromTo(
           ".act1-node",
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 0.4,
-            stagger: 0.08,
-          },
-          "-=0.2"
+          { scale: 0.88, opacity: 0.4 },
+          { scale: 1, opacity: 1, duration: 0.4, stagger: 0.08 }
         );
 
-        // Hold Act 1 for user to perceive the fragmented state
-        masterTl.to({}, { duration: 1.2 });
+        // Hold Act 1 for user to perceive the fragmented state (1.6s)
+        masterTl.to({}, { duration: 1.6 });
 
-        // --- ACT 2: The System Arriving (1.8s - 3.2s) ---
-        // Header shifts from warning to active
+        // --- STEP 2: Act 2 - The System Arriving ---
         masterTl.add(() => setAct(2));
-
-        // Fade problem nodes, scale down friction badges
         masterTl.to(".act1-badge", { opacity: 0, duration: 0.3 });
         masterTl.to(".hero-act1-elements", {
           opacity: 0,
@@ -115,63 +195,35 @@ export function HeroSystemVisual() {
           "-=0.2"
         );
 
-        // --- ACT 3: Settled Resolution & Steady Idle State (3.2s+) ---
-        masterTl.add(() => {
-          setAct(3);
+        // --- STEP 3: Act 3 - Settled Resolution & Steady Idle State ---
+        masterTl.add(() => setAct(3));
 
-          // Gentle core breathing pulse
-          gsap.to(".core-glow-ring", {
-            scale: 1.15,
-            opacity: 0.35,
-            duration: 2.4,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
+        // Rest in Act 3 for 11 seconds (user-confirmed 10–12s interval for optimal headline reading)
+        masterTl.to({}, { duration: 11.0 });
 
-          // Subtle organic float on satellite nodes
-          gsap.to(".node-input", {
-            y: -3,
-            duration: 2.8,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
-          gsap.to(".node-intel", {
-            y: 3,
-            duration: 3.2,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
-          gsap.to(".node-auto", {
-            y: 3,
-            duration: 3.4,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
-          gsap.to(".node-ctrl", {
-            y: -3,
-            duration: 3.0,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
-
-          // Clean, individual signal particles on dedicated paths (NO compound path jumping)
-          gsap.to(".signal-particle-1, .signal-particle-2, .signal-particle-3, .signal-particle-4", {
-            strokeDashoffset: -180,
-            duration: 2.4,
-            repeat: -1,
-            ease: "none",
-            stagger: 0.35,
-          });
-        });
+        // Smooth transition out of Act 3 back to Act 1 to loop
+        masterTl.to(
+          [".hero-act3-elements", ".core-engine-node", ".act3-footer-health"],
+          {
+            opacity: 0,
+            scale: 0.95,
+            duration: 0.6,
+            ease: "power2.in",
+          }
+        );
+        masterTl.to(
+          ".signal-beam",
+          {
+            strokeDashoffset: 180,
+            duration: 0.4,
+            ease: "power2.in",
+          },
+          "<"
+        );
       });
 
       mm.add("(prefers-reduced-motion: reduce)", () => {
-        // Direct, static resolution end-state
+        // Direct, static resolution end-state only, never looping
         setAct(3);
         gsap.set(".hero-act1-elements", { display: "none" });
         gsap.set(".hero-act3-elements, .core-engine-node, .act3-footer-health", {
@@ -182,7 +234,10 @@ export function HeroSystemVisual() {
         gsap.set(".signal-beam", { strokeDashoffset: 0 });
       });
 
-      return () => mm.revert();
+      return () => {
+        idleTweensRef.current.forEach((t) => t.kill());
+        mm.revert();
+      };
     },
     { scope: containerRef }
   );
@@ -221,6 +276,22 @@ export function HeroSystemVisual() {
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)] animate-pulse" />
                 ENGINE ACTIVE
               </span>
+            )}
+
+            {/* Accessible Play/Pause Toggle (WCAG 2.2.2 Compliant) - Subtle corner icon */}
+            {!isReducedMotion && (
+              <button
+                type="button"
+                onClick={togglePlayPause}
+                aria-label={isPlaying ? "Pause system narrative animation" : "Play system narrative animation"}
+                className="w-6 h-6 rounded-md flex items-center justify-center bg-white/10 hover:bg-white/20 text-white/80 hover:text-white border border-white/15 transition-all cursor-pointer shadow-2xs opacity-40 hover:opacity-100 focus:opacity-100 ml-0.5"
+              >
+                {isPlaying ? (
+                  <Pause className="w-3 h-3 text-white" />
+                ) : (
+                  <Play className="w-3 h-3 fill-white text-white" />
+                )}
+              </button>
             )}
           </div>
         </div>
