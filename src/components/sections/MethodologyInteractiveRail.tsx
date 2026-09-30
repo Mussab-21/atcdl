@@ -70,7 +70,11 @@ function getReducedMotionServerSnapshot() {
   return false;
 }
 
-export function MethodologyInteractiveRail() {
+export function MethodologyInteractiveRail({
+  showPageLink = true,
+}: {
+  showPageLink?: boolean;
+} = {}) {
   const [activeStep, setActiveStep] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const isReducedMotion = useSyncExternalStore(
@@ -181,14 +185,14 @@ export function MethodologyInteractiveRail() {
               }}
               className={`p-6 rounded-[var(--radius-lg)] border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between gap-4 relative overflow-hidden ${
                 isActive
-                  ? "bg-white border-[var(--accent)] shadow-md ring-1 ring-[var(--accent)]/30 scale-[1.02] z-10"
-                  : "bg-white/80 border-slate-200/90 shadow-xs hover:border-slate-300 opacity-75 hover:opacity-100"
+                  ? "bg-[#00D477] border-[#00B968] shadow-lg scale-[1.02] z-10 text-[#152A32]"
+                  : "bg-white/80 border-slate-200/90 shadow-xs hover:border-slate-300 opacity-75 hover:opacity-100 text-[var(--text-primary)]"
               }`}
             >
               {/* Active top color bar indicator */}
               <div
                 className={`absolute top-0 left-0 right-0 h-1 transition-colors ${
-                  isActive ? "bg-[var(--accent)]" : "bg-transparent"
+                  isActive ? "bg-[#152A32]" : "bg-transparent"
                 }`}
               />
 
@@ -197,50 +201,85 @@ export function MethodologyInteractiveRail() {
                   <div className="flex items-center gap-2">
                     <span
                       className={`text-lg font-bold transition-colors ${
-                        isActive ? "text-[var(--accent)]" : "text-slate-400"
+                        isActive ? "text-[#152A32]" : "text-slate-400"
                       }`}
                     >
                       {phase.step}
                     </span>
-                    <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+                    <span
+                      className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${
+                        isActive
+                          ? "bg-[#152A32]/10 text-[#152A32] border border-[#152A32]/20"
+                          : "bg-slate-100 text-slate-600"
+                      }`}
+                    >
                       {phase.duration}
                     </span>
                   </div>
 
                   {isActive && (
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[var(--accent-green)]/20 text-[var(--header-bg)] font-semibold flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)] animate-pulse" />
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#152A32] text-[#00D477] font-bold flex items-center gap-1 shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D477] animate-pulse" />
                       Active
                     </span>
                   )}
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-bold text-[var(--text-primary)]">{phase.name}</h3>
-                  <span className="text-[11px] font-medium text-[var(--accent)] block mt-0.5">
+                  <h3
+                    className={`text-lg font-bold transition-colors ${
+                      isActive ? "text-[#152A32]" : "text-[var(--text-primary)]"
+                    }`}
+                  >
+                    {phase.name}
+                  </h3>
+                  <span
+                    className={`text-[11px] font-semibold block mt-0.5 ${
+                      isActive ? "text-[#152A32]/85" : "text-[var(--accent)]"
+                    }`}
+                  >
                     {phase.badge}
                   </span>
                 </div>
 
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                <p
+                  className={`text-xs leading-relaxed ${
+                    isActive ? "text-[#152A32]/90" : "text-[var(--text-secondary)]"
+                  }`}
+                >
                   {phase.desc}
                 </p>
 
                 {/* Expanded Details when Active or when Reduced Motion is enabled */}
                 <div
-                  className={`flex flex-col gap-2 pt-2 border-t border-slate-100 transition-all duration-300 ${
+                  className={`flex flex-col gap-2 pt-2 border-t transition-all duration-300 ${
+                    isActive ? "border-[#152A32]/20" : "border-slate-100"
+                  } ${
                     isActive || isReducedMotion
                       ? "opacity-100 max-h-48"
                       : "opacity-0 max-h-0 overflow-hidden"
                   }`}
                 >
-                  <span className="text-[10px] font-mono uppercase font-semibold text-slate-400">
+                  <span
+                    className={`text-[10px] font-mono uppercase font-bold ${
+                      isActive ? "text-[#152A32]/75" : "text-slate-400"
+                    }`}
+                  >
                     Key Deliverables:
                   </span>
                   <ul className="flex flex-col gap-1">
                     {phase.deliverables.map((item, i) => (
-                      <li key={i} className="text-[11px] text-slate-700 flex items-start gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[var(--accent-green)] shrink-0 mt-0.5" />
+                      <li
+                        key={i}
+                        className={`text-[11px] font-medium flex items-start gap-1.5 ${
+                          isActive ? "text-[#152A32]" : "text-slate-700"
+                        }`}
+                      >
+                        <CheckCircle2
+                          className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${
+                            isActive ? "text-[#152A32]" : "text-[var(--accent-green)]"
+                          }`}
+                        />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -249,13 +288,21 @@ export function MethodologyInteractiveRail() {
               </div>
 
               {/* Card Footer */}
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                <span className="text-slate-400 font-mono text-[10px]">
+              <div
+                className={`pt-3 border-t flex items-center justify-between text-[11px] ${
+                  isActive ? "border-[#152A32]/20" : "border-slate-100"
+                }`}
+              >
+                <span
+                  className={`font-mono text-[10px] ${
+                    isActive ? "text-[#152A32]/70 font-semibold" : "text-slate-400"
+                  }`}
+                >
                   Phase {phase.step} of 04
                 </span>
                 <span
-                  className={`font-semibold transition-colors flex items-center gap-1 ${
-                    isActive ? "text-[var(--accent)]" : "text-slate-400"
+                  className={`font-bold transition-colors flex items-center gap-1 ${
+                    isActive ? "text-[#152A32]" : "text-slate-400"
                   }`}
                 >
                   <span>{isActive ? "Viewing" : "Click to view"}</span>
@@ -268,18 +315,20 @@ export function MethodologyInteractiveRail() {
       </div>
 
       {/* Link to Full Process Page */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 border-t border-slate-200">
-        <p className="text-xs text-[var(--text-secondary)]">
-          Want the deep technical breakdown of SLAs, evaluation gates, and CI/CD pipelines?
-        </p>
+      {showPageLink && (
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 border-t border-slate-200">
+          <p className="text-xs text-[var(--text-secondary)]">
+            Want the deep technical breakdown of SLAs, evaluation gates, and CI/CD pipelines?
+          </p>
 
-        <NextLink href="/process">
-          <Button variant="outline" size="sm" className="text-xs font-medium">
-            <span>Explore Full 4-Stage Methodology</span>
-            <ArrowRight className="w-3.5 h-3.5 ml-1" />
-          </Button>
-        </NextLink>
-      </div>
+          <NextLink href="/process">
+            <Button variant="outline" size="sm" className="text-xs font-medium">
+              <span>Explore Full 4-Stage Methodology</span>
+              <ArrowRight className="w-3.5 h-3.5 ml-1" />
+            </Button>
+          </NextLink>
+        </div>
+      )}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { ArrowRight } from "lucide-react";
 import { ProcessTimeline } from "./ProcessTimeline";
+import { MethodologyInteractiveRail } from "@/components/sections/MethodologyInteractiveRail";
 
 export const metadata: Metadata = {
   title: "Delivery Process & Methodology | ATCDL Engineering",
@@ -65,6 +66,7 @@ export default function ProcessPage() {
             </span>
           </div>
 
+          <MethodologyInteractiveRail showPageLink={false} />
           <ProcessTimeline />
         </div>
       </section>
