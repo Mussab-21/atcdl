@@ -7,9 +7,9 @@ import { ProcessTimeline } from "./ProcessTimeline";
 import { MethodologyInteractiveRail } from "@/components/sections/MethodologyInteractiveRail";
 
 export const metadata: Metadata = {
-  title: "Delivery Process & Methodology | ATCDL Engineering",
+  title: "Delivery Process & Methodology | ATC Digital Labs",
   description:
-    "Explore ATCDL's 4-phase delivery framework: Discover, Design, Build, and Operate. Mathematical precision, weekly working builds, and zero black-box handoffs.",
+    "Explore ATC Digital Labs' engineering delivery framework: Understand, Design, Build, Integrate, and Operate. Milestone precision, weekly working builds, and zero black-box handoffs.",
 };
 
 export default function ProcessPage() {

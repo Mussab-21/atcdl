@@ -6,9 +6,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Shield, Lock, Server, CheckCircle2, ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Trust, Security & Data Sovereignty | ATCDL",
+  title: "Trust, Security & Data Sovereignty | ATC Digital Labs",
   description:
-    "How ATCDL protects enterprise data: private VPC deployments, air-gapped models, zero data retention, and strict NDA commitments.",
+    "How ATC Digital Labs protects enterprise data: private VPC deployments, air-gapped models, zero data retention, and strict NDA commitments.",
 };
 
 export default function TrustPage() {

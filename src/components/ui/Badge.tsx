@@ -11,6 +11,8 @@ export type StatusType =
   | "Internal Project"
   | "Open Source"
   | "R&D"
+  | "In Development"
+  | "Live"
   // Backward compatibility
   | "Client"
   | "Product"
@@ -57,6 +59,12 @@ export const Badge: React.FC<BadgeProps> = ({
       case "R&D":
       case "Lab":
         effectiveVariant = "default";
+        break;
+      case "In Development":
+        effectiveVariant = "warning";
+        break;
+      case "Live":
+        effectiveVariant = "success";
         break;
       case "Concept":
         effectiveVariant = "outline";

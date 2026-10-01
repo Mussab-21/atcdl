@@ -162,7 +162,7 @@ export function SolutionsHorizontalSelector({ solutions = SOLUTIONS }: Props) {
             Technology is only useful when it solves a real business problem.
           </h2>
           <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1 max-w-xl">
-            We translate technical engineering into four clear business outcomes. Select an architecture below to see what ATCDL delivers.
+            We translate technical engineering into four clear business outcomes. Select an area below to see what ATC Digital Labs delivers.
           </p>
         </div>
 

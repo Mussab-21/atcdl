@@ -15,9 +15,9 @@ const icons = {
 };
 
 export const metadata = {
-  title: "Engineering Solutions & Business Outcomes | ATCDL",
+  title: "Solutions | ATC Digital Labs",
   description:
-    "Explore our four primary business solutions: Custom AI & GenAI Systems, AI Agents & Automation, Enterprise Software Modernization, and Web & Mobile Platforms.",
+    "Explore our four primary business solutions engineered by ATC Digital Labs: Custom AI & GenAI Systems, AI Agents & Automation, Enterprise Software Modernization, and Web & Mobile Platforms.",
 };
 
 export default function SolutionsPage() {

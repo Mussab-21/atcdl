@@ -25,16 +25,16 @@ interface CapabilityItem {
 const CAPABILITIES: CapabilityItem[] = [
   {
     id: "ai",
-    name: "AI & GenAI Systems",
-    badge: "Domain RAG",
+    name: "AI & Intelligent Systems",
+    badge: "Smarter Decisions",
     icon: Sparkles,
     accentColor: "text-[var(--accent-green)]",
     pillBorder: "border-[var(--accent-green)]/40",
   },
   {
     id: "agents",
-    name: "Autonomous Agents",
-    badge: "Multi-Step Fleets",
+    name: "Business Automation",
+    badge: "Less Manual Work",
     icon: Cpu,
     accentColor: "text-[#7952DE]",
     pillBorder: "border-purple-200",
@@ -42,7 +42,7 @@ const CAPABILITIES: CapabilityItem[] = [
   {
     id: "docs",
     name: "Document Intelligence",
-    badge: "OCR + Reasoning",
+    badge: "Smart Extraction",
     icon: FileText,
     accentColor: "text-[#00706B]",
     pillBorder: "border-teal-200",
@@ -50,15 +50,15 @@ const CAPABILITIES: CapabilityItem[] = [
   {
     id: "enterprise",
     name: "Enterprise Software",
-    badge: "Core Backbones",
+    badge: "Built for Operations",
     icon: Database,
     accentColor: "text-[var(--accent-green)]",
     pillBorder: "border-[var(--accent-green)]/40",
   },
   {
     id: "cloud",
-    name: "Cloud & On-Premises",
-    badge: "Air-Gapped VPC",
+    name: "Cloud & Infrastructure",
+    badge: "Reliable & Scalable",
     icon: Server,
     accentColor: "text-slate-800",
     pillBorder: "border-slate-300",
@@ -66,7 +66,7 @@ const CAPABILITIES: CapabilityItem[] = [
   {
     id: "platforms",
     name: "Web & Mobile Platforms",
-    badge: "High-Scale UX",
+    badge: "Customer-Ready Apps",
     icon: Layers,
     accentColor: "text-[#7952DE]",
     pillBorder: "border-purple-200",

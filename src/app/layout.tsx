@@ -15,9 +15,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ATCDL — Digital Engineering & AI Solutions",
+  title: {
+    default: "ATC Digital Labs | AI, Software & Enterprise Technology Solutions",
+    template: "%s | ATC Digital Labs",
+  },
   description:
-    "ATCDL (Azaan Trading Contracting Digital Lab) builds AI systems, business software, automation platforms, and digital products for organizations with complex operational needs.",
+    "ATC Digital Labs builds AI systems, enterprise software, integrations and managed technology services that help organizations automate operations, connect systems and make better use of their data.",
+  openGraph: {
+    title: "ATC Digital Labs | AI, Software & Enterprise Technology Solutions",
+    description:
+      "ATC Digital Labs builds AI systems, enterprise software, integrations and managed technology services that help organizations automate operations, connect systems and make better use of their data.",
+    siteName: "ATC Digital Labs",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ATC Digital Labs | AI, Software & Enterprise Technology Solutions",
+    description:
+      "ATC Digital Labs builds AI systems, enterprise software, integrations and managed technology services that help organizations automate operations, connect systems and make better use of their data.",
+  },
 };
 
 export default function RootLayout({

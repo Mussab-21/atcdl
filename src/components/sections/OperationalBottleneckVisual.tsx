@@ -28,7 +28,7 @@ export function OperationalBottleneckVisual() {
       <div className="max-w-3xl flex flex-col gap-3">
         <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[var(--error)]">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--error)]" />
-          <span>THE OPERATIONAL BOTTLENECK</span>
+          <span>Where Businesses Lose Time</span>
         </div>
 
         <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[var(--header-bg)] leading-[1.1]">
@@ -40,7 +40,7 @@ export function OperationalBottleneckVisual() {
 
         <p className="text-base sm:text-lg text-[var(--text-secondary)] mt-1 leading-relaxed max-w-2xl">
           Most businesses operate across disconnected software, scattered data, and repetitive
-          manual workflows. ATCDL connects those pieces into intelligent systems that move work
+          manual workflows. ATC Digital Labs connects those pieces into intelligent systems that move work
           forward automatically.
         </p>
       </div>
@@ -131,7 +131,7 @@ export function OperationalBottleneckVisual() {
                 <div className="flex items-center gap-1.5 mx-auto">
                   <span className="w-2 h-2 rounded-full bg-[var(--accent-green)] animate-pulse" />
                   <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--header-bg)]">
-                    ATCDL CONNECTED CORE
+                    CONNECTED SYSTEM
                   </span>
                 </div>
               </div>
@@ -195,13 +195,13 @@ export function OperationalBottleneckVisual() {
 
                 {/* Core Engine Hub */}
                 <div className="relative z-10 w-24 h-24 rounded-2xl bg-[var(--header-bg)] text-white border-2 border-[var(--accent-green)] shadow-lg flex flex-col items-center justify-center p-2 text-center">
-                  <span className="text-base font-extrabold tracking-tight text-white">ATCDL</span>
+                  <span className="text-base font-extrabold tracking-tight text-white">ATC</span>
                   <span className="text-[9px] font-mono tracking-widest uppercase text-[var(--accent-green)] mt-0.5">
-                    ENGINE
+                    DIGITAL
                   </span>
                   <div className="mt-1 flex items-center gap-1 text-[8px] font-mono text-slate-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)]" />
-                    <span>L4 AUTONOMY</span>
+                    <span>ACTIVE</span>
                   </div>
                 </div>
               </div>
@@ -209,7 +209,7 @@ export function OperationalBottleneckVisual() {
               {/* Core Description */}
               <div className="pt-2 text-center">
                 <span className="text-[11px] font-mono text-[var(--text-muted)]">
-                  Central Event Bus &bull; Deterministic Pipelines &bull; Air-Gapped Models
+                  Intelligent automation &bull; Connected systems &bull; Live monitoring
                 </span>
               </div>
             </div>
@@ -227,16 +227,16 @@ export function OperationalBottleneckVisual() {
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[var(--accent-green)]" />
                     <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--header-bg)]">
-                      WITH ATCDL
+                      WITH ATC DIGITAL LABS
                     </span>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-[var(--success)] border border-emerald-200 font-semibold">
-                    100% Deterministic
+                    Fully Connected
                   </span>
                 </div>
 
                 <p className="text-xs text-[var(--text-secondary)] mb-3">
-                  Autonomous throughput, verified grounding, and live observability:
+                  Automated workflows, connected data, and real-time visibility:
                 </p>
 
                 {/* Structured Verification List */}
@@ -266,8 +266,8 @@ export function OperationalBottleneckVisual() {
                 {/* System Flow Bar */}
                 <div className="mt-4 p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)]">
                   <div className="flex items-center justify-between text-[11px] font-mono mb-1.5">
-                    <span className="font-semibold text-[var(--header-bg)]">SYSTEM FLOW HEALTH</span>
-                    <span className="text-[var(--success)] font-bold">92% THROUGHPUT</span>
+                    <span className="font-semibold text-[var(--header-bg)]">OPERATIONS RUNNING</span>
+                    <span className="text-[var(--success)] font-bold">CONNECTED</span>
                   </div>
                   <div className="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
                     <div
@@ -280,7 +280,7 @@ export function OperationalBottleneckVisual() {
 
               {/* Status Footer */}
               <div className="pt-2 border-t border-[var(--border)]/70 flex items-center justify-between text-[10px] font-mono text-[var(--text-muted)]">
-                <span>AUDIT: CRYPTOGRAPHIC</span>
+                <span>SECURE &amp; MONITORED</span>
                 <span className="text-[var(--success)] font-semibold flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3" />
                   Verified Production

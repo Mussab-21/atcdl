@@ -2,7 +2,7 @@
 // Local dev: you may use a local Postgres instance or keep SQLite by reverting provider below.
 // Migration: pnpm prisma migrate deploy (after setting DATABASE_URL env var)
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 

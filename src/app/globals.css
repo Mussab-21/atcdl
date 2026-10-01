@@ -152,3 +152,19 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
+/* Suppress third-party deployment badges from overlaying content (Spec §43) */
+#netlify-badge,
+.netlify-badge,
+[data-netlify-deploy-id],
+iframe[src*="netlify"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Guard against mobile horizontal overflow (Spec §41, §42) */
+html, body {
+  max-width: 100vw;
+  overflow-x: clip;
+}

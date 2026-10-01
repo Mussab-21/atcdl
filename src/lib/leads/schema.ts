@@ -16,7 +16,7 @@ export const LeadSchema = z.object({
   projectType: z.string().min(2, "Please select an offering"),
   problem: z
     .string()
-    .min(20, "Please describe your business problem in at least 20 characters")
+    .min(10, "Please describe your business challenge in at least 10 characters")
     .max(3000, "Problem description cannot exceed 3,000 characters")
     .trim(),
   existingSystems: z.string().max(1000).optional().or(z.literal("")),

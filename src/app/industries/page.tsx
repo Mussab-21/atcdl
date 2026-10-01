@@ -3,13 +3,13 @@ import { Metadata } from "next";
 import { IndustriesExplorerClient } from "@/components/industries/IndustriesExplorerClient";
 
 export const metadata: Metadata = {
-  title: "Industry Intelligence — High-Complexity Vertical Engineering | ATCDL",
+  title: "Industry Intelligence | ATC Digital Labs",
   description:
-    "Explore how ATCDL engineers software and AI around high-complexity industry workflows across Telecom, Banking, Manufacturing, and Logistics.",
+    "Explore how ATC Digital Labs engineers software and AI around high-complexity industry workflows across Telecom, Banking, Manufacturing, and Logistics.",
   openGraph: {
-    title: "Industry Intelligence — High-Complexity Vertical Engineering | ATCDL",
+    title: "Industry Intelligence | ATC Digital Labs",
     description:
-      "Explore how ATCDL engineers software and AI around high-complexity industry workflows across Telecom, Banking, Manufacturing, and Logistics.",
+      "Explore how ATC Digital Labs engineers software and AI around high-complexity industry workflows across Telecom, Banking, Manufacturing, and Logistics.",
     type: "website",
   },
 };

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback, useSyncExternalStore } from "react";
 import NextLink from "next/link";
-import { Product } from "@/content/data";
+import { LabProduct } from "@/content/products-lab-data";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -57,7 +57,7 @@ function getProductIcon(iconName?: string, slug?: string) {
 }
 
 interface ProductsCarouselProps {
-  products: Product[];
+  products: LabProduct[];
 }
 
 function subscribeReducedMotion(callback: () => void) {
@@ -295,7 +295,7 @@ export function ProductsCarousel({ products }: ProductsCarouselProps) {
           }}
         >
           {extendedProducts.map((product, idx) => {
-            const Icon = getProductIcon(product.icon, product.slug);
+            const Icon = getProductIcon(undefined, product.slug);
             const isFirst = idx === 0;
 
             return (
@@ -338,13 +338,13 @@ export function ProductsCarousel({ products }: ProductsCarouselProps) {
                         href={`/products/${product.slug}`}
                         className="text-xs font-medium text-[var(--accent)] hover:underline flex items-center gap-1 group/link"
                       >
-                        <span>Specs &amp; Architecture</span>
+                        <span>See how it works</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
                       </NextLink>
 
-                      <NextLink href={`/contact?product=${product.slug}`}>
+                      <NextLink href={`/contact?product=${product.slug}&intent=demo`}>
                         <Button size="sm" variant="outline" className="text-xs font-medium">
-                          Book Demo
+                          Book a Demo
                         </Button>
                       </NextLink>
                     </div>
