@@ -16,14 +16,14 @@ export function ProductCollectionGrid({
     <section id="product-collection" className="scroll-mt-24 flex flex-col gap-8 w-full">
       {/* Section Header */}
       <div className="flex flex-col gap-2 max-w-2xl text-left">
-        <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#2563EB]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+        <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#007F86]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00D084]" />
           <span>Product Catalog &bull; Lab Portfolio</span>
         </div>
-        <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#091326]">
+        <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#071326]">
           Explore The Software Engines
         </h2>
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+        <p className="text-sm sm:text-base text-[#53657D] leading-relaxed">
           Each product is engineered to eliminate a specific manual bottleneck in enterprise operations.
         </p>
       </div>
@@ -101,28 +101,28 @@ function ProductCardItem({
           </span>
         </div>
 
-        <span className="text-[11px] font-mono text-[#00D477] font-bold flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00D477] animate-pulse" />
+        <span className="text-[11px] font-mono text-[#00D084] font-bold flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] animate-pulse" />
           {product.status}
         </span>
       </div>
 
       {/* Product Title & Short Business Explanation */}
       <div className="flex flex-col gap-1.5">
-        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#091326] group-hover:text-[#2563EB] transition-colors">
+        <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#071326] group-hover:text-[#2563EB] transition-colors">
           {product.name}
         </h3>
         <span className="text-xs font-mono text-[#2563EB] font-semibold">
           {product.tagline}
         </span>
-        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans mt-1">
+        <p className="text-xs sm:text-sm text-[#53657D] leading-relaxed font-sans mt-1">
           {product.shortDescription}
         </p>
       </div>
 
       {/* Dedicated Interactive Mini Product Visual Container */}
       <div
-        className={`p-4 rounded-xl bg-[#071B3B] text-white border border-slate-800 flex flex-col justify-center relative overflow-hidden font-mono text-xs ${
+        className={`p-4 rounded-xl bg-[#071B3B] text-white border border-[#18345C] shadow-inner flex flex-col justify-center relative overflow-hidden font-mono text-xs ${
           isWide ? "min-h-[190px]" : "min-h-[170px]"
         }`}
       >

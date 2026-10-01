@@ -78,28 +78,28 @@ export function OneProductEcosystemSection({
   };
 
   return (
-    <section className="py-20 bg-[#061229] border-t border-b border-slate-800 relative overflow-hidden text-white">
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
+    <section className="py-20 bg-white border-t border-[#DCE5EF] relative overflow-hidden text-[#071326]">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-blue-900/40 border border-blue-700/60 text-blue-300 mb-3">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-[#E6F4F5] border border-[#BCE3E6] text-[#007F86] mb-3">
+            <span className="w-2 h-2 rounded-full bg-[#00D477] animate-pulse" />
             Unified Architecture
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#071326]">
             One Interconnected Product Ecosystem
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
+          <p className="mt-4 text-base sm:text-lg text-[#53657D]">
             ATCDL software engines aren&apos;t isolated tools. They communicate through a shared
             data bus — passing extracted records into contextual memory, automated triggers,
             and centralized operational oversight.
           </p>
         </div>
 
-        {/* Interactive Ecosystem Diagram Container */}
-        <div className="bg-[#091b3a]/80 backdrop-blur-md rounded-2xl border border-slate-700/80 p-6 sm:p-10 shadow-2xl relative">
+        {/* Interactive Ecosystem Diagram Container (High-Contrast Software Console) */}
+        <div className="bg-[#071B3B] rounded-3xl border border-[#18345C] p-6 sm:p-10 shadow-[0_24px_60px_rgba(7,27,59,0.16)] relative text-white">
           <div className="flex flex-col lg:flex-row items-center gap-10">
             {/* Visual Ecosystem Canvas */}
             <div className="w-full lg:w-3/5 flex flex-col items-center">
@@ -344,7 +344,7 @@ export function OneProductEcosystemSection({
             {/* Interactive Detail Box on the Right */}
             <div className="w-full lg:w-2/5 flex flex-col justify-center">
               {activeNode === "core" ? (
-                <div className="bg-[#0b1f44] border border-blue-500/40 rounded-xl p-6 shadow-inner">
+                <div className="bg-[#091C36] border border-[#18345C] rounded-2xl p-6 shadow-inner">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-400 mb-2">
                     <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                     Central Architecture Bus
@@ -357,21 +357,21 @@ export function OneProductEcosystemSection({
                     logs, and workflow events into a single authenticated event stream. Data
                     extracted by one product is immediately accessible to others.
                   </p>
-                  <div className="space-y-2 border-t border-slate-700 pt-4 text-xs">
+                  <div className="space-y-2 border-t border-[#18345C] pt-4 text-xs">
                     <div className="flex items-start gap-2">
-                      <span className="text-emerald-400 font-bold">✓</span>
+                      <span className="text-[#00D477] font-bold">✓</span>
                       <span className="text-slate-200">
                         Zero data silos — structured JSON output shared across all engines.
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="text-emerald-400 font-bold">✓</span>
+                      <span className="text-[#00D477] font-bold">✓</span>
                       <span className="text-slate-200">
                         Shared security, tenant isolation, and audit logging.
                       </span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="text-emerald-400 font-bold">✓</span>
+                      <span className="text-[#00D477] font-bold">✓</span>
                       <span className="text-slate-200">
                         Single API key / webhook infrastructure for your entire enterprise stack.
                       </span>
@@ -385,13 +385,13 @@ export function OneProductEcosystemSection({
                   const product = PRODUCTS_LAB_DATA.products.find((p) => p.slug === node.slug);
 
                   return (
-                    <div className="bg-[#0b1f44] border border-slate-700 rounded-xl p-6 shadow-inner">
+                    <div className="bg-[#091C36] border border-[#18345C] rounded-2xl p-6 shadow-inner">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-xs font-bold uppercase tracking-wider text-blue-400">
                           {node.sub}
                         </span>
                         {product && (
-                          <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                          <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#07152b] text-slate-300 border border-[#18345C]">
                             {product.statusBadge}
                           </span>
                         )}
@@ -401,7 +401,7 @@ export function OneProductEcosystemSection({
                         {product?.shortDescription}
                       </p>
 
-                      <div className="bg-[#07152b] rounded-lg p-3 border border-slate-800 mb-4">
+                      <div className="bg-[#07152b] rounded-lg p-3 border border-[#18345C] mb-4">
                         <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono mb-1">
                           Ecosystem Data Flow
                         </div>
@@ -443,34 +443,34 @@ export function OneProductEcosystemSection({
           </div>
         </div>
 
-        {/* 3 Pillar Ecosystem Strengths */}
+        {/* 3 Pillar Ecosystem Strengths (Clean White Cards) */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800">
-            <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center mb-3 text-sm font-bold">
+          <div className="p-6 rounded-2xl bg-white border border-[#DCE5EF] shadow-sm hover:border-[#3B82F6]/50 transition-all">
+            <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-3 text-sm font-bold">
               01
             </div>
-            <h4 className="text-base font-bold text-white mb-1">Single Schema Ingestion</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <h4 className="text-base font-bold text-[#071326] mb-1.5">Single Schema Ingestion</h4>
+            <p className="text-xs text-[#53657D] leading-relaxed">
               Documents parsed in ATCDL Docs are automatically indexed for contextual semantic
               search in ATCDL Ask without repetitive data migration or ETL scripts.
             </p>
           </div>
-          <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3 text-sm font-bold">
+          <div className="p-6 rounded-2xl bg-white border border-[#DCE5EF] shadow-sm hover:border-[#3B82F6]/50 transition-all">
+            <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3 text-sm font-bold">
               02
             </div>
-            <h4 className="text-base font-bold text-white mb-1">Autonomous Event Triggers</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <h4 className="text-base font-bold text-[#071326] mb-1.5">Autonomous Event Triggers</h4>
+            <p className="text-xs text-[#53657D] leading-relaxed">
               Incoming communications handled by ATCDL Agents can trigger verification flows in
               ATCDL Flow and prompt human supervisor sign-offs in real time.
             </p>
           </div>
-          <div className="p-5 rounded-xl bg-slate-900/60 border border-slate-800">
-            <div className="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center mb-3 text-sm font-bold">
+          <div className="p-6 rounded-2xl bg-white border border-[#DCE5EF] shadow-sm hover:border-[#3B82F6]/50 transition-all">
+            <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center mb-3 text-sm font-bold">
               03
             </div>
-            <h4 className="text-base font-bold text-white mb-1">Total Observability</h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <h4 className="text-base font-bold text-[#071326] mb-1.5">Total Observability</h4>
+            <p className="text-xs text-[#53657D] leading-relaxed">
               ATCDL Ops monitors all 6 engines continuously — tracking latency, confidence
               thresholds, human escalation queues, and system error rates in one dashboard.
             </p>

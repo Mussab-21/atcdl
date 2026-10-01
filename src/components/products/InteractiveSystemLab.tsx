@@ -30,20 +30,20 @@ export function InteractiveSystemLab() {
     <section className="flex flex-col gap-8 w-full">
       {/* Section Header */}
       <div className="flex flex-col gap-2 max-w-2xl text-left">
-        <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#2563EB]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+        <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#007F86]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00D084]" />
           <span>Interactive Product Lab</span>
         </div>
-        <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#091326]">
+        <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#071326]">
           Explore The System
         </h2>
-        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+        <p className="text-sm sm:text-base text-[#53657D] leading-relaxed">
           See how our software products connect documents, AI models, workflows, and business systems into one unified operational architecture.
         </p>
       </div>
 
       {/* 6-Node Selector Rail */}
-      <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-slate-100 border border-[#DCE5EF] w-fit">
+      <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-white border border-[#DCE5EF] shadow-xs w-fit">
         {domainTabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeDomain === tab.id;
@@ -56,7 +56,7 @@ export function InteractiveSystemLab() {
               className={`px-3.5 py-2 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 isActive
                   ? "bg-[#071B3B] text-white shadow-xs"
-                  : "text-slate-600 hover:text-[#091326] hover:bg-white/60"
+                  : "text-[#52647B] hover:text-[#071326] hover:bg-slate-50"
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
@@ -67,7 +67,7 @@ export function InteractiveSystemLab() {
       </div>
 
       {/* Interactive System Canvas */}
-      <div className="p-6 sm:p-8 rounded-2xl bg-[#071B3B] text-white border border-slate-800 shadow-xl flex flex-col gap-6 text-left relative overflow-hidden">
+      <div className="p-6 sm:p-8 rounded-3xl bg-[#071B3B] text-white border border-[#18345C] shadow-[0_24px_60px_rgba(7,27,59,0.16)] flex flex-col gap-6 text-left relative overflow-hidden">
         {/* Subtle Background Glow */}
         <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-[#2563EB]/20 blur-3xl pointer-events-none" />
 

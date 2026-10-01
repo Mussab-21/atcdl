@@ -37,8 +37,8 @@ export function FeaturedProductShowcase({
     <section className="flex flex-col gap-6 w-full">
       {/* Eyebrow Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#2563EB]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00D477] animate-pulse" />
+        <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#007F86]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] animate-pulse" />
           <span>FEATURED LAB ENGINE // CURRENTLY BUILDING</span>
         </div>
 
@@ -48,7 +48,7 @@ export function FeaturedProductShowcase({
       </div>
 
       {/* Featured Showcase Card (Split Layout) */}
-      <div className="p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-white via-white to-slate-50 border border-[#DCE5EF] shadow-md flex flex-col lg:flex-row items-stretch gap-8 text-left relative overflow-hidden">
+      <div className="p-6 sm:p-10 rounded-3xl bg-white border border-[#DCE5EF] shadow-sm flex flex-col lg:flex-row items-stretch gap-8 text-left relative overflow-hidden">
         {/* Left Column: Product Explanation & CTAs (6 cols) */}
         <div className="lg:w-1/2 flex flex-col justify-between gap-6">
           <div className="flex flex-col gap-3">
@@ -56,12 +56,12 @@ export function FeaturedProductShowcase({
               <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-[#2563EB]/10 text-[#2563EB] border border-[#2563EB]/20">
                 PRODUCT {product.number}
               </span>
-              <span className="text-xs font-mono text-[#00D477] font-bold">
+              <span className="text-xs font-mono text-[#00D084] font-bold">
                 {product.statusBadge}
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#091326]">
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#071326]">
               {product.name}
             </h2>
 
@@ -69,7 +69,7 @@ export function FeaturedProductShowcase({
               {product.tagline}
             </p>
 
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans mt-1">
+            <p className="text-xs sm:text-sm text-[#53657D] leading-relaxed font-sans mt-1">
               {product.longDescription}
             </p>
 
@@ -81,7 +81,7 @@ export function FeaturedProductShowcase({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {product.modules.slice(0, 4).map((mod, i) => (
                   <div key={i} className="flex items-start gap-1.5 text-xs text-slate-700">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00D477] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#00D084] shrink-0 mt-0.5" />
                     <span>{mod}</span>
                   </div>
                 ))}
@@ -92,7 +92,7 @@ export function FeaturedProductShowcase({
           {/* Action Row */}
           <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-100">
             <NextLink href={`/contact?product=${product.id}`}>
-              <Button size="lg" variant="primary" className="text-xs font-bold bg-[#071B3B] hover:bg-[#0c2854]">
+              <Button size="lg" variant="primary" className="text-xs font-bold bg-[#2563EB] hover:bg-blue-700 text-white shadow-xs">
                 <span>{product.ctaText}</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
@@ -110,7 +110,7 @@ export function FeaturedProductShowcase({
         </div>
 
         {/* Right Column: Live Interactive Product Interface Simulation (6 cols) */}
-        <div className="lg:w-1/2 rounded-2xl bg-[#071B3B] text-white p-5 sm:p-7 border border-slate-800 shadow-xl flex flex-col justify-between gap-4 font-mono text-xs relative overflow-hidden">
+        <div className="lg:w-1/2 rounded-2xl bg-[#071B3B] text-white p-5 sm:p-7 border border-[#18345C] shadow-[0_24px_60px_rgba(7,27,59,0.16)] flex flex-col justify-between gap-4 font-mono text-xs relative overflow-hidden">
           {/* Subtle Demo Watermark Pill */}
           <div className="flex items-center justify-between border-b border-white/10 pb-3">
             <div className="flex items-center gap-2">

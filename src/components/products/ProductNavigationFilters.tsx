@@ -13,9 +13,9 @@ export function ProductNavigationFilters({
   counts: Record<ProductCategory, number>;
 }) {
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 py-4 border-y border-[#DCE5EF] w-full">
-      <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#2563EB]">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 py-4 w-full">
+      <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#007F86]">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#00D084]" />
         <span>Filter By Domain:</span>
       </div>
 
@@ -30,16 +30,18 @@ export function ProductNavigationFilters({
               key={cat.id}
               type="button"
               onClick={() => onCategoryChange(cat.id)}
-              className={`px-3 py-1.5 rounded-xl font-mono text-xs font-semibold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-xl font-mono text-xs font-semibold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 border ${
                 isActive
-                  ? "bg-[#071B3B] text-white shadow-xs"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-[#091326]"
+                  ? "bg-[#071B3B] text-white border-[#071B3B] shadow-xs"
+                  : "bg-white text-[#52647B] border-[#DCE5EF] hover:border-[#3B82F6] hover:text-[#071326]"
               }`}
             >
               <span>{cat.label}</span>
               <span
-                className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                  isActive ? "bg-white/20 text-white" : "bg-white text-slate-500 border border-slate-200"
+                className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                  isActive
+                    ? "bg-white/20 text-white"
+                    : "bg-slate-100 text-slate-500 border border-slate-200"
                 }`}
               >
                 {count}

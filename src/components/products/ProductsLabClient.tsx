@@ -52,12 +52,12 @@ export function ProductsLabClient() {
   };
 
   return (
-    <div className="min-h-screen bg-[#071b3b] text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-white text-[#071326] flex flex-col">
       {/* 01: Product Lab Hero */}
       <ProductLabHero onSelectProduct={handleOpenProduct} />
 
       {/* 02: Product Navigation Filter Bar */}
-      <div className="bg-[#071b3b] px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      <div className="bg-white border-y border-[#DCE5EF] px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full py-2">
         <ProductNavigationFilters
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}

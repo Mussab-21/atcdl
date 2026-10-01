@@ -101,31 +101,31 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
         {/* Left Column: Product Lab Narrative Copy, CTAs (6 cols) */}
         <div className="lg:col-span-6 flex flex-col gap-5 text-left">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#2563EB]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00D477] animate-pulse" />
+          <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-wider uppercase text-[#007F86]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00D084] animate-pulse" />
             <span>{PRODUCTS_LAB_DATA.hero.eyebrow}</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#091326] leading-[1.12]">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#071326] leading-[1.12]">
             {PRODUCTS_LAB_DATA.hero.headline}
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-sans">
+          <p className="text-base sm:text-lg text-[#53657D] leading-relaxed font-sans">
             {PRODUCTS_LAB_DATA.hero.supporting}
           </p>
 
           {/* Quick Guarantees / Lab Info Strip */}
-          <div className="flex flex-wrap items-center gap-4 py-2.5 border-y border-[#DCE5EF] text-xs font-mono text-slate-600">
+          <div className="flex flex-wrap items-center gap-4 py-2.5 border-y border-[#DCE5EF] text-xs font-mono text-[#53657D]">
             <div className="flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-[#2563EB]" />
               <span>
-                Systems: <strong className="text-[#091326]">6 Specialized Engines</strong>
+                Systems: <strong className="text-[#071326]">6 Specialized Engines</strong>
               </span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#00D477]" />
+              <span className="w-2 h-2 rounded-full bg-[#00D084]" />
               <span>
-                Status: <strong className="text-[#091326]">Active Engineering Prototypes</strong>
+                Status: <strong className="text-[#071326]">Active Engineering Prototypes</strong>
               </span>
             </div>
           </div>
@@ -133,14 +133,14 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center gap-3.5 pt-1">
             <a href="#product-collection">
-              <Button size="lg" variant="primary" className="text-xs font-bold bg-[#071B3B] hover:bg-[#0c2854]">
+              <Button size="lg" variant="primary" className="text-xs font-bold bg-[#2563EB] hover:bg-blue-700 text-white shadow-sm">
                 <span>{PRODUCTS_LAB_DATA.hero.primaryCta}</span>
                 <ArrowDown className="w-4 h-4 ml-1.5" />
               </Button>
             </a>
 
             <NextLink href="/solutions">
-              <Button size="lg" variant="outline" className="text-xs font-semibold">
+              <Button size="lg" variant="outline" className="text-xs font-semibold bg-white hover:bg-slate-50 border border-[#DCE5EF] text-[#071326]">
                 <span>{PRODUCTS_LAB_DATA.hero.secondaryCta}</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
@@ -150,13 +150,13 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
 
         {/* Right Column: Live Animated Product Ecosystem Simulation (6 cols) */}
         <div className="lg:col-span-6 w-full">
-          <div className="relative w-full rounded-2xl bg-[#071B3B] text-white p-5 sm:p-7 border border-slate-800 shadow-xl overflow-hidden flex flex-col gap-4 select-none">
+          <div className="relative w-full rounded-2xl bg-[#071B3B] text-white p-5 sm:p-7 border border-[#18345C] shadow-[0_24px_60px_rgba(7,27,59,0.16)] overflow-hidden flex flex-col gap-4 select-none">
             {/* Subtle Background Coordinate Grid */}
             <div
-              className="absolute inset-0 opacity-[0.04] pointer-events-none"
+              className="absolute inset-0 opacity-[0.06] pointer-events-none"
               style={{
                 backgroundImage:
-                  "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
+                  "linear-gradient(rgba(59,130,246,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.15) 1px, transparent 1px)",
                 backgroundSize: "28px 28px",
               }}
             />
@@ -164,8 +164,8 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
             {/* Header: Title and Pause/Play Control */}
             <div className="relative z-10 flex items-center justify-between pb-3 border-b border-white/10 text-xs font-mono">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#00D477] animate-pulse" />
-                <span className="text-slate-300 font-bold uppercase">
+                <span className="w-2 h-2 rounded-full bg-[#00D084] animate-pulse" />
+                <span className="text-slate-200 font-bold uppercase tracking-wider">
                   Connected Product Ecosystem
                 </span>
               </div>
@@ -177,7 +177,7 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
                 <button
                   type="button"
                   onClick={() => setIsPlaying((p) => !p)}
-                  className="p-1 rounded-md bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer border border-white/5"
+                  className="p-1 rounded-md bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer border border-white/10"
                   aria-label={isPlaying ? "Pause auto-advance" : "Resume auto-advance"}
                 >
                   {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -188,8 +188,8 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
             {/* Interactive Connected Nodes Canvas */}
             <div className="relative z-10 min-h-[280px] sm:min-h-[300px] flex flex-col items-center justify-center p-2">
               {/* Central ATCDL Core Node */}
-              <div className="p-3 rounded-2xl bg-[#2563EB]/25 border-2 border-[#00D477] flex flex-col items-center justify-center text-center shadow-lg z-20 max-w-[200px] backdrop-blur-xs">
-                <div className="flex items-center gap-1.5 text-[#00D477] font-bold text-xs">
+              <div className="p-3 rounded-2xl bg-[#2563EB]/25 border-2 border-[#00D084] flex flex-col items-center justify-center text-center shadow-lg z-20 max-w-[200px] backdrop-blur-xs">
+                <div className="flex items-center gap-1.5 text-[#00D084] font-bold text-xs">
                   <Layers className="w-4 h-4" />
                   <span>ATCDL PRODUCT LAB</span>
                 </div>
@@ -211,8 +211,8 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
                       onClick={() => handleProductClick(prod)}
                       className={`p-2.5 rounded-xl border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between gap-1 relative ${
                         isActive
-                          ? "bg-[#2563EB] border-[#3B82F6] text-white shadow-md scale-[1.03] ring-1 ring-white/30"
-                          : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:border-white/20"
+                          ? "bg-[#2563EB] border-[#60A5FA] text-white shadow-md scale-[1.03] ring-1 ring-white/30"
+                          : "bg-[#102744] border-[#29415F] text-[#DDE8F5] hover:border-[#3B82F6] hover:bg-[#143154]"
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -221,7 +221,7 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
                         </span>
                         <Icon
                           className={`w-3.5 h-3.5 ${
-                            isActive ? "text-[#00D477]" : "text-slate-400"
+                            isActive ? "text-[#00D084]" : "text-blue-300"
                           }`}
                         />
                       </div>
@@ -243,11 +243,11 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
               </div>
             </div>
 
-            {/* Active Product Preview Tray in Hero */}
-            <div className="relative z-10 p-3.5 rounded-xl bg-white/5 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
+            {/* Active Product Preview Tray in Hero (Remains Dark Blue) */}
+            <div className="relative z-10 p-3.5 rounded-xl bg-[#091C36] border border-[#18345C] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-left">
               <div className="flex flex-col gap-0.5 max-w-sm">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono text-[#00D477] font-bold">
+                  <span className="text-[10px] font-mono text-[#00D084] font-bold">
                     {activeProduct.statusBadge}
                   </span>
                   <span className="text-[10px] font-mono text-slate-400">
@@ -261,7 +261,7 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
 
               <a
                 href={`#product-${activeProduct.id}`}
-                className="text-xs font-mono text-[#00D477] hover:underline flex items-center gap-1 font-bold shrink-0"
+                className="text-xs font-mono text-[#00D084] hover:underline flex items-center gap-1 font-bold shrink-0"
               >
                 <span>View Live Demo</span>
                 <ArrowRight className="w-3.5 h-3.5" />
