@@ -15,6 +15,7 @@ import {
   CheckCircle2,
   Terminal,
   Zap,
+  Play,
 } from "lucide-react";
 
 interface Props {
@@ -93,6 +94,46 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
         </div>
       </Reveal>
+
+      {/* Video Demonstration Walkthrough (when slug === "atcdl-docs") */}
+      {slug === "atcdl-docs" && (
+        <Reveal>
+          <section className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-bold text-[var(--text-primary)] flex items-center gap-2">
+                <Play className="w-5 h-5 text-[var(--accent-ai)]" />
+                <span>Engine Walkthrough &bull; Prototype Execution</span>
+              </h2>
+              <span className="text-xs font-mono px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                Live Recording Loop
+              </span>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[#071326] shadow-xl">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                poster="/recordings/atcdl_docs_loop.jpg"
+                className="w-full aspect-[16/10] object-cover bg-black"
+              >
+                <source src="/recordings/atcdl_docs_loop.webm" type="video/webm" />
+                <source src="/recordings/atcdl_docs_loop.mp4" type="video/mp4" />
+                Your browser does not support HTML5 video streaming.
+              </video>
+              <div className="p-4 bg-[var(--bg-secondary)] border-t border-[var(--border)] flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div className="flex items-center gap-2 text-[var(--text-secondary)]">
+                  <span className="w-2 h-2 rounded-full bg-[var(--accent-green)] animate-pulse" />
+                  <span>Real-time demonstration of document capture, Gemini schema extraction, rule-based cross-checks, and accounting export.</span>
+                </div>
+                <span className="font-mono text-[var(--text-muted)]">Verified Prototype Pipeline</span>
+              </div>
+            </div>
+          </section>
+        </Reveal>
+      )}
 
       {/* How It Works (Pipeline Workflow Diagram) */}
       <Reveal>

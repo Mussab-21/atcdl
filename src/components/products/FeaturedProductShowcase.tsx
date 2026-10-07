@@ -14,6 +14,8 @@ import {
   Hash,
   BadgeDollarSign,
   Lock,
+  Play,
+  Monitor,
 } from "lucide-react";
 import { LabProduct } from "@/content/products-lab-data";
 
@@ -24,6 +26,7 @@ export function FeaturedProductShowcase({
   product: LabProduct;
   onOpenPreview: (prod: LabProduct) => void;
 }) {
+  const [viewMode, setViewMode] = useState<"video" | "interactive">("video");
   const [extractState, setExtractState] = useState<"idle" | "scanning" | "extracted">("extracted");
 
   const runSampleExtraction = () => {
@@ -111,95 +114,141 @@ export function FeaturedProductShowcase({
 
         {/* Right Column: Live Interactive Product Interface Simulation (6 cols) */}
         <div className="lg:w-1/2 rounded-2xl bg-[#071B3B] text-white p-5 sm:p-7 border border-[#18345C] shadow-[0_24px_60px_rgba(7,27,59,0.16)] flex flex-col justify-between gap-4 font-mono text-xs relative overflow-hidden">
-          {/* Subtle Demo Watermark Pill */}
+          {/* Header with View Toggle */}
           <div className="flex items-center justify-between border-b border-white/10 pb-3">
             <div className="flex items-center gap-2">
               <FileText className="w-4 h-4 text-[#00D477]" />
-              <span className="font-bold text-slate-200">INVOICE EXTRACTION CONSOLE</span>
+              <span className="font-bold text-slate-200">INVOICE EXTRACTION ENGINE</span>
             </div>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
-              DEMO PREVIEW
-            </span>
+            <div className="flex items-center gap-1 bg-white/10 p-0.5 rounded-lg border border-white/10">
+              <button
+                type="button"
+                onClick={() => setViewMode("video")}
+                className={`px-2.5 py-1 rounded-md text-[10px] flex items-center gap-1 transition-colors cursor-pointer ${
+                  viewMode === "video" ? "bg-[#00D477] text-[#071326] font-bold" : "text-slate-300 hover:text-white"
+                }`}
+              >
+                <Play className="w-2.5 h-2.5" />
+                <span>Video Loop</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode("interactive")}
+                className={`px-2.5 py-1 rounded-md text-[10px] flex items-center gap-1 transition-colors cursor-pointer ${
+                  viewMode === "interactive" ? "bg-[#2563EB] text-white font-bold" : "text-slate-300 hover:text-white"
+                }`}
+              >
+                <Monitor className="w-2.5 h-2.5" />
+                <span>Console</span>
+              </button>
+            </div>
           </div>
 
-          {/* Simulated Inbound Document Box */}
-          <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#2563EB]/20 border border-[#2563EB]/40 flex items-center justify-center text-[#3B82F6]">
-                <FileText className="w-4 h-4" />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-xs text-white font-bold">INV-8492_ApexIndustrial.pdf</span>
-                <span className="text-[10px] text-slate-400">PDF Document &bull; 2 Pages &bull; 1.4 MB</span>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              onClick={runSampleExtraction}
-              disabled={extractState === "scanning"}
-              className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 hover:text-white transition-colors cursor-pointer border border-white/10 flex items-center gap-1.5 text-[11px]"
-            >
-              <RefreshCw className={`w-3 h-3 ${extractState === "scanning" ? "animate-spin text-[#00D477]" : ""}`} />
-              <span>{extractState === "scanning" ? "Processing..." : "Re-Scan"}</span>
-            </button>
-          </div>
-
-          {/* Interactive Extraction Scan Flow */}
-          {extractState === "scanning" ? (
-            <div className="p-8 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 text-center min-h-[180px]">
-              <div className="w-10 h-10 rounded-full bg-[#2563EB]/30 border border-[#2563EB] flex items-center justify-center text-[#00D477] animate-pulse">
-                <Sparkles className="w-5 h-5 animate-spin" />
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <span className="text-xs font-bold text-white">Scanning Geometry &amp; OCR Tokens...</span>
-                <span className="text-[10px] text-slate-400">Validating line-item math against PO #4821</span>
+          {viewMode === "video" ? (
+            <div className="rounded-xl overflow-hidden border border-white/10 bg-black/60 relative flex flex-col justify-center">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                poster="/recordings/atcdl_docs_loop.jpg"
+                className="w-full aspect-[16/10] object-cover bg-black"
+              >
+                <source src="/recordings/atcdl_docs_loop.webm" type="video/webm" />
+                <source src="/recordings/atcdl_docs_loop.mp4" type="video/mp4" />
+                Your browser does not support HTML5 video.
+              </video>
+              <div className="p-2.5 bg-black/40 border-t border-white/10 flex items-center justify-between text-[10px] text-slate-300">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00D477] animate-pulse" />
+                  Real-time capture &bull; validation &bull; export
+                </span>
+                <span className="font-mono text-slate-400">Recorded Prototype Loop</span>
               </div>
             </div>
           ) : (
-            <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex flex-col gap-3">
-              <div className="flex items-center justify-between text-[11px] pb-2 border-b border-white/10">
-                <span className="text-slate-300">Extracted Structured Record:</span>
-                <span className="text-[#00D477] flex items-center gap-1 font-bold">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> 100% Parsed
-                </span>
+            <>
+              {/* Simulated Inbound Document Box */}
+              <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-[#2563EB]/20 border border-[#2563EB]/40 flex items-center justify-center text-[#3B82F6]">
+                    <FileText className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-xs text-white font-bold">INV-8492_ApexIndustrial.pdf</span>
+                    <span className="text-[10px] text-slate-400">PDF Document &bull; 2 Pages &bull; 1.4 MB</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={runSampleExtraction}
+                  disabled={extractState === "scanning"}
+                  className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 text-slate-200 hover:text-white transition-colors cursor-pointer border border-white/10 flex items-center gap-1.5 text-[11px]"
+                >
+                  <RefreshCw className={`w-3 h-3 ${extractState === "scanning" ? "animate-spin text-[#00D477]" : ""}`} />
+                  <span>{extractState === "scanning" ? "Processing..." : "Re-Scan"}</span>
+                </button>
               </div>
 
-              {/* Extracted Key-Values */}
-              <div className="grid grid-cols-2 gap-2 text-[11px]">
-                <div className="p-2 rounded bg-white/5 border border-white/10 flex items-center gap-2">
-                  <Building2 className="w-3.5 h-3.5 text-[#2563EB]" />
-                  <div className="flex flex-col text-left">
-                    <span className="text-[9px] text-slate-400">Vendor:</span>
-                    <strong className="text-white text-xs truncate">Apex Industrial Ltd</strong>
+              {/* Interactive Extraction Scan Flow */}
+              {extractState === "scanning" ? (
+                <div className="p-8 rounded-xl bg-white/5 border border-white/10 flex flex-col items-center justify-center gap-3 text-center min-h-[180px]">
+                  <div className="w-10 h-10 rounded-full bg-[#2563EB]/30 border border-[#2563EB] flex items-center justify-center text-[#00D477] animate-pulse">
+                    <Sparkles className="w-5 h-5 animate-spin" />
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-xs font-bold text-white">Scanning Geometry &amp; OCR Tokens...</span>
+                    <span className="text-[10px] text-slate-400">Validating line-item math against PO #4821</span>
                   </div>
                 </div>
+              ) : (
+                <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex flex-col gap-3">
+                  <div className="flex items-center justify-between text-[11px] pb-2 border-b border-white/10">
+                    <span className="text-slate-300">Extracted Structured Record:</span>
+                    <span className="text-[#00D477] flex items-center gap-1 font-bold">
+                      <CheckCircle2 className="w-3.5 h-3.5" /> 100% Parsed
+                    </span>
+                  </div>
 
-                <div className="p-2 rounded bg-white/5 border border-white/10 flex items-center gap-2">
-                  <BadgeDollarSign className="w-3.5 h-3.5 text-[#00D477]" />
-                  <div className="flex flex-col text-left">
-                    <span className="text-[9px] text-slate-400">Total Amount:</span>
-                    <strong className="text-[#00D477] text-xs">PKR 148,200.00</strong>
-                  </div>
-                </div>
+                  {/* Extracted Key-Values */}
+                  <div className="grid grid-cols-2 gap-2 text-[11px]">
+                    <div className="p-2 rounded bg-white/5 border border-white/10 flex items-center gap-2">
+                      <Building2 className="w-3.5 h-3.5 text-[#2563EB]" />
+                      <div className="flex flex-col text-left">
+                        <span className="text-[9px] text-slate-400">Vendor:</span>
+                        <strong className="text-white text-xs truncate">Apex Industrial Ltd</strong>
+                      </div>
+                    </div>
 
-                <div className="p-2 rounded bg-white/5 border border-white/10 flex items-center gap-2">
-                  <Hash className="w-3.5 h-3.5 text-[#2563EB]" />
-                  <div className="flex flex-col text-left">
-                    <span className="text-[9px] text-slate-400">Matched PO:</span>
-                    <strong className="text-white text-xs">#PO-4821 (Verified)</strong>
-                  </div>
-                </div>
+                    <div className="p-2 rounded bg-white/5 border border-white/10 flex items-center gap-2">
+                      <BadgeDollarSign className="w-3.5 h-3.5 text-[#00D477]" />
+                      <div className="flex flex-col text-left">
+                        <span className="text-[9px] text-slate-400">Total Amount:</span>
+                        <strong className="text-[#00D477] text-xs">PKR 148,200.00</strong>
+                      </div>
+                    </div>
 
-                <div className="p-2 rounded bg-white/5 border border-white/10 flex items-center gap-2">
-                  <Calendar className="w-3.5 h-3.5 text-[#2563EB]" />
-                  <div className="flex flex-col text-left">
-                    <span className="text-[9px] text-slate-400">Due Date:</span>
-                    <strong className="text-white text-xs">15 Oct 2026</strong>
+                    <div className="p-2 rounded bg-white/5 border border-white/10 flex items-center gap-2">
+                      <Hash className="w-3.5 h-3.5 text-[#2563EB]" />
+                      <div className="flex flex-col text-left">
+                        <span className="text-[9px] text-slate-400">Matched PO:</span>
+                        <strong className="text-white text-xs">#PO-4821 (Verified)</strong>
+                      </div>
+                    </div>
+
+                    <div className="p-2 rounded bg-white/5 border border-white/10 flex items-center gap-2">
+                      <Calendar className="w-3.5 h-3.5 text-[#2563EB]" />
+                      <div className="flex flex-col text-left">
+                        <span className="text-[9px] text-slate-400">Due Date:</span>
+                        <strong className="text-white text-xs">15 Oct 2026</strong>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              )}
+            </>
           )}
 
           {/* Bottom Security / API Payload Strip */}
