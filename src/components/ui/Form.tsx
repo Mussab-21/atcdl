@@ -6,7 +6,7 @@ export interface FormFieldProps {
   error?: string;
   hint?: string;
   required?: boolean;
-  children: React.ReactElement<{ id?: string; "aria-describedby"?: string; "aria-invalid"?: boolean }>;
+  children: React.ReactElement<{ id?: string; required?: boolean; "aria-describedby"?: string; "aria-invalid"?: boolean }>;
   className?: string;
 }
 
@@ -27,13 +27,13 @@ export const FormField: React.FC<FormFieldProps> = ({
     <div className={clsx("flex flex-col gap-2 w-full", className)}>
       <label
         htmlFor={inputId}
-        className="text-xs font-mono font-medium uppercase tracking-wider text-[var(--text-secondary)] flex items-center justify-between"
+        className="text-sm font-medium text-[var(--text-secondary)] flex flex-col items-start gap-2"
       >
         <span>
           {label} {required && <span className="text-[var(--accent)]">*</span>}
         </span>
         {hint && !error && (
-          <span id={hintId} className="text-[11px] text-[var(--text-muted)] lowercase">
+          <span id={hintId} className="text-sm font-normal text-[var(--text-muted)]">
             {hint}
           </span>
         )}
@@ -41,6 +41,7 @@ export const FormField: React.FC<FormFieldProps> = ({
 
       {React.cloneElement(children, {
         id: inputId,
+        required,
         "aria-describedby": error ? errorId : hint ? hintId : undefined,
         "aria-invalid": !!error,
       })}
@@ -69,7 +70,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         ref={ref}
         className={clsx(
-          "w-full bg-[var(--bg-secondary)] border text-[var(--text-primary)] px-4 py-2.5 rounded-[var(--radius-btn)] text-sm transition-all duration-200 placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]",
+          "w-full bg-[var(--bg-secondary)] border text-[var(--text-primary)] px-4 py-2.5 rounded-[var(--radius-btn)] text-base min-h-11 transition-all duration-200 placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]",
           error
             ? "border-[var(--error)] focus:border-[var(--error)] focus:ring-[var(--error)]"
             : "border-[var(--border)] hover:border-[var(--border-hover)]",
@@ -94,7 +95,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         ref={ref}
         rows={rows}
         className={clsx(
-          "w-full bg-[var(--bg-secondary)] border text-[var(--text-primary)] px-4 py-2.5 rounded-[var(--radius-btn)] text-sm transition-all duration-200 placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] resize-y",
+          "w-full bg-[var(--bg-secondary)] border text-[var(--text-primary)] px-4 py-2.5 rounded-[var(--radius-btn)] text-base min-h-11 transition-all duration-200 placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] resize-y",
           error
             ? "border-[var(--error)] focus:border-[var(--error)] focus:ring-[var(--error)]"
             : "border-[var(--border)] hover:border-[var(--border-hover)]",
@@ -119,7 +120,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         <select
           ref={ref}
           className={clsx(
-            "w-full appearance-none bg-[var(--bg-secondary)] border text-[var(--text-primary)] px-4 py-2.5 pr-10 rounded-[var(--radius-btn)] text-sm transition-all duration-200 focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] cursor-pointer",
+            "w-full appearance-none bg-[var(--bg-secondary)] border text-[var(--text-primary)] px-4 py-2.5 pr-10 rounded-[var(--radius-btn)] text-base min-h-11 transition-all duration-200 focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)] cursor-pointer",
             error
               ? "border-[var(--error)]"
               : "border-[var(--border)] hover:border-[var(--border-hover)]",

@@ -106,7 +106,7 @@ export default function TrustPage() {
               </p>
             </div>
             <NextLink href="/contact">
-              <Button variant="primary">
+              <Button as="span" variant="primary">
                 <span>Request NDA Brief</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>

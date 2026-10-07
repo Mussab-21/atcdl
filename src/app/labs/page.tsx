@@ -164,7 +164,7 @@ export default function LabsPage() {
               </p>
             </div>
             <Link href="/contact">
-              <Button variant="primary" size="md">
+              <Button as="span" variant="primary" size="md">
                 <span>Contact Lab Leads</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>

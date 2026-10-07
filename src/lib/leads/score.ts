@@ -1,3 +1,4 @@
+import { OFFERINGS } from "./offerings";
 import { LeadInput } from "./schema";
 
 const CONSUMER_EMAIL_DOMAINS = new Set([
@@ -52,23 +53,7 @@ export function calculateLeadScore(lead: LeadInput): LeadScoreResult {
   breakdown.budget = budgetScore;
 
   // 2. Project Type (0–20 points)
-  let typeScore = 5;
-  switch (lead.projectType) {
-    case "Enterprise Software":
-    case "Custom AI / GenAI":
-      typeScore = 20;
-      break;
-    case "AI Agents & Automation":
-      typeScore = 15;
-      break;
-    case "Web & Mobile Platforms":
-      typeScore = 10;
-      break;
-    case "Not Sure / Needs Advisory":
-    default:
-      typeScore = 5;
-      break;
-  }
+  const typeScore = OFFERINGS.find(o => o.value === lead.projectType)?.score ?? 5;
   score += typeScore;
   breakdown.projectType = typeScore;
 

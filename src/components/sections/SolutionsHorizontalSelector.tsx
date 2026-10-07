@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useSyncExternalStore } from "react";
 import NextLink from "next/link";
 import { SOLUTIONS, Solution } from "@/content/data";
 import { Button } from "@/components/ui/Button";
@@ -14,13 +14,20 @@ interface Props {
   solutions?: Solution[];
 }
 
+function subscribeMotion(callback: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  media.addEventListener("change", callback);
+  return () => media.removeEventListener("change", callback);
+}
+const motionSnapshot = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export function SolutionsHorizontalSelector({ solutions = SOLUTIONS }: Props) {
   const [activeIdx, setActiveIdx] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isInView, setIsInView] = useState(true);
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const isReducedMotion = useSyncExternalStore(subscribeMotion, motionSnapshot, () => true);
   const [progress, setProgress] = useState(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,22 +37,6 @@ export function SolutionsHorizontalSelector({ solutions = SOLUTIONS }: Props) {
   // Auto-advance interval: Slow, understated (7 seconds per solution)
   const ROTATION_INTERVAL_MS = 7000;
   const STEP_MS = 100;
-
-  // Check prefers-reduced-motion
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-      setIsReducedMotion(media.matches);
-      if (media.matches) setIsPlaying(false);
-
-      const listener = (e: MediaQueryListEvent) => {
-        setIsReducedMotion(e.matches);
-        if (e.matches) setIsPlaying(false);
-      };
-      media.addEventListener("change", listener);
-      return () => media.removeEventListener("change", listener);
-    }
-  }, []);
 
   // Intersection observer to pause off-screen
   useEffect(() => {
@@ -190,7 +181,7 @@ export function SolutionsHorizontalSelector({ solutions = SOLUTIONS }: Props) {
           )}
 
           <NextLink href="/solutions">
-            <Button size="sm" variant="outline" className="text-xs font-medium whitespace-nowrap">
+            <Button as="span" size="sm" variant="outline" className="text-xs font-medium whitespace-nowrap">
               <span>All Solutions</span>
               <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </Button>
@@ -297,14 +288,14 @@ export function SolutionsHorizontalSelector({ solutions = SOLUTIONS }: Props) {
           {/* Action Buttons */}
           <div className="pt-4 border-t border-[var(--border)] flex flex-wrap items-center gap-3">
             <NextLink href={`/solutions/${currentSolution.slug}`}>
-              <Button size="md" variant="primary" className="text-xs font-semibold">
+              <Button as="span" size="md" variant="primary" className="text-xs font-semibold">
                 <span>Learn How It Works</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </NextLink>
 
             <NextLink href={`/contact?solution=${currentSolution.slug}`}>
-              <Button size="md" variant="outline" className="text-xs font-medium">
+              <Button as="span" size="md" variant="outline" className="text-xs font-medium">
                 <span>Discuss Your Project</span>
               </Button>
             </NextLink>

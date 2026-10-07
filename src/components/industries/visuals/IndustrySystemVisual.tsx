@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import { useVisibleMotion } from "@/components/motion/useVisibleMotion";
+import React, {useRef} from "react";
 import { TelecomSystemVisual } from "./TelecomSystemVisual";
 import { BankingSystemVisual } from "./BankingSystemVisual";
 import { ManufacturingSystemVisual } from "./ManufacturingSystemVisual";
@@ -17,8 +18,10 @@ export function IndustrySystemVisual({
   isPlaying: boolean;
   onTogglePlay: () => void;
 }) {
+  const motionRef = useRef<HTMLDivElement>(null);
+  const visibleMotion = useVisibleMotion(motionRef);
   return (
-    <div className="w-full rounded-3xl bg-[#071B3B] border border-[#18345C] p-5 sm:p-7 shadow-[0_24px_60px_rgba(7,27,59,0.16)] text-white relative overflow-hidden flex flex-col gap-4 text-left transition-all duration-500">
+    <div ref={motionRef} className="w-full rounded-3xl bg-[#071B3B] border border-[#18345C] p-5 sm:p-7 shadow-[0_24px_60px_rgba(7,27,59,0.16)] text-white relative overflow-hidden flex flex-col gap-4 text-left transition-all duration-500">
       {/* Subtle Coordinate Grid Pattern */}
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -37,7 +40,7 @@ export function IndustrySystemVisual({
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#00D477] animate-pulse" />
           <span className="font-bold text-white tracking-wider">
-            ● LIVE INDUSTRY SYSTEM // {industry.shortName.toUpperCase()} OPERATIONS ENGINE
+            ILLUSTRATIVE SYSTEM // {industry.shortName.toUpperCase()} OPERATIONS ENGINE
           </span>
         </div>
 
@@ -49,7 +52,7 @@ export function IndustrySystemVisual({
           <button
             type="button"
             onClick={onTogglePlay}
-            className="p-1 rounded-md bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer border border-white/5"
+            className="min-w-11 min-h-11 flex items-center justify-center p-1 rounded-md bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors cursor-pointer border border-white/5"
             aria-label={isPlaying ? "Pause automated workflow" : "Resume automated workflow"}
           >
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
@@ -59,10 +62,10 @@ export function IndustrySystemVisual({
 
       {/* Dynamic Industry Visual Viewport with Transition */}
       <div key={industry.id} className="relative z-10 animate-in fade-in slide-in-from-bottom-2 duration-300">
-        {industry.id === "telecom" && <TelecomSystemVisual isPlaying={isPlaying} />}
-        {industry.id === "banking-finance" && <BankingSystemVisual isPlaying={isPlaying} />}
-        {industry.id === "manufacturing" && <ManufacturingSystemVisual isPlaying={isPlaying} />}
-        {industry.id === "logistics-supply-chain" && <LogisticsSystemVisual isPlaying={isPlaying} />}
+        {industry.id === "telecom" && <TelecomSystemVisual isPlaying={isPlaying && visibleMotion} />}
+        {industry.id === "banking-finance" && <BankingSystemVisual isPlaying={isPlaying && visibleMotion} />}
+        {industry.id === "manufacturing" && <ManufacturingSystemVisual isPlaying={isPlaying && visibleMotion} />}
+        {industry.id === "logistics-supply-chain" && <LogisticsSystemVisual isPlaying={isPlaying && visibleMotion} />}
       </div>
     </div>
   );

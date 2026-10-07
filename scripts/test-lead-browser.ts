@@ -109,8 +109,8 @@ async function runBrowserTest() {
       console.log(`Executing human-like curved mouse movement to (${targetPos.x}, ${targetPos.y})...`);
       
       // Start from a realistic initial cursor position
-      let currX = 200 + Math.random() * 100;
-      let currY = 200 + Math.random() * 100;
+      const currX = 200 + Math.random() * 100;
+      const currY = 200 + Math.random() * 100;
       await page.mouse.move(currX, currY);
       await page.waitForTimeout(300);
 

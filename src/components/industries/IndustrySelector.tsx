@@ -19,7 +19,7 @@ export function IndustrySelector({
   };
 
   return (
-    <div id="industry-explorer" className="scroll-mt-20 py-4 bg-white border-b border-[#DCE5EF] sticky top-16 z-30 shadow-xs">
+    <div id="industry-explorer" className="scroll-mt-20 py-4 bg-white border-b border-[#DCE5EF] sticky top-[var(--nav-h)] z-30 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           <div className="hidden lg:flex items-center gap-2 text-xs font-mono font-bold uppercase text-[#007F86] shrink-0">
@@ -37,7 +37,7 @@ export function IndustrySelector({
                 <button
                   key={ind.id}
                   type="button"
-                  onClick={() => onSelectIndustry(ind.id)}
+                  aria-pressed={activeIndustryId === ind.id} onClick={() => onSelectIndustry(ind.id)}
                   className={`px-4 py-2.5 rounded-xl font-mono text-xs font-bold transition-all cursor-pointer flex items-center gap-2 shrink-0 border ${
                     isActive
                       ? "bg-[#071B3B] text-white border-[#2563EB] shadow-md shadow-blue-900/10 ring-2 ring-blue-500/20"

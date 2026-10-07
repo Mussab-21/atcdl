@@ -241,7 +241,7 @@ export function ProcessTimeline() {
             Every project timeline is tailored to your data readiness and architecture scope.
           </p>
           <NextLink href="/estimate">
-            <Button variant="secondary" size="sm" className="w-full justify-between font-mono text-xs">
+            <Button as="span" variant="secondary" size="sm" className="w-full justify-between font-mono text-xs">
               <span>Run Estimator</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Button>

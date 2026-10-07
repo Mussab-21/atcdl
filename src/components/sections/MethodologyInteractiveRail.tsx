@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useSyncExternalStore } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import NextLink from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -76,30 +76,13 @@ export function MethodologyInteractiveRail({
   showPageLink?: boolean;
 } = {}) {
   const [activeStep, setActiveStep] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const isReducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     getReducedMotionSnapshot,
     getReducedMotionServerSnapshot
   );
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Auto-advancing rotation (4.5s per step) with manual hover/click override
-  useEffect(() => {
-    if (isReducedMotion || isPaused) return;
-
-    timerRef.current = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % STEPS.length);
-    }, 4500);
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isPaused, isReducedMotion]);
-
   const handleStepSelect = (index: number) => {
     setActiveStep(index);
-    setIsPaused(true);
   };
 
   // Progress percentage for connecting line
@@ -108,10 +91,10 @@ export function MethodologyInteractiveRail({
   return (
     <div
       className="w-full flex flex-col gap-8 select-none"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
+
+
+
+
     >
       {/* Progress Track & Indicator Nodes (Desktop/Tablet) */}
       <div className="relative hidden md:block pt-4 pb-2 px-6">
@@ -322,7 +305,7 @@ export function MethodologyInteractiveRail({
           </p>
 
           <NextLink href="/process">
-            <Button variant="outline" size="sm" className="text-xs font-medium">
+            <Button as="span" variant="outline" size="sm" className="text-xs font-medium">
               <span>Explore Full 4-Stage Methodology</span>
               <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </Button>

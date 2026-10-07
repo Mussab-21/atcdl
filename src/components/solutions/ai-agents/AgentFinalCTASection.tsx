@@ -42,7 +42,7 @@ export function AgentFinalCTASection() {
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <NextLink href="/contact?solution=ai-agents">
-            <Button
+            <Button as="span"
               size="lg"
               variant="primary"
               className="text-xs sm:text-sm font-bold bg-[#00D477] text-[#071B3B] hover:bg-[#00B968] shadow-md px-6"
@@ -53,7 +53,7 @@ export function AgentFinalCTASection() {
           </NextLink>
 
           <NextLink href="/solutions">
-            <Button
+            <Button as="span"
               size="lg"
               variant="outline"
               className="text-xs sm:text-sm font-semibold border-white/20 text-white hover:bg-white/10 px-6"

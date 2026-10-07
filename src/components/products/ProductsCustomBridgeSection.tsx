@@ -140,7 +140,7 @@ export function ProductsCustomBridgeSection() {
                 Need Something Different?
               </h3>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
-                Start with an ATCDL ready-to-deploy product engine, or partner with our engineering
+                Start with an ATCDL product concept or prototype, or partner with our engineering
                 team to build a bespoke system tailored exactly to your proprietary formats, legacy
                 ERPs, and regulatory compliance.
               </p>

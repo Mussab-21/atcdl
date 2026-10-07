@@ -280,7 +280,7 @@ export function PackageSelectorSection() {
           href={`/contact?solution=custom-ai&package=${selectedPkg.id}`}
           className="shrink-0 w-full sm:w-auto"
         >
-          <Button
+          <Button as="span"
             size="lg"
             variant="primary"
             className="w-full sm:w-auto text-xs sm:text-sm font-bold whitespace-nowrap bg-[#00D084] hover:bg-[#00BF77] text-[#071B3B] shadow-sm transition-all"

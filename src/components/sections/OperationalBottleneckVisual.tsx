@@ -106,7 +106,7 @@ export function OperationalBottleneckVisual() {
                     <span className="font-semibold text-[var(--header-bg)]">
                       Manual Copy-Paste Handoffs
                     </span>
-                    <span>30%+ employee capacity spent reconciling data between windows.</span>
+                    <span>Manual reconciliation takes time away from higher-value work.</span>
                   </div>
                 </div>
               </div>
@@ -142,7 +142,7 @@ export function OperationalBottleneckVisual() {
                 <div
                   aria-hidden="true"
                   className="absolute inset-1 rounded-full border border-dashed border-[var(--border-hover)] motion-safe:animate-[spin_24s_linear_infinite]"
-                  style={{ willChange: "transform" }}
+
                 />
 
                 {/* Satellite Node 1: AI (Top) */}

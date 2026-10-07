@@ -245,7 +245,7 @@ export default async function IdeaDetailPage({ params, searchParams }: Props) {
             </p>
           </div>
           <Link href={`/contact?idea=${idea.slug}`}>
-            <Button variant="primary" size="lg" className="shrink-0">
+            <Button as="span" variant="primary" size="lg" className="shrink-0">
               <span>Initiate Pilot Brief</span>
               <ArrowRight className="w-4 h-4 ml-1" />
             </Button>

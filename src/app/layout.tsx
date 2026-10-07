@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { AnalyticsEvents } from "@/components/layout/AnalyticsEvents";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const geistSans = localFont({src: "../../public/fonts/geist-latin.woff2", variable: "--font-geist-sans", display:"swap"});
+const geistMono = localFont({src: "../../public/fonts/geist-mono-latin.woff2", variable: "--font-geist-mono", display:"swap"});
 
 export const metadata: Metadata = {
   title: {
@@ -47,23 +41,11 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `document.documentElement.classList.add('js')`,
-          }}
-        />
-        <noscript>
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `[data-reveal]{opacity:1 !important;transform:none !important;}`,
-            }}
-          />
-        </noscript>
-      </head>
       <body className="min-h-full flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)]">
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <Navbar />
-        <main className="flex-1 pt-[var(--nav-h)]">{children}</main>
+        <AnalyticsEvents />
+        <main id="main-content" tabIndex={-1} className="flex-1 pt-[var(--nav-h)]">{children}</main>
         <Footer />
       </body>
     </html>

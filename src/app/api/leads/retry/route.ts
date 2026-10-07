@@ -18,6 +18,7 @@ import { LeadScoreResult } from "@/lib/leads/score";
 export async function POST(req: NextRequest) {
   // Require secret to prevent unauthorized triggers
   const retrySecret = process.env.RETRY_SECRET;
+  if (!retrySecret) return NextResponse.json({ok:false,error:"Retry service is not configured."},{status:503});
   if (retrySecret) {
     const authHeader = req.headers.get("authorization");
     if (!authHeader || authHeader !== `Bearer ${retrySecret}`) {

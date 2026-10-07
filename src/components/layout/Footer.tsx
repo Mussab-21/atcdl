@@ -26,9 +26,9 @@ export const Footer: React.FC = () => {
             </p>
 
             <div className="flex items-center gap-2 mt-1">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-green)] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[var(--accent-green)]" />
               <span className="text-[11px] font-mono text-[#8DA0BA]">
-                Operational Status: All Systems Verified
+                AI · Software · Connected systems
               </span>
             </div>
 
@@ -94,32 +94,32 @@ export const Footer: React.FC = () => {
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products" className="hover:text-white transition-colors">
+                <NextLink href="/products/atcdl-docs" className="hover:text-white transition-colors">
                   ATCDL Docs
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products" className="hover:text-white transition-colors">
+                <NextLink href="/products/atcdl-ask" className="hover:text-white transition-colors">
                   ATCDL Ask
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products" className="hover:text-white transition-colors">
+                <NextLink href="/products/atcdl-agents" className="hover:text-white transition-colors">
                   ATCDL Agents
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products" className="hover:text-white transition-colors">
+                <NextLink href="/products/atcdl-talent" className="hover:text-white transition-colors">
                   ATCDL Talent
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products" className="hover:text-white transition-colors">
+                <NextLink href="/products/atcdl-flow" className="hover:text-white transition-colors">
                   ATCDL Flow
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products" className="hover:text-white transition-colors">
+                <NextLink href="/products/atcdl-ops" className="hover:text-white transition-colors">
                   ATCDL Ops
                 </NextLink>
               </li>

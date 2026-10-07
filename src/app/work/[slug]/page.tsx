@@ -161,12 +161,12 @@ export default async function ProjectDetailPage({ params }: Props) {
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <NextLink href="/estimate">
-              <Button size="lg" variant="secondary" className="font-mono text-xs whitespace-nowrap">
+              <Button as="span" size="lg" variant="secondary" className="font-mono text-xs whitespace-nowrap">
                 <span>Run Estimator</span>
               </Button>
             </NextLink>
             <NextLink href={`/contact?ref=${project.slug}`}>
-              <Button size="lg" variant="primary" className="font-mono text-xs whitespace-nowrap">
+              <Button as="span" size="lg" variant="primary" className="font-mono text-xs whitespace-nowrap">
                 <span>Start Project Brief</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>

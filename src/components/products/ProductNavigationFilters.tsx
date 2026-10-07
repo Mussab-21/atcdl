@@ -26,11 +26,11 @@ export function ProductNavigationFilters({
           const count = counts[cat.id] || 0;
 
           return (
-            <button
+            <button aria-pressed={activeCategory === cat.id}
               key={cat.id}
               type="button"
               onClick={() => onCategoryChange(cat.id)}
-              className={`px-3 py-1.5 rounded-xl font-mono text-xs font-semibold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 border ${
+              className={`px-3 py-1.5 min-h-11 rounded-xl font-mono text-xs font-semibold transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 border ${
                 isActive
                   ? "bg-[#071B3B] text-white border-[#071B3B] shadow-xs"
                   : "bg-white text-[#52647B] border-[#DCE5EF] hover:border-[#3B82F6] hover:text-[#071326]"

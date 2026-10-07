@@ -46,7 +46,7 @@ export default function WorkPage() {
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase">
-                      {project.category} // {project.industry || "Enterprise"}
+                      {project.category} · {project.industry || "Enterprise"}
                     </span>
                     <Badge status={project.status} size="sm" />
                   </div>
@@ -150,13 +150,13 @@ export default function WorkPage() {
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
             <NextLink href="/contact?intent=project">
-              <Button size="lg" variant="primary" className="text-sm font-semibold w-full sm:w-auto">
+              <Button as="span" size="lg" variant="primary" className="text-sm font-semibold w-full sm:w-auto">
                 <span>Discuss Your Project</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
             </NextLink>
             <NextLink href="/services">
-              <Button size="lg" variant="outline" className="text-sm font-semibold w-full sm:w-auto bg-white/5 text-white border-white/20 hover:bg-white/10">
+              <Button as="span" size="lg" variant="outline" className="text-sm font-semibold w-full sm:w-auto bg-white/5 text-white border-white/20 hover:bg-white/10">
                 <span>Explore Services</span>
               </Button>
             </NextLink>
@@ -187,7 +187,7 @@ export default function WorkPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="secondary" size="md">
+              <Button as="span" variant="secondary" size="md">
                 <GithubIcon className="w-4 h-4 mr-2" />
                 <span>Visit GitHub Profile</span>
                 <ExternalLink className="w-3.5 h-3.5 ml-2 opacity-60" />

@@ -35,13 +35,13 @@ export default function ProcessPage() {
 
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <NextLink href="/estimate">
-              <Button variant="primary" size="md">
+              <Button as="span" variant="primary" size="md">
                 <span>Estimate Your Project</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </NextLink>
             <NextLink href="/contact?type=Custom+Engineering">
-              <Button variant="secondary" size="md">
+              <Button as="span" variant="secondary" size="md">
                 Book Technical Discovery Call
               </Button>
             </NextLink>
@@ -236,13 +236,13 @@ export default function ProcessPage() {
 
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
             <NextLink href="/estimate" className="w-full sm:w-auto">
-              <Button variant="primary" size="md" className="w-full sm:w-auto">
+              <Button as="span" variant="primary" size="md" className="w-full sm:w-auto">
                 <span>Launch Estimator</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </NextLink>
             <NextLink href="/contact" className="w-full sm:w-auto">
-              <Button variant="secondary" size="md" className="w-full sm:w-auto">
+              <Button as="span" variant="secondary" size="md" className="w-full sm:w-auto">
                 Direct Contact Brief
               </Button>
             </NextLink>

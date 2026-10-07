@@ -1,357 +1,361 @@
-import React from "react";
-import type { Metadata } from "next";
-import NextLink from "next/link";
-import { SOLUTIONS, PROJECTS } from "@/content/data";
-import { PRODUCTS_LAB_DATA } from "@/content/products-lab-data";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { Card } from "@/components/ui/Card";
-import { Reveal } from "@/components/motion/Reveal";
-import { HeroBusinessFlowVisual } from "@/components/sections/HeroBusinessFlowVisual";
-import { RotatingHeadlineWord } from "@/components/motion/RotatingHeadlineWord";
-import { CapabilityStrip } from "@/components/sections/CapabilityStrip";
-import { HomeServicesSection } from "@/components/sections/HomeServicesSection";
-import { OperationalBottleneckVisual } from "@/components/sections/OperationalBottleneckVisual";
-import { ProductsCarousel } from "@/components/sections/ProductsCarousel";
-import { SolutionsHorizontalSelector } from "@/components/sections/SolutionsHorizontalSelector";
-import { MethodologyInteractiveRail } from "@/components/sections/MethodologyInteractiveRail";
+import Link from "next/link";
 import {
+  ArrowUpRight,
   ArrowRight,
-  CheckCircle2,
-  ShieldCheck,
-  Calculator,
+  Cpu,
+  Network,
+  Layers,
+  Check,
+  Plus,
+  Sparkles,
 } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "ATC Digital Labs | AI, Software & Enterprise Technology Solutions",
+import { SystemPlayground } from "@/components/sections/SystemPlayground";
+import { Reveal } from "@/components/motion/Reveal";
+import { PROJECTS } from "@/content/data";
+import { PRODUCTS_LAB_DATA } from "@/content/products-lab-data";
+export const metadata = {
+  title: "Technology that moves your business forward",
   description:
-    "ATC Digital Labs builds AI systems, enterprise software, integrations and managed technology solutions for organizations with complex operational needs.",
+    "AI systems, custom software and connected operations. Explore the work, products and engineering approach of ATC Digital Labs.",
 };
-
+const services = [
+  {
+    n: "01",
+    icon: Cpu,
+    title: "Put intelligence to work.",
+    text: "Make knowledge accessible. Turn documents into decisions. Give your people useful AI, built around their work.",
+    tags: "Private AI · Document intelligence · AI agents",
+    href: "/solutions/custom-ai",
+    color: "mint",
+  },
+  {
+    n: "02",
+    icon: Layers,
+    title: "Build what comes next.",
+    text: "Software shaped around your operations, from customer-facing experiences to the platforms behind them.",
+    tags: "Enterprise software · Web · Mobile",
+    href: "/solutions/enterprise-software",
+    color: "lilac",
+  },
+  {
+    n: "03",
+    icon: Network,
+    title: "Connect the moving parts.",
+    text: "Bring disconnected systems and teams into one flow. Less re-keying, clearer handoffs, better visibility.",
+    tags: "Integrations · Cloud · Managed services",
+    href: "/services#integration",
+    color: "sand",
+  },
+];
 export default function Home() {
-  const featuredProducts = PRODUCTS_LAB_DATA.products.slice(0, 4);
-  const featuredWork = PROJECTS.filter((p) => p.featured).slice(0, 3);
-
   return (
-    <div className="flex flex-col gap-10 sm:gap-16 py-4 sm:py-8">
-      {/* ── 1. HERO ────────────────────────────────────────────────────────── */}
-      <section className="container-custom section-peek-snap pt-2 pb-4 sm:pt-4 sm:pb-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-          {/* Left Text Column */}
-          <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-            <Reveal>
-              <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider uppercase text-[var(--accent-ai)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)] animate-pulse" />
-                <span>ATC DIGITAL LABS</span>
-              </div>
-            </Reveal>
-
-            <Reveal>
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.04]">
-                We engineer technology for{" "}
-                <RotatingHeadlineWord
-                  words={[
-                    "complex businesses.",
-                    "growing enterprises.",
-                    "operational scale.",
-                    "mission-critical teams.",
-                  ]}
-                />
-              </h1>
-            </Reveal>
-
-            <Reveal>
-              <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl">
-                ATC Digital Labs helps organizations automate operations, connect
-                systems, and make better use of their data — through AI, custom
-                software, and managed technology services.
-              </p>
-            </Reveal>
-
-            <Reveal>
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <NextLink href="/contact?intent=project">
-                  <Button size="lg" variant="primary" className="text-sm font-semibold">
-                    <span>Discuss Your Project</span>
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
-                </NextLink>
-
-                <NextLink href="/services">
-                  <Button size="lg" variant="outline" className="text-sm font-semibold">
-                    <span>Explore Our Services</span>
-                  </Button>
-                </NextLink>
-              </div>
-            </Reveal>
-
-            <Reveal>
-              <div className="flex items-center gap-6 pt-2 text-xs text-[var(--text-secondary)]">
-                <span className="flex items-center gap-1.5 font-medium">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[var(--success)]" />
-                  Production-Grade Delivery
-                </span>
-                <span className="flex items-center gap-1.5 font-medium">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[var(--accent)]" />
-                  Private Cloud &amp; On-Premise Ready
-                </span>
-              </div>
-            </Reveal>
+    <div className="studio-home">
+      <section className="hero-section container-custom">
+        <div className="hero-copy">
+          <Reveal>
+            <div className="eyebrow">
+              <span className="signal-dot" /> INDEPENDENT THINKING. CONNECTED
+              TECHNOLOGY.
+            </div>
+            <h1>
+              Complex technology.
+              <br />
+              <em>Clear possibilities.</em>
+            </h1>
+            <p className="hero-description">
+              We build AI systems, software, and connected operations that help
+              your business move forward.
+            </p>
+            <div className="hero-actions">
+              <Link
+                href="/contact?intent=project"
+                className="studio-button"
+                data-track="hero_cta_clicked"
+              >
+                Discuss your project <ArrowUpRight size={19} />
+              </Link>
+              <Link href="/work" className="text-link">
+                Explore our work <ArrowRight size={17} />
+              </Link>
+            </div>
+            <div className="hero-assurance">
+              <span>
+                <Check size={14} /> Built around your business
+              </span>
+              <span>
+                <Check size={14} /> From strategy to delivery
+              </span>
+            </div>
+          </Reveal>
+        </div>
+        <div className="hero-visual">
+          <SystemPlayground />
+        </div>
+        <div className="hero-bottom">
+          <span>AI & SOFTWARE ENGINEERING</span>
+          <span>Discover what’s possible ↓</span>
+          <span>ATC DIGITAL LABS / 01</span>
+        </div>
+      </section>
+      <div className="expertise-ribbon">
+        <div className="container-custom">
+          <span>
+            From the first question.
+            <br />
+            <strong>To the working system.</strong>
+          </span>
+          {[
+            "AI & intelligence",
+            "Custom software",
+            "System integration",
+            "Cloud & operations",
+          ].map((x) => (
+            <span key={x}>
+              <Plus size={14} />
+              {x}
+            </span>
+          ))}
+        </div>
+      </div>
+      <section className="studio-section container-custom" id="expertise">
+        <Reveal>
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">01 / WHAT WE DO</span>
+              <h2>
+                Built for the way
+                <br />
+                your business works.
+              </h2>
+            </div>
+            <p>
+              You bring the challenge. We bring the engineering to turn it into
+              something useful.
+            </p>
           </div>
-
-          {/* Right Visual Column — Business Flow Visual */}
-          <div className="lg:col-span-5 lg:pt-1">
-            <HeroBusinessFlowVisual />
+        </Reveal>
+        <div className="service-grid">
+          {services.map((s) => (
+            <Reveal key={s.n}>
+              <Link href={s.href} className={`service-tile ${s.color}`}>
+                <div className="tile-top">
+                  <s.icon size={28} />
+                  <span>{s.n}</span>
+                </div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+                <div className="tile-footer">
+                  <span>{s.tags}</span>
+                  <ArrowUpRight size={23} />
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+        <Link href="/services" className="text-link section-follow">
+          Explore all seven services <ArrowRight size={17} />
+        </Link>
+      </section>
+      <section className="work-section">
+        <div className="container-custom studio-section">
+          <Reveal>
+            <div className="section-heading">
+              <div>
+                <span className="eyebrow">02 / SELECTED WORK</span>
+                <h2>
+                  Ideas become valuable
+                  <br />
+                  when they become real.
+                </h2>
+              </div>
+              <Link className="text-link" href="/work">
+                View all work <ArrowUpRight size={18} />
+              </Link>
+            </div>
+          </Reveal>
+          <div className="work-grid">
+            {PROJECTS.filter((p) => p.featured)
+              .slice(0, 3)
+              .map((p, i) => (
+                <Reveal key={p.slug}>
+                  <Link className="work-tile" href={`/work/${p.slug}`}>
+                    <div
+                      className={`work-art work-art-${i}`}
+                      aria-hidden="true"
+                    >
+                      <div className="work-art-label">
+                        ATC / ENGINEERING STUDY 0{i + 1}
+                      </div>
+                      {i === 0 ? (
+                        <div className="talent-art">
+                          <div className="art-avatar" />
+                          <div>
+                            <span />
+                            <span />
+                            <span />
+                          </div>
+                          <div className="art-match">
+                            <Check size={18} />
+                            Skill mapping
+                          </div>
+                        </div>
+                      ) : i === 1 ? (
+                        <div className="knowledge-art">
+                          <div>Where can I find our team guidelines?</div>
+                          <div>
+                            <Sparkles size={18} />
+                            Search your company knowledge.
+                            <small>Source-linked answers</small>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="operations-art">
+                          <div />
+                          <div />
+                          <div />
+                          <div />
+                          <span>
+                            <Network size={30} />
+                            Connected operations
+                          </span>
+                        </div>
+                      )}
+                      <span className="art-footnote">
+                        Illustrative interface
+                      </span>
+                      <div className="work-arrow">
+                        <ArrowUpRight size={22} />
+                      </div>
+                    </div>
+                    <div className="work-meta">
+                      <span>{p.category}</span>
+                      <span>{p.status}</span>
+                    </div>
+                    <h3>{p.title}</h3>
+                    <p>{p.problem}</p>
+                  </Link>
+                </Reveal>
+              ))}
           </div>
         </div>
       </section>
-
-      {/* ── 2. CAPABILITY STRIP ────────────────────────────────────────────── */}
-      <CapabilityStrip />
-
-      {/* ── 3. WHAT WE DO: THE 7 CORE SERVICES ────────────────────────────── */}
-      <HomeServicesSection />
-
-      {/* ── 4. WHY ATC DIGITAL LABS: BEFORE → AFTER ──────────────────────── */}
-      <section className="container-custom py-4 sm:py-6">
-        <OperationalBottleneckVisual />
+      <section className="studio-section container-custom">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">03 / A CLEAR WAY FORWARD</span>
+            <h2>
+              Close collaboration.
+              <br />
+              Visible progress.
+            </h2>
+          </div>
+          <p>
+            From the first conversation to the handover, every stage has a
+            purpose and a tangible next step.
+          </p>
+        </div>
+        <div className="process-list">
+          {[
+            [
+              "Discover",
+              "Start with the right problem.",
+              "We map your workflows, constraints, and goals to agree what success should look like.",
+            ],
+            [
+              "Design",
+              "Make the approach tangible.",
+              "We shape the architecture and experience, so your team can evaluate the direction before the build.",
+            ],
+            [
+              "Build",
+              "See the work take shape.",
+              "Working iterations and regular reviews keep decisions grounded in software you can try.",
+            ],
+            [
+              "Operate",
+              "Plan for life after launch.",
+              "Deployment, documentation, and an agreed support plan help your team take the next step.",
+            ],
+          ].map(([title, sub, body], i) => (
+            <details key={title} className="process-row" open={i === 0}>
+              <summary>
+                <span className="process-index">0{i + 1}</span>
+                <h3>{title}</h3>
+                <span>{sub}</span>
+                <Plus size={22} />
+              </summary>
+              <p>{body}</p>
+            </details>
+          ))}
+        </div>
+        <Link href="/process" className="text-link section-follow">
+          Our delivery approach <ArrowRight size={17} />
+        </Link>
       </section>
-
-      {/* ── 5. SOLUTIONS SECTION ──────────────────────────────────────────── */}
-      <section className="container-custom section-peek-snap py-4">
-        <SolutionsHorizontalSelector solutions={SOLUTIONS} />
-      </section>
-
-      {/* ── 6. SELECTED WORK — Problem → Solution → Result ───────────────── */}
-      <section className="container-custom py-4">
-        <div className="flex flex-col gap-10">
-          <Reveal>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-6">
-              <div>
-                <div className="text-xs font-semibold text-[var(--accent-ai)] uppercase tracking-wider mb-1">
-                  Selected Projects
-                </div>
-                <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-                  What we have actually built
-                </h2>
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1">
-                  Real problems solved. Real software delivered.
-                </p>
-              </div>
-              <NextLink href="/work">
-                <Button variant="ghost" size="sm" className="text-xs font-medium">
-                  <span>View Our Work</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                </Button>
-              </NextLink>
+      <section className="product-section">
+        <div className="container-custom studio-section">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">04 / INSIDE THE LAB</span>
+              <h2>
+                Built from curiosity.
+                <br />
+                Focused on real problems.
+              </h2>
             </div>
-          </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featuredWork.map((project) => (
-              <Reveal key={project.slug}>
-                <Card
-                  variant="interactive"
-                  className="p-6 flex flex-col justify-between h-full gap-5 bg-white border-[var(--border)] shadow-sm"
-                >
-                  <div className="flex flex-col gap-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase">
-                        {project.category}
-                      </span>
-                      <Badge status={project.status} size="sm" />
-                    </div>
-
-                    <h3 className="text-lg font-bold text-[var(--text-primary)]">
-                      <NextLink
-                        href={`/work/${project.slug}`}
-                        className="hover:text-[var(--accent)] transition-colors"
-                      >
-                        {project.title}
-                      </NextLink>
-                    </h3>
-
-                    {/* Problem → Solution (business-first) */}
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3">
-                      {project.problem}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between text-xs">
-                    <NextLink
-                      href={`/work/${project.slug}`}
-                      className="text-[var(--accent)] font-medium hover:underline"
-                    >
-                      See how we built it →
-                    </NextLink>
-                    {project.githubUrl && (
-                      <span className="text-[var(--text-muted)] font-mono text-[10px]">
-                        Open Source
-                      </span>
-                    )}
-                  </div>
-                </Card>
-              </Reveal>
+            <div>
+              <p>
+                Explore our prototypes and product concepts. See what’s being
+                developed, and start a conversation about early access.
+              </p>
+              <Link href="/products" className="text-link section-follow">
+                Explore the product lab <ArrowUpRight size={18} />
+              </Link>
+            </div>
+          </div>
+          <div className="lab-grid">
+            {PRODUCTS_LAB_DATA.products.slice(0, 4).map((p, i) => (
+              <Link
+                key={p.slug}
+                href={`/products/${p.slug}`}
+                className="lab-item"
+              >
+                <span className="lab-number">0{i + 1}</span>
+                <div>
+                  <span className="lab-status">{p.status}</span>
+                  <h3>{p.name}</h3>
+                  <p>{p.tagline}</p>
+                </div>
+                <ArrowUpRight size={22} />
+              </Link>
             ))}
           </div>
         </div>
       </section>
-
-      {/* ── 7. HOW WE WORK ───────────────────────────────────────────────── */}
-      <section className="w-full bg-[#F8FAFC] border-y border-[var(--border)] py-12 sm:py-18">
-        <div className="container-custom flex flex-col gap-8 sm:gap-10">
-          <Reveal>
-            <div className="max-w-2xl">
-              <div className="text-xs font-semibold uppercase tracking-wider text-[var(--accent)] mb-2">
-                How We Work
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
-                Understand. Design. Build. Integrate. Operate.
-              </h2>
-              <p className="text-sm text-[var(--text-secondary)] mt-2 leading-relaxed">
-                We work in clear stages with defined milestones. You always know what
-                is being built, when it will be ready, and how it fits your business.
-              </p>
-            </div>
-          </Reveal>
-
-          <MethodologyInteractiveRail />
-        </div>
-      </section>
-
-      {/* ── 8. OUR PRODUCTS ──────────────────────────────────────────────── */}
-      <section className="container-custom section-peek-snap py-4">
-        <div className="p-6 sm:p-8 lg:p-10 rounded-[var(--radius-lg)] bg-white border border-[var(--border)] shadow-xs flex flex-col gap-6 sm:gap-8">
-          <Reveal>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-5">
-              <div>
-                <div className="text-xs font-semibold text-[var(--accent-ai)] uppercase tracking-wider mb-1">
-                  ATC Digital Labs Products
-                </div>
-                <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-                  Software we have created
-                </h2>
-                <p className="text-xs sm:text-sm text-[var(--text-secondary)] mt-1 max-w-xl">
-                  Intelligent software products built to solve real operational
-                  problems — available for deployment, demo, and customization.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <NextLink href="/contact?intent=demo">
-                  <Button size="sm" variant="outline" className="text-xs font-medium whitespace-nowrap">
-                    <span>Book a Demo</span>
-                  </Button>
-                </NextLink>
-                <NextLink href="/products">
-                  <Button size="sm" variant="primary" className="text-xs font-medium whitespace-nowrap">
-                    <span>View All Products</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                  </Button>
-                </NextLink>
-              </div>
-            </div>
-          </Reveal>
-
-          <ProductsCarousel products={featuredProducts} />
-        </div>
-      </section>
-
-      {/* ── 9. FINAL CTA ─────────────────────────────────────────────────── */}
-      <section className="container-custom section-peek-snap py-8 sm:py-12">
-        <Reveal>
-          <div className="p-8 sm:p-12 lg:p-14 rounded-[var(--radius-lg)] bg-[var(--accent-deep)] text-white border border-[#162D50] shadow-2xl flex flex-col items-center text-center gap-8">
-            <div className="max-w-2xl flex flex-col items-center gap-3">
-              <span className="text-xs uppercase tracking-widest text-[var(--accent-green)] font-semibold font-mono">
-                ATC DIGITAL LABS
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
-                Ready to simplify your operations?
-              </h2>
-              <p className="text-sm sm:text-base text-[#B9C7DC] leading-relaxed">
-                Tell us about your challenge. We will show you a clear path from
-                where you are to where you need to be.
-              </p>
-            </div>
-
-            {/* Three entry paths */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl text-left">
-              <NextLink
-                href="/contact?intent=project&service=AI+%26+Intelligent+Systems"
-                className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--accent-green)] hover:bg-white/10 transition-all flex flex-col gap-2 group"
-              >
-                <div className="text-xs text-[var(--accent-green)] uppercase font-semibold flex items-center justify-between">
-                  <span>Apply AI</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
-                <div className="text-xs text-[#B9C7DC]">
-                  Automate decisions, extract documents, and build intelligent workflows.
-                </div>
-              </NextLink>
-
-              <NextLink
-                href="/contact?intent=project&service=Software+Development"
-                className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--accent-green)] hover:bg-white/10 transition-all flex flex-col gap-2 group"
-              >
-                <div className="text-xs text-[var(--accent-green)] uppercase font-semibold flex items-center justify-between">
-                  <span>Build Software</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
-                <div className="text-xs text-[#B9C7DC]">
-                  Custom platforms, portals, and operational tools for your exact needs.
-                </div>
-              </NextLink>
-
-              <NextLink
-                href="/contact?intent=project&service=System+Integration"
-                className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--accent-green)] hover:bg-white/10 transition-all flex flex-col gap-2 group"
-              >
-                <div className="text-xs text-[var(--accent-green)] uppercase font-semibold flex items-center justify-between">
-                  <span>Connect Systems</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
-                <div className="text-xs text-[#B9C7DC]">
-                  Eliminate data silos and connect your existing software and teams.
-                </div>
-              </NextLink>
-            </div>
-
-            {/* Primary CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 w-full sm:w-auto">
-              <NextLink href="/contact?intent=project" className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  variant="primary"
-                  className="w-full sm:w-auto text-sm px-8 font-semibold"
-                >
-                  <span>Discuss Your Project</span>
-                  <ArrowRight className="w-4 h-4 ml-1.5" />
-                </Button>
-              </NextLink>
-
-              <NextLink href="/contact?intent=consultation" className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full sm:w-auto text-sm px-6 font-semibold bg-white/5 text-white border-white/20 hover:bg-white/10"
-                >
-                  <span>Request Consultation</span>
-                </Button>
-              </NextLink>
-
-              <NextLink href="/estimate" className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  variant="secondary"
-                  className="w-full sm:w-auto text-sm px-6 font-semibold bg-white/10 text-white border-white/20 hover:bg-white/20"
-                >
-                  <Calculator className="w-4 h-4 mr-2 text-[var(--accent-green)]" />
-                  <span>Estimate Your Project</span>
-                </Button>
-              </NextLink>
-            </div>
+      <section className="studio-section container-custom">
+        <div className="closing-section">
+          <div>
+            <span className="eyebrow">YOUR NEXT CHAPTER</span>
+            <h2>
+              Let’s make
+              <br />
+              what’s next <em>work.</em>
+            </h2>
+            <p>
+              A challenge, an idea, or a system that needs to work better.
+              <br />
+              Tell us where you want to go.
+            </p>
           </div>
-        </Reveal>
+          <div>
+            <Link href="/contact?intent=project" className="studio-button">
+              Let’s talk about it <ArrowUpRight size={20} />
+            </Link>
+            <Link href="/estimate" className="text-link">
+              Explore a project estimate <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
       </section>
     </div>
   );

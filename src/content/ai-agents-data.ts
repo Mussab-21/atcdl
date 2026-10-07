@@ -72,7 +72,7 @@ export const AI_AGENTS_DATA = {
       title: "Understand Incoming Work",
       subtitle: "Parsing unstructured emails, PDFs & webhooks",
       description:
-        "The AI worker monitors incoming channels 24/7. It reads unstructured emails, attachments, purchase orders, and form submissions, extracting clean structured records with 100% field validation.",
+        "The AI worker monitors incoming channels 24/7. It reads unstructured emails, attachments, purchase orders, and form submissions, extracting clean structured records with configured field validation.",
       badge: "Ingestion & OCR",
       keyOutputs: [
         "Email, webhook & PDF automated listeners",
@@ -91,7 +91,7 @@ export const AI_AGENTS_DATA = {
       keyOutputs: [
         "Company policy & mathematical cross-checks",
         "Threshold boundary verification",
-        "Zero hallucination schema constraints",
+        "Schema constraints and human review",
       ],
     },
     {

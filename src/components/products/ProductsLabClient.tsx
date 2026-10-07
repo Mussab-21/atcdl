@@ -53,6 +53,7 @@ export function ProductsLabClient() {
 
   return (
     <div className="min-h-screen bg-white text-[#071326] flex flex-col">
+      <p className="px-6 py-4 text-center text-sm bg-[#eff5ef] text-[#31573c]">Product lab: the interfaces below are illustrative previews. Availability and integrations are confirmed during discovery.</p>
       {/* 01: Product Lab Hero */}
       <ProductLabHero onSelectProduct={handleOpenProduct} />
 
@@ -72,7 +73,9 @@ export function ProductsLabClient() {
       />
 
       {/* 04: Product Collection (Editorial layout: 2 large, 2 medium, 2 wide) */}
-      <div id="collection" className="scroll-mt-16">
+      <div id="collection" className="scroll-mt-24">
+        <p role="status" className="max-w-7xl mx-auto px-6 pt-8 text-sm text-slate-600">{filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"} in this category</p>
+        {filteredProducts.length === 0 && <div className="p-8 text-center"><p>No products in this category yet.</p><button className="text-link min-h-11" onClick={() => setActiveCategory("ALL")}>View all products</button></div>}
         <ProductCollectionGrid
           products={filteredProducts}
           onOpenPreview={handleOpenProduct}

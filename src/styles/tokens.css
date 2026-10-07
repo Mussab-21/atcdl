@@ -23,8 +23,8 @@
   --accent-lime: #91FF00;  /* sparing use — small highlights only */
 
   /* core action accents */
-  --accent: #00D477;
-  --accent-hover: #00B565;
+  --accent: #126647;
+  --accent-hover: #0D5037;
   --accent-deep: #152A32;
   --accent-ai: #00706B;
   --accent-ai-glow: rgba(0, 212, 119, 0.15);
@@ -32,7 +32,8 @@
   /* status */
   --success: #0B7A49; /* 5.1:1 on #FFFFFF, 4.8:1 on #F6F8FC - WCAG AA pass */
   --warning: #B54708; /* Contrast optimized: 4.8:1 on #FFFFFF */
-  --error: #D92D20;
+  --error: #B42318;
+  --danger: #B42318;
 
   /* header (dark navy-teal top bar) */
   --header-bg: #152A32;
@@ -64,11 +65,11 @@
   --pad-desktop: 56px;
   --pad-tablet: 32px;
   --pad-mobile: 20px;
-  --nav-h: 72px;
+  --nav-h: 80px;
 }
 
 @media (max-width: 767px) {
   :root {
-    --nav-h: 64px;
+    --nav-h: 80px;
   }
 }

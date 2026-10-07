@@ -1,5 +1,6 @@
 "use client";
 
+import { useVisibleMotion } from "@/components/motion/useVisibleMotion";
 import React, { useState, useSyncExternalStore } from "react";
 import NextLink from "next/link";
 import { Button } from "@/components/ui/Button";
@@ -40,8 +41,10 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
     getReducedMotionServerSnapshot
   );
 
+  const motionRef = React.useRef<HTMLElement>(null);
+  const visibleMotion = useVisibleMotion(motionRef);
   const [activeProductId, setActiveProductId] = useState<string>("atcdl-docs");
-  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   const activeProduct =
     PRODUCTS_LAB_DATA.products.find((p) => p.id === activeProductId) ||
@@ -58,7 +61,7 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
 
   // Auto-cycle through products every 5.5 seconds if playing
   React.useEffect(() => {
-    if (!isPlaying || prefersReducedMotion) return;
+    if (!isPlaying || prefersReducedMotion || !visibleMotion) return;
     const interval = setInterval(() => {
       setActiveProductId((prev) => {
         const list = PRODUCTS_LAB_DATA.products;
@@ -68,7 +71,7 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
       });
     }, 5500);
     return () => clearInterval(interval);
-  }, [isPlaying, prefersReducedMotion]);
+  }, [isPlaying, prefersReducedMotion, visibleMotion]);
 
   const handleProductClick = (prod: LabProduct) => {
     setActiveProductId(prod.id);
@@ -83,7 +86,7 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
   };
 
   return (
-    <section className="flex flex-col gap-6">
+    <section ref={motionRef} className="flex flex-col gap-6">
       {/* Breadcrumb nav */}
       <div className="flex items-center gap-2 text-xs font-mono">
         <NextLink
@@ -133,14 +136,14 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center gap-3.5 pt-1">
             <a href="#product-collection">
-              <Button size="lg" variant="primary" className="text-xs font-bold bg-[#2563EB] hover:bg-blue-700 text-white shadow-sm">
+              <Button as="span" size="lg" variant="primary" className="text-xs font-bold bg-[#2563EB] hover:bg-blue-700 text-white shadow-sm">
                 <span>{PRODUCTS_LAB_DATA.hero.primaryCta}</span>
                 <ArrowDown className="w-4 h-4 ml-1.5" />
               </Button>
             </a>
 
             <NextLink href="/solutions">
-              <Button size="lg" variant="outline" className="text-xs font-semibold bg-white hover:bg-slate-50 border border-[#DCE5EF] text-[#071326]">
+              <Button as="span" size="lg" variant="outline" className="text-xs font-semibold bg-white hover:bg-slate-50 border border-[#DCE5EF] text-[#071326]">
                 <span>{PRODUCTS_LAB_DATA.hero.secondaryCta}</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>
@@ -263,7 +266,7 @@ export function ProductLabHero({ onSelectProduct }: { onSelectProduct?: (prod: L
                 href={`#product-${activeProduct.id}`}
                 className="text-xs font-mono text-[#00D084] hover:underline flex items-center gap-1 font-bold shrink-0"
               >
-                <span>View Live Demo</span>
+                <span>View product preview</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>

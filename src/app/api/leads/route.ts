@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { LeadSchema } from "@/lib/leads/schema";
 import { calculateLeadScore } from "@/lib/leads/score";
@@ -25,7 +26,7 @@ export async function POST(req: NextRequest) {
     const forwardedFor = req.headers.get("x-forwarded-for");
     const rawIp = forwardedFor ? forwardedFor.split(",")[0].trim() : "127.0.0.1";
     const userAgent = req.headers.get("user-agent") || "unknown";
-    const ipHash = Buffer.from(rawIp).toString("base64").substring(0, 16);
+    const ipHash = createHash("sha256").update(rawIp).digest("hex");
 
     // 3. Multi-layer Persistent Rate Limiting (Upstash Redis + DB Fallback)
     const rateCheck = await verifyRateLimit(ipHash, 5, 1);
@@ -74,6 +75,7 @@ export async function POST(req: NextRequest) {
         const cfRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
           method: "POST",
           body: turnstileFormData,
+          signal: AbortSignal.timeout(10000),
         });
 
         const cfResult = await cfRes.json();
@@ -84,15 +86,16 @@ export async function POST(req: NextRequest) {
           );
         }
       } catch (cfErr) {
-        console.warn("[Turnstile Verification Exception - Proceeding]", cfErr);
+        console.warn("[Turnstile Verification Exception]", cfErr);
+        return NextResponse.json({ok:false,error:"Verification is temporarily unavailable. Please try again."},{status:503});
       }
     }
 
     // 7. Calculate 100-Point Score
     const scoring = calculateLeadScore(leadData);
 
-    // 8. Persist Lead in Database (with resilient fallback)
-    let leadId = `lead_${Date.now()}`;
+    // 8. Confirm only inquiries that have been durably saved.
+    let leadId: string;
     let dbSuccess = false;
 
     try {
@@ -102,7 +105,7 @@ export async function POST(req: NextRequest) {
           email: leadData.email,
           company: leadData.company || null,
           projectType: leadData.projectType,
-          problem: leadData.problem,
+          problem: leadData.context ? `[Context: ${leadData.context}]\n${leadData.problem}` : leadData.problem,
           existingSystems: leadData.existingSystems || null,
           budget: leadData.budget,
           timeline: leadData.timeline,
@@ -131,11 +134,12 @@ export async function POST(req: NextRequest) {
         },
       }).catch((e) => console.warn("[AuditLog DB Warning]", e));
     } catch (dbErr) {
-      console.error("[Leads Database Persistence Warning - Using fallback ID]", dbErr);
+      console.error("[Leads Database Persistence Failed]", dbErr);
+      return NextResponse.json({ok:false,error:"Your inquiry could not be saved. Please try again; your details are still in the form."},{status:503});
     }
 
     // 10. Notifications (Discord + Email)
-    const notifyRes = await sendLeadNotifications(leadData, scoring, leadId);
+    const notifyRes = await sendLeadNotifications(leadData, scoring, leadId).catch(() => ({discord:false,email:false}));
 
     // Update notification status in database if available
     if (dbSuccess) {
@@ -147,7 +151,9 @@ export async function POST(req: NextRequest) {
       }).catch((e) => console.warn("[DB Status Update Warning]", e));
     }
 
-    return NextResponse.json({ ok: true, id: leadId, score: scoring.score });
+    const response = NextResponse.json({ ok: true, id: leadId });
+    response.cookies.set("atc-inquiry-receipt", leadId, {httpOnly:true,sameSite:"lax",secure:process.env.NODE_ENV === "production",path:"/contact",maxAge:3600});
+    return response;
   } catch (error) {
     console.error("[Leads API Error]", error);
     return NextResponse.json(

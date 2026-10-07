@@ -240,7 +240,7 @@ export function EnterprisePackageSelectorSection() {
         </div>
 
         <NextLink href={`/contact?solution=enterprise-software&package=${selectedPkg.id}`}>
-          <Button
+          <Button as="span"
             size="lg"
             variant="primary"
             className="text-xs font-bold bg-[#071B3B] hover:bg-[#0c2854] shrink-0"

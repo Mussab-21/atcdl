@@ -1,3 +1,4 @@
+import { OFFERINGS } from "./offerings";
 import { z } from "zod";
 
 export const LeadSchema = z.object({
@@ -13,7 +14,7 @@ export const LeadSchema = z.object({
     .trim()
     .toLowerCase(),
   company: z.string().max(150).optional().or(z.literal("")),
-  projectType: z.string().min(2, "Please select an offering"),
+  projectType: z.string().refine(value => OFFERINGS.some(o => o.value === value), "Please select an offering"),
   problem: z
     .string()
     .min(10, "Please describe your business challenge in at least 10 characters")
@@ -22,6 +23,7 @@ export const LeadSchema = z.object({
   existingSystems: z.string().max(1000).optional().or(z.literal("")),
   budget: z.string().min(1, "Please select a budget range"),
   timeline: z.string().min(1, "Please select a timeline"),
+  context: z.string().max(500).optional(),
   source: z.string().max(100).optional(),
   honeypot: z.string().max(0, "Bot detected").optional().or(z.literal("")),
   turnstileToken: z.string().optional(),

@@ -1,30 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, Network } from "lucide-react";
 import { INDUSTRIES_EXPLORER_DATA } from "@/content/industries-explorer-data";
 
 export function IndustryHero({
+  activeIndustryId,
   onSelectIndustry,
 }: {
+  activeIndustryId: string;
   onSelectIndustry: (id: string) => void;
 }) {
-  const [activeSectorIndex, setActiveSectorIndex] = useState<number>(0);
+  const activeSectorIndex = Math.max(0, INDUSTRIES_EXPLORER_DATA.findIndex(i => i.id === activeIndustryId));
 
   const sectors = INDUSTRIES_EXPLORER_DATA.map((ind) => ({
     id: ind.id,
     label: ind.shortName,
     fullName: ind.name,
   }));
-
-  // Auto-cycle through the sectors around the system engine
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSectorIndex((prev) => (prev + 1) % sectors.length);
-    }, 3200);
-    return () => clearInterval(interval);
-  }, [sectors.length]);
 
   const activeSector = sectors[activeSectorIndex];
 
@@ -190,7 +184,6 @@ export function IndustryHero({
                 <button
                   type="button"
                   onClick={() => {
-                    setActiveSectorIndex(0);
                     onSelectIndustry("telecom");
                   }}
                   className={`absolute left-2 top-2 z-20 px-3 py-1.5 rounded-xl border text-xs font-mono font-bold transition-all duration-300 cursor-pointer ${
@@ -206,7 +199,6 @@ export function IndustryHero({
                 <button
                   type="button"
                   onClick={() => {
-                    setActiveSectorIndex(1);
                     onSelectIndustry("banking-finance");
                   }}
                   className={`absolute right-2 top-2 z-20 px-3 py-1.5 rounded-xl border text-xs font-mono font-bold transition-all duration-300 cursor-pointer ${
@@ -222,7 +214,6 @@ export function IndustryHero({
                 <button
                   type="button"
                   onClick={() => {
-                    setActiveSectorIndex(2);
                     onSelectIndustry("manufacturing");
                   }}
                   className={`absolute left-2 bottom-2 z-20 px-3 py-1.5 rounded-xl border text-xs font-mono font-bold transition-all duration-300 cursor-pointer ${
@@ -238,7 +229,6 @@ export function IndustryHero({
                 <button
                   type="button"
                   onClick={() => {
-                    setActiveSectorIndex(3);
                     onSelectIndustry("logistics-supply-chain");
                   }}
                   className={`absolute right-2 bottom-2 z-20 px-3 py-1.5 rounded-xl border text-xs font-mono font-bold transition-all duration-300 cursor-pointer ${

@@ -94,14 +94,14 @@ export default function AboutPage() {
           <Reveal>
             <div className="flex flex-wrap items-center gap-4 pt-3">
               <NextLink href="/contact?intent=project">
-                <Button size="lg" variant="primary" className="text-sm font-semibold">
+                <Button as="span" size="lg" variant="primary" className="text-sm font-semibold">
                   <span>Discuss Your Project</span>
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
               </NextLink>
 
               <NextLink href="/contact?intent=consultation">
-                <Button size="lg" variant="outline" className="text-sm font-semibold">
+                <Button as="span" size="lg" variant="outline" className="text-sm font-semibold">
                   <span>Request Consultation</span>
                 </Button>
               </NextLink>
@@ -445,14 +445,14 @@ export default function AboutPage() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <NextLink href="/contact?intent=project">
-              <Button size="lg" variant="primary" className="text-sm font-semibold">
+              <Button as="span" size="lg" variant="primary" className="text-sm font-semibold">
                 <span>Discuss Your Project</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </NextLink>
 
             <NextLink href="/contact?intent=consultation">
-              <Button size="lg" variant="outline" className="text-sm font-semibold">
+              <Button as="span" size="lg" variant="outline" className="text-sm font-semibold">
                 <span>Request Consultation</span>
               </Button>
             </NextLink>

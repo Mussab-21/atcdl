@@ -127,12 +127,12 @@ export default function PitchLabPage() {
           </div>
           <div className="flex items-center gap-3">
             <Link href="/estimate">
-              <Button variant="outline" size="md">
+              <Button as="span" variant="outline" size="md">
                 Calculate Estimate
               </Button>
             </Link>
             <Link href="/contact">
-              <Button variant="primary" size="md">
+              <Button as="span" variant="primary" size="md">
                 <span>Submit Brief</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>

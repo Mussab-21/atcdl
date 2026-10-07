@@ -234,7 +234,7 @@ export default async function IndustryDetailPage({ params }: Props) {
                     <div className="text-xs text-[var(--text-muted)]">{prod.tagline}</div>
                   </div>
                   <Link href={`/products/${prod.slug}`}>
-                    <Button variant="outline" size="sm">
+                    <Button as="span" variant="outline" size="sm">
                       Inspect
                     </Button>
                   </Link>
@@ -255,7 +255,7 @@ export default async function IndustryDetailPage({ params }: Props) {
             </p>
           </div>
           <Link href={`/contact?industry=${industry.slug}`}>
-            <Button variant="primary" size="lg" className="shrink-0">
+            <Button as="span" variant="primary" size="lg" className="shrink-0">
               <span>Start Discovery Brief</span>
               <ArrowRight className="w-4 h-4 ml-1" />
             </Button>

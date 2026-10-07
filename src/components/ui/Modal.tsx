@@ -1,10 +1,8 @@
 "use client";
-
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { clsx } from "clsx";
-
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -14,97 +12,87 @@ export interface ModalProps {
   className?: string;
   maxWidth?: "sm" | "md" | "lg" | "xl";
 }
-
-export const Modal: React.FC<ModalProps> = ({
+export function Modal({
   isOpen,
   onClose,
-  title,
+  title = "Details",
   description,
   children,
   className,
   maxWidth = "md",
-}) => {
-  const modalRef = useRef<HTMLDivElement>(null);
-
+}: ModalProps) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const id = useId();
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    }
-
+    const el = dialog.current;
+    if (!el || !isOpen) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const overflow = document.body.style.overflow;
+    el.showModal();
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKeyDown);
+      el.close();
+      document.body.style.overflow = overflow;
+      previous?.focus();
     };
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-  if (typeof document === "undefined") return null;
-
-  const maxWidthStyles = {
-    sm: "max-w-md",
-    md: "max-w-lg",
-    lg: "max-w-2xl",
-    xl: "max-w-4xl",
-  };
-
+  }, [isOpen]);
+  if (!isOpen || typeof document === "undefined") return null;
   return createPortal(
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={title ? "modal-title" : undefined}
-      aria-describedby={description ? "modal-desc" : undefined}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+    <dialog
+      ref={dialog}
+      aria-labelledby={`${id}-title`}
+      aria-describedby={description ? `${id}-description` : undefined}
+      className={clsx(
+        "dialog-native",
+        maxWidth === "xl" && "!max-w-4xl",
+        className,
+      )}
+      onCancel={(e) => {
+        e.preventDefault();
+        onClose();
+      }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          const r = e.currentTarget.getBoundingClientRect();
+          if (
+            e.clientX < r.left ||
+            e.clientX > r.right ||
+            e.clientY < r.top ||
+            e.clientY > r.bottom
+          )
+            onClose();
+        }
+      }}
     >
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-
-      {/* Modal Dialog */}
-      <div
-        ref={modalRef}
-        className={clsx(
-          "relative w-full rounded-[var(--radius-lg)] bg-[var(--bg-elevated)] border border-[var(--border)] p-6 sm:p-8 shadow-2xl shadow-black/80 z-10 animate-in fade-in-50 zoom-in-95 duration-200",
-          maxWidthStyles[maxWidth],
-          className
-        )}
-      >
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close dialog"
-          className="absolute right-4 top-4 p-2 text-[var(--text-muted)] hover:text-[var(--text-primary)] rounded-full hover:bg-[rgba(255,255,255,0.05)] transition-colors"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
-        {title && (
+      <div className="flex justify-between items-start gap-4 mb-5">
+        <div>
           <h2
-            id="modal-title"
-            className="text-xl font-semibold text-[var(--text-primary)] mb-1 pr-8 tracking-tight"
+            id={`${id}-title`}
+            className="text-2xl font-semibold tracking-tight"
           >
             {title}
           </h2>
-        )}
-
-        {description && (
-          <p id="modal-desc" className="text-sm text-[var(--text-secondary)] mb-6">
-            {description}
-          </p>
-        )}
-
-        <div className="mt-4">{children}</div>
+          {description && (
+            <p
+              id={`${id}-description`}
+              className="text-sm mt-2 text-[var(--text-secondary)]"
+            >
+              {description}
+            </p>
+          )}
+        </div>
+        <button
+          type="button"
+          autoFocus
+          onClick={onClose}
+          aria-label="Close dialog"
+          className="min-w-11 min-h-11 grid place-items-center rounded-full bg-[var(--bg-secondary)]"
+        >
+          <X size={20} />
+        </button>
       </div>
-    </div>,
-    document.body
+      {children}
+    </dialog>,
+    document.body,
   );
-};
+}

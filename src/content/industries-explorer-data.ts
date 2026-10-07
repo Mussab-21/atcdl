@@ -212,7 +212,7 @@ export const INDUSTRIES_EXPLORER_DATA: IndustryExplorerItem[] = [
       {
         title: "Air-Gapped Knowledge Copilots",
         desc: "Internal RAG systems running on local GPU infrastructure behind institution firewalls with zero public internet connectivity.",
-        metricBadge: "100% Data Isolation",
+        metricBadge: "Private deployment option",
       },
       {
         title: "Automated Loan & KYC Parsing",

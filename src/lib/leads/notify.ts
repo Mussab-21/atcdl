@@ -77,6 +77,7 @@ export async function sendLeadNotifications(
 
       const res = await fetch(discordWebhookUrl, {
         method: "POST",
+        signal: AbortSignal.timeout(8000),
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(discordPayload),
       });
@@ -85,15 +86,12 @@ export async function sendLeadNotifications(
       if (!res.ok) {
         const errorText = await res.text();
         console.error(`[Discord Webhook Error: ${res.status}]`, errorText);
-      } else {
-        console.log(`[Discord Webhook Delivered] Lead ID: ${leadId} (${scoring.label})`);
       }
     } catch (err) {
       console.error("[Discord Webhook Exception]", err);
     }
   } else {
-    console.log(`[DISCORD NOTIFICATION MOCK]\nLead ${leadId} - ${scoring.label} (${scoring.score}/100)`);
-    discordSuccess = true;
+    discordSuccess = false;
   }
 
   // 2. Email Notification (Resend)
@@ -122,6 +120,7 @@ ${lead.existingSystems || "None specified"}
 
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
+        signal: AbortSignal.timeout(8000),
         headers: {
           Authorization: `Bearer ${resendApiKey}`,
           "Content-Type": "application/json",
@@ -138,7 +137,7 @@ ${lead.existingSystems || "None specified"}
       console.error("[Email Notification Error]", err);
     }
   } else {
-    emailSuccess = true;
+    emailSuccess = false;
   }
 
   return { discord: discordSuccess, email: emailSuccess };

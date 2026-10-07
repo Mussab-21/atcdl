@@ -145,7 +145,7 @@ export function IndustryWhatWeBuildSection() {
 
                 <div className="pt-2 border-t border-[#18345C] flex items-center justify-between text-[11px] font-mono text-slate-400">
                   <span>Standard Latency: &lt; 250ms</span>
-                  <span className="text-[#00D477] font-semibold">100% Deterministic Safety</span>
+                  <span className="text-[#00D477] font-semibold">Rule-based validation</span>
                 </div>
               </div>
             </div>

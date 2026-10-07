@@ -164,7 +164,7 @@ export const PRODUCTS_LAB_DATA: {
       name: "ATCDL Agents",
       tagline: "Autonomous Sales & Support Agent Platform",
       category: "COMMUNICATION",
-      categories: ["ALL", "AI", "AUTOMATION"],
+      categories: ["ALL", "AI", "AUTOMATION", "COMMUNICATION"],
       status: "Prototype",
       statusBadge: "● PROTOTYPE",
       shortDescription:

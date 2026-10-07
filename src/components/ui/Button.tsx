@@ -2,6 +2,7 @@ import React from "react";
 import { clsx } from "clsx";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  as?: "button" | "span";
   variant?: "primary" | "secondary" | "outline" | "ghost" | "ai";
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
@@ -10,6 +11,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
+      as = "button",
       children,
       className,
       variant = "primary",
@@ -24,8 +26,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       "inline-flex items-center justify-center font-medium transition-all duration-200 cursor-pointer select-none rounded-[var(--radius-btn)] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none active:scale-[0.98]";
 
     const sizeStyles = {
-      sm: "text-xs px-3 py-1.5 gap-1.5 h-8",
-      md: "text-sm px-4 py-2.5 gap-2 h-10",
+      sm: "text-xs px-3 py-1.5 gap-1.5 min-h-11",
+      md: "text-sm px-4 py-2.5 gap-2 min-h-11",
       lg: "text-base px-6 py-3.5 gap-2.5 h-12",
     };
 
@@ -41,6 +43,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       ai: "bg-[var(--bg-card)] text-[#006663] border border-[#99DEDC] hover:bg-[#E6F7F6]",
     };
 
+    if (as === "span") return <span className={clsx(baseStyles, sizeStyles[size], variantStyles[variant], className)}>{children}</span>;
     return (
       <button
         ref={ref}

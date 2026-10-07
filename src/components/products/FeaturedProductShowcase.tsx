@@ -43,7 +43,7 @@ export function FeaturedProductShowcase({
         </div>
 
         <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
-          Interactive Live Demo
+          Interactive example
         </span>
       </div>
 
@@ -92,7 +92,7 @@ export function FeaturedProductShowcase({
           {/* Action Row */}
           <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-slate-100">
             <NextLink href={`/contact?product=${product.id}`}>
-              <Button size="lg" variant="primary" className="text-xs font-bold bg-[#2563EB] hover:bg-blue-700 text-white shadow-xs">
+              <Button as="span" size="lg" variant="primary" className="text-xs font-bold bg-[#2563EB] hover:bg-blue-700 text-white shadow-xs">
                 <span>{product.ctaText}</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Button>

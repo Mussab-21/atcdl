@@ -16,6 +16,7 @@ declare global {
         options: {
           sitekey: string;
           callback: (token: string) => void;
+          "expired-callback"?: () => void;
           "error-callback"?: (error: string) => void;
           theme?: "dark" | "light" | "auto";
         }
@@ -45,14 +46,14 @@ export function Turnstile({ onSuccess, onError, className = "" }: TurnstileProps
           const id = window.turnstile.render(containerRef.current, {
             sitekey: siteKey,
             callback: (token: string) => {
-              console.log("[Turnstile SUCCESS token acquired]", token.substring(0, 20) + "...");
               if (isMounted) onSuccess(token);
             },
             "error-callback": (err: string) => {
               console.warn("[Turnstile ERROR callback]", err);
               if (isMounted) onError?.(err);
             },
-            theme: "dark",
+            "expired-callback": () => onSuccess(""),
+            theme: "light",
           });
           widgetIdRef.current = id;
           if (intervalId) clearInterval(intervalId);
@@ -78,9 +79,16 @@ export function Turnstile({ onSuccess, onError, className = "" }: TurnstileProps
     // 2. Poll until window.turnstile is ready and renders
     tryRender();
     intervalId = setInterval(tryRender, 200);
+    const timeoutId = setTimeout(() => {
+      if (!widgetIdRef.current && isMounted) {
+        if (intervalId) clearInterval(intervalId);
+        onError?.("Verification could not load. Please refresh and try again.");
+      }
+    }, 15000);
 
     return () => {
       isMounted = false;
+      clearTimeout(timeoutId);
       if (intervalId) clearInterval(intervalId);
       if (widgetIdRef.current && window.turnstile?.remove) {
         try {
@@ -93,14 +101,7 @@ export function Turnstile({ onSuccess, onError, className = "" }: TurnstileProps
     };
   }, [siteKey, onSuccess, onError]);
 
-  if (!siteKey) {
-    return (
-      <div className={`p-2.5 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] text-[11px] font-mono text-[var(--text-muted)] flex items-center justify-between ${className}`}>
-        <span>🛡️ Bot Protection: Cloudflare Turnstile</span>
-        <span className="text-[var(--warning)]">Awaiting Site Key</span>
-      </div>
-    );
-  }
+  if (!siteKey) return null;
 
   return (
     <div className={`my-3 flex flex-col items-center justify-center min-h-[65px] ${className}`}>

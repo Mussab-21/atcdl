@@ -81,7 +81,7 @@ export default async function ProductDetailPage({ params }: Props) {
 
           <div className="flex flex-wrap items-center gap-4 pt-4">
             <NextLink href={`/contact?product=${product.slug}`}>
-              <Button size="lg" variant="primary">
+              <Button as="span" size="lg" variant="primary">
                 <span>Book a Live 60-Second Demo</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
@@ -218,7 +218,7 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
 
           <NextLink href={`/contact?product=${product.slug}`}>
-            <Button size="lg" variant="primary" className="whitespace-nowrap">
+            <Button as="span" size="lg" variant="primary" className="whitespace-nowrap">
               <span>Book Demo →</span>
             </Button>
           </NextLink>

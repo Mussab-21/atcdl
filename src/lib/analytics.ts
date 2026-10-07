@@ -9,6 +9,9 @@ export type AnalyticsEvent =
   | "project_estimator_started"
   | "project_estimator_completed"
   | "estimator_currency_toggled"
+  | "contact_validation_failed"
+  | "contact_submit_attempted"
+  | "contact_submit_failed"
   | "contact_started"
   | "contact_submitted"
   | "calendar_clicked"
@@ -20,6 +23,9 @@ export function track(
   properties?: Record<string, string | number | boolean | undefined>
 ) {
   if (typeof window === "undefined") return;
+
+  // Local integration point, without sending information to a third party.
+  window.dispatchEvent(new CustomEvent("atc:analytics", {detail: {event, properties}}));
 
   // Log in development
   if (process.env.NODE_ENV === "development") {

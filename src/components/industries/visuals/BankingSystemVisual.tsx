@@ -26,7 +26,7 @@ export function BankingSystemVisual({ isPlaying = true }: { isPlaying?: boolean 
       step: "03",
       name: "POLICY & RISK CHECK",
       desc: "Deterministic rule evaluation cross-referencing Central Bank credit circulars",
-      badge: "Zero Hallucination",
+      badge: "Rule validation",
       status: "COMPLIANT",
     },
     {

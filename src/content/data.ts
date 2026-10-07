@@ -362,7 +362,6 @@ export const PROJECTS: Project[] = [
     technology: ["Python", "FastAPI", "Sentence-Transformers", "Next.js", "Tailwind CSS"],
     businessValue:
       "Reduced initial screening time from 15 minutes to under 30 seconds per resume with reproducible rubric scoring.",
-    githubUrl: "https://github.com/Mussab-21",
     featured: true,
   },
   {
@@ -376,11 +375,10 @@ export const PROJECTS: Project[] = [
     problem:
       "New team members lost hours searching across fragmented markdown files, FAQs, and ticket logs to find standard operating guidelines.",
     solution:
-      "Built a secure vector search and QA pipeline with semantic chunking and grounded generation, ensuring zero hallucination on corporate policies.",
+      "Built a secure vector search and QA pipeline with semantic chunking and grounded generation, using citations and review to reduce unsupported answers about corporate policies.",
     technology: ["LangChain", "OpenAI / Claude API", "ChromaDB", "TypeScript", "React"],
     businessValue:
       "Cut onboarding inquiry volume to team leads by 65% in internal trial benchmarks.",
-    githubUrl: "https://github.com/Mussab-21",
     featured: true,
   },
   {
@@ -398,7 +396,6 @@ export const PROJECTS: Project[] = [
     technology: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
     businessValue:
       "Consolidated 4 disparate spreadsheets into one live system with audit-ready donor logging.",
-    githubUrl: "https://github.com/Mussab-21",
     featured: true,
   },
   {
@@ -416,7 +413,6 @@ export const PROJECTS: Project[] = [
     technology: ["PyTorch", "Python", "Matplotlib", "NumPy"],
     businessValue:
       "Achieved 92.4% test set accuracy under constrained compute parameters.",
-    githubUrl: "https://github.com/Mussab-21",
     featured: false,
   },
   {
@@ -434,7 +430,6 @@ export const PROJECTS: Project[] = [
     technology: ["Node.js", "Discord.js", "Figma REST API", "Webhooks"],
     businessValue:
       "Automated notification latency dropped from hours to under 2 seconds upon design file publish.",
-    githubUrl: "https://github.com/Mussab-21",
     featured: false,
   },
 ];

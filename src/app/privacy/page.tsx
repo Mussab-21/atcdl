@@ -18,7 +18,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="text-xs text-[var(--text-muted)] mt-1 font-mono">
-            Effective Date: September 2026 // Last Updated: v1.1
+            Updated: October 2026
           </p>
         </div>
       </Reveal>
@@ -45,18 +45,14 @@ export default function PrivacyPage() {
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">3. AI &amp; Client Data Isolation</h2>
         <p>
-          Client documents, training data, embeddings, and API prompts processed by ATCDL custom
-          solutions or product deployments remain the strict, unalienable property of the client. Under no
-          circumstances are client datasets used to train public machine learning foundation models.
+          Data handling, model providers, ownership and access controls for client projects are agreed in the project contract. Please do not submit confidential documents or credentials through this public inquiry form.
         </p>
       </section>
 
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">4. Security &amp; Retention</h2>
         <p>
-          We employ industry-standard encryption (TLS in transit, AES-256 at rest) and strict access
-          controls. IP addresses collected for spam prevention are hashed and retained only as long as
-          necessary for security auditing.
+          Inquiry details are saved in our database and may be forwarded through configured communication providers, including Discord and Resend, so our team can respond. Hosting providers process the information needed to operate the website. We use an IP-derived identifier for abuse prevention. The form stores a temporary, essential confirmation cookie for one hour; this cookie is not used for advertising.
         </p>
       </section>
 
