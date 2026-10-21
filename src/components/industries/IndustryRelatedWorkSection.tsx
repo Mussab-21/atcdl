@@ -33,10 +33,10 @@ export function IndustryRelatedWorkSection({ industry }: { industry: IndustryExp
           </div>
 
           <Link
-            href="/work"
+            href="/solutions"
             className="text-xs font-mono text-[#2563EB] hover:underline flex items-center gap-1 font-bold shrink-0"
           >
-            <span>View All Engineering Work</span>
+            <span>Explore Business Solutions</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
@@ -93,10 +93,10 @@ export function IndustryRelatedWorkSection({ industry }: { industry: IndustryExp
 
               <div className="pt-4 border-t border-[#DCE5EF] flex items-center justify-between">
                 <Link
-                  href={`/work/${project.slug}`}
+                  href="/contact?intent=project"
                   className="text-xs font-mono text-[#071326] group-hover:text-blue-600 font-bold flex items-center gap-1.5 transition-colors"
                 >
-                  <span>Explore Case Study</span>
+                  <span>Discuss Implementation</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
 

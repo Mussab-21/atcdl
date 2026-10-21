@@ -1,51 +1,27 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
-const groups = [
-  {
-    title: "Our expertise",
-    items: [
-      ["AI & intelligent systems", "/services#ai"],
-      ["Software development", "/services#software"],
-      ["System integration", "/services#integration"],
-      ["Cloud & infrastructure", "/services#cloud"],
-      ["Cybersecurity", "/services#cybersecurity"],
-      ["Managed services", "/services#managed-services"],
-      ["Technology consulting", "/services#consulting"],
-    ],
-  },
-  {
-    title: "Business solutions",
-    items: [
-      ["Private AI assistants", "/solutions/custom-ai"],
-      ["Workflow automation", "/solutions/ai-agents"],
-      ["Enterprise software", "/solutions/enterprise-software"],
-      ["Web & mobile platforms", "/solutions/web-mobile-platforms"],
-    ],
-  },
-  {
-    title: "Industry focus",
-    items: [
-      ["Telecommunications", "/industries#telecom"],
-      ["Banking & finance", "/industries#banking"],
-      ["Manufacturing", "/industries#manufacturing"],
-      ["Logistics", "/industries#logistics"],
-    ],
-  },
+import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
+
+const navItems = [
+  { name: "About Us", href: "/about" },
+  { name: "Our Services", href: "/services" },
+  { name: "Solutions", href: "/solutions" },
 ];
+
 export function Navbar() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
   const [mobile, setMobile] = useState(false);
   const header = useRef<HTMLElement>(null);
-  const trigger = useRef<HTMLButtonElement>(null);
   const mobileTrigger = useRef<HTMLButtonElement>(null);
+
   const close = () => {
-    setOpen(false);
     setMobile(false);
   };
+
   useEffect(() => {
     const outside = (e: PointerEvent) => {
       if (!header.current?.contains(e.target as Node)) close();
@@ -53,7 +29,7 @@ export function Navbar() {
     const escape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         close();
-        (mobile ? mobileTrigger : trigger).current?.focus();
+        mobileTrigger.current?.focus();
       }
     };
     document.addEventListener("pointerdown", outside);
@@ -63,6 +39,7 @@ export function Navbar() {
       document.removeEventListener("keydown", escape);
     };
   }, [mobile]);
+
   return (
     <header
       ref={header}
@@ -78,44 +55,47 @@ export function Navbar() {
           className="brand"
           aria-label="ATC Digital Labs home"
         >
-          <span className="brand-symbol" aria-hidden="true">
-            a<span>↗</span>
-          </span>
-          <span>
-            ATC<span className="brand-sub">DIGITAL LABS</span>
-          </span>
+          <Image
+            src="/atc-logo.png"
+            alt="ATC Digital Labs Logo"
+            width={160}
+            height={48}
+            className="h-10 sm:h-11 w-auto max-w-[170px] object-contain rounded-md"
+            priority
+          />
         </Link>
+
         <nav className="desktop-links" aria-label="Main navigation">
-          <button
-            ref={trigger}
-            aria-expanded={open}
-            aria-controls="expertise-menu"
-            onClick={() => setOpen(!open)}
-          >
-            What we do <ChevronDown size={14} />
-          </button>
-          {[
-            ["Products", "/products"],
-            ["Our work", "/work"],
-            ["About", "/about"],
-          ].map(([name, href]) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={close}
-              aria-current={pathname.startsWith(href) ? "page" : undefined}
-            >
-              {name}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={close}
+                aria-current={isActive ? "page" : undefined}
+                className={isActive ? "active" : undefined}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </nav>
-        <Link
-          className="nav-cta"
-          href="/contact?intent=project"
-          onClick={close}
-        >
-          Let’s talk <ArrowUpRight size={16} />
-        </Link>
+
+        <div className="nav-actions">
+          <Link
+            className="nav-cta"
+            href="/contact?intent=project"
+            onClick={close}
+          >
+            <span>Discuss Your Project</span>
+            <ArrowRight size={15} />
+          </Link>
+        </div>
+
         <button
           ref={mobileTrigger}
           className="mobile-toggle"
@@ -124,67 +104,38 @@ export function Navbar() {
           aria-controls="mobile-navigation"
           onClick={() => setMobile(!mobile)}
         >
-          {mobile ? <X /> : <Menu />}
+          {mobile ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-      {open && (
-        <div className="mega-panel" id="expertise-menu">
-          <div className="mega-intro">
-            <span className="eyebrow">From possibility to production</span>
-            <p>
-              Technology that moves
-              <br />
-              your business forward.
-            </p>
-            <Link href="/services" onClick={close}>
-              Explore all services <ArrowUpRight size={16} />
-            </Link>
-          </div>
-          {groups.map((g) => (
-            <div key={g.title}>
-              <h2>{g.title}</h2>
-              {g.items.map(([name, href]) => (
-                <Link key={href} href={href} onClick={close}>
-                  {name}
-                  <ArrowUpRight size={13} />
-                </Link>
-              ))}
-            </div>
-          ))}
-        </div>
-      )}
+
       {mobile && (
         <nav
           className="mobile-panel"
           id="mobile-navigation"
           aria-label="Mobile navigation"
         >
-          {groups.map((g) => (
-            <details key={g.title}>
-              <summary>
-                {g.title}
-                <ChevronDown size={16} />
-              </summary>
-              {g.items.map(([name, href]) => (
-                <Link key={href} href={href} onClick={close}>
-                  {name}
-                  <ArrowUpRight size={14} />
-                </Link>
-              ))}
-            </details>
-          ))}
-          {[
-            ["Products", "/products"],
-            ["Our work", "/work"],
-            ["About ATC", "/about"],
-            ["Project estimator", "/estimate"],
-            ["Discuss your project", "/contact"],
-          ].map(([name, href]) => (
-            <Link key={href} href={href} onClick={close}>
-              {name}
-              <ArrowUpRight size={16} />
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={close}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <span>{item.name}</span>
+                <ArrowUpRight size={16} />
+              </Link>
+            );
+          })}
+          <Link
+            href="/contact?intent=project"
+            onClick={close}
+            className="mobile-cta-link"
+          >
+            <span>Discuss Your Project</span>
+            <ArrowRight size={16} />
+          </Link>
         </nav>
       )}
     </header>

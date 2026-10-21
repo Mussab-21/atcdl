@@ -1,6 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 export const Footer: React.FC = () => {
   return (
@@ -11,14 +12,16 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-4 flex flex-col gap-4">
             <NextLink
               href="/"
-              className="flex flex-col text-left leading-none group w-fit"
+              className="flex items-center gap-3 group w-fit"
+              aria-label="ATC Digital Labs home"
             >
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white group-hover:text-[var(--accent-green)] transition-colors">
-                ATC Digital
-              </span>
-              <span className="font-extrabold text-base sm:text-lg tracking-tight text-white/90 group-hover:text-[var(--accent-green)] transition-colors mt-0.5">
-                Labs
-              </span>
+              <Image
+                src="/atc-logo.png"
+                alt="ATC Digital Labs"
+                width={150}
+                height={48}
+                className="h-11 w-auto object-contain rounded-md"
+              />
             </NextLink>
 
             <p className="text-xs text-[#8DA0BA] max-w-sm leading-relaxed">
@@ -43,25 +46,15 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* WHAT WE DO Column (2 cols) */}
-          <nav aria-labelledby="footer-whatwedo-heading" className="md:col-span-2 flex flex-col gap-3">
-            <h3 id="footer-whatwedo-heading" className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-              What We Do
+          {/* OUR SERVICES Column (3 cols) */}
+          <nav aria-labelledby="footer-services-heading" className="md:col-span-3 flex flex-col gap-3">
+            <h3 id="footer-services-heading" className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+              Our Services
             </h3>
             <ul className="flex flex-col gap-2 text-xs text-[#B9C7DC]">
               <li>
-                <NextLink href="/services" className="hover:text-white transition-colors">
-                  Services Overview
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href="/solutions" className="hover:text-white transition-colors">
-                  Business Solutions
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href="/industries" className="hover:text-white transition-colors">
-                  Industry Intelligence
+                <NextLink href="/services" className="hover:text-white transition-colors font-medium text-[var(--accent-green)]">
+                  Services Overview →
                 </NextLink>
               </li>
               <li>
@@ -79,67 +72,77 @@ export const Footer: React.FC = () => {
                   System Integration
                 </NextLink>
               </li>
+              <li>
+                <NextLink href="/services#cloud" className="hover:text-white transition-colors text-[#8DA0BA]">
+                  Cloud &amp; Infrastructure
+                </NextLink>
+              </li>
+              <li>
+                <NextLink href="/services#cybersecurity" className="hover:text-white transition-colors text-[#8DA0BA]">
+                  Cybersecurity &amp; Managed Ops
+                </NextLink>
+              </li>
             </ul>
           </nav>
 
-          {/* PRODUCTS Column (2 cols) */}
-          <nav aria-labelledby="footer-products-heading" className="md:col-span-2 flex flex-col gap-3">
-            <h3 id="footer-products-heading" className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-              Products
+          {/* SOLUTIONS Column (3 cols) */}
+          <nav aria-labelledby="footer-solutions-heading" className="md:col-span-3 flex flex-col gap-3">
+            <h3 id="footer-solutions-heading" className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+              Solutions
             </h3>
             <ul className="flex flex-col gap-2 text-xs text-[#B9C7DC]">
               <li>
-                <NextLink href="/products" className="hover:text-white transition-colors font-medium text-[var(--accent-green)]">
-                  All Products →
+                <NextLink href="/solutions" className="hover:text-white transition-colors font-medium text-[var(--accent-green)]">
+                  All Solutions →
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products/atcdl-docs" className="hover:text-white transition-colors">
-                  ATCDL Docs
+                <NextLink href="/solutions/custom-ai" className="hover:text-white transition-colors">
+                  Custom AI &amp; Knowledge
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products/atcdl-ask" className="hover:text-white transition-colors">
-                  ATCDL Ask
+                <NextLink href="/solutions/ai-agents" className="hover:text-white transition-colors">
+                  Autonomous AI Agents
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products/atcdl-agents" className="hover:text-white transition-colors">
-                  ATCDL Agents
+                <NextLink href="/solutions/enterprise-software" className="hover:text-white transition-colors">
+                  Enterprise Software
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products/atcdl-talent" className="hover:text-white transition-colors">
-                  ATCDL Talent
+                <NextLink href="/solutions/web-mobile-platforms" className="hover:text-white transition-colors">
+                  Web &amp; Mobile Platforms
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/products/atcdl-flow" className="hover:text-white transition-colors">
-                  ATCDL Flow
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href="/products/atcdl-ops" className="hover:text-white transition-colors">
-                  ATCDL Ops
+                <NextLink href="/industries" className="hover:text-white transition-colors text-[#8DA0BA]">
+                  Industry Focus
                 </NextLink>
               </li>
             </ul>
           </nav>
 
-          {/* COMPANY Column (2 cols) */}
+          {/* COMPANY & RESOURCES Column (2 cols) */}
           <nav aria-labelledby="footer-company-heading" className="md:col-span-2 flex flex-col gap-3">
             <h3 id="footer-company-heading" className="text-xs font-bold uppercase tracking-wider text-white font-mono">
               Company
             </h3>
             <ul className="flex flex-col gap-2 text-xs text-[#B9C7DC]">
               <li>
-                <NextLink href="/work" className="hover:text-white transition-colors">
-                  What We&apos;ve Built (Work)
+                <NextLink href="/about" className="hover:text-white transition-colors">
+                  About Us
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/about" className="hover:text-white transition-colors">
-                  About Us
+                <NextLink href="/process" className="hover:text-white transition-colors">
+                  Our Process
+                </NextLink>
+              </li>
+              <li>
+                <NextLink href="/estimate" className="hover:text-white transition-colors text-[var(--accent-green)]">
+                  Project Estimator
                 </NextLink>
               </li>
               <li>
@@ -154,48 +157,21 @@ export const Footer: React.FC = () => {
               </li>
             </ul>
           </nav>
-
-          {/* RESOURCES Column (2 cols) */}
-          <nav aria-labelledby="footer-resources-heading" className="md:col-span-2 flex flex-col gap-3">
-            <h3 id="footer-resources-heading" className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-              Resources
-            </h3>
-            <ul className="flex flex-col gap-2 text-xs text-[#B9C7DC]">
-              <li>
-                <NextLink href="/estimate" className="hover:text-white transition-colors text-[var(--accent-green)] font-medium">
-                  Project Estimator
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href="/ideas" className="hover:text-white transition-colors">
-                  Ideas &amp; Blueprints
-                </NextLink>
-              </li>
-              <li>
-                <NextLink href="/labs" className="hover:text-white transition-colors">
-                  Labs &amp; Open Source
-                </NextLink>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/Mussab-21"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub profile (opens in a new tab)"
-                  className="hover:text-white transition-colors flex items-center gap-1 text-[#B9C7DC]"
-                >
-                  <span>GitHub</span>
-                  <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
-                </a>
-              </li>
-            </ul>
-          </nav>
         </div>
 
-        {/* Bottom Line — Clean & Professional */}
+        {/* Bottom Line — Clean & Professional with Logo */}
         <div className="border-t border-[#162D50] pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8DA0BA] gap-4">
-          <div>
-            &copy; {new Date().getFullYear()} ATC Digital Labs. All rights reserved.
+          <div className="flex items-center gap-3">
+            <Image
+              src="/atc-logo.png"
+              alt="ATC Digital Labs"
+              width={26}
+              height={26}
+              className="h-6 w-6 rounded object-cover shrink-0"
+            />
+            <span>
+              &copy; {new Date().getFullYear()} ATC Digital Labs. All rights reserved.
+            </span>
           </div>
           <div className="flex items-center gap-6">
             <NextLink href="/privacy" className="hover:text-white transition-colors">

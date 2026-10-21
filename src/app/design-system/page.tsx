@@ -206,7 +206,7 @@ export default function DesignSystemPage() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Link href="/products/atcdl-docs">Explore Demo</Link>
+                  <Link href="/solutions/custom-ai">Explore Solution</Link>
                 </CardFooter>
               </Card>
             </CursorGlow>

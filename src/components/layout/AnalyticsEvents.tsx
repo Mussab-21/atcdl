@@ -7,10 +7,8 @@ export function AnalyticsEvents() {
   useEffect(() => {
     if (pathname.startsWith("/solutions"))
       track("solutions_viewed", { path: pathname });
-    if (pathname.startsWith("/products/"))
-      track("product_opened", { slug: pathname.split("/")[2] });
-    if (pathname.startsWith("/work/"))
-      track("case_study_viewed", { slug: pathname.split("/")[2] });
+    if (pathname.startsWith("/services"))
+      track("services_viewed", { path: pathname });
     if (pathname === "/estimate") track("pricing_viewed");
   }, [pathname]);
   useEffect(() => {

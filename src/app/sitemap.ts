@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { SOLUTIONS, PRODUCTS, PROJECTS, IDEAS, INDUSTRIES } from "@/content/data";
+import { SOLUTIONS, IDEAS, INDUSTRIES } from "@/content/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://atcdl.com";
@@ -7,16 +7,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     "",
+    "/about",
+    "/services",
     "/solutions",
-    "/products",
-    "/work",
     "/industries",
     "/ideas",
     "/estimate",
     "/process",
     "/labs",
     "/contact",
-    "/about",
     "/trust",
     "/privacy",
     "/terms",
@@ -32,20 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.9,
-  }));
-
-  const productRoutes = PRODUCTS.map((p) => ({
-    url: `${siteUrl}/products/${p.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.9,
-  }));
-
-  const projectRoutes = PROJECTS.map((proj) => ({
-    url: `${siteUrl}/work/${proj.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
   }));
 
   const ideaRoutes = IDEAS.map((idea) => ({
@@ -65,8 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...solutionRoutes,
-    ...productRoutes,
-    ...projectRoutes,
     ...ideaRoutes,
     ...industryRoutes,
   ];

@@ -1,6 +1,7 @@
 export type AnalyticsEvent =
   | "hero_cta_clicked"
   | "solutions_viewed"
+  | "services_viewed"
   | "project_opened"
   | "product_opened"
   | "product_demo_requested"

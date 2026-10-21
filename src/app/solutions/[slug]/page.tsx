@@ -509,12 +509,12 @@ export default async function SolutionDetailPage({ params }: Props) {
 
       {/* 8. CROSS NAVIGATION STRIP */}
       <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[var(--border)] text-xs font-mono">
-        <NextLink href="/work" className="text-[var(--text-secondary)] hover:text-[var(--accent)] flex items-center gap-1">
-          <span>View Verified Client Codebases</span>
+        <NextLink href="/services" className="text-[var(--text-secondary)] hover:text-[var(--accent)] flex items-center gap-1">
+          <span>Explore Our Technology Services</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </NextLink>
-        <NextLink href="/products" className="text-[var(--accent-ai)] hover:underline flex items-center gap-1">
-          <span>Explore Modular Flagship Products</span>
+        <NextLink href="/solutions" className="text-[var(--accent-ai)] hover:underline flex items-center gap-1 font-bold">
+          <span>View All Business Solutions</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </NextLink>
       </div>

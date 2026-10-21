@@ -194,8 +194,8 @@ function InquiryForm({ query }: { query: string }) {
           <p>01 — We review your goals and context.</p>
           <p>02 — We follow up with questions or a conversation.</p>
           <p>03 — Together, we agree a practical next step.</p>
-          <Link href="/work" className="text-link">
-            Explore our work <ArrowUpRight size={16} />
+          <Link href="/solutions" className="text-link">
+            Explore our solutions <ArrowUpRight size={16} />
           </Link>
         </div>
       </div>

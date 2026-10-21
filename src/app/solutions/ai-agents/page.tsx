@@ -136,10 +136,10 @@ export default function AIAgentsSolutionPage() {
           <span>← Previous Solution: Custom AI Knowledge</span>
         </NextLink>
         <NextLink
-          href="/work"
+          href="/solutions"
           className="text-[#2563EB] hover:underline flex items-center gap-1 font-bold"
         >
-          <span>Explore Verified Client Case Studies</span>
+          <span>View All Business Solutions</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </NextLink>
       </div>

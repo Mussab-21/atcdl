@@ -126,10 +126,10 @@ export default function CustomAISolutionPage() {
       {/* Bottom Cross-Navigation */}
       <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#DCE5EF] text-xs font-mono">
         <NextLink
-          href="/work"
+          href="/services"
           className="text-slate-600 hover:text-[#2563EB] flex items-center gap-1 transition-colors"
         >
-          <span>View Verified Client Case Studies</span>
+          <span>Explore Technology Services</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </NextLink>
         <NextLink

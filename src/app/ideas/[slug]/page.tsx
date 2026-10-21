@@ -6,16 +6,12 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { IDEAS, PRODUCTS, SOLUTIONS } from "@/content/data";
+import { IDEAS, SOLUTIONS } from "@/content/data";
 import {
-  Sparkles,
   ArrowRight,
   ArrowLeft,
   Lightbulb,
-  CheckCircle2,
   Workflow,
-  Cpu,
-  Layers,
   Calendar,
 } from "lucide-react";
 
@@ -51,7 +47,6 @@ export default async function IdeaDetailPage({ params, searchParams }: Props) {
     notFound();
   }
 
-  const mappedProduct = PRODUCTS.find((p) => p.slug === idea.relevantProduct);
   const mappedSolution = SOLUTIONS.find((s) => s.slug === idea.relevantSolution);
 
   return (
@@ -197,23 +192,21 @@ export default async function IdeaDetailPage({ params, searchParams }: Props) {
       {/* Cross-linking: Mapped Product & Solution */}
       <Reveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-          {mappedProduct && (
-            <div className="p-5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)]">
-              <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] mb-1">
-                Mapped Reusable Asset
-              </div>
-              <div className="font-bold text-sm text-[var(--text-primary)] mb-2">
-                {mappedProduct.name} ({mappedProduct.tagline})
-              </div>
-              <Link
-                href={`/products/${mappedProduct.slug}`}
-                className="text-xs text-[var(--accent)] hover:underline inline-flex items-center gap-1 font-semibold"
-              >
-                <span>View Product Specs</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+          <div className="p-5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)]">
+            <div className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] mb-1">
+              Technology Capabilities
             </div>
-          )}
+            <div className="font-bold text-sm text-[var(--text-primary)] mb-2">
+              Engineering &amp; System Integration
+            </div>
+            <Link
+              href="/services"
+              className="text-xs text-[var(--accent)] hover:underline inline-flex items-center gap-1 font-semibold"
+            >
+              <span>Explore Technology Services</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
 
           {mappedSolution && (
             <div className="p-5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)]">

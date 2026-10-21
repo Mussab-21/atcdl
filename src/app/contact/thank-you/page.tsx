@@ -26,8 +26,8 @@ export default async function ThankYouPage() {
           </p>
         )}
         <div className="flex flex-wrap justify-center gap-4 mt-8">
-          <Link href={receipt ? "/work" : "/contact"} className="studio-button">
-            {receipt ? "Explore our work" : "Contact the team"}
+          <Link href={receipt ? "/solutions" : "/contact"} className="studio-button">
+            {receipt ? "Explore our solutions" : "Contact the team"}
             <ArrowUpRight size={16} />
           </Link>
           <Link href="/" className="text-link">

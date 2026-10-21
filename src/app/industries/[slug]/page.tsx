@@ -6,15 +6,13 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { INDUSTRIES, PRODUCTS, IDEAS, PROJECTS } from "@/content/data";
+import { INDUSTRIES, SOLUTIONS, IDEAS } from "@/content/data";
 import {
-  Building2,
   ArrowRight,
   ArrowLeft,
   ShieldAlert,
   ShieldCheck,
   Cpu,
-  Layers,
   Sparkles,
   Workflow,
 } from "lucide-react";
@@ -46,9 +44,8 @@ export default async function IndustryDetailPage({ params }: Props) {
     notFound();
   }
 
-  const mappedProducts = PRODUCTS.filter((p) => industry.relevantProducts.includes(p.slug));
   const mappedIdeas = IDEAS.filter((i) => industry.relevantIdeas.includes(i.slug));
-  const mappedProjects = PROJECTS.filter((p) => industry.relevantProjects.includes(p.slug));
+  const mappedSolutions = SOLUTIONS.slice(0, 2);
 
   return (
     <div className="container-custom py-16 sm:py-24 max-w-4xl">
@@ -208,35 +205,33 @@ export default async function IndustryDetailPage({ params }: Props) {
         </Reveal>
       )}
 
-      {/* Relevant Products */}
-      {mappedProducts.length > 0 && (
+      {/* Relevant Business Solutions */}
+      {mappedSolutions.length > 0 && (
         <Reveal>
           <div className="mb-12">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Workflow className="w-4 h-4 text-[var(--accent)]" />
                 <h3 className="text-lg font-bold text-[var(--text-primary)]">
-                  Applicable Flagship Products
+                  Applicable Business Solutions
                 </h3>
               </div>
-              <Link href="/products" className="text-xs text-[var(--accent)] hover:underline">
-                View All Products →
+              <Link href="/solutions" className="text-xs text-[var(--accent)] hover:underline">
+                View All Solutions →
               </Link>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {mappedProducts.map((prod) => (
-                <div key={prod.slug} className="p-4 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] flex items-center justify-between">
+              {mappedSolutions.map((sol) => (
+                <div key={sol.slug} className="p-4 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] flex items-center justify-between">
                   <div>
                     <div className="font-bold text-sm text-[var(--text-primary)]">
-                      {prod.name}
+                      {sol.title}
                     </div>
-                    <div className="text-xs text-[var(--text-muted)]">{prod.tagline}</div>
+                    <div className="text-xs text-[var(--text-muted)] line-clamp-1">{sol.description}</div>
                   </div>
-                  <Link href={`/products/${prod.slug}`}>
-                    <Button as="span" variant="outline" size="sm">
-                      Inspect
-                    </Button>
+                  <Link href={`/solutions/${sol.slug}`} className="text-xs font-semibold text-[var(--accent-ai)] hover:underline shrink-0 ml-3">
+                    Explore
                   </Link>
                 </div>
               ))}
