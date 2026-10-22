@@ -40,7 +40,7 @@ export default function TermsPage() {
         </p>
         <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm">
           <li>Clients retain sole ownership of all pre-existing data, proprietary workflows, and bespoke application code built specifically for their engagement upon full payment.</li>
-          <li>ATCDL retains ownership of pre-existing core components, open-source libraries, and reusable architecture frameworks (including ATCDL Docs, ATCDL Ask, and ATCDL Agents base engines), granting the client a perpetual, non-exclusive license to operate the deployed solution.</li>
+          <li>ATC Technix retains ownership of pre-existing core components, open-source libraries, and reusable architecture frameworks (including ATCDL Docs, ATCDL Ask, and ATCDL Agents base engines), granting the client a perpetual, non-exclusive license to operate the deployed solution.</li>
         </ul>
       </section>
 
@@ -56,7 +56,7 @@ export default function TermsPage() {
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">4. Warranty &amp; Liability</h2>
         <p>
           Custom software and AI systems are provided with warranty periods as specified in active
-          client contracts. ATCDL implements rigorous unit, integration, and security testing prior to
+          client contracts. ATC Technix implements rigorous unit, integration, and security testing prior to
           deployment sign-off.
         </p>
       </section>

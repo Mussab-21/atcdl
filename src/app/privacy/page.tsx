@@ -45,7 +45,7 @@ export default function PrivacyPage() {
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">3. AI &amp; Client Data Isolation</h2>
         <p>
-          Client documents, training data, embeddings, and API prompts processed by ATCDL custom
+          Client documents, training data, embeddings, and API prompts processed by ATC Technix custom
           solutions or product deployments remain the strict, unalienable property of the client. Under no
           circumstances are client datasets used to train public machine learning foundation models.
         </p>

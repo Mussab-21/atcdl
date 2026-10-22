@@ -151,7 +151,7 @@ export default function ProcessPage() {
               Comparative Engineering Audit
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#152A32] tracking-tight">
-              ATCDL vs. Traditional Software Agencies
+              ATC Technix vs. Traditional Software Agencies
             </h2>
             <p className="text-xs sm:text-sm text-[#152A32]/85 max-w-2xl leading-relaxed">
               Transparent side-by-side architecture standards, code governance, and milestone delivery models.
@@ -163,7 +163,7 @@ export default function ProcessPage() {
               <thead>
                 <tr className="border-b border-[#152A32]/20 text-[#152A32] font-mono text-[11px] uppercase bg-[#152A32]/10 font-bold">
                   <th className="py-3.5 px-5">Dimension</th>
-                  <th className="py-3.5 px-5 bg-[#152A32]/15 text-[#152A32]">ATCDL Engineering</th>
+                  <th className="py-3.5 px-5 bg-[#152A32]/15 text-[#152A32]">ATC Technix Engineering</th>
                   <th className="py-3.5 px-5 text-[#152A32]/80">Typical Agency / Outsource Shop</th>
                 </tr>
               </thead>
