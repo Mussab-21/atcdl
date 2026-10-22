@@ -126,22 +126,22 @@ export const Footer: React.FC = () => {
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/solutions/custom-ai" className="hover:text-white transition-colors">
+                <NextLink href="/solutions#custom-ai" className="hover:text-white transition-colors">
                   Custom AI &amp; Knowledge
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/solutions/ai-agents" className="hover:text-white transition-colors">
+                <NextLink href="/solutions#ai-agents" className="hover:text-white transition-colors">
                   Autonomous AI Agents
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/solutions/enterprise-software" className="hover:text-white transition-colors">
+                <NextLink href="/solutions#enterprise-software" className="hover:text-white transition-colors">
                   Enterprise Software
                 </NextLink>
               </li>
               <li>
-                <NextLink href="/solutions/web-mobile-platforms" className="hover:text-white transition-colors">
+                <NextLink href="/solutions#web-mobile-platforms" className="hover:text-white transition-colors">
                   Web &amp; Mobile Platforms
                 </NextLink>
               </li>

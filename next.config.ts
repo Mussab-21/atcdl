@@ -23,6 +23,36 @@ const nextConfig: NextConfig = {
         destination: "/services",
         permanent: true,
       },
+      {
+        source: "/solutions/custom-ai",
+        destination: "/solutions#custom-ai",
+        permanent: true,
+      },
+      {
+        source: "/solutions/ai-agents",
+        destination: "/solutions#ai-agents",
+        permanent: true,
+      },
+      {
+        source: "/solutions/enterprise-software",
+        destination: "/solutions#enterprise-software",
+        permanent: true,
+      },
+      {
+        source: "/solutions/web-mobile-platforms",
+        destination: "/solutions#web-mobile-platforms",
+        permanent: true,
+      },
+      {
+        source: "/solutions/web-mobile",
+        destination: "/solutions#web-mobile-platforms",
+        permanent: true,
+      },
+      {
+        source: "/solutions/:slug+",
+        destination: "/solutions",
+        permanent: true,
+      },
     ];
   },
 };

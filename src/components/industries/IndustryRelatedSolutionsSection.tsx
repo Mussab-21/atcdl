@@ -77,7 +77,7 @@ export function IndustryRelatedSolutionsSection({ industry }: { industry: Indust
 
                 <div className="pt-4 border-t border-[#DCE5EF]">
                   <Link
-                    href={`/solutions/${sol.slug}`}
+                    href={`/solutions#${sol.slug}`}
                     className="text-xs font-mono text-[#071326] group-hover:text-blue-600 font-bold flex items-center justify-between transition-colors"
                   >
                     <span>View Solution Architecture</span>

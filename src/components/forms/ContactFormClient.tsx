@@ -22,6 +22,7 @@ export function ContactFormClient() {
   const timelineParam = searchParams.get("timeline");
   const summaryParam = searchParams.get("summary");
   const serviceParam = searchParams.get("service");
+  const solutionParam = searchParams.get("solution");
   const intentParam = searchParams.get("intent");
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -123,6 +124,18 @@ export function ContactFormClient() {
 
       if (summaryParam) {
         updated.problem = summaryParam;
+      } else if (solutionParam) {
+        updated.problem = `Inquiry regarding the ${solutionParam} solution for our organization.`;
+        const lower = solutionParam.toLowerCase();
+        if (lower.includes("ai agent") || lower.includes("automation")) {
+          updated.projectType = "AI Agents & Automation";
+        } else if (lower.includes("ai") || lower.includes("custom ai")) {
+          updated.projectType = "Custom AI / GenAI";
+        } else if (lower.includes("enterprise") || lower.includes("modernization")) {
+          updated.projectType = "Enterprise Software";
+        } else if (lower.includes("web") || lower.includes("mobile") || lower.includes("platform")) {
+          updated.projectType = "Web & Mobile Platforms";
+        }
       } else if (serviceParam) {
         updated.problem = `Inquiry regarding ${serviceParam} engineering services for our organization.`;
       } else if (productParam) {
@@ -159,6 +172,7 @@ export function ContactFormClient() {
     timelineParam,
     summaryParam,
     serviceParam,
+    solutionParam,
   ]);
 
   const validateStep1 = () => {
@@ -338,6 +352,12 @@ export function ContactFormClient() {
                     What system, challenge, or product are you seeking to evaluate?
                   </p>
                 </div>
+
+                {solutionParam && (
+                  <div className="p-3 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] text-xs text-[var(--text-secondary)]">
+                    Selected Solution: <span className="font-semibold text-[var(--text-primary)]">{solutionParam}</span>
+                  </div>
+                )}
 
                 <FormField label="Service or Solution Focus" required>
                   <Select

@@ -296,7 +296,7 @@ export function SolutionsHorizontalSelector({ solutions = SOLUTIONS }: Props) {
 
           {/* Action Buttons */}
           <div className="pt-4 border-t border-[var(--border)] flex flex-wrap items-center gap-3">
-            <NextLink href={`/solutions/${currentSolution.slug}`}>
+            <NextLink href={`/solutions#${currentSolution.slug}`}>
               <Button size="md" variant="primary" className="text-xs font-semibold">
                 <span>Learn How It Works</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
