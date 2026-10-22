@@ -335,7 +335,7 @@ export function ProductsCarousel({ products }: ProductsCarouselProps) {
                     {/* Card Actions */}
                     <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between">
                       <NextLink
-                        href={`/products/${product.slug}`}
+                        href="/solutions"
                         className="text-xs font-medium text-[var(--accent)] hover:underline flex items-center gap-1 group/link"
                       >
                         <span>See how it works</span>

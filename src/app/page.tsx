@@ -138,7 +138,7 @@ export default function Home() {
                   Real problems solved. Real software delivered.
                 </p>
               </div>
-              <NextLink href="/work">
+              <NextLink href="/services">
                 <Button variant="ghost" size="sm" className="text-xs font-medium">
                   <span>View Our Work</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
@@ -164,7 +164,7 @@ export default function Home() {
 
                     <h3 className="text-lg font-bold text-[var(--text-primary)]">
                       <NextLink
-                        href={`/work/${project.slug}`}
+                        href="/services"
                         className="hover:text-[var(--accent)] transition-colors"
                       >
                         {project.title}
@@ -179,7 +179,7 @@ export default function Home() {
 
                   <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between text-xs">
                     <NextLink
-                      href={`/work/${project.slug}`}
+                      href="/services"
                       className="text-[var(--accent)] font-medium hover:underline"
                     >
                       See how we built it →
@@ -243,7 +243,7 @@ export default function Home() {
                     <span>Book a Demo</span>
                   </Button>
                 </NextLink>
-                <NextLink href="/products">
+                <NextLink href="/solutions">
                   <Button size="sm" variant="primary" className="text-xs font-medium whitespace-nowrap">
                     <span>View All Products</span>
                     <ArrowRight className="w-3.5 h-3.5 ml-1" />

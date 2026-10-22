@@ -118,7 +118,7 @@ export default function SolutionsPage() {
                       <span>Entry: <strong className="text-[var(--text-primary)]">From PKR 150k</strong></span>
                     </div>
                     <NextLink href={`/solutions/${sol.slug}`}>
-                      <Button variant="primary" size="sm" className="text-xs font-semibold">
+                      <Button as="span" variant="primary" size="sm" className="text-xs font-semibold">
                         <span>Explore Solution</span>
                         <ArrowRight className="w-3.5 h-3.5 ml-1" />
                       </Button>
@@ -143,12 +143,12 @@ export default function SolutionsPage() {
             </p>
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <NextLink href="/estimate">
-                <Button size="lg" variant="outline" className="text-xs font-medium">
+                <Button as="span" size="lg" variant="outline" className="text-xs font-medium">
                   <span>Interactive Estimator</span>
                 </Button>
               </NextLink>
               <NextLink href="/contact">
-                <Button size="lg" variant="primary" className="text-xs font-semibold">
+                <Button as="span" size="lg" variant="primary" className="text-xs font-semibold">
                   <span>Start Project Brief</span>
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>

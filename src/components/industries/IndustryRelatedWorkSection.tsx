@@ -33,7 +33,7 @@ export function IndustryRelatedWorkSection({ industry }: { industry: IndustryExp
           </div>
 
           <Link
-            href="/work"
+            href="/services"
             className="text-xs font-mono text-[#2563EB] hover:underline flex items-center gap-1 font-bold shrink-0"
           >
             <span>View All Engineering Work</span>
@@ -93,7 +93,7 @@ export function IndustryRelatedWorkSection({ industry }: { industry: IndustryExp
 
               <div className="pt-4 border-t border-[#DCE5EF] flex items-center justify-between">
                 <Link
-                  href={`/work/${project.slug}`}
+                  href="/services"
                   className="text-xs font-mono text-[#071326] group-hover:text-blue-600 font-bold flex items-center gap-1.5 transition-colors"
                 >
                   <span>Explore Case Study</span>

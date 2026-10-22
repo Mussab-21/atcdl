@@ -131,14 +131,14 @@ export default async function SolutionDetailPage({ params }: Props) {
             <Reveal>
               <div className="flex flex-wrap items-center gap-4 pt-1">
                 <NextLink href={`/contact?solution=${solution.slug}`}>
-                  <Button size="lg" variant="primary" className="text-xs font-semibold">
+                  <Button as="span" size="lg" variant="primary" className="text-xs font-semibold">
                     <span>Discuss Your Project</span>
                     <ArrowRight className="w-4 h-4 ml-1.5" />
                   </Button>
                 </NextLink>
 
                 <a href="#how-it-works">
-                  <Button size="lg" variant="outline" className="text-xs font-medium">
+                  <Button as="span" size="lg" variant="outline" className="text-xs font-medium">
                     <span>See How It Works</span>
                   </Button>
                 </a>
@@ -303,7 +303,7 @@ export default async function SolutionDetailPage({ params }: Props) {
                     href={`/contact?solution=${solution.slug}&package=${pkg.id}`}
                     className="w-full block"
                   >
-                    <Button
+                    <Button as="span"
                       size="md"
                       variant={pkg.isPopular ? "primary" : "outline"}
                       className="w-full text-xs font-semibold justify-center"
@@ -467,7 +467,7 @@ export default async function SolutionDetailPage({ params }: Props) {
 
           <div className="pt-4 border-t border-slate-800">
             <NextLink href={`/contact?solution=${solution.slug}`} className="w-full block">
-              <Button size="md" variant="primary" className="w-full text-xs font-semibold justify-center">
+              <Button as="span" size="md" variant="primary" className="w-full text-xs font-semibold justify-center">
                 <span>Talk to an Architect</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
@@ -493,12 +493,12 @@ export default async function SolutionDetailPage({ params }: Props) {
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
             <NextLink href="/estimate">
-              <Button size="md" variant="outline" className="text-xs font-medium whitespace-nowrap">
+              <Button as="span" size="md" variant="outline" className="text-xs font-medium whitespace-nowrap">
                 <span>Run Interactive Estimator</span>
               </Button>
             </NextLink>
             <NextLink href={`/contact?solution=${solution.slug}`}>
-              <Button size="md" variant="primary" className="text-xs font-semibold whitespace-nowrap">
+              <Button as="span" size="md" variant="primary" className="text-xs font-semibold whitespace-nowrap">
                 <span>Talk to ATCDL</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
@@ -509,12 +509,12 @@ export default async function SolutionDetailPage({ params }: Props) {
 
       {/* 8. CROSS NAVIGATION STRIP */}
       <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[var(--border)] text-xs font-mono">
-        <NextLink href="/work" className="text-[var(--text-secondary)] hover:text-[var(--accent)] flex items-center gap-1">
-          <span>View Verified Client Codebases</span>
+        <NextLink href="/services" className="text-[var(--text-secondary)] hover:text-[var(--accent)] flex items-center gap-1">
+          <span>Explore Our Technology Services</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </NextLink>
-        <NextLink href="/products" className="text-[var(--accent-ai)] hover:underline flex items-center gap-1">
-          <span>Explore Modular Flagship Products</span>
+        <NextLink href="/solutions" className="text-[var(--accent-ai)] hover:underline flex items-center gap-1 font-bold">
+          <span>View All Business Solutions</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </NextLink>
       </div>

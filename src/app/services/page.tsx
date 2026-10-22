@@ -50,14 +50,14 @@ export default function ServicesPage() {
           <Reveal>
             <div className="flex flex-wrap items-center gap-4 pt-3">
               <NextLink href="/contact?intent=project">
-                <Button size="lg" variant="primary" className="text-sm font-semibold">
+                <Button as="span" size="lg" variant="primary" className="text-sm font-semibold">
                   <span>Discuss Your Project</span>
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
               </NextLink>
 
               <NextLink href="/contact?intent=consultation">
-                <Button size="lg" variant="outline" className="text-sm font-semibold">
+                <Button as="span" size="lg" variant="outline" className="text-sm font-semibold">
                   <span>Request Consultation</span>
                 </Button>
               </NextLink>
@@ -104,16 +104,16 @@ export default function ServicesPage() {
 
               <div className="flex flex-col gap-2 p-4 rounded-xl bg-white border border-slate-200 shadow-2xs">
                 <div className="text-xs font-bold font-mono uppercase text-amber-600">
-                  03. Products
+                  03. Delivery &amp; Process
                 </div>
                 <div className="text-sm font-bold text-slate-900">
-                  What We&apos;ve Engineered
+                  How We Deliver Value
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Our internal platform engines available for live interactive evaluation: ATCDL Docs, ATCDL Ask, and autonomous workflow modules.
+                  Structured architecture sprints, transparent sprint execution, secure cloud deployment, and long-term managed operations.
                 </p>
-                <NextLink href="/products" className="text-xs font-semibold text-[var(--accent-ai)] hover:underline inline-flex items-center gap-1 mt-auto pt-2">
-                  <span>View Product Showroom</span>
+                <NextLink href="/process" className="text-xs font-semibold text-[var(--accent-ai)] hover:underline inline-flex items-center gap-1 mt-auto pt-2">
+                  <span>Explore Delivery Process</span>
                   <ArrowRight className="w-3 h-3" />
                 </NextLink>
               </div>
@@ -361,14 +361,14 @@ export default function ServicesPage() {
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <NextLink href="/contact?intent=project">
-              <Button size="lg" variant="primary" className="text-sm font-semibold">
+              <Button as="span" size="lg" variant="primary" className="text-sm font-semibold">
                 <span>Discuss Your Project</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </Button>
             </NextLink>
 
             <NextLink href="/contact?intent=consultation">
-              <Button size="lg" variant="outline" className="text-sm font-semibold">
+              <Button as="span" size="lg" variant="outline" className="text-sm font-semibold">
                 <span>Request Consultation</span>
               </Button>
             </NextLink>

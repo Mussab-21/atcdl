@@ -76,14 +76,14 @@ export default function CustomAISolutionPage() {
             {/* Action CTAs */}
             <div className="flex flex-wrap items-center gap-3.5 pt-1">
               <NextLink href="/contact?solution=custom-ai">
-                <Button size="lg" variant="primary" className="text-xs font-bold bg-[#071B3B] hover:bg-[#0c2854]">
+                <Button as="span" size="lg" variant="primary" className="text-xs font-bold bg-[#071B3B] hover:bg-[#0c2854]">
                   <span>{CUSTOM_AI_DATA.hero.primaryCta}</span>
                   <ArrowRight className="w-4 h-4 ml-1.5" />
                 </Button>
               </NextLink>
 
               <a href="#what-we-build">
-                <Button size="lg" variant="outline" className="text-xs font-semibold">
+                <Button as="span" size="lg" variant="outline" className="text-xs font-semibold">
                   <span>{CUSTOM_AI_DATA.hero.secondaryCta}</span>
                 </Button>
               </a>
@@ -126,10 +126,10 @@ export default function CustomAISolutionPage() {
       {/* Bottom Cross-Navigation */}
       <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#DCE5EF] text-xs font-mono">
         <NextLink
-          href="/work"
+          href="/services"
           className="text-slate-600 hover:text-[#2563EB] flex items-center gap-1 transition-colors"
         >
-          <span>View Verified Client Case Studies</span>
+          <span>Explore Technology Services</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </NextLink>
         <NextLink

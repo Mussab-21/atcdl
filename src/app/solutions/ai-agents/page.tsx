@@ -77,14 +77,14 @@ export default function AIAgentsSolutionPage() {
             {/* Action CTAs */}
             <div className="flex flex-wrap items-center gap-3.5 pt-1">
               <NextLink href="/contact?solution=ai-agents">
-                <Button size="lg" variant="primary" className="text-xs font-bold bg-[#071B3B] hover:bg-[#0c2854]">
+                <Button as="span" size="lg" variant="primary" className="text-xs font-bold bg-[#071B3B] hover:bg-[#0c2854]">
                   <span>{AI_AGENTS_DATA.hero.primaryCta}</span>
                   <ArrowRight className="w-4 h-4 ml-1.5" />
                 </Button>
               </NextLink>
 
               <a href="#what-we-build">
-                <Button size="lg" variant="outline" className="text-xs font-semibold">
+                <Button as="span" size="lg" variant="outline" className="text-xs font-semibold">
                   <span>{AI_AGENTS_DATA.hero.secondaryCta}</span>
                 </Button>
               </a>
@@ -136,10 +136,10 @@ export default function AIAgentsSolutionPage() {
           <span>← Previous Solution: Custom AI Knowledge</span>
         </NextLink>
         <NextLink
-          href="/work"
+          href="/solutions"
           className="text-[#2563EB] hover:underline flex items-center gap-1 font-bold"
         >
-          <span>Explore Verified Client Case Studies</span>
+          <span>View All Business Solutions</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </NextLink>
       </div>
