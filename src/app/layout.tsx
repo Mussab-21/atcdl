@@ -16,23 +16,23 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "ATC Digital Labs | AI, Software & Enterprise Technology Solutions",
-    template: "%s | ATC Digital Labs",
+    default: "ATC Technix | AI, Software & Enterprise Technology Solutions",
+    template: "%s",
   },
   description:
-    "ATC Digital Labs builds AI systems, enterprise software, integrations and managed technology services that help organizations automate operations, connect systems and make better use of their data.",
+    "ATC Technix builds AI systems, enterprise software, integrations and managed technology services that help organizations automate operations, connect systems and make better use of their data.",
   openGraph: {
-    title: "ATC Digital Labs | AI, Software & Enterprise Technology Solutions",
+    title: "ATC Technix | AI, Software & Enterprise Technology Solutions",
     description:
-      "ATC Digital Labs builds AI systems, enterprise software, integrations and managed technology services that help organizations automate operations, connect systems and make better use of their data.",
-    siteName: "ATC Digital Labs",
+      "ATC Technix builds AI systems, enterprise software, integrations and managed technology services that help organizations automate operations, connect systems and make better use of their data.",
+    siteName: "ATC Technix",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ATC Digital Labs | AI, Software & Enterprise Technology Solutions",
+    title: "ATC Technix | AI, Software & Enterprise Technology Solutions",
     description:
-      "ATC Digital Labs builds AI systems, enterprise software, integrations and managed technology services that help organizations automate operations, connect systems and make better use of their data.",
+      "ATC Technix builds AI systems, enterprise software, integrations and managed technology services that help organizations automate operations, connect systems and make better use of their data.",
   },
 };
 

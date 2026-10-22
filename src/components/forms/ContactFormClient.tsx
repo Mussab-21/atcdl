@@ -41,7 +41,7 @@ export function ContactFormClient() {
     pageBadge = "PRODUCT DEMONSTRATION";
     pageTitle = "Book a Live Product Demo";
     pageDesc =
-      "Schedule an interactive walk-through of ATC Digital Labs engineered software platforms with our systems engineering team.";
+      "Schedule an interactive walk-through of ATC Technix engineered software platforms with our systems engineering team.";
     submitBtnText = "Book a Demo";
   } else if (intent === "consultation") {
     pageBadge = "TECHNOLOGY CONSULTATION";
@@ -143,7 +143,7 @@ export function ContactFormClient() {
           updated.problem = `Interested in evaluating ${productParam.toUpperCase()} for operational control and multi-tier systems integration.`;
         }
       } else if (ideaParam) {
-        updated.problem = `Interested in piloting the ${ideaParam.replace(/-/g, " ").toUpperCase()} blueprint from ATC Digital Labs.`;
+        updated.problem = `Interested in piloting the ${ideaParam.replace(/-/g, " ").toUpperCase()} blueprint from ATC Technix.`;
       } else if (industryParam) {
         updated.problem = `Interested in exploring technology engineering solutions tailored for the ${industryParam.toUpperCase()} sector.`;
       }

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!industry) return {};
 
   return {
-    title: `${industry.name} — Industry Engineering | ATCDL`,
+    title: `${industry.name} — Industry Engineering | ATC Technix`,
     description: industry.summary,
   };
 }

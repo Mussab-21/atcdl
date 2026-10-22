@@ -1,5 +1,6 @@
 {
-  "name": "atcdl-web",
+  "name": "atc-technix-web",
+  "description": "ATC Technix | AI, Software & Enterprise Technology Solutions",
   "version": "0.1.0",
   "private": true,
   "scripts": {

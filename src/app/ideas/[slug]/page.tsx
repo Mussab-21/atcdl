@@ -35,7 +35,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (!idea) return {};
 
   return {
-    title: `${idea.title} — Architecture Blueprint | ATCDL`,
+    title: `${idea.title} — Architecture Blueprint | ATC Technix`,
     description: idea.concept,
     // Per-prospect noindex: share /ideas/slug?noindex=1 for private prospect links
     robots: sp?.noindex === "1" ? { index: false, follow: false } : undefined,

@@ -40,7 +40,7 @@ export function OperationalBottleneckVisual() {
 
         <p className="text-base sm:text-lg text-[var(--text-secondary)] mt-1 leading-relaxed max-w-2xl">
           Most businesses operate across disconnected software, scattered data, and repetitive
-          manual workflows. ATC Digital Labs connects those pieces into intelligent systems that move work
+          manual workflows. ATC Technix connects those pieces into intelligent systems that move work
           forward automatically.
         </p>
       </div>
@@ -197,7 +197,7 @@ export function OperationalBottleneckVisual() {
                 <div className="relative z-10 w-24 h-24 rounded-2xl bg-[var(--header-bg)] text-white border-2 border-[var(--accent-green)] shadow-lg flex flex-col items-center justify-center p-2 text-center">
                   <span className="text-base font-extrabold tracking-tight text-white">ATC</span>
                   <span className="text-[9px] font-mono tracking-widest uppercase text-[var(--accent-green)] mt-0.5">
-                    DIGITAL
+                    TECHNIX
                   </span>
                   <div className="mt-1 flex items-center gap-1 text-[8px] font-mono text-slate-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)]" />
@@ -227,7 +227,7 @@ export function OperationalBottleneckVisual() {
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[var(--accent-green)]" />
                     <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--header-bg)]">
-                      WITH ATC DIGITAL LABS
+                      WITH ATC TECHNIX
                     </span>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-[var(--success)] border border-emerald-200 font-semibold">

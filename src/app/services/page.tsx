@@ -7,9 +7,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Services | ATC Digital Labs",
+  title: "Services | ATC Technix",
   description:
-    "Explore the 7 core technology services engineered by ATC Digital Labs: AI & Intelligent Systems, Software Development, System Integration, Cybersecurity, Cloud & Infrastructure, Managed Services, and Technology Consulting.",
+    "Explore the 7 core technology services engineered by ATC Technix: AI & Intelligent Systems, Software Development, System Integration, Cybersecurity, Cloud & Infrastructure, Managed Services, and Technology Consulting.",
 };
 
 const SERVICE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -31,7 +31,7 @@ export default function ServicesPage() {
           <Reveal>
             <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider uppercase text-[var(--accent-ai)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)] animate-pulse" />
-              <span>ATC DIGITAL LABS // CAPABILITY PORTFOLIO</span>
+              <span>ATC TECHNIX // CAPABILITY PORTFOLIO</span>
             </div>
           </Reveal>
 
@@ -43,7 +43,7 @@ export default function ServicesPage() {
 
           <Reveal>
             <p className="text-base sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-3xl">
-              ATC Digital Labs builds AI systems, enterprise software, integrations, and managed technology services that help organizations automate operations, connect systems, and make better use of their data.
+              ATC Technix builds AI systems, enterprise software, integrations, and managed technology services that help organizations automate operations, connect systems, and make better use of their data.
             </p>
           </Reveal>
 
@@ -157,7 +157,7 @@ export default function ServicesPage() {
                           SERVICE {service.num}
                         </span>
                         <span className="text-xs text-slate-400 font-mono">
-                          ATC DIGITAL LABS
+                          ATC TECHNIX
                         </span>
                       </div>
                       <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
@@ -289,7 +289,7 @@ export default function ServicesPage() {
               EXECUTION PROCESS // 5-STAGE LIFECYCLE
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              How ATC Digital Labs delivers.
+              How ATC Technix delivers.
             </h2>
             <p className="text-sm text-slate-300 leading-relaxed">
               Every project follows an auditable, phased engagement structure so executive sponsors always maintain clear visibility, budget control, and verified milestone validation.

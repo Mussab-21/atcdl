@@ -22,9 +22,9 @@ import { Card } from "@/components/ui/Card";
 import { SERVICES } from "@/content/services-data";
 
 export const metadata: Metadata = {
-  title: "About Us | ATC Digital Labs",
+  title: "About Us | ATC Technix",
   description:
-    "ATC Digital Labs is a technology company focused on building, integrating, and operating software systems for organizations with complex operational needs.",
+    "ATC Technix is a technology company focused on building, integrating, and operating software systems for organizations with complex operational needs.",
 };
 
 const INDUSTRIES_SERVED = [
@@ -75,7 +75,7 @@ export default function AboutPage() {
           <Reveal>
             <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider uppercase text-[var(--accent-ai)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)] animate-pulse" />
-              <span>ATC DIGITAL LABS // COMPANY PROFILE</span>
+              <span>ATC TECHNIX // COMPANY PROFILE</span>
             </div>
           </Reveal>
 
@@ -87,7 +87,7 @@ export default function AboutPage() {
 
           <Reveal>
             <p className="text-base sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-3xl">
-              ATC Digital Labs is a technology company focused on building, integrating, and operating software systems for organizations with complex operational needs.
+              ATC Technix is a technology company focused on building, integrating, and operating software systems for organizations with complex operational needs.
             </p>
           </Reveal>
 
@@ -118,7 +118,7 @@ export default function AboutPage() {
               OUR COMPANY
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-              Why ATC Digital Labs exists.
+              Why ATC Technix exists.
             </h2>
             <p className="text-xs text-slate-500 font-mono">
               Engineering discipline over marketing hype.
@@ -130,7 +130,7 @@ export default function AboutPage() {
               Most organizations with established physical or multi-departmental operations do not suffer from a lack of software. They suffer from software fragmentation: off-the-shelf subscriptions that don&apos;t fit their operating procedures, data locked inside disconnected databases, and teams spending hundreds of hours manually transferring information across screens.
             </p>
             <p>
-              ATC Digital Labs operates as the specialized digital engineering division of ATC (Azaan Trading &amp; Contracting). We were built to provide enterprise leaders with a disciplined, hands-on technology partner that designs, builds, and maintains custom systems built around real workflows—not generic templates.
+              ATC Technix operates as the specialized digital engineering division of ATC (Azaan Trading &amp; Contracting). We were built to provide enterprise leaders with a disciplined, hands-on technology partner that designs, builds, and maintains custom systems built around real workflows—not generic templates.
             </p>
             <p>
               We believe in sovereignty, transparency, and operational durability. When we build software for your organization, you own your code, maintain control of your private data perimeters, and work directly with engineers who understand system architecture from the ground up.

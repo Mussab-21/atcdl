@@ -18,7 +18,7 @@ import { EnterpriseTechnicalAccordion } from "@/components/solutions/enterprise-
 import { EnterpriseFinalCTASection } from "@/components/solutions/enterprise-software/EnterpriseFinalCTASection";
 
 export const metadata: Metadata = {
-  title: "Enterprise Software & Systems Modernization | ATCDL",
+  title: "Enterprise Software & Systems Modernization | ATC Technix",
   description:
     "Replace disconnected spreadsheets and outdated legacy tools with one modern, reliable system engineered around how your company actually works.",
 };

@@ -38,7 +38,7 @@ const FLOW_STEPS = [
   {
     id: "process",
     label: "Intelligent Processing",
-    sub: "ATC Digital Labs engineers the solution",
+    sub: "ATC Technix engineers the solution",
     icon: Zap,
     color: "#2563EB",
     bg: "bg-blue-50",
@@ -264,7 +264,7 @@ export function HeroBusinessFlowVisual() {
       {/* Bottom Tag */}
       <div className="mt-3 text-center">
         <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
-          ATC Digital Labs — Complex technology, explained simply.
+          ATC Technix — Complex technology, explained simply.
         </span>
       </div>
     </div>

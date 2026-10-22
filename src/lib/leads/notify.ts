@@ -36,7 +36,7 @@ export async function sendLeadNotifications(
           {
             title,
             color: embedColor,
-            description: `A new client project brief was submitted and scored by the ATCDL pipeline.`,
+            description: `A new client project brief was submitted and scored by the ATC Technix pipeline.`,
             fields: [
               { name: "Prospect Name", value: lead.name, inline: true },
               { name: "Work Email", value: lead.email, inline: true },
@@ -68,7 +68,7 @@ export async function sendLeadNotifications(
               },
             ],
             footer: {
-              text: "ATCDL Inbound Intelligence Pipeline • v1.0",
+              text: "ATC Technix Inbound Intelligence Pipeline • v1.0",
             },
             timestamp: new Date().toISOString(),
           },
@@ -127,7 +127,7 @@ ${lead.existingSystems || "None specified"}
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "ATCDL Inbound <leads@atcdl.com>",
+          from: "ATC Technix Inbound <leads@atcdl.com>",
           to: [toEmail],
           subject: `${title}: ${lead.name} (${lead.company || "Direct"})`,
           text: emailText,

@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props) {
   if (!solution) return {};
 
   return {
-    title: `${solution.title} | ATCDL Engineering`,
+    title: `${solution.title} | ATC Technix Engineering`,
     description: solution.businessHeadline || solution.tagline,
   };
 }

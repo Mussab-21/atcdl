@@ -2,8 +2,8 @@ import React from "react";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata = {
-  title: "Terms of Service | ATCDL",
-  description: "Terms and conditions governing the use of ATCDL (Azaan Trading Contracting Digital Lab) website and engineering services.",
+  title: "Terms of Service | ATC Technix",
+  description: "Terms and conditions governing the use of ATC Technix (Azaan Trading & Contracting) website and engineering services.",
 };
 
 export default function TermsPage() {
@@ -26,7 +26,7 @@ export default function TermsPage() {
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">1. Scope of Engagement</h2>
         <p>
-          ATCDL (Azaan Trading Contracting Digital Lab) provides technology engineering, custom AI development, autonomous workflow automation,
+          ATC Technix (Azaan Trading & Contracting) provides technology engineering, custom AI development, autonomous workflow automation,
           and software implementation services. Specific deliverables, delivery milestones, SLAs, and
           financial terms are governed by mutually executed Statements of Work (SOW) and Master Services
           Agreements (MSA).

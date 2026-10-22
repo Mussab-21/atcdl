@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
             </NextLink>
 
             <p className="text-xs text-[#8DA0BA] max-w-sm leading-relaxed">
-              ATC Digital Labs engineers technology for complex businesses — building AI systems, enterprise software, system integrations, and managed operations.
+              ATC Technix engineers technology for complex businesses — building AI systems, enterprise software, system integrations, and managed operations.
             </p>
 
             <div className="flex items-center gap-2 mt-1">
@@ -154,13 +154,13 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-3">
             <Image
               src="/atc-logo.png"
-              alt="ATC Digital Labs"
+              alt="ATC Technix"
               width={26}
               height={26}
               className="h-6 w-6 rounded object-contain shrink-0"
             />
             <span>
-              &copy; {new Date().getFullYear()} ATC Digital Labs. All rights reserved.
+              &copy; {new Date().getFullYear()} ATC Technix. All rights reserved.
             </span>
           </div>
           <div className="flex items-center gap-6">

@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ATC Technix Web Application
+
+This is the official [ATC Technix](https://atctechnix.netlify.app) web application.
 
 ## Getting Started
 

@@ -9,7 +9,7 @@ import { IDEAS } from "@/content/data";
 import { Sparkles, ArrowRight, Lightbulb, Compass } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Ideas & Blueprints — Pre-Engineered Enterprise Concepts | ATCDL",
+  title: "Ideas & Blueprints — Pre-Engineered Enterprise Concepts | ATC Technix",
   description:
     "Explore architectural blueprints, operational workflow designs, and technology proposals engineered by ATCDL for enterprise sectors.",
 };

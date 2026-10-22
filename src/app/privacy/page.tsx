@@ -2,8 +2,8 @@ import React from "react";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata = {
-  title: "Privacy Policy | ATCDL",
-  description: "ATCDL (Azaan Trading Contracting Digital Lab) Privacy Policy regarding client data, site analytics, and information security.",
+  title: "Privacy Policy | ATC Technix",
+  description: "ATC Technix (Azaan Trading & Contracting) Privacy Policy regarding client data, site analytics, and information security.",
 };
 
 export default function PrivacyPage() {
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">2. How We Use Information</h2>
         <p>
-          Information submitted to ATCDL (Azaan Trading Contracting Digital Lab) is utilized solely to evaluate engineering feasibility,
+          Information submitted to ATC Technix (Azaan Trading & Contracting) is utilized solely to evaluate engineering feasibility,
           provide technical scopes, execute agreed-upon development contracts, and communicate regarding
           our services. We do not sell, rent, or trade your personal or corporate information to third
           parties.

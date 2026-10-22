@@ -17,7 +17,7 @@ import { WebMobileTechnicalAccordion } from "@/components/solutions/web-mobile/W
 import { WebMobileFinalCTASection } from "@/components/solutions/web-mobile/WebMobileFinalCTASection";
 
 export const metadata: Metadata = {
-  title: "Web & Mobile Platforms | Digital Product Engineering | ATCDL",
+  title: "Web & Mobile Platforms | Digital Product Engineering | ATC Technix",
   description:
     "Turn your business idea into a fast, reliable digital product. We engineer sub-second web platforms, cross-platform iOS & Android mobile apps, and scalable backends.",
 };

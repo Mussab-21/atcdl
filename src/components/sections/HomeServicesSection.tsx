@@ -28,7 +28,7 @@ export const HomeServicesSection: React.FC = () => {
                 Technology services for operational leverage.
               </h2>
               <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed mt-1">
-                From strategy to implementation and ongoing operations, ATC Digital Labs helps organizations build, connect, and manage the technology their business depends on.
+                From strategy to implementation and ongoing operations, ATC Technix helps organizations build, connect, and manage the technology their business depends on.
               </p>
             </div>
 
@@ -111,7 +111,7 @@ export const HomeServicesSection: React.FC = () => {
                   </span>
                   <span className="text-white/30 text-xs">/</span>
                   <span className="text-xs uppercase tracking-wider text-white/70 font-mono">
-                    ATC DIGITAL LABS
+                    ATC TECHNIX
                   </span>
                 </div>
                 <span className="text-[11px] font-mono text-slate-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded">

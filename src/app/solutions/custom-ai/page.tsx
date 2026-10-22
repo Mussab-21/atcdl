@@ -17,7 +17,7 @@ import { TechnicalArchitectureAccordion } from "@/components/solutions/custom-ai
 import { FinalCTASection } from "@/components/solutions/custom-ai/FinalCTASection";
 
 export const metadata: Metadata = {
-  title: "Custom AI Systems & Private LLM Engineering | ATCDL",
+  title: "Custom AI Systems & Private LLM Engineering | ATC Technix",
   description:
     "Turn your company's documents, knowledge, and internal information into a private AI assistant your team can actually use. Zero public training data leakage.",
 };

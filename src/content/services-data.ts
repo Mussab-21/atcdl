@@ -24,7 +24,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc:
       "We design practical AI systems that help teams find information, automate repetitive cognitive tasks, and make faster, data-backed decisions.",
     executiveSummary:
-      "Rather than generic chatbots, ATC Digital Labs engineers production-grade AI architectures grounded strictly in your proprietary documentation, databases, and operational rules. Every answer is verifiable, traceable, and secured inside your private perimeter.",
+      "Rather than generic chatbots, ATC Technix engineers production-grade AI architectures grounded strictly in your proprietary documentation, databases, and operational rules. Every answer is verifiable, traceable, and secured inside your private perimeter.",
     visualFlow: ["Data", "Intelligence", "Decision"],
     visualFlowDescription:
       "Enterprise data is indexed and validated, processed by secure intelligence models, and surfaced directly as actionable operational decisions.",
@@ -88,7 +88,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc:
       "Connect the software systems your teams already use so information moves reliably, securely, and automatically between them in real time.",
     executiveSummary:
-      "Most enterprise friction originates between systems: CRM not talking to ERP, billing out of sync with inventory, and manual copy-pasting between portals. ATC Digital Labs builds resilient middleware, API pipelines, and event-driven data buses that bridge legacy platforms and modern software.",
+      "Most enterprise friction originates between systems: CRM not talking to ERP, billing out of sync with inventory, and manual copy-pasting between portals. ATC Technix builds resilient middleware, API pipelines, and event-driven data buses that bridge legacy platforms and modern software.",
     visualFlow: ["System A", "Integration Layer", "System B"],
     visualFlowDescription:
       "Data originating in legacy or external platforms is safely transformed and synchronized through a resilient integration layer into core systems.",
@@ -184,7 +184,7 @@ export const SERVICES: ServiceItem[] = [
     shortDesc:
       "Keep your technology running reliably through proactive 24/7 monitoring, security patching, system maintenance, and continuous optimization.",
     executiveSummary:
-      "Software does not stop needing attention once deployed. ATC Digital Labs provides structured ongoing managed services that handle system updates, bug remediation, security patches, performance tuning, and incremental feature enhancements so your internal team can focus on core business operations.",
+      "Software does not stop needing attention once deployed. ATC Technix provides structured ongoing managed services that handle system updates, bug remediation, security patches, performance tuning, and incremental feature enhancements so your internal team can focus on core business operations.",
     visualFlow: ["Monitor", "Maintain", "Respond", "Improve"],
     visualFlowDescription:
       "Systems are proactively monitored for anomalies, maintained with regular updates, defended with rapid incident response, and continuously improved.",

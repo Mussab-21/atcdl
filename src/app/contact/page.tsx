@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { ContactFormClient } from "@/components/forms/ContactFormClient";
 
 export const metadata: Metadata = {
-  title: "Contact & Discovery | ATC Digital Labs",
+  title: "Contact & Discovery | ATC Technix",
   description:
-    "Discuss your project, book an engineered product demo, or request a technology consultation with ATC Digital Labs engineering leadership.",
+    "Discuss your project, book an engineered product demo, or request a technology consultation with ATC Technix engineering leadership.",
 };
 
 export default function ContactPage() {

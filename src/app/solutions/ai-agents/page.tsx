@@ -18,7 +18,7 @@ import { AgentTechnicalAccordion } from "@/components/solutions/ai-agents/AgentT
 import { AgentFinalCTASection } from "@/components/solutions/ai-agents/AgentFinalCTASection";
 
 export const metadata: Metadata = {
-  title: "AI Agents & Autonomous Automation | ATCDL",
+  title: "AI Agents & Autonomous Automation | ATC Technix",
   description:
     "Give repetitive business work to AI workers. We build autonomous agents that understand requests, validate against business rules, update your systems, and escalate exceptions to your team.",
 };

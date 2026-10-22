@@ -23,9 +23,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ATC Digital Labs | AI, Software & Enterprise Technology Solutions",
+  title: "ATC Technix | AI, Software & Enterprise Technology Solutions",
   description:
-    "ATC Digital Labs builds AI systems, enterprise software, integrations and managed technology solutions for organizations with complex operational needs.",
+    "ATC Technix builds AI systems, enterprise software, integrations and managed technology solutions for organizations with complex operational needs.",
 };
 
 export default function Home() {
@@ -42,7 +42,7 @@ export default function Home() {
             <Reveal>
               <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider uppercase text-[var(--accent-ai)]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)] animate-pulse" />
-                <span>ATC DIGITAL LABS</span>
+                <span>ATC TECHNIX</span>
               </div>
             </Reveal>
 
@@ -62,7 +62,7 @@ export default function Home() {
 
             <Reveal>
               <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-xl">
-                ATC Digital Labs helps organizations automate operations, connect
+                ATC Technix helps organizations automate operations, connect
                 systems, and make better use of their data — through AI, custom
                 software, and managed technology services.
               </p>
@@ -112,7 +112,7 @@ export default function Home() {
       {/* ── 3. WHAT WE DO: THE 7 CORE SERVICES ────────────────────────────── */}
       <HomeServicesSection />
 
-      {/* ── 4. WHY ATC DIGITAL LABS: BEFORE → AFTER ──────────────────────── */}
+      {/* ── 4. WHY ATC TECHNIX: BEFORE → AFTER ──────────────────────── */}
       <section className="container-custom py-4 sm:py-6">
         <OperationalBottleneckVisual />
       </section>
@@ -226,7 +226,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border)] pb-5">
               <div>
                 <div className="text-xs font-semibold text-[var(--accent-ai)] uppercase tracking-wider mb-1">
-                  ATC Digital Labs Products
+                  ATC Technix Products
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">
                   Software we have created
@@ -263,7 +263,7 @@ export default function Home() {
           <div className="p-8 sm:p-12 lg:p-14 rounded-[var(--radius-lg)] bg-[var(--accent-deep)] text-white border border-[#162D50] shadow-2xl flex flex-col items-center text-center gap-8">
             <div className="max-w-2xl flex flex-col items-center gap-3">
               <span className="text-xs uppercase tracking-widest text-[var(--accent-green)] font-semibold font-mono">
-                ATC DIGITAL LABS
+                ATC TECHNIX
               </span>
               <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
                 Ready to simplify your operations?
