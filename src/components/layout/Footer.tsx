@@ -12,24 +12,16 @@ export const Footer: React.FC = () => {
           <div className="md:col-span-4 flex flex-col gap-4">
             <NextLink
               href="/"
-              className="flex items-center gap-3.5 group w-fit"
-              aria-label="ATC Digital Labs home"
+              className="flex items-center group w-fit"
+              aria-label="ATC Technix"
             >
               <Image
-                src="/atc-logo.png"
-                alt="ATC Digital Labs"
-                width={80}
-                height={80}
-                className="h-10 w-10 object-contain rounded-md shrink-0"
+                src="/atc-technix-logo.png"
+                alt="ATC Technix"
+                width={150}
+                height={50}
+                className="h-10 w-auto object-contain shrink-0"
               />
-              <div className="flex flex-col leading-none">
-                <span className="font-extrabold text-lg tracking-tight text-white group-hover:text-[var(--accent-green)] transition-colors">
-                  ATC
-                </span>
-                <span className="text-[10px] font-bold tracking-[0.18em] text-[var(--accent-green)] mt-1">
-                  DIGITAL LABS
-                </span>
-              </div>
             </NextLink>
 
             <p className="text-xs text-[#8DA0BA] max-w-sm leading-relaxed">

@@ -54,25 +54,17 @@ export function Navbar() {
         <Link
           href="/"
           onClick={close}
-          className="flex items-center gap-3.5 select-none shrink-0 justify-self-start"
-          aria-label="ATC Digital Labs home"
+          className="flex items-center select-none shrink-0 justify-self-start"
+          aria-label="ATC Technix"
         >
           <Image
-            src="/atc-logo.png"
-            alt="ATC Digital Labs"
-            width={120}
-            height={120}
-            className="h-[46px] w-[46px] sm:h-[58px] sm:w-[58px] object-contain rounded-lg shrink-0"
+            src="/atc-technix-logo.png"
+            alt="ATC Technix"
+            width={180}
+            height={60}
+            className="h-[38px] sm:h-[46px] md:h-[50px] lg:h-[56px] w-auto object-contain shrink-0"
             priority
           />
-          <div className="flex flex-col justify-center leading-none">
-            <span className="font-extrabold text-xl sm:text-[26px] tracking-tight text-white leading-none">
-              ATC
-            </span>
-            <span className="font-bold text-[8px] sm:text-[9.5px] tracking-[0.2em] text-[#aff2ce] mt-1 leading-none">
-              DIGITAL LABS
-            </span>
-          </div>
         </Link>
 
         {/* Desktop Links Centered */}
