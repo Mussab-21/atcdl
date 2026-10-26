@@ -259,10 +259,10 @@ const SOLUTIONS_DATA: SolutionSection[] = [
 
 export default function SolutionsPage() {
   return (
-    <div className="flex flex-col gap-12 sm:gap-20 py-6 sm:py-10">
+    <div className="flex flex-col gap-6 sm:gap-8 py-3 sm:py-6">
       {/* 1. Hero Section */}
-      <section className="container-custom pt-4 pb-8 sm:pb-12 border-b border-[var(--border)]">
-        <div className="max-w-4xl flex flex-col gap-5 text-left">
+      <section className="container-custom pt-2 pb-6 sm:pt-4 sm:pb-8 border-b border-[var(--border)]">
+        <div className="max-w-4xl flex flex-col gap-3 text-left">
           <Reveal>
             <div className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider uppercase text-[var(--accent-ai)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-green)] animate-pulse" />
@@ -271,13 +271,13 @@ export default function SolutionsPage() {
           </Reveal>
 
           <Reveal>
-            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.08]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-[1.12]">
               Four ways we build business value.
             </h1>
           </Reveal>
 
           <Reveal>
-            <p className="text-base sm:text-xl text-[var(--text-secondary)] leading-relaxed max-w-3xl">
+            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
               We translate advanced software and AI engineering into clear, measurable operational outcomes. Explore our four solution categories engineered to drive efficiency, resilience, and growth.
             </p>
           </Reveal>
@@ -285,42 +285,45 @@ export default function SolutionsPage() {
       </section>
 
       {/* 2. Four Solutions In-Depth (Layout mirrored after /services) */}
-      <section className="container-custom flex flex-col gap-10 sm:gap-14">
+      <section className="container-custom flex flex-col gap-5 sm:gap-6">
         {SOLUTIONS_DATA.map((solution) => {
           const Icon = solution.icon;
           return (
             <div
               key={solution.slug}
               id={solution.slug}
-              className="scroll-mt-24 p-6 sm:p-10 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col gap-8 hover:border-slate-300 transition-colors"
+              className="scroll-mt-20 p-4 sm:p-6 lg:p-7 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex flex-col gap-4 sm:gap-5 hover:border-slate-300 transition-colors"
             >
               {/* Header Row */}
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-slate-100 pb-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#071B3B] text-[var(--accent-green)] border border-[#162D50] flex items-center justify-center shrink-0 shadow-sm">
-                    <Icon className="w-6 h-6" />
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3 sm:pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-[#071B3B] text-[var(--accent-green)] border border-[#162D50] flex items-center justify-center shrink-0 shadow-2xs">
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
+                      <span className="font-mono text-[11px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
                         SOLUTION {solution.num}
                       </span>
-                      <span className="text-xs text-slate-400 font-mono">
+                      <span className="text-[11px] text-slate-400 font-mono">
                         {solution.eyebrow}
                       </span>
                     </div>
-                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
-                      {solution.headline}
-                    </h2>
-                    <p className="text-sm font-medium text-emerald-700">
-                      {solution.tagline}
-                    </p>
+                    <div className="flex flex-wrap items-baseline gap-2">
+                      <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 tracking-tight">
+                        {solution.headline}
+                      </h2>
+                      <span className="hidden sm:inline text-slate-300">•</span>
+                      <p className="text-xs sm:text-sm font-medium text-emerald-700">
+                        {solution.tagline}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 <NextLink
                   href={`/contact?intent=project&solution=${encodeURIComponent(solution.title)}`}
-                  className="self-start sm:self-auto px-4 py-2 rounded-xl bg-[var(--accent-green)] text-[#071B3B] text-xs font-bold shadow-xs hover:bg-[#00ea83] transition-colors inline-flex items-center gap-1.5 shrink-0"
+                  className="self-start sm:self-auto px-3 py-1.5 rounded-lg bg-[var(--accent-green)] text-[#071B3B] text-xs font-bold shadow-2xs hover:bg-[#00ea83] transition-colors inline-flex items-center gap-1.5 shrink-0"
                 >
                   <span>Discuss Your Project</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -328,40 +331,40 @@ export default function SolutionsPage() {
               </div>
 
               {/* Body Content Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                {/* Left Column: Overview, What You Receive & Best Suited For (7 cols) */}
-                <div className="lg:col-span-7 flex flex-col gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
+                {/* Left Column: Overview, What You Receive & Best Suited For (6 cols) */}
+                <div className="lg:col-span-6 flex flex-col gap-3.5">
                   {/* Overview */}
-                  <div className="flex flex-col gap-2">
-                    <div className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold">
+                  <div className="flex flex-col gap-1">
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
                       Overview &amp; Practical Value
                     </div>
-                    <p className="text-sm text-slate-700 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                       {solution.overview}
                     </p>
                   </div>
 
                   {/* What you actually receive box */}
-                  <div className="p-5 rounded-xl bg-[#071B3B] text-white border border-[#162D50] flex flex-col gap-4 shadow-sm">
-                    <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+                  <div className="p-3.5 sm:p-4 rounded-xl bg-[#071B3B] text-white border border-[#162D50] flex flex-col gap-2.5 shadow-2xs">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 uppercase tracking-wider">
                       <span>OPERATIONAL DELIVERABLES</span>
                       <span className="text-[var(--accent-green)]">What You Actually Receive</span>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
                       {solution.deliverables.map((item, idx) => (
                         <div
                           key={idx}
-                          className="p-3.5 rounded-lg bg-white/5 border border-white/10 flex flex-col gap-1.5"
+                          className="p-2.5 sm:p-3 rounded-lg bg-white/5 border border-white/10 flex flex-col gap-1"
                         >
                           <div className="flex items-center gap-1.5 text-xs font-semibold text-white">
                             <CheckCircle2 className="w-3.5 h-3.5 text-[var(--accent-green)] shrink-0" />
                             <span>{item.title}</span>
                           </div>
-                          <p className="text-[11px] text-slate-300 leading-relaxed">
+                          <p className="text-[11px] text-slate-300 leading-normal">
                             {item.description}
                           </p>
-                          <span className="text-[10px] font-mono text-[var(--accent-green)] mt-auto pt-1">
+                          <span className="text-[10px] font-mono text-[var(--accent-green)] mt-auto pt-0.5">
                             {item.detail}
                           </span>
                         </div>
@@ -370,60 +373,63 @@ export default function SolutionsPage() {
                   </div>
 
                   {/* Best Suited For */}
-                  <div className="text-xs text-slate-600 bg-slate-50 border border-slate-200/80 p-3.5 rounded-xl">
+                  <div className="text-xs text-slate-600 bg-slate-50 border border-slate-200/80 p-2.5 sm:p-3 rounded-lg">
                     <strong className="text-slate-900 font-semibold">Best suited for: </strong>
                     {solution.idealFor}
                   </div>
                 </div>
 
-                {/* Right Column: Capabilities, Technical Standards & Outcomes (5 cols) */}
-                <div className="lg:col-span-5 flex flex-col gap-6">
+                {/* Right Column: Capabilities, Technical Standards & Outcomes (6 cols) */}
+                <div className="lg:col-span-6 flex flex-col gap-3.5">
                   {/* Capabilities */}
-                  <div className="flex flex-col gap-2.5">
-                    <div className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold">
+                  <div className="flex flex-col gap-1.5">
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
                       Core Capabilities
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {solution.capabilities.map((cap) => (
                         <div
                           key={cap}
-                          className="flex items-start gap-2.5 text-xs text-slate-800 leading-snug p-2.5 rounded-lg bg-slate-50/70 border border-slate-100"
+                          className="flex items-start gap-2 text-xs text-slate-800 leading-snug p-2 rounded-lg bg-slate-50/80 border border-slate-100"
                         >
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                           <span className="font-medium">{cap}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Technical Standards */}
-                  <div className="flex flex-col gap-2.5">
-                    <div className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold">
-                      Technical Architecture Standards
+                  {/* Technical Standards and Outcomes side-by-side on sm+ */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+                    {/* Technical Standards */}
+                    <div className="flex flex-col gap-1.5">
+                      <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
+                        Technical Standards
+                      </div>
+                      <ul className="flex flex-col gap-1.5 text-xs text-slate-600">
+                        {solution.technicalStandards.map((hl) => (
+                          <li key={hl} className="flex items-start gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-ai)] shrink-0 mt-1" />
+                            <span>{hl}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="flex flex-col gap-2 text-xs text-slate-600">
-                      {solution.technicalStandards.map((hl) => (
-                        <li key={hl} className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-ai)] shrink-0 mt-1.5" />
-                          <span>{hl}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
 
-                  {/* Tangible Outcomes */}
-                  <div className="flex flex-col gap-2.5 pt-2 border-t border-slate-100">
-                    <div className="text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold">
-                      Tangible Outcomes
+                    {/* Tangible Outcomes */}
+                    <div className="flex flex-col gap-1.5">
+                      <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
+                        Tangible Outcomes
+                      </div>
+                      <ul className="flex flex-col gap-1.5 text-xs text-slate-700">
+                        {solution.tangibleOutcomes.map((outcome) => (
+                          <li key={outcome} className="flex items-start gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1" />
+                            <span>{outcome}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="flex flex-col gap-1.5 text-xs text-slate-700">
-                      {solution.tangibleOutcomes.map((outcome) => (
-                        <li key={outcome} className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-1.5" />
-                          <span>{outcome}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               </div>
@@ -433,19 +439,19 @@ export default function SolutionsPage() {
       </section>
 
       {/* 3. Advisory CTA Section */}
-      <section className="container-custom">
+      <section className="container-custom pb-4 sm:pb-6">
         <Reveal>
-          <div className="p-8 sm:p-12 rounded-2xl bg-[#071B3B] text-white border border-[#162D50] text-center flex flex-col items-center gap-4 max-w-3xl mx-auto shadow-sm">
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#071B3B] text-white border border-[#162D50] text-center flex flex-col items-center gap-3 sm:gap-3.5 max-w-3xl mx-auto shadow-sm">
             <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-green)] font-semibold">
               SOLUTION ARCHITECTURE ADVISORY
             </span>
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
               Not sure which solution matches your business problem?
             </h3>
-            <p className="text-sm text-slate-300 max-w-xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
               Many enterprise systems require a multi-disciplinary approach (for instance, custom AI integrated into an approval workflow with mobile apps). Schedule a consultative architecture call with our team.
             </p>
-            <div className="pt-2">
+            <div className="pt-1">
               <NextLink href="/contact?intent=project">
                 <Button as="span" size="lg" variant="primary" className="text-xs font-semibold">
                   <span>Start Project Brief</span>
